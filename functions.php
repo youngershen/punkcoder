@@ -9,12 +9,13 @@
  * WECHAT  : 13811754531
  * WEBSIT  : https://www.punkcoder.cn
  */
- 
- function get_navi()
- {
-     $templates = array();
 
-     $templates[] = 'navi.php';
 
-     locate_template( $templates, true );
- }
+function pc_get_template($name)
+{
+    $templates = array();
+
+    $templates[] = $name . ".php";
+
+    locate_template( $templates, true );
+}

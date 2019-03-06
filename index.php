@@ -18,10 +18,17 @@
 <?php get_header(); ?>
 
 <body class="<?php body_class(); ?>">
-    <?php get_navi(); ?>
+    <?php pc_get_template('navi'); ?>
 
     <div class="container">
-        <h1> hello world</h1>
+        <div class="row mt-3">
+            <div class="col-8">
+                <?php pc_get_template("posts");?>
+            </div>
+            <div class="col-4">
+                <?php pc_get_template("sidebar");?>
+            </div>
+        </div>
     </div>
 
 </body>
