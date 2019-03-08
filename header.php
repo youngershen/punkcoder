@@ -1,6 +1,6 @@
 <?php
 /**
- * PROJECT : wordpress-5.0.3
+ * PROJECT : punkcoder
  * FILE    : header.php
  * TIME    : 2019/3/6 15:33
  * AUTHOR  : Younger Shen
@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="<?php echo(get_template_directory_uri()); ?>/vendor/bootstrap-4.3.1-dist/css/bootstrap.min.css">
     <!-- load font awesome css-->
     <link rel="stylesheet" href="<?php echo(get_template_directory_uri()); ?>/vendor/fontawesome-free-5.7.2-web/css/all.min.css">
+    <!-- load custom css -->
+    <link rel="stylesheet" href="<?php echo(get_template_directory_uri())?>/css/punkcoder.css">
 
     <!-- load jquery -->
     <script src="<?php echo(get_template_directory_uri()); ?>/vendor/jquery-3.3.1.min.js"></script>

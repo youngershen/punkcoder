@@ -1,6 +1,6 @@
 <?php
 /**
- * PROJECT : wordpress-5.0.3
+ * PROJECT : punkcoder
  * FILE    : index.php
  * TIME    : 2019/3/6 15:14
  * AUTHOR  : Younger Shen
@@ -18,7 +18,7 @@
 <?php get_header(); ?>
 
 <body class="<?php body_class(); ?>">
-    <?php pc_get_template('navi'); ?>
+    <?php pc_get_template('navbar'); ?>
 
     <div class="container">
         <div class="row mt-3">

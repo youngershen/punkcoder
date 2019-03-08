@@ -1,6 +1,6 @@
 <?php
 /**
- * PROJECT : wordpress-5.0.3
+ * PROJECT : punkcoder
  * FILE    : menu.php
  * TIME    : 2019/3/6 16:31
  * AUTHOR  : Younger Shen
@@ -12,8 +12,8 @@
 
 ?>
 
-<div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top navbar-padding">
         <a class="navbar-brand" href="<?php echo(home_url());?>"><?php echo(get_bloginfo());?></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content"
                 aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,20 +21,15 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbar-content">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="#"><?php _e( 'Home', 'punkcoder' ); ?> <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbar-dropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <?php _e('Pages', 'punkcoder');?>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbar-dropdown">
-                        <a class="dropdown-item" href="#">page 1</a>
-                        <a class="dropdown-item" href="#">page 2</a>
-                        <a class="dropdown-item" href="#">page 3</a>
-                    </div>
+                <li class="nav-item">
+                    <a href="" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link">Services</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -43,4 +38,12 @@
             </form>
         </div>
     </nav>
-</div>
+    <div id="pk-slogan" class="container-fluid">
+        <div class="row justify-content-center bg-secondary slogan-bg">
+            <div class="col-6 align-content-center my-5 text-light">
+                <h1 class="text-center "><?php bloginfo('name'); ?></h1>
+                <h2 class="text-center mt-5"><?php bloginfo('description'); ?></h2>
+            </div>
+        </div>
+    </div>
+</header>
