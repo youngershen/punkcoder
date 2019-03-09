@@ -4,16 +4,23 @@ body
     font-size: 100%;
 }
 
-.navbar-padding {
-    padding-left: 10rem !important;
-    padding-right: 10rem !important;
 
+nav
+{
+    transition: padding 300ms ease;
+    padding: 1rem;
+}
+
+.navbar-sticky
+{
+    /*transition: padding 300ms ease;*/
+    padding: 1.2rem;
 }
 
 .slogan-bg
 {
     background-image: url("../images/slogan-bg.png") !important;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-position:  center;
     background-attachment: fixed;
 }
