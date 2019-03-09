@@ -40,7 +40,7 @@
         </form>
     </div>
 </nav>
-<div id="pk-slogan" class="container-fluid d-none d-lg-block d-xl-nones">
+<div id="pk-slogan" class="container-fluid d-none d-lg-block">
     <div class="row justify-content-center bg-secondary slogan-bg">
         <div class="col-6 align-content-center my-5 text-light">
             <h1 class="text-center "><?php bloginfo('name'); ?></h1>

@@ -10,10 +10,10 @@
  * WEBSIT  : https://www.punkcoder.cn
  */
 
- ?>
+?>
 
 
-<div class="d-none d-lg-block d-xl-none">
+<div class="d-none d-lg-block">
     <div class="jumbotron">
         <a href="" class="text-secondary">
             <h2>Hello World !</h2>

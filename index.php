@@ -22,10 +22,10 @@
 
     <div class="container">
         <div class="row mt-3">
-            <div class="col-8">
-                <?php pc_get_template("posts");?>
+            <div class="col-lg-8 col-md-12">
+                <?php pc_get_template("contents");?>
             </div>
-            <div class="col-4">
+            <div class="col-lg-4">
                 <?php pc_get_template("sidebar");?>
             </div>
         </div>
