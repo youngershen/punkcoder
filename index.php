@@ -17,13 +17,29 @@
 
 <?php get_header(); ?>
 
-<body class="<?php body_class(); ?>">
+<body class="<?php body_class(); ?>" style="min-width: 500px">
     <?php pc_get_template('navbar'); ?>
 
     <div class="container">
         <div class="row mt-3">
-            <div class="col-lg-8 col-md-12">
-                <?php pc_get_template("contents");?>
+            <div class="col-lg-8 col-md-12 col-sm-12">
+                <?php
+                if ( have_posts() ) {
+
+                    // Load posts loop.
+                    while ( have_posts() ) {
+                        the_post();
+                        get_template_part("contents");
+                    }
+
+                } else {
+
+                    // If no content, include the "No posts found" template.
+//                    get_template_part( 'template-parts/content/content', 'none' );
+
+                }
+                ?>
+
             </div>
             <div class="col-lg-4">
                 <?php pc_get_template("sidebar");?>

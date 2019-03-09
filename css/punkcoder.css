@@ -49,11 +49,3 @@ nav
     margin-right: .5rem;
 }
 
-.home-post-share
-{
-    font-size: 2rem;
-    position: absolute;
-    right: 1rem;
-    top: 0;
-    cursor: pointer;
-}
