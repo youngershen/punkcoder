@@ -86,15 +86,32 @@ nav
 {
     background-color: #f8f9fa;
     border-radius: .5em;
-    padding: 2rem;
+    padding: 1rem;
 }
 
 .punkcoder-sidebar-profile
 {
-
+    margin: 0;
+    padding: 0;
 }
 
 .punkcoder-sidebar-profile-avatar
 {
-    margin:0 8rem;
+    /*margin:0 8rem;*/
+}
+
+.punkcoder-sidebar-profile-item
+{
+    margin-top: 1rem;
+}
+
+.punkcoder-sidebar-profile-item-social
+{
+    margin-top: 1rem;
+    cursor: pointer;
+}
+
+.punkcoder-sidebar-profile-item-social > a
+{
+    color: #212121;
 }

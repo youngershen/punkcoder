@@ -28,7 +28,7 @@
             <div class="home-post-meta d-nonse d-lsg-block">
                 <span class="home-post-meta-item">
                     <i class="far fa-calendar-alt"></i>
-                    <span>2019/03/15 20:25:55</span>
+                    <span><?php echo get_the_date("Y-m-d H:i:s"); ?></span>
                 </span>
                 <span class="home-post-meta-item">
                     <i class="fas fa-user-alt"></i>
