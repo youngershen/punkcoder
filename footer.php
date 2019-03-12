@@ -12,7 +12,7 @@
 ?>
 
 
-<footer class="container-fluid punkcoder-footer d-none d-lg-block ">
+<footer class="container-fluid punkcoder-footer d-none d-lg-block fixed-bottom">
     <div class="row justify-content-center">
         <div class="col-8 justify-content-center text-center">
             <span class="punkcoder-footer-item">
