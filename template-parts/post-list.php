@@ -11,7 +11,7 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class("home-post ontainer-fluid p-2"); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class("home-post ontainer-fluid p-2 shadow "); ?>>
     <div class="row">
         <div class="col-4 m-0 d-none d-lg-block">
             <img src="<?php echo(get_template_directory_uri()); ?>/assets/images/feature.png" alt="" class="mw-100">

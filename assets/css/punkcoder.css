@@ -51,7 +51,7 @@ nav
 {
     padding: 1rem 1rem 1rem;
     margin-bottom: 1rem;
-    background-color: #e9ecef;
+    background-color: #f8f9fa;
     border-radius: .5em;
     font-size: 1rem;
 }
@@ -82,4 +82,19 @@ nav
 }
 
 
+.punkcoder-sidebar
+{
+    background-color: #f8f9fa;
+    border-radius: .5em;
+    padding: 2rem;
+}
 
+.punkcoder-sidebar-profile
+{
+
+}
+
+.punkcoder-sidebar-profile-avatar
+{
+    margin:0 8rem;
+}

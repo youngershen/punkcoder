@@ -13,21 +13,24 @@
 ?>
 
 
-<div class="d-none d-lg-block">
-    <div class="jumbotron">
-        <a href="" class="text-secondary">
-            <h2>Hello World !</h2>
-        </a>
+<div class="d-none d-lg-block punkcoder-sidebar container-fluid">
+    <div class="row punkcoder-sidebar-profile justify-content-center">
+        <div class="col-10 justify-content-center">
+            <div class="text-center punkcoder-sidebar-profile-avatar">
+                <img src="<?php echo(get_template_directory_uri()); ?>/assets/images/avatar-default.jpg" class="rounded mw-100" alt="...">
+            </div>
+            <div>
 
-        <p>
-            Spacing utilities that apply to all breakpoints, from xs to xl, have no breakpoint abbreviation in them.
-            This is because those classes are applied from min-width: 0 and up, and thus are not bound by a media query.
-            The remaining breakpoints, however, do include a breakpoint abbreviation.
-        </p>
-        <hr>
-
-        <div>
-            <span>Author: Younger Shen</span>
+            </div>
         </div>
     </div>
+
+    <div class="row punkcoder-sidebar-category">
+
+    </div>
+
+    <div class="row punkcoder-sidebar-tags">
+
+    </div>
+
 </div>

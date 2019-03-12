@@ -21,8 +21,11 @@
 <body class="<?php body_class(); ?>">
 <?php get_template_part('template-parts/navbar'); ?>
 
-<div class="container-fluid home-post-list">
-    <div class="row mt-3">
+<main class="container-fluid home-post-list">
+    <div class="row mt-3 justify-content-center">
+        <div class="col-lg-2">
+            <?php get_template_part("template-parts/sidebar");?>
+        </div>
         <div class="col-lg-8 col-md-12 col-sm-12">
             <?php
             if ( have_posts() ) {
@@ -61,11 +64,8 @@
                 </nav>
             </div>
         </div>
-        <div class="col-lg-4">
-            <?php get_template_part("template-parts/sidebar");?>
-        </div>
     </div>
-</div>
+</main>
 </body>
 <?php get_footer(); ?>
 </html>
