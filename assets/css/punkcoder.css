@@ -29,6 +29,11 @@ nav
     color: #FFFFFF;
 }
 
+.punkcoder-footer-item
+{
+    margin: 1rem;
+}
+
 .slogan-bg
 {
     background-image: url("../images/slogan-bg.png") !important;

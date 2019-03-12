@@ -16,10 +16,10 @@
 
 <html <?php language_attributes(); ?>>
 
-<?php get_header(); ?>
+<?php get_header("template-parts/header.php"); ?>
 
 <body class="<?php body_class(); ?>">
-<?php pc_get_template('navbar'); ?>
+<?php get_template_part('template-parts/navbar'); ?>
 
 <div class="container-fluid home-post-list">
     <div class="row mt-3">
@@ -29,11 +29,11 @@
                 // Load posts loop.
                 while ( have_posts() ) {
                     the_post();
-                    get_template_part("post/post-list");
+                    get_template_part("template-parts/post-list");
                 }
             } else {
 
-                get_template_part("post/post-none");
+                get_template_part("template-parts/post-none");
 
             }
             ?>
@@ -62,11 +62,10 @@
             </div>
         </div>
         <div class="col-lg-4">
-            <?php pc_get_template("sidebar");?>
+            <?php get_template_part("template-parts/sidebar");?>
         </div>
     </div>
 </div>
-
 </body>
 <?php get_footer(); ?>
 </html>

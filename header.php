@@ -20,19 +20,19 @@
     <link rel="profile" href="https://gmpg.org/xfn/11" />
 
     <!-- load bootstrap css -->
-    <link rel="stylesheet" href="<?php echo(get_template_directory_uri()); ?>/vendor/bootstrap-4.3.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo(get_template_directory_uri()); ?>/assets/vendor/bootstrap-4.3.1-dist/css/bootstrap.min.css">
     <!-- load font awesome css-->
-    <link rel="stylesheet" href="<?php echo(get_template_directory_uri()); ?>/vendor/fontawesome-free-5.7.2-web/css/all.min.css">
+    <link rel="stylesheet" href="<?php echo(get_template_directory_uri()); ?>/assets/vendor/fontawesome-free-5.7.2-web/css/all.min.css">
     <!-- load custom css -->
-    <link rel="stylesheet" href="<?php echo(get_template_directory_uri())?>/css/punkcoder.css">
+    <link rel="stylesheet" href="<?php echo(get_template_directory_uri())?>/assets/css/punkcoder.css">
 
     <!-- load jquery -->
-    <script src="<?php echo(get_template_directory_uri()); ?>/vendor/jquery-3.3.1.min.js"></script>
+    <script src="<?php echo(get_template_directory_uri()); ?>/assets/vendor/jquery-3.3.1.min.js"></script>
     <!-- load bootstrap js -->
-    <script src="<?php echo(get_template_directory_uri()); ?>/vendor/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+    <script src="<?php echo(get_template_directory_uri()); ?>/assets/vendor/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
     <!-- load fontawesome js-->
-    <script src="<?php echo(get_template_directory_uri()); ?>/vendor/fontawesome-free-5.7.2-web/js/all.min.js"></script>
+    <script src="<?php echo(get_template_directory_uri()); ?>/assets/vendor/fontawesome-free-5.7.2-web/js/all.min.js"></script>
     <!-- load custom js -->
-    <script src="<?php echo(get_template_directory_uri())?>/js/punkcoder.js"></script>
+    <script src="<?php echo(get_template_directory_uri())?>/assets/js/punkcoder.js"></script>
     <?php wp_head(); ?>
 </head>

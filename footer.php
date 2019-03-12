@@ -12,18 +12,22 @@
 ?>
 
 
-<footer class="container-fluid punkcoder-footer">
+<footer class="container-fluid punkcoder-footer d-none d-lg-block ">
     <div class="row justify-content-center">
         <div class="col-8 justify-content-center text-center">
-            <span>
+            <span class="punkcoder-footer-item">
                 <?php _e("版权"); ?>
-                <a href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank">
                     署名 4.0 国际 (CC BY 4.0)
                 </a>
             </span>
-            <span>
+            <span class="punkcoder-footer-item">
                 <?php _e("备案编号"); ?>
-                <a href="">冀ICP备19005058号</a>
+                <a href="" target="_blank">冀ICP备19005058号</a>
+            </span>
+            <span class="punkcoder-footer-item">
+                <?php _e("Powered By"); ?>
+                <a href="https://wordpress.org/" target="_blank">WordPress.org</a>
             </span>
         </div>
     </div>

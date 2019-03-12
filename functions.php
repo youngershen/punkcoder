@@ -11,11 +11,3 @@
  */
 
 
-function pc_get_template($name)
-{
-    $templates = array();
-
-    $templates[] = $name . ".php";
-
-    locate_template( $templates, true );
-}
