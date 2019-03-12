@@ -14,8 +14,19 @@ nav
 .navbar-sticky
 {
     /*transition: padding 300ms ease;*/
-    padding: 1.2rem;
+    padding: 0.8rem;
     font-size: 1.2rem;
+}
+
+.punkcoder-navbar
+{
+
+}
+
+.punkcoder-footer
+{
+    background-color: #000000;
+    color: #FFFFFF;
 }
 
 .slogan-bg
@@ -24,11 +35,6 @@ nav
     background-repeat: repeat;
     background-position:  center;
     background-attachment: fixed;
-}
-
-.home-posts-list
-{
-    padding: .2rem 10rem 10rem;
 }
 
 .home-post
@@ -50,8 +56,20 @@ nav
 
 }
 
+.home-post-meta
+{
+    font-size: .5rem;
+}
+
 .home-post-meta-item
 {
     margin-right: .5rem;
 }
+
+.home-post-pagination
+{
+
+}
+
+
 

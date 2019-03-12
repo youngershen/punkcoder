@@ -18,29 +18,48 @@
 
 <?php get_header(); ?>
 
-<body class="<?php body_class(); ?>" style="min-width: 500px">
+<body class="<?php body_class(); ?>">
 <?php pc_get_template('navbar'); ?>
 
-<div class="container-fluid home-posts-list">
+<div class="container-fluid home-post-list">
     <div class="row mt-3">
         <div class="col-lg-8 col-md-12 col-sm-12">
             <?php
             if ( have_posts() ) {
-
                 // Load posts loop.
                 while ( have_posts() ) {
                     the_post();
-                    get_template_part("contents");
+                    get_template_part("post/post-list");
                 }
-
             } else {
 
-                // If no content, include the "No posts found" template.
-//                    get_template_part( 'template-parts/content/content', 'none' );
+                get_template_part("post/post-none");
 
             }
             ?>
+            <div class="home-post-pagination">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><?php _e("<<"); ?></a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><?php _e("<"); ?></a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">4</a></li>
 
+                        <li class="page-item">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><?php _e(">"); ?></a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#"><?php _e(">>"); ?></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
         <div class="col-lg-4">
             <?php pc_get_template("sidebar");?>
@@ -49,9 +68,7 @@
 </div>
 
 </body>
-
 <?php get_footer(); ?>
-
 </html>
 
 

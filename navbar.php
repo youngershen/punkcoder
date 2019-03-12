@@ -12,7 +12,7 @@
 
 ?>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top punkcoder-navbar">
     <a class="navbar-brand" href="<?php echo(home_url()); ?>"><?php echo(get_bloginfo()); ?></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content"
             aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
