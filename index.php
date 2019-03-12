@@ -20,7 +20,7 @@
 <body class="<?php body_class(); ?>" style="min-width: 500px">
     <?php pc_get_template('navbar'); ?>
 
-    <div class="container-fluid">
+    <div class="container-fluid home-posts-list">
         <div class="row mt-3">
             <div class="col-lg-8 col-md-12 col-sm-12">
                 <?php
