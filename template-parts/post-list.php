@@ -32,19 +32,22 @@
                 </span>
                 <span class="home-post-meta-item">
                     <i class="fas fa-user-alt"></i>
-                    <a href="">Younger Shen</a>
+                    <span><?php the_author(); ?></span>
                 </span>
                 <span class="home-post-meta-item">
                     <i class="fas fa-comments"></i>
-                    <span>88 <?php _e("Comments", "punkcoder"); ?></span>
+                    <span>
+                        <span><?php echo(get_comments_number()); ?></span>
+                        <span><?php _e("条评论", "punkcoder"); ?></span>
+                    </span>
                 </span>
                 <span class="home-post-meta-item">
                     <i class="fas fa-users"></i>
-                    <span>22 <?php _e("Clicks", "punkcoder"); ?></span>
+                    <span>22 <?php _e("人阅读", "punkcoder"); ?></span>
                 </span>
                 <span class="home-post-meta-item">
                     <i class="fas fa-thumbs-up"></i>
-                    <span>100 <?php _e("Likes", "punkcoder"); ?></span>
+                    <span>100 <?php _e("赞", "punkcoder"); ?></span>
                 </span>
             </div>
             <hr>
