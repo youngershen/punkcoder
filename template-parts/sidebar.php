@@ -11,13 +11,12 @@
  */
 
 ?>
-
-
 <div class="d-none d-lg-block punkcoder-sidebar container-fluid">
     <div class="row punkcoder-sidebar-profile justify-content-center">
         <div class="col-12">
             <div class="text-center punkcoder-sidebar-profile-avatar">
-                <img src="<?php echo(get_template_directory_uri()); ?>/assets/images/avatar-default.jpg" class="rounded mw-100" alt="...">
+                <img src="<?php echo(get_template_directory_uri()); ?>/assets/images/avatar-default.jpg"
+                     class="rounded mw-100" alt="...">
             </div>
             <div class="punkcoder-sidebar-profile-item">
                 <div>
@@ -86,33 +85,49 @@
             </div>
         </div>
     </div>
-    <hr>
-    <div class="row punkcoder-sidebar-hot">
-        <div class="col-12 punkcoder-sidebar-hot-col">
-            <div class="punkcoder-sidebar-hot-head">
-                <span>分类</span>
-            </div>
-            <div class="punkcoder-sidebar-hot-body">
-                <div>
-                    <a href="">游戏</a>
-                    <hr>
+    <?php
+
+    $categories = get_categories(array(
+        'orderby' => 'name',
+        'order' => 'ASC'
+    ));
+
+    if ($categories) {
+        ?>
+        <hr>
+        <div class="row punkcoder-sidebar-hot">
+            <div class="col-12 punkcoder-sidebar-hot-col">
+                <div class="punkcoder-sidebar-hot-head">
+                    <span>分类</span>
                 </div>
-                <div>
-                    <a href="">编程</a>
-                    <hr>
-                </div>
-                <div>
-                    <a href="">生活</a>
-                    <hr>
-                </div>
-                <div>
-                    <a href="">工作日志</a>
+                <div class="punkcoder-sidebar-hot-body">
+                    <?php
+                    foreach ($categories as $key => $val) {
+                        $category_link = get_category_link($val->term_id);
+                        ?>
+                        <div>
+                            <a href="<?php echo($category_link); ?>"><?php echo($val->name); ?></a>
+                        </div>
+                        <?php
+                        if ($key != (sizeof($categories) - 1)) {
+                            ?>
+                            <hr>
+                            <?php
+                        }
+                        ?>
+
+
+                        <?php
+                    }
+                    ?>
+
                 </div>
             </div>
         </div>
-    </div>
-
-    <hr>
+        <hr>
+        <?php
+    }
+    ?>
     <div class="row punkcoder-sidebar-tag">
         <div class="col-12">
             <div class="punkcoder-sidebar-tag-head">
