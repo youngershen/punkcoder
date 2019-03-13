@@ -15,7 +15,7 @@
 
 <div class="d-none d-lg-block punkcoder-sidebar container-fluid">
     <div class="row punkcoder-sidebar-profile justify-content-center">
-        <div class="col-10">
+        <div class="col-12">
             <div class="text-center punkcoder-sidebar-profile-avatar">
                 <img src="<?php echo(get_template_directory_uri()); ?>/assets/images/avatar-default.jpg" class="rounded mw-100" alt="...">
             </div>
@@ -55,20 +55,37 @@
     </div>
     <hr>
     <div class="row punkcoder-sidebar-hot">
-        <div class="col-10 ">
-            <div>
+        <div class="col-12 punkcoder-sidebar-hot-col">
+            <div class="punkcoder-sidebar-hot-head">
                 <span>热门文章</span>
             </div>
-            <ul class="list-group mx-auto">
-            <ul class="list-group mx-auto">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetur ac</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-            </ul>
+            <div class="punkcoder-sidebar-hot-body">
+                <div>
+                    <a href="">士大夫胜多负少发</a>
+                    <hr>
+                </div>
+                <div>
+                    <a href="">士大夫胜多负少发</a>
+                    <hr>
+                </div>
+                <div>
+                    <a href="">士大夫胜多负少发</a>
+                    <hr>
+                </div>
+                <div>
+                    <a href="">士大夫胜多负少发</a>
+                    <hr>
+                </div>
+                <div>
+                    <a href="">士大夫胜多负少发</a>
+                    <hr>
+                </div>
+                <div>
+                    <a href="">士大夫胜多负少发</a>
+                    <hr>
+                </div>
+            </div>
         </div>
-
 
     </div>
 

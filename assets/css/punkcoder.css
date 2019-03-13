@@ -86,7 +86,7 @@ nav
 {
     background-color: #f8f9fa;
     border-radius: .5em;
-    padding: 1rem;
+    padding: 1rem .5rem;
 }
 
 .punkcoder-sidebar-profile
@@ -97,7 +97,8 @@ nav
 
 .punkcoder-sidebar-profile-avatar
 {
-    /*margin:0 8rem;*/
+    margin: 0;
+    padding: 0;
 }
 
 .punkcoder-sidebar-profile-item
@@ -114,4 +115,31 @@ nav
 .punkcoder-sidebar-profile-item-social > a
 {
     color: #212121;
+}
+
+.punkcoder-sidebar-hot
+{
+    padding: 0;
+}
+
+.punkcoder-sidebar-hot-col
+{
+    padding: 0;
+}
+
+.punkcoder-sidebar-hot-head
+{
+    font-size: 1.5rem;
+    margin: .5rem 1.5rem;
+}
+
+.punkcoder-sidebar-hot-body
+{
+    font-size: 1rem;
+    margin: 1.5rem 1.5rem;
+}
+.punkcoder-sidebar-hot-body > a
+{
+    margin-bottom: 0;
+    line-height: 5rem;
 }
