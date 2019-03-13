@@ -4,6 +4,21 @@ body
     font-size: 100%;
 }
 
+a
+{
+    text-decoration:none;
+    color: #616161;
+}
+
+a:link
+{
+    text-decoration:none;
+}
+
+a:hover
+{
+    color: #9E9E9E;
+}
 
 nav
 {
@@ -76,9 +91,9 @@ nav
     margin-right: .5rem;
 }
 
-.home-post-pagination
+.home-post-pagination > li
 {
-
+    color: #4ab866 !important;
 }
 
 
@@ -142,4 +157,27 @@ nav
 {
     margin-bottom: 0;
     line-height: 5rem;
+}
+
+.punkcoder-sidebar-tag
+{
+    padding: 0;
+}
+
+.punkcoder-sidebar-tag-head
+{
+    font-size: 1.5rem;
+    margin: .5rem;
+}
+
+.punkcoder-sidebar-tag-body
+{
+    font-size: 1rem;
+    margin: 1.5rem .5rem;
+}
+
+.punkcoder-sidebar-tag-item
+{
+    font-size: 1rem;
+    margin-top: .5rem;
 }

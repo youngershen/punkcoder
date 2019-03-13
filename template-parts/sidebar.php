@@ -61,7 +61,7 @@
             </div>
             <div class="punkcoder-sidebar-hot-body">
                 <div>
-                    <a href="">士大夫胜多负少发</a>
+                    <a href="">士大夫胜多负少发士大夫胜多负少发士大夫胜多负少发士大夫胜多负少发</a>
                     <hr>
                 </div>
                 <div>
@@ -114,9 +114,30 @@
 
     <hr>
     <div class="row punkcoder-sidebar-tag">
-        <div class="punkcoder-sidebar-hot-head">
-            <span>标签</span>
+        <div class="col-12">
+            <div class="punkcoder-sidebar-tag-head">
+                <span>标签</span>
+            </div>
+            <div class="punkcoder-sidebar-tag-body">
+                <a href="">
+                    <span class="badge badge-primary punkcoder-sidebar-tag-item">JAVA</span>
+                </a>
+                <a href="">
+                    <span class="badge badge-primary punkcoder-sidebar-tag-item">Linux</span>
+                </a>
+                <a href="">
+                    <span class="badge badge-primary punkcoder-sidebar-tag-item">编程</span>
+                </a>
+                <a href="">
+                    <span class="badge badge-primary punkcoder-sidebar-tag-item">教程</span>
+                </a>
+                <a href="">
+                    <span class="badge badge-primary punkcoder-sidebar-tag-item">游戏</span>
+                </a>
+                <a href="">
+                    <span class="badge badge-primary punkcoder-sidebar-tag-item">电影</span>
+                </a>
+            </div>
         </div>
-
     </div>
 </div>
