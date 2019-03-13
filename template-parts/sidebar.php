@@ -82,11 +82,41 @@
                 </div>
                 <div>
                     <a href="">士大夫胜多负少发</a>
-                    <hr>
                 </div>
             </div>
         </div>
-
+    </div>
+    <hr>
+    <div class="row punkcoder-sidebar-hot">
+        <div class="col-12 punkcoder-sidebar-hot-col">
+            <div class="punkcoder-sidebar-hot-head">
+                <span>分类</span>
+            </div>
+            <div class="punkcoder-sidebar-hot-body">
+                <div>
+                    <a href="">游戏</a>
+                    <hr>
+                </div>
+                <div>
+                    <a href="">编程</a>
+                    <hr>
+                </div>
+                <div>
+                    <a href="">生活</a>
+                    <hr>
+                </div>
+                <div>
+                    <a href="">工作日志</a>
+                </div>
+            </div>
+        </div>
     </div>
 
+    <hr>
+    <div class="row punkcoder-sidebar-tag">
+        <div class="punkcoder-sidebar-hot-head">
+            <span>标签</span>
+        </div>
+
+    </div>
 </div>
