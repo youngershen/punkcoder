@@ -45,7 +45,7 @@
                 </a>
             </header>
             <hr>
-            <div class="home-post-meta d-nonse d-lsg-block">
+            <div class="home-post-meta d-nonse d-lg-block">
                 <span class="home-post-meta-item">
                     <i class="far fa-calendar-alt"></i>
                     <span><?php echo get_the_date("Y-m-d H:i:s"); ?></span>

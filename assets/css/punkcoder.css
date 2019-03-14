@@ -181,3 +181,31 @@ nav
     font-size: 1rem;
     margin-top: .5rem;
 }
+
+.single-article
+{
+    padding-top: 1rem;
+    background-color: #f8f9fa;
+}
+
+.single-article-header
+{
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
+.single-article-title
+{
+    text-align: center;
+}
+
+.single-article-meta
+{
+    text-align:center;
+    margin-top:  1rem;
+}
+
+.single-article-content
+{
+    padding: 0 1rem;
+}
