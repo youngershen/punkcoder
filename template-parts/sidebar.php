@@ -172,3 +172,14 @@ $query = new WP_Query($args);
     }
     ?>
 </div>
+
+<?php
+
+$p = paginate_links(['type'=>'plain']);
+
+//foreach ($p as $a)
+//{
+//    echo($a);
+//}
+echo(wp_link_pages());
+?>

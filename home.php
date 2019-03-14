@@ -43,14 +43,14 @@
             <div class="home-post-pagination">
                 <nav aria-label="Page navigation">
                     <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
+                        <li class="page-item">
                             <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><?php _e("<<"); ?></a>
                         </li>
                         <li class="page-item">
                             <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><?php _e("<"); ?></a>
                         </li>
                         <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item disabled"><a class="page-link" href="#">2</a></li>
                         <li class="page-item"><a class="page-link" href="#">3</a></li>
                         <li class="page-item"><a class="page-link" href="#">4</a></li>
 
@@ -61,6 +61,13 @@
                             <a class="page-link" href="#"><?php _e(">>"); ?></a>
                         </li>
                     </ul>
+                    <?php
+
+                    echo(implode("-",punkcoder_pagination()['pages']));
+
+                    ?>
+                    <?php next_posts_link(); ?>
+
                 </nav>
             </div>
         </div>
@@ -69,6 +76,7 @@
 </body>
 <span class="d-block mt-5"></span>
 <?php get_footer(); ?>
+
 </html>
 
 
