@@ -1,7 +1,7 @@
 <?php
 /**
  * PROJECT : punkcoder
- * FILE    : menu.php
+ * FILE    : navbar.php
  * TIME    : 2019/3/6 16:31
  * AUTHOR  : Younger Shen
  * EMAIL   : younger.x.shen@gmail.com
@@ -10,6 +10,17 @@
  * WEBSIT  : https://www.punkcoder.cn
  */
 
+$args = array(
+    'post_type' => 'page',
+    'orderby' => 'name',
+    'order' => 'DESC',
+    'posts_per_page' => 5,
+
+);
+$query = new WP_Query($args);
+
+//echo($query->have_posts());
+
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top punkcoder-navbar">
@@ -17,20 +28,29 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content"
             aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-    </button>
+    </button> li'qi
 
     <div class="collapse navbar-collapse" id="navbar-content">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#"><?php _e('Home', 'punkcoder'); ?> <span
-                            class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a href="" class="nav-link">About</a>
-            </li>
-            <li class="nav-item">
-                <a href="" class="nav-link">Services</a>
-            </li>
+
+<!--            --><?php
+//
+//                if($query->have_posts())
+//                {
+//                    while($query->have_posts())
+//                    {
+//                        ?>
+<!--                        <li class="nav-item">-->
+<!--                            <a href="--><?php //get_page_link()?><!--" class="nav-link">--><?php //_e("About", "punkcoder"); ?><!--</a>-->
+<!--                        </li>-->
+<!--                        --><?php
+//                    }
+//                }
+
+
+
+            ?>
+
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="<?php _e("Search", "punkcoder"); ?>"

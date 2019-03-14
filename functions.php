@@ -10,6 +10,7 @@
  * WEBSIT  : https://www.punkcoder.cn
  */
 
+add_theme_support( 'post-thumbnails' );
 
 function punkcoder_pagination()
 {

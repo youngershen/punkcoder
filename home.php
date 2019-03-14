@@ -25,7 +25,7 @@ $total = $pagination['last'];
 
 <html <?php language_attributes(); ?>>
 
-<?php get_header("template-parts/header.php"); ?>
+<?php get_header(); ?>
 
 <body class="<?php body_class(); ?>">
 <?php get_template_part('template-parts/navbar'); ?>

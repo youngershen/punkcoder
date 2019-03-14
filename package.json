@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@git.dev.tencent.com:youngershen/punkcoder.git"
+    "url": "https://github.com/youngershen/punkcoder"
   },
   "author": "Younger Shen",
   "license": "MIT",
