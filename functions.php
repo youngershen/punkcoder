@@ -68,8 +68,6 @@ function punkcoder_pagination()
         }
     }
 
-
-
     $p = [
         'prev' => $prev,
         'next' => $next,
