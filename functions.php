@@ -75,16 +75,8 @@ function punkcoder_pagination()
         'first' => 1,
         'last' => $total_pages,
         'current'=> $current,
-        'pages' => $pages
+        'pages' => $pages,
     ];
 
-    echo("fuck");
-    echo($current);
-
     return $p;
-}
-
-function punkcoder_get_page_url($page)
-{
-    return "";
 }

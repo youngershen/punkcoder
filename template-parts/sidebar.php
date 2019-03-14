@@ -27,6 +27,8 @@ $args = array(
 $args = array(
     'orderby' => 'post_date',
     'order' => 'DESC',
+    'posts_per_page' => 10,
+
 );
 
 $query = new WP_Query($args);

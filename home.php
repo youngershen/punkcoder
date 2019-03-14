@@ -9,7 +9,16 @@
  * WECHAT  : 13811754531
  * WEBSIT  : https://www.punkcoder.cn
  */
- 
+
+$pagination = punkcoder_pagination();
+
+$prev_link = get_pagenum_link($pagination['prev']);
+$next_link = get_pagenum_link($pagination['next']);
+$first_link = get_pagenum_link($pagination['first']);
+$last_link = get_pagenum_link($pagination['last']);
+$current = $pagination['current'];
+$total = $pagination['last'];
+
 ?>
 
 <!doctype html>
@@ -43,31 +52,67 @@
             <div class="home-post-pagination">
                 <nav aria-label="Page navigation">
                     <ul class="pagination justify-content-center">
-                        <li class="page-item">
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><?php _e("<<"); ?></a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><?php _e("<"); ?></a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item disabled"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                        <li class="page-item <?php
 
-                        <li class="page-item">
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><?php _e(">"); ?></a>
+                        if($current == 1)
+                        {
+                            echo ("disabled");
+                        }
+
+                        ?>">
+                            <a class="page-link" href="<?php echo($first_link);?>" tabindex="-1" aria-disabled="true"><?php _e("<<"); ?></a>
                         </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#"><?php _e(">>"); ?></a>
+                        <li class="page-item <?php
+                            if($current == 1)
+                            {
+                                echo("disabled");
+                            }
+
+                        ?>">
+                            <a class="page-link" href="<?php echo($prev_link); ?>" tabindex="-1" aria-disabled="true"><?php _e("<"); ?></a>
+                        </li>
+
+                        <?php
+                            foreach ($pagination['pages'] as $page)
+                            {
+                                ?>
+
+                                    <li class="page-item <?php
+
+                                        if($current == $page)
+                                        {
+                                            echo ("disabled");
+                                        }
+
+
+                                    ?>"><a class="page-link" href="<?php echo(get_pagenum_link($page)) ?>"><?php echo($page); ?></a>
+                                    </li>
+                                <?php
+                            }
+                        ?>
+
+
+                        <li class="page-item <?php
+
+                        if($current == $total)
+                        {
+                            echo("disabled");
+                        }
+
+                        ?>">
+                            <a class="page-link" href="<?php echo($next_link); ?>" tabindex="-1" aria-disabled="true"><?php _e(">"); ?></a>
+                        </li>
+                        <li class="page-item  <?php
+
+                        if($current == $total)
+                        {
+                            echo("disabled");
+                        }
+
+                        ?>">
+                            <a class="page-link" href="<?php echo($last_link); ?>"><?php _e(">>"); ?></a>
                         </li>
                     </ul>
-                    <?php
-
-                    echo(implode("-",punkcoder_pagination()['pages']));
-
-                    ?>
-                    <?php next_posts_link(); ?>
-
                 </nav>
             </div>
         </div>
@@ -76,7 +121,6 @@
 </body>
 <span class="d-block mt-5"></span>
 <?php get_footer(); ?>
-
 </html>
 
 
