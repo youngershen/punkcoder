@@ -162,7 +162,7 @@ $query = new WP_Query($args);
                         $tag_link = get_tag_link($val->term_id);
                         ?>
                         <a href="<?php echo($tag_link); ?>">
-                            <span class="badge badge-primary punkcoder-sidebar-tag-item"><?php echo($val->name) ?></span>
+                            <span class="badge badge-primary punkcoder-sidebar-tag -item"><?php echo($val->name) ?></span>
                         </a>
                         <?php
                     }
@@ -174,14 +174,3 @@ $query = new WP_Query($args);
     }
     ?>
 </div>
-
-<?php
-
-$p = paginate_links(['type'=>'plain']);
-
-//foreach ($p as $a)
-//{
-//    echo($a);
-//}
-echo(wp_link_pages());
-?>

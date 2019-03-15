@@ -9,9 +9,6 @@
  * WECHAT  : 13811754531
  * WEBSIT  : https://www.punkcoder.cn
  */
-
-add_theme_support( 'post-thumbnails' );
-
 function punkcoder_pagination()
 {
     $range_step = 3;
@@ -79,3 +76,5 @@ function punkcoder_pagination()
 
     return $p;
 }
+
+require_once("punkcoder.php");
