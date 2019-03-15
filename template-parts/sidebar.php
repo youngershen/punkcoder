@@ -44,32 +44,32 @@ $query = new WP_Query($args);
             </div>
             <div class="punkcoder-sidebar-profile-item">
                 <div>
-                    <span>昵称:</span>
-                    <span>Younger Shen</span>
+                    <span><?php echo(__("昵称", "punkcoder"));?>:</span>
+                    <span><?php echo esc_attr(get_option('punkcoder_profile_nickname')); ?></span>
                 </div>
                 <div>
-                    <span>年龄:</span>
-                    <span>30</span>
+                    <span><?php echo(__("年龄", "punkcoder"));?>:</span>
+                    <span><?php echo esc_attr(get_option('punkcoder_profile_age')); ?></span>
                 </div>
                 <div>
-                    <span>手机:</span>
-                    <span><a href="tel:13811754531">13811754531</a></span>
+                    <span><?php echo(__("手机", "punkcoder"));?>:</span>
+                    <span><a href="tel:<?php echo esc_attr(get_option('punkcoder_profile_cellphone')); ?>"><?php echo esc_attr(get_option('punkcoder_profile_cellphone')); ?></a></span>
                 </div>
                 <div>
-                    <span>微信:</span>
-                    <span>13811754531</span>
+                    <span><?php echo(__("微信", "punkcoder"));?>:</span>
+                    <span><?php echo esc_attr(get_option('punkcoder_profile_wechat')); ?></span>
                 </div>
                 <div class="punkcoder-sidebar-profile-item-social justify-content-center">
-                    <a href="https://github.com/youngershen" target="_blank">
+                    <a href="<?php echo esc_attr(get_option('punkcoder_profile_github')); ?>" target="_blank">
                         <i class="fab fa-github fa-2x"></i>
                     </a>
-                    <a href="https://weibo.com/shenyangang" target="_blank">
+                    <a href="<?php echo esc_attr(get_option('punkcoder_profile_weibo')); ?>" target="_blank">
                         <i class="fab fa-weibo fa-2x"></i>
                     </a>
                     <a href="">
                         <i class="fab fa-weixin fa-2x"></i>
                     </a>
-                    <a href="https://twitter.com/youngershen" target="_blank">
+                    <a href="<?php echo esc_attr(get_option('punkcoder_profile_twitter')); ?>" target="_blank">
                         <i class="fab fa-twitter fa-2x"></i>
                     </a>
                 </div>
@@ -162,7 +162,7 @@ $query = new WP_Query($args);
                         $tag_link = get_tag_link($val->term_id);
                         ?>
                         <a href="<?php echo($tag_link); ?>">
-                            <span class="badge badge-primary punkcoder-sidebar-tag -item"><?php echo($val->name) ?></span>
+                            <span class="badge badge-primary punkcoder-sidebar-tag-item"><?php echo($val->name) ?></span>
                         </a>
                         <?php
                     }
