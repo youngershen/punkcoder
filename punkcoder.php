@@ -10,6 +10,11 @@
  * WEBSIT  : https://www.punkcoder.cn
  */
 
+function sanitize_interger_field()
+{
+
+}
+
 function punkcoder_profile_options_html()
 {
     // check user capabilities
@@ -35,7 +40,7 @@ function punkcoder_profile_options_html()
 
                 <tr valign="top">
                     <th scope="row"><?php echo(__("年龄", "punkcoder")); ?></th>
-                    <td><input type="text" name="punkcoder_profile_age" value="<?php echo esc_attr(get_option('punkcoder_profile_age')); ?>"/>
+                    <td><input type="text" name="punkcoder_profile_age" value="<?php echo esc_attr(get_option('punkcoder_profile_age')); ?>" placeholder="30"/>
                     </td>
                 </tr>
                 <tr valign="top">
@@ -84,10 +89,22 @@ function punkcoder_profile_options_html()
     <?php
 }
 
+
+function punkcoder_options_html()
+{
+    if (!current_user_can('manage_options')) {
+        return;
+    }
+    ?>
+    sfd
+
+    <?php
+}
+
 function punkcoder_options_page()
 {
     add_menu_page(
-        __('个人信息设置', "punkcoder"),
+        __('个人信息', "punkcoder"),
         __('主题设置', "punkcoder"),
         'manage_options',
         'punkcoder',
@@ -95,19 +112,65 @@ function punkcoder_options_page()
         '',
         20
     );
+
+    add_submenu_page( "punkcoder",
+        __('其他设置', "punkcoder"),
+        __('其他设置', "punkcoder"),
+        "manage_options",
+        "punkcoder-settings",
+        "punkcoder_options_html");
+
 }
 
 function punkcoder_register_settings()
 {
     register_setting('punkcoder', 'punkcoder_profile_nickname', ['type' => 'string', 'sanitize_callback' => 'sanitize_text_field', 'default' => "Younger Shen",]);
     register_setting('punkcoder', 'punkcoder_profile_avatar', ['type' => 'string', 'sanitize_callback' => 'sanitize_text_field', 'default' => NULL,]);
-    register_setting('punkcoder', 'punkcoder_profile_age', ['type' => 'number', 'sanitize_callback' => 'sanitize_text_field', 'default' => 30,]);
+
+    $args =array(
+        'type' => 'number',
+        'sanitize_callback' => 'sanitize_text_field',
+        'default' => 1,
+    );
+
+    register_setting('punkcoder', 'punkcoder_profile_age', $args);
+
     register_setting('punkcoder', 'punkcoder_profile_cellphone', ['type' => 'string', 'sanitize_callback' => 'sanitize_text_field', 'default' => "13811754531",]);
     register_setting('punkcoder', 'punkcoder_profile_wechat', ['type' => 'string', 'sanitize_callback' => 'sanitize_text_field', 'default' => "13811754531",]);
     register_setting('punkcoder', 'punkcoder_profile_github', ['type' => 'string', 'sanitize_callback' => 'sanitize_text_field', 'default' => "https://github.com/youngershen",]);
     register_setting('punkcoder', 'punkcoder_profile_weibo', ['type' => 'string', 'sanitize_callback' => 'sanitize_text_field', 'default' => "https://weibo.com/shenyangang",]);
     register_setting('punkcoder', 'punkcoder_profile_wechat_qr_image', ['type' => 'string', 'sanitize_callback' => 'sanitize_text_field', 'default' => NULL,]);
     register_setting('punkcoder', 'punkcoder_profile_twitter', ['type' => 'string', 'sanitize_callback' => 'sanitize_text_field', 'default' => "https://twitter.com/youngershen",]);
+
+
+    add_settings_section('wptuts_settings_header', __( 'Logo Options', 'wptuts' ), 'test_sdf', 'punkcoder');
+    add_settings_field('wptuts_setting_fav',  __( 'fav', 'wptuts' ), 'wptuts_setting_logo', 'punkcoder', 'wptuts_settings_header');
+
+}
+function wptuts_setting_logo() {
+    $wptuts_options = get_option( 'theme_wptuts_options' );
+    ?>
+    <input type="hidden" id="logo_url" name="theme_wptuts_options[logo]" value="<?php echo esc_url( $wptuts_options['logo'] ); ?>" />
+    <input id="upload_logo_button" type="button" class="button" value="<?php _e( 'Upload Logo', 'wptuts' ); ?>" />
+    <?php if ( '' != $wptuts_options['logo'] ): ?>
+        <input id="delete_logo_button" name="theme_wptuts_options[delete_logo]" type="submit" class="button" value="<?php _e( 'Delete Logo', 'wptuts' ); ?>" />
+    <?php endif; ?>
+    <span class="description"><?php _e('Upload an image for the banner.', 'wptuts' ); ?></span>
+    <?php
+}
+wp_enqueue_script('jquery');
+
+wp_enqueue_script('thickbox');
+wp_enqueue_style('thickbox');
+
+wp_enqueue_script('media-upload');
+wp_enqueue_script('wptuts-upload');
+
+
+function test_sdf()
+{
+    echo "sfsdf";
+    return "abcdef";
 }
 
 add_action('admin_menu', 'punkcoder_options_page');
