@@ -9,170 +9,172 @@
  * WECHAT  : 13811754531
  * WEBSIT  : https://www.punkcoder.cn
  */
-
-function sanitize_interger_field()
+function punkcoder_menu_items()
 {
+    add_menu_page(
+        __('主题设置', 'punkcoder'),
+        __('主题设置', 'punkcoder'),
+        "manage_options",
+        "punkcoder",
+        "punkcoder_options_page",
+        "",
+        99
+    );
 
 }
 
-function punkcoder_profile_options_html()
+function punkcoder_options_page()
 {
-    // check user capabilities
-    if (!current_user_can('manage_options')) {
-        return;
-    }
     ?>
     <div class="wrap">
-        <h1><?php echo(esc_html(get_admin_page_title())) ?></h1>
-        <form action="options.php" method="post" enctype="multipart/form-data">
-            <table class="form-table">
-                <tr valign="top">
-                    <th scope="row"><?php echo(__("昵称", "punkcoder")); ?></th>
-                    <td><input type="text" name="punkcoder_profile_nickname"
-                               value="<?php echo esc_attr(get_option('punkcoder_profile_nickname')); ?>"/></td>
-                </tr>
+        <div id="icon-options-general" class="icon32"></div>
+        <h1><?php echo esc_html(get_admin_page_title())?></h1>
 
-                <tr valign="top">
-                    <th scope="row"><?php echo(__("头像", "punkcoder")); ?></th>
-                    <td><input type="text" name="punkcoder_profile_avatar"
-                               value="<?php echo esc_attr(get_option('punkcoder_profile_avatar')); ?>"/></td>
-                </tr>
 
-                <tr valign="top">
-                    <th scope="row"><?php echo(__("年龄", "punkcoder")); ?></th>
-                    <td><input type="text" name="punkcoder_profile_age" value="<?php echo esc_attr(get_option('punkcoder_profile_age')); ?>" placeholder="30"/>
-                    </td>
-                </tr>
-                <tr valign="top">
-                    <th scope="row"><?php echo(__("手机", "punkcoder")); ?></th>
-                    <td><input type="text" name="punkcoder_profile_cellphone" value="<?php echo esc_attr(get_option('punkcoder_profile_cellphone')); ?>"/>
-                    </td>
-                </tr>
-                <tr valign="top">
-                    <th scope="row"><?php echo(__("微信", "punkcoder")); ?></th>
-                    <td><input type="text" name="punkcoder_profile_wechat" value="<?php echo esc_attr(get_option('punkcoder_profile_wechat')); ?>"/>
-                    </td>
-                </tr>
-                <tr valign="top">
-                    <th scope="row"><?php echo(__("Github", "punkcoder")); ?></th>
-                    <td><input type="text" name="punkcoder_profile_github" value="<?php echo esc_attr(get_option('punkcoder_profile_github')); ?>"/>
-                    </td>
-                </tr>
-                <tr valign="top">
-                    <th scope="row"><?php echo(__("微博", "punkcoder")); ?></th>
-                    <td><input type="text" name="punkcoder_profile_weibo" value="<?php echo esc_attr(get_option('punkcoder_profile_weibo')); ?>"/>
-                    </td>
-                </tr>
-                <tr valign="top">
-                    <th scope="row"><?php echo(__("微信二维码", "punkcoder")); ?></th>
-                    <td><input type="text" name="punkcoder_profile_wechat_qr_image" value="<?php echo esc_attr(get_option('punkcoder_profile_wechat_qr_image')); ?>"/>
-                    </td>
-                </tr>
+        <?php
+        //we check if the page is visited by click on the tabs or on the menu button.
+        //then we get the active tab.
+        $active_tab = "profile";
+        if(isset($_GET["tab"]))
+        {
+            if($_GET["tab"] == "profile")
+            {
+                $active_tab = "profile";
+            }
+            else
+            {
+                $active_tab = "setting";
+            }
+        }
+        ?>
 
-                <tr valign="top">
-                    <th scope="row"><?php echo(__("Twitter", "punkcoder")); ?></th>
-                    <td><input type="text" name="punkcoder_profile_twitter" value="<?php echo esc_attr(get_option('punkcoder_profile_twitter')); ?>"/>
-                    </td>
-                </tr>
-            </table>
+        <!-- wordpress provides the styling for tabs. -->
+        <h2 class="nav-tab-wrapper">
+            <!-- when tab buttons are clicked we jump back to the same page but with a new parameter that represents the clicked tab. accordingly we make it active -->
+            <a href="?page=punkcoder&tab=profile" class="nav-tab <?php if($active_tab == 'profile'){echo 'nav-tab-active';} ?> "><?php _e('个人资料', 'punkcoder'); ?></a>
+            <a href="?page=punkcoder&tab=setting" class="nav-tab  <?php if($active_tab == 'setting'){echo 'nav-tab-active';} ?>"><?php _e('系统设置', 'punkcoder'); ?></a>
+        </h2>
+
+        <form method="post" action="options.php">
             <?php
-            // output security fields for the registered setting "wporg_options"
-            settings_fields('punkcoder');
-            // output setting sections and their fields
-            // (sections are registered for "wporg", each field is registered to a specific section)
-            do_settings_sections('punkcoder');
-            // output save settings button
-            submit_button(__('Save', "punkcoder"));
+
+            settings_fields("punkcoder");
+
+            do_settings_sections("punkcoder");
+
+            submit_button();
+
             ?>
         </form>
     </div>
     <?php
 }
 
+add_action("admin_menu", "punkcoder_menu_items");
 
-function punkcoder_options_html()
+function punkcoder_display_options()
 {
-    if (!current_user_can('manage_options')) {
-        return;
+
+    //here we display the sections and options in the settings page based on the active tab
+    if(isset($_GET["tab"]))
+    {
+        if($_GET["tab"] == "profile")
+        {
+            add_settings_section("punkcoder_option_section", __('个人资料', 'punkcoder'), "display_header_options_content", "punkcoder");
+
+            add_settings_field(
+                    "punkcoder_profile_nickname",
+                    __('昵称', 'punkcoder'),
+                    "display_profile_nickname_form_element",
+                    "punkcoder",
+                    "punkcoder_option_section");
+
+            add_settings_field(
+                "punkcoder_profile_age",
+                __('年龄', 'punkcoder'),
+                "display_profile_age_form_element",
+                "punkcoder",
+                "punkcoder_option_section");
+
+            add_settings_field(
+                "punkcoder_profile_cellphone",
+                __('手机', 'punkcoder'),
+                "display_profile_cellphone_form_element",
+                "punkcoder",
+                "punkcoder_option_section");
+
+            add_settings_field(
+                "punkcoder_profile_wechat",
+                __('微信', 'punkcoder'),
+                "display_profile_wechat_form_element",
+                "punkcoder",
+                "punkcoder_option_section");
+
+            register_setting(
+                    "punkcoder",
+                    "punkcoder_profile_options");
+        }
+        else
+        {
+            add_settings_section("punkcoder_option_section", __('系统设置', 'punkcoder'), "display_header_options_content", "punkcoder");
+
+            add_settings_field(
+                    "advertising_code",
+                    "Ads Code",
+                    "display_ads_form_element",
+                    "punkcoder",
+                    "punkcoder_option_section");
+
+            register_setting(
+                    "punkcoder",
+                    "punkcoder_profile_options");
+        }
     }
-    ?>
-    sfd
+    else
+    {
+        exit;
+    }
 
+}
+
+function display_header_options_content()
+{
+}
+
+function display_profile_nickname_form_element()
+{
+    ?>
+    <input type="text" name="header_logo" id="header_logo" value="<?php echo get_option('header_logo'); ?>" />
     <?php
 }
 
-function punkcoder_options_page()
+function display_profile_age_form_element()
 {
-    add_menu_page(
-        __('个人信息', "punkcoder"),
-        __('主题设置', "punkcoder"),
-        'manage_options',
-        'punkcoder',
-        'punkcoder_profile_options_html',
-        '',
-        20
-    );
-
-    add_submenu_page( "punkcoder",
-        __('其他设置', "punkcoder"),
-        __('其他设置', "punkcoder"),
-        "manage_options",
-        "punkcoder-settings",
-        "punkcoder_options_html");
-
-}
-
-function punkcoder_register_settings()
-{
-    register_setting('punkcoder', 'punkcoder_profile_nickname', ['type' => 'string', 'sanitize_callback' => 'sanitize_text_field', 'default' => "Younger Shen",]);
-    register_setting('punkcoder', 'punkcoder_profile_avatar', ['type' => 'string', 'sanitize_callback' => 'sanitize_text_field', 'default' => NULL,]);
-
-    $args =array(
-        'type' => 'number',
-        'sanitize_callback' => 'sanitize_text_field',
-        'default' => 1,
-    );
-
-    register_setting('punkcoder', 'punkcoder_profile_age', $args);
-
-    register_setting('punkcoder', 'punkcoder_profile_cellphone', ['type' => 'string', 'sanitize_callback' => 'sanitize_text_field', 'default' => "13811754531",]);
-    register_setting('punkcoder', 'punkcoder_profile_wechat', ['type' => 'string', 'sanitize_callback' => 'sanitize_text_field', 'default' => "13811754531",]);
-    register_setting('punkcoder', 'punkcoder_profile_github', ['type' => 'string', 'sanitize_callback' => 'sanitize_text_field', 'default' => "https://github.com/youngershen",]);
-    register_setting('punkcoder', 'punkcoder_profile_weibo', ['type' => 'string', 'sanitize_callback' => 'sanitize_text_field', 'default' => "https://weibo.com/shenyangang",]);
-    register_setting('punkcoder', 'punkcoder_profile_wechat_qr_image', ['type' => 'string', 'sanitize_callback' => 'sanitize_text_field', 'default' => NULL,]);
-    register_setting('punkcoder', 'punkcoder_profile_twitter', ['type' => 'string', 'sanitize_callback' => 'sanitize_text_field', 'default' => "https://twitter.com/youngershen",]);
-
-
-    add_settings_section('wptuts_settings_header', __( 'Logo Options', 'wptuts' ), 'test_sdf', 'punkcoder');
-    add_settings_field('wptuts_setting_fav',  __( 'fav', 'wptuts' ), 'wptuts_setting_logo', 'punkcoder', 'wptuts_settings_header');
-
-}
-function wptuts_setting_logo() {
-    $wptuts_options = get_option( 'theme_wptuts_options' );
     ?>
-    <input type="hidden" id="logo_url" name="theme_wptuts_options[logo]" value="<?php echo esc_url( $wptuts_options['logo'] ); ?>" />
-    <input id="upload_logo_button" type="button" class="button" value="<?php _e( 'Upload Logo', 'wptuts' ); ?>" />
-    <?php if ( '' != $wptuts_options['logo'] ): ?>
-        <input id="delete_logo_button" name="theme_wptuts_options[delete_logo]" type="submit" class="button" value="<?php _e( 'Delete Logo', 'wptuts' ); ?>" />
-    <?php endif; ?>
-    <span class="description"><?php _e('Upload an image for the banner.', 'wptuts' ); ?></span>
+    <input type="text" name="header_logo" id="header_logo" value="<?php echo get_option('header_logo'); ?>" />
     <?php
 }
-wp_enqueue_script('jquery');
 
-wp_enqueue_script('thickbox');
-wp_enqueue_style('thickbox');
-
-wp_enqueue_script('media-upload');
-wp_enqueue_script('wptuts-upload');
-
-
-function test_sdf()
+function display_profile_cellphone_form_element()
 {
-    echo "sfsdf";
-    return "abcdef";
+    ?>
+    <input type="text" name="header_logo" id="header_logo" value="<?php echo get_option('header_logo'); ?>" />
+    <?php
 }
 
-add_action('admin_menu', 'punkcoder_options_page');
-add_action('admin_init', 'punkcoder_register_settings');
-add_theme_support('post-thumbnails');
+function display_profile_wechat_form_element()
+{
+    ?>
+    <input type="text" name="header_logo" id="header_logo" value="<?php echo get_option('header_logo'); ?>" />
+    <?php
+}
+
+
+function display_ads_form_element()
+{
+    ?>
+    <input type="text" name="advertising_code" id="advertising_code" value="<?php echo get_option('advertising_code'); ?>" />
+    <?php
+}
+
+add_action("admin_init", "punkcoder_display_options");
