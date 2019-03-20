@@ -39,37 +39,37 @@ $query = new WP_Query($args);
     <div class="row punkcoder-sidebar-profile justify-content-center">
         <div class="col-12">
             <div class="text-center punkcoder-sidebar-profile-avatar">
-                <img src="<?php echo(get_template_directory_uri()); ?>/assets/images/avatar-default.jpg"
-                     class="rounded mw-100" alt="...">
+                <img src="<?php echo esc_attr(get_option('punkcoder_profile_options')['avatar']);; ?>"
+                     class="rounded mw-100" alt="<?php echo esc_attr(get_option('punkcoder_profile_options')['nickname']); ?>">
             </div>
             <div class="punkcoder-sidebar-profile-item">
                 <div>
                     <span><?php echo(__("昵称", "punkcoder"));?>:</span>
-                    <span><?php echo esc_attr(get_option('punkcoder_profile_nickname')); ?></span>
+                    <span><?php echo esc_attr(get_option('punkcoder_profile_options')['nickname']); ?></span>
                 </div>
                 <div>
                     <span><?php echo(__("年龄", "punkcoder"));?>:</span>
-                    <span><?php echo esc_attr(get_option('punkcoder_profile_age')); ?></span>
+                    <span><?php echo esc_attr(get_option('punkcoder_profile_options')['age']); ?></span>
                 </div>
                 <div>
                     <span><?php echo(__("手机", "punkcoder"));?>:</span>
-                    <span><a href="tel:<?php echo esc_attr(get_option('punkcoder_profile_cellphone')); ?>"><?php echo esc_attr(get_option('punkcoder_profile_cellphone')); ?></a></span>
+                    <span><a href="tel:<?php echo esc_attr(get_option('punkcoder_profile_options')['cellphone']); ?>"><?php echo esc_attr(get_option('punkcoder_profile_options')['cellphone']); ?></a></span>
                 </div>
                 <div>
                     <span><?php echo(__("微信", "punkcoder"));?>:</span>
-                    <span><?php echo esc_attr(get_option('punkcoder_profile_wechat')); ?></span>
+                    <span><?php echo esc_attr(get_option('punkcoder_profile_options')['wechat']); ?></span>
                 </div>
                 <div class="punkcoder-sidebar-profile-item-social justify-content-center">
-                    <a href="<?php echo esc_attr(get_option('punkcoder_profile_github')); ?>" target="_blank">
+                    <a href="<?php echo esc_attr(get_option('punkcoder_profile_options')['github']); ?>" target="_blank">
                         <i class="fab fa-github fa-2x"></i>
                     </a>
-                    <a href="<?php echo esc_attr(get_option('punkcoder_profile_weibo')); ?>" target="_blank">
+                    <a href="<?php echo esc_attr(get_option('punkcoder_profile_options')['weibo']); ?>" target="_blank">
                         <i class="fab fa-weibo fa-2x"></i>
                     </a>
                     <a href="">
                         <i class="fab fa-weixin fa-2x"></i>
                     </a>
-                    <a href="<?php echo esc_attr(get_option('punkcoder_profile_twitter')); ?>" target="_blank">
+                    <a href="<?php echo esc_attr(get_option('punkcoder_profile_options')['twitter']); ?>" target="_blank">
                         <i class="fab fa-twitter fa-2x"></i>
                     </a>
                 </div>
