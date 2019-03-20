@@ -161,6 +161,26 @@ function punkcoder_display_profile_options_validate($args)
         $filtered['email'] = $args['email'];
     }
 
+    if($args['github'])
+    {
+        $filtered['github'] = $args['github'];
+    }
+
+    if($args['weibo'])
+    {
+        $filtered['weibo'] = $args['weibo'];
+    }
+
+    if($args['wechat_qr_image'])
+    {
+        $filtered['wechat_qr_image'] = $args['wechat_qr_image'];
+    }
+
+    if($args['twitter'])
+    {
+        $filtered['twitter'] = $args['twitter'];
+    }
+
     return apply_filters( 'sanitize_option_punkcoder_options', $filtered );
 }
 
@@ -228,7 +248,7 @@ function punkcoder_display_profile_options()
 
     add_settings_field(
         "punkcoder_profile_twitter",
-        __('微博', 'punkcoder'),
+        __('Twitter', 'punkcoder'),
         "display_profile_twitter_form_element",
         "punkcoder",
         "punkcoder_option_section");
@@ -380,10 +400,18 @@ function display_profile_weibo_form_element()
     <?php
 }
 
+
 function display_profile_wechat_qr_image_form_element()
 {
     ?>
-    <input type="text" name="punkcoder_profile_options[wechat_qr_image]" id="punkcoder_profile_options_wechat_qr_image" value="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'wechat_qr_image'));?>" />
+    <div class="punkcoder-options-profile-wechat-qr-image">
+        <img src="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'wechat_qr_image')); ?>" alt="" class="rounded mw-100" id="punkcoder-options-profile-wechat-qr-image">
+        <input type="hidden" name="punkcoder_profile_options[wechat_qr_image]" id="punkcoder-options-profile-wechat-qr-image-input" value="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'wechat_qr_image')); ?>">
+    </div>
+    <div>
+        <button class="button-primary" id="punkcoder-wechat-upload-button"><?php _e('上传', 'punkcoder')?></button>
+    </div>
+
     <?php
 }
 

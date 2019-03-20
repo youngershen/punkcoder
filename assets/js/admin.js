@@ -30,4 +30,23 @@ jQuery(document).ready(function($){
         });
         mediaUploader.open();
     });
+
+    $('#punkcoder-wechat-upload-button').click(function(e) {
+        e.preventDefault();
+        if (mediaUploader) {
+            mediaUploader.open();
+            return;
+        }
+        mediaUploader = wp.media.frames.file_frame = wp.media({
+            title: 'Choose Image',
+            button: {
+                text: 'Choose Image'
+            }, multiple: false });
+        mediaUploader.on('select', function() {
+            var attachment = mediaUploader.state().get('selection').first().toJSON();
+            $('#punkcoder-options-profile-wechat-qr-image-input').val(attachment.url);
+            $('#punkcoder-options-profile-wechat-qr-image').attr('src', attachment.url);
+        });
+        mediaUploader.open();
+    });
 });
