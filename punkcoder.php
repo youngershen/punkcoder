@@ -74,10 +74,15 @@ add_action("admin_menu", "punkcoder_menu_items");
 function punkcoder_display_profile_options_validate($args)
 {
     $filtered = [
-        'nickname' => __('申延刚', 'punkcoder'),
-        'age' => '30',
-        'cellphone' => '13811754531',
-        'wechat' => '13811754531'
+            'avatar' => 'avatar',
+            'nickname' => __('申延刚', 'punkcoder'),
+            'age' => '30',
+            'cellphone' => '13811754531',
+            'wechat' => '13811754531',
+            'github' => 'https://github.com/youngershen',
+            'weibo' => 'https://weibo.com/shenyangang',
+            'wetchat_qr_image' => '',
+            'twitter' => 'https://twitter.com/youngershen'
     ];
 
     if($args['nickname'])
@@ -115,6 +120,13 @@ function punkcoder_display_profile_options()
     add_settings_section("punkcoder_option_section", __('个人资料', 'punkcoder'), "display_header_options_content", "punkcoder");
 
     add_settings_field(
+        "punkcoder_profile_avatar",
+        __('头像', 'punkcoder'),
+        "display_profile_avatar_form_element",
+        "punkcoder",
+        "punkcoder_option_section");
+
+    add_settings_field(
         "punkcoder_profile_nickname",
         __('昵称', 'punkcoder'),
         "display_profile_nickname_form_element",
@@ -139,6 +151,36 @@ function punkcoder_display_profile_options()
         "punkcoder_profile_wechat",
         __('微信', 'punkcoder'),
         "display_profile_wechat_form_element",
+        "punkcoder",
+        "punkcoder_option_section");
+
+    add_settings_field(
+        "punkcoder_profile_github",
+        __('Github', 'punkcoder'),
+        "display_profile_github_form_element",
+        "punkcoder",
+        "punkcoder_option_section");
+
+    add_settings_field(
+        "punkcoder_profile_weibo",
+        __('微博', 'punkcoder'),
+        "display_profile_weibo_form_element",
+        "punkcoder",
+        "punkcoder_option_section");
+
+
+    add_settings_field(
+        "punkcoder_profile_wechat_qr_image",
+        __('微信二维码', 'punkcoder'),
+        "display_profile_wechat_qr_image_form_element",
+        "punkcoder",
+        "punkcoder_option_section");
+
+
+    add_settings_field(
+        "punkcoder_profile_twitter",
+        __('微博', 'punkcoder'),
+        "display_profile_twitter_form_element",
         "punkcoder",
         "punkcoder_option_section");
 
@@ -192,6 +234,15 @@ function display_header_options_content()
 {
 }
 
+function display_profile_avatar_form_element()
+{
+    $options = get_option( 'punkcoder_profile_options' );
+
+    ?>
+    <input type="text" name="punkcoder_profile_options[avatar]" id="punkcoder_profile_options_avatar" value="<?php echo esc_html($options['avatar']); ?>" />
+    <?php
+}
+
 function display_profile_nickname_form_element()
 {
     $options = get_option( 'punkcoder_profile_options' );
@@ -224,6 +275,42 @@ function display_profile_wechat_form_element()
 
     ?>
     <input type="text" name="punkcoder_profile_options[wechat]" id="punkcoder_profile_options_wechat" value="<?php echo esc_html($options['wechat']);?>" />
+    <?php
+}
+
+function display_profile_github_form_element()
+{
+    $options = get_option( 'punkcoder_profile_options' );
+
+    ?>
+    <input type="text" name="punkcoder_profile_options[github]" id="punkcoder_profile_options_github" value="<?php echo esc_html($options['github']);?>" />
+    <?php
+}
+
+function display_profile_weibo_form_element()
+{
+    $options = get_option( 'punkcoder_profile_options' );
+
+    ?>
+    <input type="text" name="punkcoder_profile_options[weibo]" id="punkcoder_profile_options_weibo" value="<?php echo esc_html($options['weibo']);?>" />
+    <?php
+}
+
+function display_profile_wechat_qr_image_form_element()
+{
+    $options = get_option( 'punkcoder_profile_options' );
+
+    ?>
+    <input type="text" name="punkcoder_profile_options[wechat_qr_image]" id="punkcoder_profile_options_wechat_qr_image" value="<?php echo esc_html($options['wechat_qr_image']);?>" />
+    <?php
+}
+
+function display_profile_twitter_form_element()
+{
+    $options = get_option( 'punkcoder_profile_options' );
+
+    ?>
+    <input type="text" name="punkcoder_profile_options[twitter]" id="punkcoder_profile_options_twitter" value="<?php echo esc_html($options['twitter']);?>" />
     <?php
 }
 
