@@ -10,17 +10,16 @@
  * WEBSIT  : https://www.punkcoder.cn
  */
 
-
 /**
+ * @param $type
  * @param $name
  * @return string
  */
-function get_image_url($name)
+function punkcoder_get_url($type, $name)
 {
-    $url = get_template_directory_uri() . '/assets/images/' . $name;
+    $url = get_template_directory_uri() . '/assets/'. $type .'/' . $name;
     return $url;
 }
-
 
 function punkcoder_menu_items()
 {
@@ -86,8 +85,8 @@ add_action("admin_menu", "punkcoder_menu_items");
 
 function punkcoder_display_profile_options_validate($args)
 {
-    $default_avatar = get_image_url('avatar-default.jpg');
-    $default_wechat_qr_image = get_image_url('wechat-qr-image.jpg');
+    $default_avatar = punkcoder_get_url('images', 'avatar-default.jpg');
+    $default_wechat_qr_image = punkcoder_get_url('image', 'wechat-qr-image.jpg');
 
 
     $filtered = [
@@ -101,6 +100,11 @@ function punkcoder_display_profile_options_validate($args)
             'wechat_qr_image' => $default_wechat_qr_image,
             'twitter' => 'https://twitter.com/youngershen'
     ];
+
+    if($args['avatar'])
+    {
+        $filtered['avatar'] = $args['avatar'];
+    }
 
     if($args['nickname'])
     {
@@ -251,12 +255,58 @@ function display_header_options_content()
 {
 }
 
+function punkcoder_enqueue_js() {
+    wp_enqueue_media();
+
+    // admin.js
+    $url = punkcoder_get_url('js', 'admin.js');
+    wp_register_script('punkcoder-admin', $url, array('jquery'));
+
+    // bootstrap.js
+    $url = punkcoder_get_url('vendor', 'bootstrap-4.3.1-dist/js/bootstrap.min.js');
+    wp_register_script('punkcoder-bootstrap', $url, array('jquery'));
+
+    //fontawesome.js
+    $url = punkcoder_get_url('vendor', 'fontawesome-free-5.7.2-web/js/all.min.js');
+    wp_register_script('punkcoder-fontawesome', $url);
+
+    wp_enqueue_script('punkcoder-admin');
+    wp_enqueue_script('punkcoder-bootstrap');
+    wp_enqueue_script('punkcoder-fontawesome');
+
+
+    // admin.css
+    $url = punkcoder_get_url('css', 'admin.css');
+    wp_register_style('punkcoder-admin', $url);
+
+    // bootstrap
+    $url = punkcoder_get_url('vendor', 'bootstrap-4.3.1-dist/css/bootstrap.min.css');
+    wp_register_style('punkcoder-bootstrap', $url);
+
+    // fontawesome
+    $url = punkcoder_get_url('vendor', 'fontawesome-free-5.7.2-web/css/all.min.css');
+    wp_register_style('punkcoder-fontawesome', $url);
+
+    wp_enqueue_style('punkcoder-admin');
+    wp_enqueue_style('punkcoder-bootstrap');
+    wp_enqueue_style('punkcoder-fontawesome');
+
+}
+
+add_action('admin_enqueue_scripts', 'punkcoder_enqueue_js');
+
 function display_profile_avatar_form_element()
 {
     $options = get_option( 'punkcoder_profile_options' );
-
     ?>
-    <input type="text" name="punkcoder_profile_options[avatar]" id="punkcoder_profile_options_avatar" value="<?php echo esc_html($options['avatar']); ?>" />
+    <div class="punkcoder-options-profile-avatar">
+        <img src="<?php echo esc_html($options['avatar']); ?>" alt="" class="rounded mw-100" id="punkcoder-options-profile-avatar-image">
+        <input type="hidden" name="punkcoder_profile_options[avatar]" id="punkcoder-options-profile-avatar-input" value="<?php echo esc_html($options['avatar']); ?>">
+    </div>
+    <div>
+        <button class="button-primary" id="punkcoder-avatar-upload-button"><?php _e('上传', 'punkcoder')?></button>
+    </div>
+
     <?php
 }
 
