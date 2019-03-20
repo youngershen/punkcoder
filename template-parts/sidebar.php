@@ -39,37 +39,39 @@ $query = new WP_Query($args);
     <div class="row punkcoder-sidebar-profile justify-content-center">
         <div class="col-12">
             <div class="text-center punkcoder-sidebar-profile-avatar">
-                <img src="<?php echo esc_attr(get_option('punkcoder_profile_options')['avatar']);; ?>"
-                     class="rounded mw-100" alt="<?php echo esc_attr(get_option('punkcoder_profile_options')['nickname']); ?>">
+                <img src="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'avatar', punkcoder_get_url('images', 'avatar-default.jpg'))); ?>"
+                     class="rounded mw-100" alt="<?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'nickname', '申延刚')); ?>">
             </div>
             <div class="punkcoder-sidebar-profile-item">
                 <div>
                     <span><?php echo(__("昵称", "punkcoder"));?>:</span>
-                    <span><?php echo esc_attr(get_option('punkcoder_profile_options')['nickname']); ?></span>
+                    <span><?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'nickname', '申延刚')); ?></span>
                 </div>
                 <div>
                     <span><?php echo(__("年龄", "punkcoder"));?>:</span>
-                    <span><?php echo esc_attr(get_option('punkcoder_profile_options')['age']); ?></span>
+                    <span><?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'age', '30')); ?></span>
                 </div>
                 <div>
                     <span><?php echo(__("手机", "punkcoder"));?>:</span>
-                    <span><a href="tel:<?php echo esc_attr(get_option('punkcoder_profile_options')['cellphone']); ?>"><?php echo esc_attr(get_option('punkcoder_profile_options')['cellphone']); ?></a></span>
+                    <span><a href="tel:<?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'cellphone', '13811754531')); ?>"><?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'cellphone', '13811754531')); ?></a></span>
                 </div>
                 <div>
-                    <span><?php echo(__("微信", "punkcoder"));?>:</span>
-                    <span><?php echo esc_attr(get_option('punkcoder_profile_options')['wechat']); ?></span>
+                    <span><?php echo(__("电邮", "punkcoder"));?>:</span>
+                    <span>
+                        <a href="mailto:<?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'email', 'shenyangang@163.com')); ?>"><?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'email', 'shenyangang@163.com')); ?></a>
+                    </span>
                 </div>
                 <div class="punkcoder-sidebar-profile-item-social justify-content-center">
-                    <a href="<?php echo esc_attr(get_option('punkcoder_profile_options')['github']); ?>" target="_blank">
+                    <a href="<?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'github', 'https://github.com/youngershen')); ?>" target="_blank">
                         <i class="fab fa-github fa-2x"></i>
                     </a>
-                    <a href="<?php echo esc_attr(get_option('punkcoder_profile_options')['weibo']); ?>" target="_blank">
+                    <a href="<?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'weibo', 'https://weibo.com/shenyangang')); ?>" target="_blank">
                         <i class="fab fa-weibo fa-2x"></i>
                     </a>
                     <a href="">
                         <i class="fab fa-weixin fa-2x"></i>
                     </a>
-                    <a href="<?php echo esc_attr(get_option('punkcoder_profile_options')['twitter']); ?>" target="_blank">
+                    <a href="<?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'twitter', 'https://twitter.com/youngershen')); ?>" target="_blank">
                         <i class="fab fa-twitter fa-2x"></i>
                     </a>
                 </div>

@@ -10,6 +10,34 @@
  * WEBSIT  : https://www.punkcoder.cn
  */
 
+
+/**
+ * @param $option
+ * @param $name
+ * @param $default
+ * @return string
+ */
+function punkcoder_get_options($option, $name, $default=null)
+{
+    $options = get_option($option);
+
+    if($options && array_key_exists($name, $options))
+    {
+        return $options[$name];
+    }
+    else
+    {
+        if(isset($default))
+        {
+            return $default;
+        }
+        else
+        {
+            return "";
+        }
+    }
+}
+
 /**
  * @param $type
  * @param $name
@@ -94,7 +122,7 @@ function punkcoder_display_profile_options_validate($args)
             'nickname' => __('申延刚', 'punkcoder'),
             'age' => '30',
             'cellphone' => '13811754531',
-            'wechat' => '13811754531',
+            'email' => 'shenyangang@163.com',
             'github' => 'https://github.com/youngershen',
             'weibo' => 'https://weibo.com/shenyangang',
             'wechat_qr_image' => $default_wechat_qr_image,
@@ -128,9 +156,9 @@ function punkcoder_display_profile_options_validate($args)
         $filtered['cellphone'] = $args['cellphone'];
     }
 
-    if($args['wechat'])
+    if($args['email'])
     {
-        $filtered['wechat'] = $args['wechat'];
+        $filtered['email'] = $args['email'];
     }
 
     return apply_filters( 'sanitize_option_punkcoder_options', $filtered );
@@ -169,9 +197,9 @@ function punkcoder_display_profile_options()
         "punkcoder_option_section");
 
     add_settings_field(
-        "punkcoder_profile_wechat",
-        __('微信', 'punkcoder'),
-        "display_profile_wechat_form_element",
+        "punkcoder_profile_email",
+        __('电邮', 'punkcoder'),
+        "display_profile_email_form_element",
         "punkcoder",
         "punkcoder_option_section");
 
@@ -297,11 +325,10 @@ add_action('admin_enqueue_scripts', 'punkcoder_enqueue_js');
 
 function display_profile_avatar_form_element()
 {
-    $options = get_option( 'punkcoder_profile_options' );
     ?>
     <div class="punkcoder-options-profile-avatar">
-        <img src="<?php echo esc_html($options['avatar']); ?>" alt="" class="rounded mw-100" id="punkcoder-options-profile-avatar-image">
-        <input type="hidden" name="punkcoder_profile_options[avatar]" id="punkcoder-options-profile-avatar-input" value="<?php echo esc_html($options['avatar']); ?>">
+        <img src="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'avatar')); ?>" alt="" class="rounded mw-100" id="punkcoder-options-profile-avatar-image">
+        <input type="hidden" name="punkcoder_profile_options[avatar]" id="punkcoder-options-profile-avatar-input" value="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'avatar')); ?>">
     </div>
     <div>
         <button class="button-primary" id="punkcoder-avatar-upload-button"><?php _e('上传', 'punkcoder')?></button>
@@ -312,72 +339,58 @@ function display_profile_avatar_form_element()
 
 function display_profile_nickname_form_element()
 {
-    $options = get_option( 'punkcoder_profile_options' );
-
     ?>
-    <input type="text" name="punkcoder_profile_options[nickname]" id="punkcoder_profile_options_nickname" value="<?php echo esc_html($options['nickname']); ?>" />
+    <input type="text" name="punkcoder_profile_options[nickname]" id="punkcoder_profile_options_nickname" value="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'nickname')); ?>" />
     <?php
 }
 
+
 function display_profile_age_form_element()
 {
-    $options = get_option( 'punkcoder_profile_options' );
     ?>
-    <input type="text" name="punkcoder_profile_options[age]" id="punkcoder_profile_options_age" value="<?php echo esc_html($options['age']); ?>" />
+    <input type="text" name="punkcoder_profile_options[age]" id="punkcoder_profile_options_age" value="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'age')); ?>" />
     <?php
 }
 
 function display_profile_cellphone_form_element()
 {
-    $options = get_option( 'punkcoder_profile_options' );
-
     ?>
-    <input type="text" name="punkcoder_profile_options[cellphone]" id="punkcoder_profile_options_cellphone" value="<?php echo esc_html($options['cellphone']); ?>" />
+    <input type="text" name="punkcoder_profile_options[cellphone]" id="punkcoder_profile_options_cellphone" value="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'cellphone')); ?>" />
     <?php
 }
 
-function display_profile_wechat_form_element()
+function display_profile_email_form_element()
 {
-    $options = get_option( 'punkcoder_profile_options' );
-
     ?>
-    <input type="text" name="punkcoder_profile_options[wechat]" id="punkcoder_profile_options_wechat" value="<?php echo esc_html($options['wechat']);?>" />
+    <input type="text" name="punkcoder_profile_options[email]" id="punkcoder_profile_options_wechat" value="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'email'));?>" />
     <?php
 }
 
 function display_profile_github_form_element()
 {
-    $options = get_option( 'punkcoder_profile_options' );
-
     ?>
-    <input type="text" name="punkcoder_profile_options[github]" id="punkcoder_profile_options_github" value="<?php echo esc_html($options['github']);?>" />
+    <input type="text" name="punkcoder_profile_options[github]" id="punkcoder_profile_options_github" value="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'github'));?>" />
     <?php
 }
 
 function display_profile_weibo_form_element()
 {
-    $options = get_option( 'punkcoder_profile_options' );
-
     ?>
-    <input type="text" name="punkcoder_profile_options[weibo]" id="punkcoder_profile_options_weibo" value="<?php echo esc_html($options['weibo']);?>" />
+    <input type="text" name="punkcoder_profile_options[weibo]" id="punkcoder_profile_options_weibo" value="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'weibo'));?>" />
     <?php
 }
 
 function display_profile_wechat_qr_image_form_element()
 {
-    $options = get_option( 'punkcoder_profile_options' );
-
     ?>
-    <input type="text" name="punkcoder_profile_options[wechat_qr_image]" id="punkcoder_profile_options_wechat_qr_image" value="<?php echo esc_html($options['wechat_qr_image']);?>" />
+    <input type="text" name="punkcoder_profile_options[wechat_qr_image]" id="punkcoder_profile_options_wechat_qr_image" value="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'wechat_qr_image'));?>" />
     <?php
 }
 
 function display_profile_twitter_form_element()
 {
-    $options = get_option( 'punkcoder_profile_options' );
-
     ?>
-    <input type="text" name="punkcoder_profile_options[twitter]" id="punkcoder_profile_options_twitter" value="<?php echo esc_html($options['twitter']);?>" />
+    <input type="text" name="punkcoder_profile_options[twitter]" id="punkcoder_profile_options_twitter" value="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'twitter'));?>" />
     <?php
 }
 
