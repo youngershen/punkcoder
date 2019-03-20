@@ -25,6 +25,8 @@ function punkcoder_menu_items()
 
 function punkcoder_options_page()
 {
+    settings_errors( 'punkcoder_messages' );
+
     ?>
     <div class="wrap">
         <div id="icon-options-general" class="icon32"></div>
@@ -127,7 +129,7 @@ function punkcoder_display_options()
 
             register_setting(
                     "punkcoder",
-                    "punkcoder_profile_options");
+                    "punkcoder_setting_options");
         }
     }
     else
@@ -143,29 +145,31 @@ function display_header_options_content()
 
 function display_profile_nickname_form_element()
 {
+    $options = get_option( 'punkcoder_options' );
+
     ?>
-    <input type="text" name="header_logo" id="header_logo" value="<?php echo get_option('header_logo'); ?>" />
+    <input type="text" name="punkcoder_options['nickname']" id="header_logo" value="<?php echo $options['nsickname']; ?>" />
     <?php
 }
 
 function display_profile_age_form_element()
 {
     ?>
-    <input type="text" name="header_logo" id="header_logo" value="<?php echo get_option('header_logo'); ?>" />
+<!--    <input type="text" name="header_logo" id="header_logo" value="--><?php //echo get_option('header_logo'); ?><!--" />-->
     <?php
 }
 
 function display_profile_cellphone_form_element()
 {
     ?>
-    <input type="text" name="header_logo" id="header_logo" value="<?php echo get_option('header_logo'); ?>" />
+<!--    <input type="text" name="header_logo" id="header_logo" value="--><?php //echo get_option('header_logo'); ?><!--" />-->
     <?php
 }
 
 function display_profile_wechat_form_element()
 {
     ?>
-    <input type="text" name="header_logo" id="header_logo" value="<?php echo get_option('header_logo'); ?>" />
+<!--    <input type="text" name="header_logo" id="header_logo" value="--><?php //echo get_option('header_logo'); ?><!--" />-->
     <?php
 }
 
@@ -173,7 +177,7 @@ function display_profile_wechat_form_element()
 function display_ads_form_element()
 {
     ?>
-    <input type="text" name="advertising_code" id="advertising_code" value="<?php echo get_option('advertising_code'); ?>" />
+<!--    <input type="text" name="advertising_code" id="advertising_code" value="--><?php //echo get_option('advertising_code'); ?><!--" />-->
     <?php
 }
 
