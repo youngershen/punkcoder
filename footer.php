@@ -14,7 +14,7 @@
 
 <footer class="container-fluid punkcoder-footer d-none d-lg-block fixed-bottom">
     <div class="row justify-content-center">
-        <div class="col-8 justify-content-center text-center">
+        <div class="col-10 justify-content-center text-center">
             <span class="punkcoder-footer-item">
                 <?php _e("版权"); ?>
                 <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank">
@@ -28,6 +28,10 @@
             <span class="punkcoder-footer-item">
                 <?php _e("Powered By"); ?>
                 <a href="https://wordpress.org/" target="_blank">WordPress.org</a>
+            </span>
+            <span class="punkcoder-footer-item">
+                <?php _e("Theme By"); ?>
+                <a href="https://punkcoder.cn" target="_blank">PunkCoder</a>
             </span>
         </div>
     </div>
