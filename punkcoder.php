@@ -9,6 +9,19 @@
  * WECHAT  : 13811754531
  * WEBSIT  : https://www.punkcoder.cn
  */
+
+
+/**
+ * @param $name
+ * @return string
+ */
+function get_image_url($name)
+{
+    $url = get_template_directory_uri() . '/assets/images/' . $name;
+    return $url;
+}
+
+
 function punkcoder_menu_items()
 {
     add_menu_page(
@@ -73,15 +86,19 @@ add_action("admin_menu", "punkcoder_menu_items");
 
 function punkcoder_display_profile_options_validate($args)
 {
+    $default_avatar = get_image_url('avatar-default.jpg');
+    $default_wechat_qr_image = get_image_url('wechat-qr-image.jpg');
+
+
     $filtered = [
-            'avatar' => 'avatar',
+            'avatar' => $default_avatar,
             'nickname' => __('申延刚', 'punkcoder'),
             'age' => '30',
             'cellphone' => '13811754531',
             'wechat' => '13811754531',
             'github' => 'https://github.com/youngershen',
             'weibo' => 'https://weibo.com/shenyangang',
-            'wetchat_qr_image' => '',
+            'wechat_qr_image' => $default_wechat_qr_image,
             'twitter' => 'https://twitter.com/youngershen'
     ];
 
