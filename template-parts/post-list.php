@@ -52,7 +52,7 @@
                 </span>
                 <span class="home-post-meta-item">
                     <i class="fas fa-user-alt"></i>
-                    <span><?php the_author(); ?></span>
+                    <span><?php the_author_posts_link(); ?></span>
                 </span>
                 <span class="home-post-meta-item">
                     <i class="fas fa-comments"></i>
