@@ -77,4 +77,42 @@ function punkcoder_pagination()
     return $p;
 }
 
+/**
+ * @param $option
+ * @param $name
+ * @param $default
+ * @return string
+ */
+function punkcoder_get_options($option, $name, $default=null)
+{
+    $options = get_option($option);
+
+    if($options && array_key_exists($name, $options))
+    {
+        return $options[$name];
+    }
+    else
+    {
+        if(isset($default))
+        {
+            return $default;
+        }
+        else
+        {
+            return "";
+        }
+    }
+}
+
+/**
+ * @param $type
+ * @param $name
+ * @return string
+ */
+function punkcoder_get_url($type, $name)
+{
+    $url = get_template_directory_uri() . '/assets/'. $type .'/' . $name;
+    return $url;
+}
+
 require_once("punkcoder.php");
