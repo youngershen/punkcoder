@@ -19,9 +19,9 @@ jQuery(document).ready(function($){
             return;
         }
         mediaUploader = wp.media.frames.file_frame = wp.media({
-            title: 'Choose Image',
+            title: '选择图片',
             button: {
-                text: 'Choose Image'
+                text: '确定'
             }, multiple: false });
         mediaUploader.on('select', function() {
             var attachment = mediaUploader.state().get('selection').first().toJSON();
@@ -38,9 +38,9 @@ jQuery(document).ready(function($){
             return;
         }
         mediaUploader = wp.media.frames.file_frame = wp.media({
-            title: 'Choose Image',
+            title: '选择图片',
             button: {
-                text: 'Choose Image'
+                text: '确定'
             }, multiple: false });
         mediaUploader.on('select', function() {
             var attachment = mediaUploader.state().get('selection').first().toJSON();

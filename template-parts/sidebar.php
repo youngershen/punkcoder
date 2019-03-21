@@ -39,7 +39,7 @@ $query = new WP_Query($args);
     <div class="row punkcoder-sidebar-profile justify-content-center">
         <div class="col-12">
             <div class="text-center punkcoder-sidebar-profile-avatar">
-                <img src="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'avatar', punkcoder_get_url('images', 'avatar-default.jpg'))); ?>"
+                <img src="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'avatar', punkcoder_get_url('images', 'default-avatar-image.jpg'))); ?>"
                      class="rounded mw-100" alt="<?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'nickname', '申延刚')); ?>">
             </div>
             <div class="punkcoder-sidebar-profile-item">

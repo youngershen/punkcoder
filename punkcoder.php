@@ -113,7 +113,7 @@ add_action("admin_menu", "punkcoder_menu_items");
 
 function punkcoder_display_profile_options_validate($args)
 {
-    $default_avatar = punkcoder_get_url('images', 'avatar-default.jpg');
+    $default_avatar = punkcoder_get_url('images', 'default-avatar-image.jpg');
     $default_wechat_qr_image = punkcoder_get_url('image', 'wechat-qr-image.jpg');
 
 
@@ -186,7 +186,7 @@ function punkcoder_display_profile_options_validate($args)
 
 function punkcoder_display_profile_options()
 {
-    add_settings_section("punkcoder_option_section", __('个人资料', 'punkcoder'), "display_header_options_content", "punkcoder");
+    add_settings_section("punkcoder_option_section", __('', 'punkcoder'), "display_header_options_content", "punkcoder");
 
     add_settings_field(
         "punkcoder_profile_avatar",
@@ -336,8 +336,8 @@ function punkcoder_enqueue_js() {
     wp_register_style('punkcoder-fontawesome', $url);
 
     wp_enqueue_style('punkcoder-admin');
-    wp_enqueue_style('punkcoder-bootstrap');
-    wp_enqueue_style('punkcoder-fontawesome');
+//    wp_enqueue_style('punkcoder-bootstrap');
+//    wp_enqueue_style('punkcoder-fontawesome');
 
 }
 

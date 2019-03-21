@@ -29,7 +29,7 @@
                 {
                     ?>
                     <a href="<?php echo(esc_url(get_permalink())); ?>">
-                        <img src="<?php echo(get_template_directory_uri()); ?>/assets/images/feature.png" alt="<?php echo(get_the_title()); ?>" class="mw-100">
+                        <img src="<?php echo(punkcoder_get_url('images', 'default-feature-image.jpg')) ?>" alt="<?php echo(get_the_title()); ?>" class="mw-100">
                     </a>
                     <?php
                 }
