@@ -25,8 +25,8 @@ jQuery(document).ready(function($){
             }, multiple: false });
         mediaUploader.on('select', function() {
             var attachment = mediaUploader.state().get('selection').first().toJSON();
-            $('#punkcoder-options-profile-avatar-input').val(attachment.url);
-            $('#punkcoder-options-profile-avatar-image').attr('src', attachment.url);
+            $('#punkcoder-options-avatar-input').val(attachment.url);
+            $('#punkcoder-options-avatar-image').attr('src', attachment.url);
         });
         mediaUploader.open();
     });
@@ -44,8 +44,8 @@ jQuery(document).ready(function($){
             }, multiple: false });
         mediaUploader.on('select', function() {
             var attachment = mediaUploader.state().get('selection').first().toJSON();
-            $('#punkcoder-options-profile-wechat-qr-image-input').val(attachment.url);
-            $('#punkcoder-options-profile-wechat-qr-image').attr('src', attachment.url);
+            $('#punkcoder-options-wechat-qr-image-input').val(attachment.url);
+            $('#punkcoder-options-wechat-qr-image').attr('src', attachment.url);
         });
         mediaUploader.open();
     });

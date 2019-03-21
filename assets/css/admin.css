@@ -1,13 +1,18 @@
-.punkcoder-options-profile-avatar
+.punkcoder-options-avatar
  {
     width: 150px;
     border-radius: .5rem;
     margin-bottom: .5rem;
  }
 
-.punkcoder-options-profile-wechat-qr-image
+.punkcoder-options-wechat-qr-image
 {
     width: 150px;
     border-radius: .5rem;
     margin-bottom: .5rem;
+}
+
+.punkcoder-option-form-input
+{
+    width: 15rem;
 }

@@ -18,14 +18,14 @@ function punkcoder_menu_items()
         __('主题', 'punkcoder'),
         "manage_options",
         "punkcoder",
-        "punkcoder_options_page",
+        "punkcoder_options_page_form",
         "",
         99
     );
 
 }
 
-function punkcoder_options_page()
+function punkcoder_options_page_form()
 {
     settings_errors( 'punkcoder_messages' );
 
@@ -56,7 +56,7 @@ function punkcoder_options_page()
             <a href="?page=punkcoder&tab=setting" class="nav-tab  <?php if($active_tab == 'setting'){echo 'nav-tab-active';} ?>"><?php _e('系统设置', 'punkcoder'); ?></a>
         </h2>
 
-        <form method="post" action="options.php">
+        <form method="post" action="options.php" id="punkcoder-option-form">
             <?php
 
             settings_fields("punkcoder");
@@ -71,10 +71,10 @@ function punkcoder_options_page()
     <?php
 }
 
-function punkcoder_profile_options_validate($args)
+function punkcoder_options_validate($args)
 {
     $default_avatar = punkcoder_get_url('images', 'default-avatar-image.jpg');
-    $default_wechat_qr_image = punkcoder_get_url('image', 'wechat-qr-image.jpg');
+    $default_wechat_qr_image = punkcoder_get_url('images', 'wechat-qr-image.jpg');
 
 
     $filtered = [
@@ -107,7 +107,7 @@ function punkcoder_profile_options_validate($args)
         }
         else
         {
-            add_settings_error('punkcoder_messages','punkcoder_options_profile_age',__('年龄输入非法', 'punkcoder'),'error');
+            add_settings_error('punkcoder_messages','punkcoder_options_age',__('年龄输入非法', 'punkcoder'),'error');
         }
     }
 
@@ -141,10 +141,10 @@ function punkcoder_profile_options_validate($args)
         $filtered['twitter'] = $args['twitter'];
     }
 
-    return apply_filters( 'sanitize_option_punkcoder_options', $filtered );
+    return $filtered;
 }
 
-function display_header_options_content()
+function punkcoder_options_header_html()
 {
     if( !key_exists('tab', $_GET) || $_GET['tab'] == 'profile') {
         ?>
@@ -160,81 +160,74 @@ function display_header_options_content()
 
 }
 
-function punkcoder_display_profile_options()
+function punkcoder_profile_options()
 {
-    add_settings_section("punkcoder_option_section", __('个人资料', 'punkcoder'), "display_header_options_content", "punkcoder");
+    add_settings_section("punkcoder_option_section", __('个人资料', 'punkcoder'), "punkcoder_options_header_html", "punkcoder");
 
     add_settings_field(
-        "punkcoder_profile_avatar",
+        "punkcoder_avatar",
         __('头像', 'punkcoder'),
-        "display_profile_avatar_form_element",
+        "punkcoder_avatar_form",
         "punkcoder",
         "punkcoder_option_section");
 
     add_settings_field(
-        "punkcoder_profile_nickname",
+        "punkcoder_nickname",
         __('昵称', 'punkcoder'),
-        "display_profile_nickname_form_element",
+        "punkcoder_nickname_form",
         "punkcoder",
         "punkcoder_option_section");
 
     add_settings_field(
-        "punkcoder_profile_age",
+        "punkcoder_age",
         __('年龄', 'punkcoder'),
-        "display_profile_age_form_element",
+        "punkcoder_age_form",
         "punkcoder",
         "punkcoder_option_section");
 
     add_settings_field(
-        "punkcoder_profile_cellphone",
+        "punkcoder_cellphone",
         __('手机', 'punkcoder'),
-        "display_profile_cellphone_form_element",
+        "punkcoder_cellphone_form",
         "punkcoder",
         "punkcoder_option_section");
 
     add_settings_field(
-        "punkcoder_profile_email",
+        "punkcoder_email",
         __('电邮', 'punkcoder'),
-        "display_profile_email_form_element",
+        "punkcoder_email_form",
         "punkcoder",
         "punkcoder_option_section");
 
     add_settings_field(
-        "punkcoder_profile_github",
+        "punkcoder_github",
         __('Github', 'punkcoder'),
-        "display_profile_github_form_element",
+        "punkcoder_github_form",
         "punkcoder",
         "punkcoder_option_section");
 
     add_settings_field(
-        "punkcoder_profile_weibo",
+        "punkcoder_weibo",
         __('微博', 'punkcoder'),
-        "display_profile_weibo_form_element",
+        "punkcoder_weibo_form",
         "punkcoder",
         "punkcoder_option_section");
 
 
     add_settings_field(
-        "punkcoder_profile_wechat_qr_image",
+        "punkcoder_wechat_qr_image",
         __('微信二维码', 'punkcoder'),
-        "display_profile_wechat_qr_image_form_element",
+        "punkcoder_wechat_qr_image_form",
         "punkcoder",
         "punkcoder_option_section");
 
 
     add_settings_field(
-        "punkcoder_profile_twitter",
+        "punkcoder_twitter",
         __('Twitter', 'punkcoder'),
-        "display_profile_twitter_form_element",
+        "punkcoder_twitter_form",
         "punkcoder",
         "punkcoder_option_section");
-
-    register_setting(
-        "punkcoder",
-        "punkcoder_profile_options",
-        [
-                'sanitize_callback' => 'punkcoder_profile_options_validate'
-        ]);
 }
 
 function punkcoder_display_setting_options()
@@ -253,15 +246,21 @@ function punkcoder_display_setting_options()
         "punkcoder_setting_options");
 }
 
-function punkcoder_display_options()
+function punkcoder_options_page()
 {
+    register_setting(
+        "punkcoder",
+        "punkcoder_options",
+        [
+            'sanitize_callback' => 'punkcoder_options_validate'
+        ]);
 
     //here we display the sections and options in the settings page based on the active tab
     if(isset($_GET["tab"]))
     {
         if($_GET["tab"] == "profile")
         {
-            punkcoder_display_profile_options();
+            punkcoder_profile_options();
         }
         else
         {
@@ -270,9 +269,97 @@ function punkcoder_display_options()
     }
     else
     {
-        punkcoder_display_profile_options();
+        punkcoder_profile_options();
     }
 
+}
+
+function punkcoder_avatar_form()
+{
+    ?>
+    <div class="punkcoder-options-avatar">
+        <img src="<?php echo esc_html(punkcoder_get_options('punkcoder_options', 'avatar')); ?>" alt="" class="rounded mw-100 punkcoder-options-avatar" id="punkcoder-options-avatar-image">
+        <input type="hidden" name="punkcoder_options[avatar]" id="punkcoder-options-avatar-input" value="<?php echo esc_html(punkcoder_get_options('punkcoder_options', 'avatar')); ?>">
+    </div>
+    <div>
+        <button class="button-primary" id="punkcoder-avatar-upload-button"><?php _e('上传', 'punkcoder')?></button>
+    </div>
+    <?php
+}
+
+function punkcoder_nickname_form()
+{
+    ?>
+    <input type="text" class="punkcoder-option-form-input" name="punkcoder_options[nickname]" id="punkcoder-options-nickname" value="<?php echo esc_html(punkcoder_get_options('punkcoder_options', 'nickname')); ?>" />
+    <?php
+}
+
+function punkcoder_age_form()
+{
+    ?>
+    <input class="punkcoder-option-form-input" type="text" name="punkcoder_options[age]" id="punkcoder-options-age" value="<?php echo esc_html(punkcoder_get_options('punkcoder_options', 'age')); ?>" />
+    <?php
+}
+
+function punkcoder_cellphone_form()
+{
+    ?>
+    <input class="punkcoder-option-form-input" type="text" name="punkcoder_options[cellphone]" id="punkcoder-options-cellphone" value="<?php echo esc_html(punkcoder_get_options('punkcoder_options', 'cellphone')); ?>" />
+    <?php
+}
+
+function punkcoder_email_form()
+{
+    ?>
+    <input class="punkcoder-option-form-input" type="text" name="punkcoder_options[email]" id="punkcoder-options-wechat" value="<?php echo esc_html(punkcoder_get_options('punkcoder_options', 'email'));?>" />
+    <?php
+}
+
+function punkcoder_github_form()
+{
+    ?>
+    <input class="punkcoder-option-form-input" type="text" name="punkcoder_options[github]" id="punkcoder-options-github" value="<?php echo esc_html(punkcoder_get_options('punkcoder_options', 'github'));?>" />
+    <?php
+}
+
+function punkcoder_weibo_form()
+{
+    ?>
+    <input class="punkcoder-option-form-input" type="text" name="punkcoder_options[weibo]" id="punkcoder-options-weibo" value="<?php echo esc_html(punkcoder_get_options('punkcoder_options', 'weibo'));?>" />
+    <?php
+}
+
+function punkcoder_wechat_qr_image_form()
+{
+    ?>
+    <div class="punkcoder-options-wechat-qr-image">
+        <img src="<?php echo esc_html(punkcoder_get_options('punkcoder_options', 'wechat_qr_image')); ?>" alt="" class="rounded mw-100 punkcoder-options-wechat-qr-image" id="punkcoder-options-wechat-qr-image">
+        <input type="hidden" name="punkcoder_options[wechat_qr_image]" id="punkcoder-options-wechat-qr-image-input" value="<?php echo esc_html(punkcoder_get_options('punkcoder_options', 'wechat_qr_image')); ?>">
+    </div>
+    <div>
+        <button class="button-primary" id="punkcoder-wechat-upload-button"><?php _e('上传', 'punkcoder')?></button>
+    </div>
+
+    <?php
+}
+
+function punkcoder_twitter_form()
+{
+    ?>
+    <input class="punkcoder-option-form-input" type="text" name="punkcoder_options[twitter]" id="punkcoder_profile_options_twitter" value="<?php echo esc_html(punkcoder_get_options('punkcoder_options', 'twitter'));?>" />
+    <?php
+}
+
+function display_setting_logo_form_element()
+{
+    ?>
+    <div class="punkcoder-options-setting-logo">
+        <img src="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'avatar')); ?>" alt="" class="rounded mw-100 punkcoder-options-profile-avatar" id="punkcoder-options-profile-avatar-image">
+        <input type="hidden" name="punkcoder_profile_options[avatar]" id="punkcoder-options-profile-avatar-input" value="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'avatar')); ?>">
+    </div>
+    <div>
+        <button class="button-primary" id="punkcoder-avatar-upload-button"><?php _e('上传', 'punkcoder')?></button>
+    </div>    <?php
 }
 
 function punkcoder_enqueue_js() {
@@ -313,95 +400,6 @@ function punkcoder_enqueue_js() {
 
 }
 
-function display_profile_avatar_form_element()
-{
-    ?>
-    <div class="punkcoder-options-profile-avatar">
-        <img src="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'avatar')); ?>" alt="" class="rounded mw-100 punkcoder-options-profile-avatar" id="punkcoder-options-profile-avatar-image">
-        <input type="hidden" name="punkcoder_profile_options[avatar]" id="punkcoder-options-profile-avatar-input" value="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'avatar')); ?>">
-    </div>
-    <div>
-        <button class="button-primary" id="punkcoder-avatar-upload-button"><?php _e('上传', 'punkcoder')?></button>
-    </div>
-
-    <?php
-}
-
-function display_profile_nickname_form_element()
-{
-    ?>
-    <input type="text" name="punkcoder_profile_options[nickname]" id="punkcoder_profile_options_nickname" value="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'nickname')); ?>" />
-    <?php
-}
-
-function display_profile_age_form_element()
-{
-    ?>
-    <input type="text" name="punkcoder_profile_options[age]" id="punkcoder_profile_options_age" value="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'age')); ?>" />
-    <?php
-}
-
-function display_profile_cellphone_form_element()
-{
-    ?>
-    <input type="text" name="punkcoder_profile_options[cellphone]" id="punkcoder_profile_options_cellphone" value="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'cellphone')); ?>" />
-    <?php
-}
-
-function display_profile_email_form_element()
-{
-    ?>
-    <input type="text" name="punkcoder_profile_options[email]" id="punkcoder_profile_options_wechat" value="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'email'));?>" />
-    <?php
-}
-
-function display_profile_github_form_element()
-{
-    ?>
-    <input type="text" name="punkcoder_profile_options[github]" id="punkcoder_profile_options_github" value="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'github'));?>" />
-    <?php
-}
-
-function display_profile_weibo_form_element()
-{
-    ?>
-    <input type="text" name="punkcoder_profile_options[weibo]" id="punkcoder_profile_options_weibo" value="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'weibo'));?>" />
-    <?php
-}
-
-function display_profile_wechat_qr_image_form_element()
-{
-    ?>
-    <div class="punkcoder-options-profile-wechat-qr-image">
-        <img src="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'wechat_qr_image')); ?>" alt="" class="rounded mw-100 punkcoder-options-profile-wechat-qr-image" id="punkcoder-options-profile-wechat-qr-image">
-        <input type="hidden" name="punkcoder_profile_options[wechat_qr_image]" id="punkcoder-options-profile-wechat-qr-image-input" value="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'wechat_qr_image')); ?>">
-    </div>
-    <div>
-        <button class="button-primary" id="punkcoder-wechat-upload-button"><?php _e('上传', 'punkcoder')?></button>
-    </div>
-
-    <?php
-}
-
-function display_profile_twitter_form_element()
-{
-    ?>
-    <input type="text" name="punkcoder_profile_options[twitter]" id="punkcoder_profile_options_twitter" value="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'twitter'));?>" />
-    <?php
-}
-
-function display_setting_logo_form_element()
-{
-    ?>
-    <div class="punkcoder-options-setting-logo">
-        <img src="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'avatar')); ?>" alt="" class="rounded mw-100 punkcoder-options-profile-avatar" id="punkcoder-options-profile-avatar-image">
-        <input type="hidden" name="punkcoder_profile_options[avatar]" id="punkcoder-options-profile-avatar-input" value="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'avatar')); ?>">
-    </div>
-    <div>
-        <button class="button-primary" id="punkcoder-avatar-upload-button"><?php _e('上传', 'punkcoder')?></button>
-    </div>    <?php
-}
-
 add_action("admin_menu", "punkcoder_menu_items");
 add_action('admin_enqueue_scripts', 'punkcoder_enqueue_js');
-add_action("admin_init", "punkcoder_display_options");
+add_action("admin_init", "punkcoder_options_page");
