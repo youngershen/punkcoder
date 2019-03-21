@@ -347,7 +347,7 @@ function display_profile_avatar_form_element()
 {
     ?>
     <div class="punkcoder-options-profile-avatar">
-        <img src="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'avatar')); ?>" alt="" class="rounded mw-100" id="punkcoder-options-profile-avatar-image">
+        <img src="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'avatar')); ?>" alt="" class="rounded mw-100 punkcoder-options-profile-avatar" id="punkcoder-options-profile-avatar-image">
         <input type="hidden" name="punkcoder_profile_options[avatar]" id="punkcoder-options-profile-avatar-input" value="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'avatar')); ?>">
     </div>
     <div>
@@ -405,7 +405,7 @@ function display_profile_wechat_qr_image_form_element()
 {
     ?>
     <div class="punkcoder-options-profile-wechat-qr-image">
-        <img src="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'wechat_qr_image')); ?>" alt="" class="rounded mw-100" id="punkcoder-options-profile-wechat-qr-image">
+        <img src="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'wechat_qr_image')); ?>" alt="" class="rounded mw-100 punkcoder-options-profile-wechat-qr-image" id="punkcoder-options-profile-wechat-qr-image">
         <input type="hidden" name="punkcoder_profile_options[wechat_qr_image]" id="punkcoder-options-profile-wechat-qr-image-input" value="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'wechat_qr_image')); ?>">
     </div>
     <div>
