@@ -21,7 +21,10 @@ $query = new WP_Query($args);
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top punkcoder-navbar">
-    <a class="navbar-brand" href="<?php echo(home_url()); ?>"><?php echo(get_bloginfo()); ?></a>
+    <a class="navbar-brand" href="<?php echo(home_url()); ?>">
+        <img src="<?php echo punkcoder_get_options('punkcoder_options', 'logo', punkcoder_get_url('images', 'default-logo.pnf'))?>" width="40" height="40" alt="">
+        <?php echo(get_bloginfo()); ?>
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content"
             aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
