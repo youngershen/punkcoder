@@ -34,5 +34,8 @@
     <script src="<?php echo(get_template_directory_uri()); ?>/assets/vendor/fontawesome-free-5.7.2-web/js/all.min.js"></script>
     <!-- load custom js -->
     <script src="<?php echo(get_template_directory_uri())?>/assets/js/punkcoder.js"></script>
+
+    <!-- custom code is here -->
+    <?php echo punkcoder_get_options('punkcoder_options', 'custom_code');?>
     <?php wp_head(); ?>
 </head>

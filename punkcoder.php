@@ -87,24 +87,25 @@ function punkcoder_options_validate($args)
             'weibo' => 'https://weibo.com/shenyangang',
             'wechat_qr_image' => $default_wechat_qr_image,
             'twitter' => 'https://twitter.com/youngershen',
-            'logo' => $default_logo
+            'logo' => $default_logo,
+            'custom_code' => '',
     ];
 
     if($args['avatar'])
     {
-        $filtered['avatar'] = $args['avatar'];
+        $filtered['avatar'] = trim($args['avatar']);
     }
 
     if($args['nickname'])
     {
-        $filtered['nickname'] = $args['nickname'];
+        $filtered['nickname'] = trim($args['nickname']);
     }
 
     if($args['age'])
     {
         if(preg_match('/^[1-9][\d]*$/', $args['age']))
         {
-            $filtered['age'] = $args['age'];
+            $filtered['age'] = trim($args['age']);
         }
         else
         {
@@ -114,37 +115,42 @@ function punkcoder_options_validate($args)
 
     if($args['cellphone'])
     {
-        $filtered['cellphone'] = $args['cellphone'];
+        $filtered['cellphone'] = trim($args['cellphone']);
     }
 
     if($args['email'])
     {
-        $filtered['email'] = $args['email'];
+        $filtered['email'] = trim($args['email']);
     }
 
     if($args['github'])
     {
-        $filtered['github'] = $args['github'];
+        $filtered['github'] = trim($args['github']);
     }
 
     if($args['weibo'])
     {
-        $filtered['weibo'] = $args['weibo'];
+        $filtered['weibo'] = trim($args['weibo']);
     }
 
     if($args['wechat_qr_image'])
     {
-        $filtered['wechat_qr_image'] = $args['wechat_qr_image'];
+        $filtered['wechat_qr_image'] = trim($args['wechat_qr_image']);
     }
 
     if($args['twitter'])
     {
-        $filtered['twitter'] = $args['twitter'];
+        $filtered['twitter'] = trim($args['twitter']);
     }
 
     if($args['logo'])
     {
-        $filtered['logo'] = $args['logo'];
+        $filtered['logo'] = trim($args['logo']);
+    }
+
+    if($args['custom_code'])
+    {
+        $filtered['custom_code'] = trim($args['custom_code']);
     }
 
     return $filtered;
@@ -244,6 +250,13 @@ function punkcoder_setting_options()
         "punkcoder_logo_image",
         __('LOGO', 'punkcoder'),
         "punkcoder_logo_form",
+        "punkcoder",
+        "punkcoder_option_section");
+
+    add_settings_field(
+        "punkcoder_custom_code",
+        __('自定义代码', 'punkcoder'),
+        "punkcoder_custom_code_form",
         "punkcoder",
         "punkcoder_option_section");
 }
@@ -362,6 +375,15 @@ function punkcoder_logo_form()
     <div>
         <button class="button-primary" id="punkcoder-logo-upload-button"><?php _e('上传', 'punkcoder')?></button>
     </div>
+    <?php
+}
+
+function punkcoder_custom_code_form()
+{
+    ?>
+    <textarea name="punkcoder_options[custom_code]" id=""  cols="50" rows="10" class="punskcoder-option-form-input">
+        <?php echo trim(esc_html(punkcoder_get_options('punkcoder_options', 'custom_code')))?>
+    </textarea>
     <?php
 }
 

@@ -55,12 +55,12 @@ $query = new WP_Query($args);
                     <span><?php echo(__("手机", "punkcoder"));?>:</span>
                     <span><a href="tel:<?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'cellphone', '13811754531')); ?>"><?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'cellphone', '13811754531')); ?></a></span>
                 </div>
-<!--                <div>-->
-<!--                    <span>--><?php //echo(__("电邮", "punkcoder"));?><!--:</span>-->
-<!--                    <span class="punkcoder-sidebar-profile-email">-->
-<!--                        <a href="mailto:--><?php //echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'email', 'shenyangang@163.com')); ?><!--">--><?php //echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'email', 'shenyangang@163.com')); ?><!--</a>-->
-<!--                    </span>-->
-<!--                </div>-->
+                <div>
+                    <span><?php echo(__("电邮", "punkcoder"));?>:</span>
+                    <span class="punkcoder-sidebar-profile-email">
+                        <a href="mailto:<?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'email', 'shenyangang@163.com')); ?>"><?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'email', 'shenyangang@163.com')); ?></a>
+                    </span>
+                </div>
                 <div class="punkcoder-sidebar-profile-item-social justify-content-center">
                     <a href="<?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'github', 'https://github.com/youngershen')); ?>" target="_blank">
                         <i class="fab fa-github fa-2x"></i>
