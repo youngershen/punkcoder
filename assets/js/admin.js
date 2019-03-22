@@ -68,4 +68,23 @@ jQuery(document).ready(function($){
         });
         mediaUploader.open();
     });
+
+    $('#punkcoder-bg-image-upload-button').click(function(e) {
+        e.preventDefault();
+        if (mediaUploader) {
+            mediaUploader.open();
+            return;
+        }
+        mediaUploader = wp.media.frames.file_frame = wp.media({
+            title: '选择图片',
+            button: {
+                text: '确定'
+            }, multiple: false });
+        mediaUploader.on('select', function() {
+            var attachment = mediaUploader.state().get('selection').first().toJSON();
+            $('#punkcoder-options-bg-image-input').val(attachment.url);
+            $('#punkcoder-options-bg-image').attr('src', attachment.url);
+        });
+        mediaUploader.open();
+    });
 });

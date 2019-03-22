@@ -52,7 +52,7 @@ $query = new WP_Query($args);
         <?php get_search_form(); ?>
     </div>
 </nav>
-<div id="pk-slogan" class="container-fluid d-none d-lg-block">
+<div id="pk-slogan" class="container-fluid d-none d-lg-block" style="background-image: url("<?php echo punkcoder_get_options('punkcoder_options', 'bg_image', punkcoder_get_url('images', 'default-bg-image.png'))?>")">
     <div class="row justify-content-center bg-secondary slogan-bg">
         <div class="col-6 align-content-center my-5 text-light">
             <h1 class="text-center "><?php bloginfo('name'); ?></h1>

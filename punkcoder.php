@@ -76,6 +76,7 @@ function punkcoder_options_validate($args)
     $default_avatar = punkcoder_get_url('images', 'default-avatar-image.jpg');
     $default_wechat_qr_image = punkcoder_get_url('images', 'wechat-qr-image.jpg');
     $default_logo = punkcoder_get_url('images', 'default-logo.png');
+    $default_bg_image = punkcoder_get_url('images', 'default-bg-image.png');
 
     $filtered = [
             'avatar' => $default_avatar,
@@ -90,7 +91,8 @@ function punkcoder_options_validate($args)
             'logo' => $default_logo,
             'custom_code' => '',
             'beian' => '',
-            'copyright' => get_the_author_link()
+            'copyright' => get_the_author_link(),
+            'bg_image' => $default_bg_image
     ];
 
     if($args['avatar'])
@@ -163,6 +165,11 @@ function punkcoder_options_validate($args)
     if($args['copyright'])
     {
         $filtered['copyright'] = trim($args['copyright']);
+    }
+
+    if($args['bg_image'])
+    {
+        $filtered['bg_image'] = trim($args['bg_image']);
     }
 
     return $filtered;
@@ -262,6 +269,13 @@ function punkcoder_setting_options()
         "punkcoder_logo_image",
         __('LOGO', 'punkcoder'),
         "punkcoder_logo_form",
+        "punkcoder",
+        "punkcoder_option_section");
+
+    add_settings_field(
+        "punkcoder_bg_image",
+        __('背景图片', 'punkcoder'),
+        "punkcoder_bg_image_form",
         "punkcoder",
         "punkcoder_option_section");
 
@@ -400,6 +414,19 @@ function punkcoder_logo_form()
     </div>
     <div>
         <button class="button-primary" id="punkcoder-logo-upload-button"><?php _e('上传', 'punkcoder')?></button>
+    </div>
+    <?php
+}
+
+function punkcoder_bg_image_form()
+{
+    ?>
+    <div class="punkcoder-options-logo">
+        <img src="<?php echo esc_html(punkcoder_get_options('punkcoder_options', 'bg_image')); ?>" alt="" class="rounded mw-100 punkcoder-options-bg-image" id="punkcoder-options-bg-image">
+        <input type="hidden" name="punkcoder_options[bg_image]" id="punkcoder-options-bg-image-input" value="<?php echo esc_html(punkcoder_get_options('punkcoder_options', 'bg_image')); ?>">
+    </div>
+    <div>
+        <button class="button-primary" id="punkcoder-bg-image-upload-button"><?php _e('上传', 'punkcoder')?></button>
     </div>
     <?php
 }
