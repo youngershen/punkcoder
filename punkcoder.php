@@ -89,6 +89,8 @@ function punkcoder_options_validate($args)
             'twitter' => 'https://twitter.com/youngershen',
             'logo' => $default_logo,
             'custom_code' => '',
+            'beian' => '',
+            'copyright' => get_the_author_link()
     ];
 
     if($args['avatar'])
@@ -151,6 +153,16 @@ function punkcoder_options_validate($args)
     if($args['custom_code'])
     {
         $filtered['custom_code'] = trim($args['custom_code']);
+    }
+
+    if($args['beian'])
+    {
+        $filtered['beian'] = trim($args['beian']);
+    }
+
+    if($args['copyright'])
+    {
+        $filtered['copyright'] = trim($args['copyright']);
     }
 
     return $filtered;
@@ -259,6 +271,20 @@ function punkcoder_setting_options()
         "punkcoder_custom_code_form",
         "punkcoder",
         "punkcoder_option_section");
+
+    add_settings_field(
+        "punkcoder_beian",
+        __('备案编号', 'punkcoder'),
+        "punkcoder_beian_form",
+        "punkcoder",
+        "punkcoder_option_section");
+
+    add_settings_field(
+        "punkcoder_copyright",
+        __('版权信息', 'punkcoder'),
+        "punkcoder_copyright_form",
+        "punkcoder",
+        "punkcoder_option_section");
 }
 
 function punkcoder_options_page()
@@ -361,7 +387,7 @@ function punkcoder_wechat_qr_image_form()
 function punkcoder_twitter_form()
 {
     ?>
-    <input class="punkcoder-option-form-input" type="text" name="punkcoder_options[twitter]" id="punkcoder_profile_options_twitter" value="<?php echo esc_html(punkcoder_get_options('punkcoder_options', 'twitter'));?>" />
+    <input class="punkcoder-option-form-input" type="text" name="punkcoder_options[twitter]" id="punkcoder_options_twitter" value="<?php echo esc_html(punkcoder_get_options('punkcoder_options', 'twitter'));?>" />
     <?php
 }
 
@@ -381,9 +407,23 @@ function punkcoder_logo_form()
 function punkcoder_custom_code_form()
 {
     ?>
-    <textarea name="punkcoder_options[custom_code]" id=""  cols="50" rows="10" class="punskcoder-option-form-input">
+    <textarea name="punkcoder_options[custom_code]" id=""  cols="35" rows="10" class="punskcoder-option-form-input">
         <?php echo trim(esc_html(punkcoder_get_options('punkcoder_options', 'custom_code')))?>
     </textarea>
+    <?php
+}
+
+function punkcoder_beian_form()
+{
+    ?>
+    <input class="punkcoder-option-form-input" type="text" name="punkcoder_options[beian]" id="punkcoder_options_beian" value="<?php echo esc_html(punkcoder_get_options('punkcoder_options', 'beian'));?>" />
+    <?php
+}
+
+function punkcoder_copyright_form()
+{
+    ?>
+    <input class="punkcoder-option-form-input" type="text" name="punkcoder_options[copyright]" id="punkcoder_options_copyright" value="<?php echo esc_html(punkcoder_get_options('punkcoder_options', 'copyright'));?>" />
     <?php
 }
 
