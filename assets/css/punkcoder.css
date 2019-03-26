@@ -56,7 +56,7 @@ nav
 
 .slogan-bg
 {
-    /*background-image: url("../images/slogan-bg.png") !important;*/
+    background-image: url("../images/slogan-bg.png") !important;
     background-repeat: repeat;
     background-position:  center;
     background-attachment: fixed;
