@@ -119,6 +119,41 @@ function the_view_count() {
     echo $page_view;
 }
 
+function the_like_count()
+{
+    global $post;
+    $meta_key = 'like_count';
+    $like_count = get_post_meta($post->ID, $meta_key, true);
+
+    if($like_count)
+    {
+        echo $like_count;
+    }
+    else
+    {
+        echo '0';
+    }
+}
+
+function post_like_handler()
+{
+    $post_id = $_POST['post_id'];
+    $meta_key = 'like_count';
+
+    $count = get_post_meta($post_id, $meta_key, true);
+    update_post_meta($post_id, $meta_key, (int)$count + 1);
+
+    echo json_encode([
+        'status'=> true,
+        'data' => [
+            'count'=> get_post_meta($post_id, $meta_key, true),
+        ]
+    ]);
+
+    wp_die();
+}
+
 add_filter('the_content', 'update_post_read_counts');
+add_action('wp_ajax_post_like', 'post_like_handler' );
 
 require_once("punkcoder.php");

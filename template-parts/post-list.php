@@ -62,11 +62,13 @@
                 </span>
                 <span class="home-post-meta-item">
                     <i class="fas fa-users"></i>
-                    <span><?php the_view_count(); _e("人阅读", "punkcoder"); ?></span>
+                    <span><?php the_view_count(); ?></span>
+                    <span><?php _e("人阅读", "punkcoder"); ?></span>
                 </span>
                 <span class="home-post-meta-item">
                     <i class="fas fa-thumbs-up"></i>
-                    <span>100 <?php _e("赞", "punkcoder"); ?></span>
+                    <span><?php the_like_count();?></span>
+                    <span><?php _e("赞", "punkcoder"); ?></span>
                 </span>
             </div>
             <hr>
