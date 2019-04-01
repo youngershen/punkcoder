@@ -35,16 +35,16 @@ function punkcoder_options_page_form()
         <h1><?php echo esc_html(get_admin_page_title())?></h1>
         <?php
 
-        $active_tab = "profile";
-        if(isset($_GET["tab"]))
+        $active_tab = 'profile';
+        if(isset($_GET['tab']))
         {
-            if($_GET["tab"] == "profile")
+            if($_GET['tab'] == 'profile')
             {
-                $active_tab = "profile";
+                $active_tab = 'profile';
             }
             else
             {
-                $active_tab = "setting";
+                $active_tab = 'setting';
             }
         }
         ?>
@@ -59,9 +59,9 @@ function punkcoder_options_page_form()
         <form method="post" action="options.php" id="punkcoder-option-form">
             <?php
 
-            settings_fields("punkcoder");
+            settings_fields('punkcoder');
 
-            do_settings_sections("punkcoder");
+            do_settings_sections('punkcoder');
 
             submit_button();
 
@@ -193,14 +193,14 @@ function punkcoder_options_header_html()
 
 function punkcoder_profile_options()
 {
-    add_settings_section("punkcoder_option_section", __('个人资料', 'punkcoder'), "punkcoder_options_header_html", "punkcoder");
+    add_settings_section('punkcoder_option_section', __('个人资料', 'punkcoder'), 'punkcoder_options_header_html', 'punkcoder');
 
     add_settings_field(
-        "punkcoder_avatar",
+        'punkcoder_avatar',
         __('头像', 'punkcoder'),
-        "punkcoder_avatar_form",
-        "punkcoder",
-        "punkcoder_option_section");
+        'punkcoder_avatar_form',
+        'punkcoder',
+        'punkcoder_option_section');
 
     add_settings_field(
         "punkcoder_nickname",

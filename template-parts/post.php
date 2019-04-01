@@ -33,7 +33,7 @@
         </span>
         <span class="home-post-meta-item">
             <i class="fas fa-users"></i>
-            <span>22 <?php _e("人阅读", "punkcoder"); ?></span>
+            <span><?php the_view_count();_e("人阅读", "punkcoder"); ?></span>
         </span>
         <span class="home-post-meta-item">
             <i class="fas fa-thumbs-up"></i>

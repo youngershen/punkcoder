@@ -22,21 +22,17 @@ function punkcoder_pagination()
 
     $pages = [];
 
-    if($current - $range_step >= 1)
-    {
+    if ($current - $range_step >= 1) {
         $page = $current - $range_step;
 
-        while($page < $current)
-        {
+        while ($page < $current) {
             array_push($pages, $page);
             $page += 1;
         }
-    }
-    else
-    {
+    } else {
         $page = 1;
 
-        while($page < $current){
+        while ($page < $current) {
             array_push($pages, $page);
             $page += 1;
         }
@@ -44,22 +40,17 @@ function punkcoder_pagination()
 
     array_push($pages, $current);
 
-    if($current + $range_step <= $total_pages)
-    {
+    if ($current + $range_step <= $total_pages) {
         $page = $current + 1;
 
-        while($page <= $current + $range_step)
-        {
+        while ($page <= $current + $range_step) {
             array_push($pages, $page);
             $page += 1;
         }
-    }
-    else
-    {
+    } else {
         $page = $current + 1;
 
-        while($page <= $total_pages)
-        {
+        while ($page <= $total_pages) {
             array_push($pages, $page);
             $page += 1;
         }
@@ -70,7 +61,7 @@ function punkcoder_pagination()
         'next' => $next,
         'first' => 1,
         'last' => $total_pages,
-        'current'=> $current,
+        'current' => $current,
         'pages' => $pages,
     ];
 
@@ -83,22 +74,16 @@ function punkcoder_pagination()
  * @param $default
  * @return string
  */
-function punkcoder_get_options($option, $name, $default=null)
+function punkcoder_get_options($option, $name, $default = null)
 {
     $options = get_option($option);
 
-    if($options && array_key_exists($name, $options))
-    {
+    if ($options && array_key_exists($name, $options)) {
         return $options[$name];
-    }
-    else
-    {
-        if(isset($default))
-        {
+    } else {
+        if (isset($default)) {
             return $default;
-        }
-        else
-        {
+        } else {
             return "";
         }
     }
@@ -111,8 +96,29 @@ function punkcoder_get_options($option, $name, $default=null)
  */
 function punkcoder_get_url($type, $name)
 {
-    $url = get_template_directory_uri() . '/assets/'. $type .'/' . $name;
+    $url = get_template_directory_uri() . '/assets/' . $type . '/' . $name;
     return $url;
 }
+
+function update_post_read_counts()
+{
+    global $post;
+    $meta_key = 'read_count';
+
+    if(is_singular())
+    {
+        $count = get_post_meta($post->ID, $meta_key, true);
+        update_post_meta($post->ID, $meta_key, (int)$count + 1);
+    }
+}
+
+function the_view_count() {
+    $id = get_the_ID();
+    $meta_key = 'read_count';
+    $page_view = get_post_meta($id, $meta_key, true);
+    echo $page_view;
+}
+
+add_filter('the_content', 'update_post_read_counts');
 
 require_once("punkcoder.php");
