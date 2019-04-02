@@ -13,6 +13,7 @@
   "author": "Younger Shen",
   "license": "MIT",
   "devDependencies": {
+    "babel": "^6.23.0",
     "gulp": "^4.0.0",
     "gulp-rename": "^1.4.0",
     "gulp-uglify": "^3.0.2"
