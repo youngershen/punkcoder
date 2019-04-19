@@ -9,11 +9,11 @@
  * WEBSIT  : https://www.punkcoder.cn
  */
 (function(window, $){
-    let punkcoder = {};
+    var punkcoder = {};
 
     punkcoder.navbarSticky = function()
     {
-        let scrollPosition = Math.round(window.scrollY);
+        var scrollPosition = Math.round(window.scrollY);
 
         if (scrollPosition > 100){
             $('nav').addClass('navbar-sticky');
@@ -28,5 +28,4 @@
         window.addEventListener('scroll', punkcoder.navbarSticky);
         console.log('scroll');
     });
-
 })(window, $);

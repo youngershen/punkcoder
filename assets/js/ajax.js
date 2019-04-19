@@ -10,7 +10,8 @@
  */
 (function(window, $){
 
-    let punkcoder;
+    var punkcoder = '';
+
     if(window.punkcoder)
     {
         punkcoder = window.punkcoder;
@@ -21,7 +22,7 @@
 
     punkcoder.post_like = function(post_id)
     {
-        let data = {
+        var data = {
             'post_id': post_id,
             'action': 'post_like'
         };
@@ -30,5 +31,4 @@
             console.log(r);
         })
     }
-
 })(window, $);

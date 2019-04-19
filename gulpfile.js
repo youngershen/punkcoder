@@ -7,32 +7,41 @@
  * WECHAT  : 13811754531
  * WEBSIT  : https://www.punkcoder.cn
  */
+const gulp = require('gulp');
+const uglify = require('gulp-uglify');
+const rename = require("gulp-rename");
+let cleanCSS = require('gulp-clean-css');
 
-const { series } = require('gulp');
 
-// The `clean` function is not exported so it can be considered a private task.
-// It can still be used within the `series()` composition.
-function clean(cb) {
-    // body omitted
-    cb();
-}
-
-// The `build` function is exported so it is public and can be run with the `gulp` command.
-// It can also be used within the `series()` composition.
-function build(cb) {
-    // body omitted
-    cb();
-}
-
-function compresss_js()
+function js()
 {
-
+    return gulp.src('assets/js/*.js')
+        .pipe(uglify())
+        .pipe(rename({suffix: '.min'}))
+        .pipe(gulp.dest('assets/dist/js'));
 }
 
-function comporess_css()
+function css()
 {
-    
+    return gulp.src('assets/css/*.css')
+        .pipe(cleanCSS())
+        .pipe(rename({suffix: '.min'}))
+        .pipe(gulp.dest('assets/dist/css'));
 }
 
-exports.build = build;
-exports.clean = clean;
+function watch()
+{
+    gulp.watch(['assets/js/*.js'], function(cb){
+        js();
+        cb();
+    });
+
+    gulp.watch(['assets/css/*.css'], function(cb){
+        css();
+        cb();
+    });
+}
+
+exports.js = js;
+exports.css = css;
+exports.watch = watch;
