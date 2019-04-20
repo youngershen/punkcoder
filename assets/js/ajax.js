@@ -27,7 +27,12 @@
         };
 
         $.post(ajax_object.url, data, function(r){
-            console.log(r);
-        })
+            var j = JSON.parse(r);
+            if(j.status)
+            {
+                $('#post-meta-item-like-count-' + post_id).html(j.data.count);
+            }
+        });
     }
+
 })(window, $);

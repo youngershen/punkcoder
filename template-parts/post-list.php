@@ -35,7 +35,7 @@
 
             ?>
         </div>
-        <div class="col-lg-8 m-0 col-sm-12">
+        <div class="col-lg-8 m-0 col-sm-12 <?php post_class();?>" id="post-<?php the_ID(); ?>">
             <header>
                 <a href="<?php echo(esc_url(get_permalink())); ?>" class="text-secondary" target="_self">
                     <h2 class="home-post-title">
@@ -45,31 +45,7 @@
             </header>
             <hr>
             <div class="home-post-meta d-nonse d-lg-block">
-                <span class="home-post-meta-item">
-                    <i class="far fa-calendar-alt"></i>
-                    <span><?php echo get_the_date("Y-m-d H:i:s"); ?></span>
-                </span>
-                <span class="home-post-meta-item">
-                    <i class="fas fa-user-alt"></i>
-                    <span><?php the_author_posts_link(); ?></span>
-                </span>
-                <span class="home-post-meta-item">
-                    <i class="fas fa-comments"></i>
-                    <span>
-                        <span><?php echo(get_comments_number()); ?></span>
-                        <span><?php _e("条评论", "punkcoder"); ?></span>
-                    </span>
-                </span>
-                <span class="home-post-meta-item">
-                    <i class="fas fa-users"></i>
-                    <span><?php the_view_count(); ?></span>
-                    <span><?php _e("人阅读", "punkcoder"); ?></span>
-                </span>
-                <span class="home-post-meta-item">
-                    <i class="fas fa-thumbs-up"></i>
-                    <span><?php the_like_count();?></span>
-                    <span><?php _e("赞", "punkcoder"); ?></span>
-                </span>
+               <?php get_template_part('template-parts/post-meta')?>
             </div>
             <hr>
             <p class="home-post-content">

@@ -17,6 +17,7 @@
         if (scrollPosition > 100){
             $('nav').addClass('navbar-sticky');
         }
+
         else {
             $('nav').removeClass('navbar-sticky');
         }
@@ -25,6 +26,5 @@
     window.punkcoder = punkcoder;
     $(document).ready(function(){
         window.addEventListener('scroll', punkcoder.navbarSticky);
-        console.log('scroll');
     });
 })(window, $);

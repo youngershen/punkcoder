@@ -214,3 +214,8 @@ nav
 {
     padding: 0 1rem;
 }
+
+.post-meta-item-like-icon
+{
+    color: #000000;
+}

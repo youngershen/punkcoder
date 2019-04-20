@@ -100,7 +100,7 @@ function punkcoder_get_url($type, $name)
     return $url;
 }
 
-function update_post_read_counts()
+function update_post_read_counts($content)
 {
     global $post;
     $meta_key = 'read_count';
@@ -110,6 +110,7 @@ function update_post_read_counts()
         $count = get_post_meta($post->ID, $meta_key, true);
         update_post_meta($post->ID, $meta_key, (int)$count + 1);
     }
+    return $content;
 }
 
 function the_view_count() {

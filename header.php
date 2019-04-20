@@ -24,7 +24,7 @@
     <!-- load font awesome css-->
     <link rel="stylesheet" href="<?php echo(get_template_directory_uri()); ?>/assets/vendor/fontawesome-free-5.7.2-web/css/all.min.css">
     <!-- load custom css -->
-    <link rel="stylesheet" href="<?php echo(get_template_directory_uri())?>/assets/css/punkcoder.css">
+    <link rel="stylesheet" href="<?php echo(get_template_directory_uri())?>/assets/dist/css/punkcoder.min.css">
 
     <!-- load jquery -->
     <script src="<?php echo(get_template_directory_uri()); ?>/assets/vendor/jquery-3.3.1.min.js"></script>
