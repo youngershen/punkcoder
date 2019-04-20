@@ -458,7 +458,7 @@ function punkcoder_admin_enqueue_js() {
     wp_enqueue_media();
 
     // admin.js
-    $url = punkcoder_get_url('js', 'admin.js');
+    $url = punkcoder_get_url('dist/js', 'admin.min.js');
     wp_register_script('punkcoder-admin', $url, array('jquery'));
 
     // bootstrap.js
@@ -492,7 +492,7 @@ function punkcoder_admin_enqueue_js() {
 
 function punkcoder_enqueue_js()
 {
-    $url = punkcoder_get_url('js', 'ajax.js');
+    $url = punkcoder_get_url('dist/js', 'ajax.min.js');
     wp_register_script('punkcoder-ajax', $url);
 
     wp_enqueue_script( 'punkcoder-ajax');
