@@ -28,11 +28,19 @@
         <div class="col-lg-8 col-md-12 col-sm-12">
             <?php
                 the_post();
-                get_template_part("template-parts/post");
+                get_template_part("template-parts/post-single");
+            ?>
+
+            <?php
+                if ( comments_open() || get_comments_number() )
+                {
+                    comments_template();
+                }
             ?>
         </div>
     </div>
 </main>
+
 </body>
 <span class="d-block mt-5"></span>
 <?php get_footer(); ?>

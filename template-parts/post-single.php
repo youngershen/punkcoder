@@ -20,16 +20,20 @@
     </div>
     <hr>
     <div class="single-article-content">
-        <?php the_content(); ?>
+        <?php
+        the_content();
+
+        wp_link_pages( array(
+            'before'      => '<div class="post-page-links">' . __( 'Pages:', 'punkcoder' ),
+            'after'       => '</div>',
+            'link_before' => '<span class="page-number">',
+            'link_after'  => '</span>',
+        ) );
+
+        ?>
     </div>
 </article>
 
 <div class="single-comment">
-<?php
 
-if ( comments_open() || get_comments_number() )
-{
-    comments_template('./template-parts/comments.php');
-}
-?>
 </div>
