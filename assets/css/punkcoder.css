@@ -229,3 +229,29 @@ nav
 {
     color: #000000;
 }
+
+.post-comments
+{
+    margin: 1rem 0rem;
+    padding: 1rem 2rem;
+    background-color: #f8f9fa;
+    border-radius: .5rem;
+}
+
+.post-comments-form
+{
+    margin: 2rem 1rem;
+    padding: 1rem 2rem;
+    background-color: #f8f9fa;
+    border-radius: .5rem;
+}
+
+.comment-reply-title
+{
+
+}
+
+.post-comments-closed
+{
+
+}

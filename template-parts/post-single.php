@@ -13,7 +13,7 @@
 
 <article class="single-article <?php post_class();?>" id="post-<?php the_ID(); ?>">
     <header class="single-article-header justify-content-center">
-        <h2 class="justify-content-center single-article-title"><?php echo(get_the_title()); ?></h2>
+        <h2 class="justify-content-center single-article-title"><?php echo($post->post_title) ?></h2>
     </header>
     <div class="single-article-meta">
         <?php get_template_part('template-parts/post-meta')?>
@@ -22,18 +22,15 @@
     <div class="single-article-content">
         <?php
         the_content();
-
-        wp_link_pages( array(
-            'before'      => '<div class="post-page-links">' . __( 'Pages:', 'punkcoder' ),
-            'after'       => '</div>',
-            'link_before' => '<span class="page-number">',
-            'link_after'  => '</span>',
-        ) );
-
         ?>
     </div>
 </article>
 
-<div class="single-comment">
-
-</div>
+<?php
+wp_link_pages( array(
+    'before'      => '<div class="post-page-links">' . __( 'Pages:', 'punkcoder' ),
+    'after'       => '</div>',
+    'link_before' => '<span class="page-number">',
+    'link_after'  => '</span>',
+) );
+?>
