@@ -30,7 +30,7 @@
                 the_post();
                 get_template_part("template-parts/post-single");
             ?>
-            <div class="container">
+            <div class="container-fluid d-none d-lg-block post-comments">
                 <?php
                 if ( comments_open() || get_comments_number() )
                 {

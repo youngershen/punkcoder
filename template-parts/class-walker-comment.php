@@ -10,7 +10,9 @@
  * WEBSIT  : https://www.punkcoder.cn
  */
  
- class Punkcder_Walker_Comment extends Walker_comment
+ class Punkcder_Walker_Comment extends Walker_Comment
 {
-
-}
+    function __construct()
+    {
+    }
+ }

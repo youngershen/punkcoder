@@ -232,18 +232,37 @@ nav
 
 .post-comments
 {
-    margin: 1rem 0rem;
+    padding:1rem 0;
+    border-radius: .5rem;
+    margin:0;
+}
+
+.post-comment-list-item
+{
+    background-color: #f8f9fa;
+    margin: 1rem 0;
+    padding: .8rem;
+    border-radius: .5rem;
+    /*margin-top: 1rem;*/
+}
+
+.post-comment-list-item-wrap
+{
+    padding: 0;
+}
+
+.post-comments-form
+{
     padding: 1rem 2rem;
     background-color: #f8f9fa;
     border-radius: .5rem;
 }
 
-.post-comments-form
+.post-comment-list
 {
-    margin: 2rem 1rem;
-    padding: 1rem 2rem;
-    background-color: #f8f9fa;
-    border-radius: .5rem;
+    list-style:none;
+    margin: 0;
+    padding: 0;
 }
 
 .comment-reply-title
@@ -254,4 +273,32 @@ nav
 .post-comments-closed
 {
 
+}
+.post-comment-list-item-avatar
+{
+    width: 50px;
+    height: 50px;
+    margin-left: 0;
+}
+
+.post-comment-list-item-nickname
+{
+    margin-top: .5rem;
+    font-weight: bold;
+}
+
+.post-comment-list-item-time
+{
+    font-size: .5rem;
+    margin-top: 0;
+}
+
+.post-comment-list-item-content
+{
+    margin-top: .5rem;
+}
+
+.post-comment-reply-item
+{
+    margin-left: 6rem;
 }
