@@ -117,7 +117,7 @@ if (post_password_required()) {
 </div>
 
 <div class="row punkcoder-post-comments-pagination">
-    <nav aria-label="Page navigation example" class="col-12 ">
+    <nav aria-label="Page navigation " class="col-12 ">
         <ul class="pagination justify-content-center">
             <li class="page-item"><a class="page-link" href="#">首页</a></li>
             <li class="page-item"><a class="page-link" href="#">1</a></li>

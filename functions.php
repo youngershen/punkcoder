@@ -157,4 +157,11 @@ function post_like_handler()
 add_filter('the_content', 'update_post_read_counts');
 add_action('wp_ajax_post_like', 'post_like_handler' );
 
+add_filter('wp_link_pages_link', function($l, $s){
+
+    $l = substr_replace($l, 'class="page-link" ', 3, 0);
+    echo($i);
+    return '<li class="page-item">' . $l . '</li>';
+});
+
 require_once("punkcoder.php");
