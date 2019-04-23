@@ -285,22 +285,36 @@ nav
 {
     margin-top: .5rem;
     font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%
 }
 
 .post-comment-list-item-time
 {
     font-size: .5rem;
     margin-top: 0;
-    margin-left: .8rem;
+    margin-left: .5rem;
 }
 
 .post-comment-list-item-content
 {
     margin-top: .5rem;
-    margin-left: .8rem;
+    margin-left: .5rem;
 }
 
 .post-comment-reply-item
 {
     margin-left: 4rem;
+}
+
+.post-comment-list-item-head
+{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.post-comment-list-item-reply
+{
+    width:100%;
 }
