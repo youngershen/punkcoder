@@ -32,7 +32,7 @@
             ?>
             <div class="container-fluid d-none d-lg-block post-comments">
                 <?php
-                if ( comments_open() || get_comments_number() )
+                if ( comments_open() )
                 {
                     comments_template();
                 }

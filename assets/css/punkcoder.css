@@ -291,14 +291,16 @@ nav
 {
     font-size: .5rem;
     margin-top: 0;
+    margin-left: .8rem;
 }
 
 .post-comment-list-item-content
 {
     margin-top: .5rem;
+    margin-left: .8rem;
 }
 
 .post-comment-reply-item
 {
-    margin-left: 6rem;
+    margin-left: 4rem;
 }
