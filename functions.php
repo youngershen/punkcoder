@@ -100,7 +100,7 @@ function punkcoder_get_url($type, $name)
     return $url;
 }
 
-function update_post_read_counts($content)
+function punkcoder_update_post_read_counts($content)
 {
     global $post;
     $meta_key = 'read_count';
@@ -113,14 +113,14 @@ function update_post_read_counts($content)
     return $content;
 }
 
-function the_view_count() {
+function punkcoder_the_view_count() {
     $id = get_the_ID();
     $meta_key = 'read_count';
     $page_view = get_post_meta($id, $meta_key, true);
     echo $page_view;
 }
 
-function the_like_count()
+function punkcoder_the_like_count()
 {
     global $post;
     $meta_key = 'like_count';
@@ -136,7 +136,7 @@ function the_like_count()
     }
 }
 
-function post_like_handler()
+function punkcoder_post_like_handler()
 {
     $post_id = $_POST['post_id'];
     $meta_key = 'like_count';
@@ -154,11 +154,8 @@ function post_like_handler()
     wp_die();
 }
 
-add_filter('the_content', 'update_post_read_counts');
-add_action('wp_ajax_post_like', 'post_like_handler' );
-
-add_filter('wp_link_pages_link', function($link){
-
+function punkcoder_post_page_link($link)
+{
     if(preg_match('/^[0-9]+$/', $link))
     {
         $link = '<li class="page-item disabled"><a class="page-link" href="#">' . $link . '</a></li>';
@@ -168,10 +165,10 @@ add_filter('wp_link_pages_link', function($link){
         $link = substr_replace($link, 'class="page-link" ', 3, 0);
     }
     return '<li class="page-item">' . $link . '</li>';
-});
+}
 
-add_filter('wp_link_pages', function($output, $args=null){
-    return $output;
-});
+add_filter('wp_link_pages_link', 'punkcoder_post_page_link');
+add_filter('the_content', 'punkcoder_update_post_read_counts');
+add_action('wp_ajax_post_like', 'punkcoder_post_like_handler' );
 
 require_once("punkcoder.php");

@@ -31,7 +31,7 @@
 
 <span class="home-post-meta-item">
     <i class="fas fa-users"></i>
-    <span><?php the_view_count(); ?></span>
+    <span><?php punkcoder_the_view_count(); ?></span>
     <span><?php _e("人阅读", "punkcoder"); ?></span>
 </span>
 
@@ -39,6 +39,6 @@
     <a href="javascript:punkcoder.post_like('<?php the_ID();?>')" class="post-meta-item-like-icon">
         <i class="fas fa-thumbs-up"></i>
     </a>
-    <span  id="post-meta-item-like-count-<?php the_ID(); ?>"><?php the_like_count(); ?></span>
+    <span  id="post-meta-item-like-count-<?php the_ID(); ?>"><?php punkcoder_the_like_count(); ?></span>
     <span><?php _e("赞", "punkcoder"); ?></span>
 </span>
