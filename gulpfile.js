@@ -18,7 +18,7 @@ function js()
     return gulp.src('assets/js/*.js')
         .pipe(uglify())
         .pipe(rename({suffix: '.min'}))
-        .pipe(gulp.dest('assets/dist/js'));
+        .pipe(gulp.dest('assets/vendor/dist/js'));
 }
 
 function css()
@@ -26,7 +26,7 @@ function css()
     return gulp.src('assets/css/*.css')
         .pipe(cleanCSS())
         .pipe(rename({suffix: '.min'}))
-        .pipe(gulp.dest('assets/dist/css'));
+        .pipe(gulp.dest('assets/vendor/dist/css'));
 }
 
 function watch()

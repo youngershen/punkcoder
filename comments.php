@@ -57,47 +57,46 @@ if (post_password_required()) {
     </ol>
 </div>
 
-<div id="post-comments-form punkcoder-post-comment-form"
-     class="col-md-12 col-sm-12 <?php echo comments_open() ? 'post-comments-form' : 'post-comments-form post-comments-closed'; ?>">
+<?php
+$req = get_option( 'require_name_email' );
+$commenter = wp_get_current_commenter();
+//
+$fields   =  array(
+    'author'  => '  <div class="form-row"> <div class="form-group col-md-6">
+                     <label for="author">' . __( 'Name' ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label> ' .
+                    '<input type="text" class="form-control" placeholder="张三" id="author" name="author" value="' . esc_attr( $commenter['comment_author'] ) . '"' . ($req ? 'required="required"' : '') . '> 
+                    </div>',
 
-    <h3 class="">发表评论</h3>
-    <h5>电子邮件地址不会被公开。 必填项已用 * 标注</h5>
-    <br>
-    <form>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputEmail4">姓名(*)</label>
-                <input type="text" class="form-control" id="inputEmail4" placeholder="张三">
-            </div>
-            <div class="form-group col-md-6">
-                <label for="inputPassword4">邮箱(*)</label>
-                <input type="email" class="form-control" id="inputPassword4" placeholder="zhangsan@gmail.com">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="inputAddress">留言(*)</label>
-            <textarea class="form-control" id="inputAddress" rows="3">内容不错！</textarea>
-        </div>
+    'email'  => '<div class="form-group col-md-6">
+                     <label for="email">' . __( 'Name' ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label> ' .
+                    '<input type="email" class="form-control" placeholder="zhangsan@gmail.com" id="email" name="email" value="' . esc_attr( $commenter['comment_author_email'] ) . '"' . ($req ? 'required="required"' : '') . '> 
+                    </div></div>'
+);
 
-        <button type="submit" class="btn btn-primary">提交</button>
-    </form>
-</div>
+$args = [
+    'title_reply' => __('发表评论', 'punkcoder'),
+    'title_reply_to' => __( '向 %s 回复评论', 'punkcoder'),
+    'comment_notes_before' => '<h5>电子邮件地址不会被公开。 必填项已用 * 标注</h5>',
+    'comment_notes_after' => '',
+    'comment_field' => '<div class="form-group">
+                            <label for="comment">留言</label>
+                            <textarea class="form-control" id="comment" rows="3" name="comment"  maxlength="65525" required="required">内容不错！</textarea>
+                        </div>',
+    'fields' => $fields,
+    'submit_field' => '%1$s %2$s',
+    'submit_button' => '<input name="%1$s" type="submit" id="%2$s" class="%3$s btn btn-primary" value="%4$s" />',
+];
+
+comment_form($args);
+?>
 
 <div class="row punkcoder-post-comments-pagination">
     <nav aria-label="Page navigation " class="col-12 ">
         <ul class="pagination justify-content-center">
-            <li class="page-item"><a class="page-link" href="#">首页</a></li>
             <li class="page-item"><a class="page-link" href="#">1</a></li>
             <li class="page-item"><a class="page-link" href="#">2</a></li>
             <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">末页</a></li>
         </ul>
     </nav>
 </div>
 
-<?php
-comment_form( array(
-    'title_reply_before' => '<h2 id="reply-title" class="comment-reply-title">',
-    'title_reply_after'  => '</h2>',
-) );
-?>

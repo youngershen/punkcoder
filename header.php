@@ -24,7 +24,7 @@
     <!-- load font awesome css-->
     <link rel="stylesheet" href="<?php echo(get_template_directory_uri()); ?>/assets/vendor/fontawesome-free-5.7.2-web/css/all.min.css">
     <!-- load custom css -->
-    <link rel="stylesheet" href="<?php echo(get_template_directory_uri())?>/assets/dist/css/punkcoder.min.css">
+    <link rel="stylesheet" href="<?php echo(get_template_directory_uri())?>/assets/vendor/dist/css/punkcoder.min.css">
 
     <!-- load jquery -->
     <script src="<?php echo(get_template_directory_uri()); ?>/assets/vendor/jquery-3.3.1.min.js"></script>
@@ -33,7 +33,7 @@
     <!-- load fontawesome js-->
     <script src="<?php echo(get_template_directory_uri()); ?>/assets/vendor/fontawesome-free-5.7.2-web/js/all.min.js"></script>
     <!-- load custom js -->
-    <script src="<?php echo(get_template_directory_uri())?>/assets/dist/js/punkcoder.min.js"></script>
+    <script src="<?php echo(get_template_directory_uri())?>/assets/vendor/dist/js/punkcoder.min.js"></script>
 
     <!-- custom code is here -->
     <?php echo punkcoder_get_options('punkcoder_options', 'custom_code');?>

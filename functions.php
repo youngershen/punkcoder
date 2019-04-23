@@ -167,6 +167,26 @@ function punkcoder_post_page_link($link)
     return '<li class="page-item">' . $link . '</li>';
 }
 
+function punkcoder_post_comment_form_before()
+{
+    echo '<div id="post-comments-form" class="col-md-12 col-sm-12 punkcoder-post-comment-form post-comments-form">';
+}
+
+function punkcoder_post_comment_form_after()
+{
+    echo '</div>';
+}
+
+function punkcoder_comment_form_fields($fields)
+{
+    $comment_field = array_shift($fields);
+    $fields = array_merge($fields, ['comment' => $comment_field]);
+    return $fields;
+}
+
+add_filter('comment_form_fields', 'punkcoder_comment_form_fields');
+add_action('comment_form_after', 'punkcoder_post_comment_form_after');
+add_action('comment_form_before', 'punkcoder_post_comment_form_before');
 add_filter('wp_link_pages_link', 'punkcoder_post_page_link');
 add_filter('the_content', 'punkcoder_update_post_read_counts');
 add_action('wp_ajax_post_like', 'punkcoder_post_like_handler' );

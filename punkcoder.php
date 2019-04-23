@@ -458,7 +458,7 @@ function punkcoder_admin_enqueue_js() {
     wp_enqueue_media();
 
     // admin.js
-    $url = punkcoder_get_url('dist/js', 'admin.min.js');
+    $url = punkcoder_get_url('/vendor/dist/js', 'admin.min.js');
     wp_register_script('punkcoder-admin', $url, array('jquery'));
 
     // bootstrap.js
@@ -472,7 +472,6 @@ function punkcoder_admin_enqueue_js() {
     wp_enqueue_script('punkcoder-admin');
     wp_enqueue_script('punkcoder-bootstrap');
     wp_enqueue_script('punkcoder-fontawesome');
-
 
     // admin.css
     $url = punkcoder_get_url('css', 'admin.css');
@@ -492,7 +491,7 @@ function punkcoder_admin_enqueue_js() {
 
 function punkcoder_enqueue_js()
 {
-    $url = punkcoder_get_url('dist/js', 'ajax.min.js');
+    $url = punkcoder_get_url('vendor/dist/js', 'ajax.min.js');
     wp_register_script('punkcoder-ajax', $url);
 
     wp_enqueue_script( 'punkcoder-ajax');
