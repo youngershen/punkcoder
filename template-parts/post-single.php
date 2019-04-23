@@ -26,16 +26,6 @@
         </div>
     </article>
 
-    <nav aria-label="Page navigation " class="justify-content-center">
-        <ul class="pagination justify-content-center">
-            <li class="page-item"><a class="page-link" href="#">首页</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">末页</a></li>
-        </ul>
-    </nav>
-
 <?php
 wp_link_pages(array(
     'before' => '<nav aria-label="Page navigation" class="justify-content-center"><ul class="pagination justify-content-center">',

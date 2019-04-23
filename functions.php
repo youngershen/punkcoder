@@ -157,11 +157,21 @@ function post_like_handler()
 add_filter('the_content', 'update_post_read_counts');
 add_action('wp_ajax_post_like', 'post_like_handler' );
 
-add_filter('wp_link_pages_link', function($l, $s){
+add_filter('wp_link_pages_link', function($link){
 
-    $l = substr_replace($l, 'class="page-link" ', 3, 0);
-    echo($i);
-    return '<li class="page-item">' . $l . '</li>';
+    if(preg_match('/^[0-9]+$/', $link))
+    {
+        $link = '<li class="page-item disabled"><a class="page-link" href="#">' . $link . '</a></li>';
+    }
+    else
+    {
+        $link = substr_replace($link, 'class="page-link" ', 3, 0);
+    }
+    return '<li class="page-item">' . $link . '</li>';
+});
+
+add_filter('wp_link_pages', function($output, $args=null){
+    return $output;
 });
 
 require_once("punkcoder.php");
