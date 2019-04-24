@@ -10,9 +10,26 @@
  * WEBSIT  : https://www.punkcoder.cn
  */
  
- class Punkcder_Walker_Comment extends Walker_Comment
+ class Punkcoder_Walker_Comment extends Walker_Comment
 {
-    function __construct()
+    protected function comment($comment, $depth, $args)
     {
+        $this->punkcoder_comment($comment, $depth, $args);
+    }
+
+    protected  function html5_comment( $comment, $depth, $args )
+    {
+        $this->punkcoder_comment($comment, $depth, $args);
+    }
+
+    private function punkcoder_comment($comment, $depth, $args)
+    {
+?>
+
+
+
+
+<?php
+
     }
  }

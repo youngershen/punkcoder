@@ -243,7 +243,6 @@ nav
     margin: 1rem 0;
     padding: .8rem;
     border-radius: .5rem;
-    /*margin-top: 1rem;*/
 }
 
 .post-comment-list-item-wrap
@@ -276,14 +275,11 @@ nav
 }
 .post-comment-list-item-avatar
 {
-    width: 50px;
-    height: 50px;
-    margin-left: 0;
 }
 
 .post-comment-list-item-nickname
 {
-    margin-top: .5rem;
+    /*margin-top: .5rem;*/
     font-weight: bold;
     margin-left: auto;
     margin-right: auto;
@@ -294,13 +290,11 @@ nav
 {
     font-size: .5rem;
     margin-top: 0;
-    margin-left: .5rem;
 }
 
 .post-comment-list-item-content
 {
     margin-top: .5rem;
-    margin-left: .5rem;
 }
 
 .post-comment-reply-item
@@ -316,11 +310,18 @@ nav
 }
 .post-comment-list-item-reply
 {
+    margin-left: auto;
+    margin-right: auto;
     width:100%;
 }
 
 .comment-respond
 {
     margin: 0;
+    padding: 0;
+}
+
+.post-comment-list-item-body
+{
     padding: 0;
 }

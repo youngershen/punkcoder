@@ -16,46 +16,84 @@ if (post_password_required()) {
 
 ?>
 
-<div class="row justify-content-center punkcoder-post-comments">
-    <ol id="post-comments" class="post-comments-list col-12">
-        <li class="row post-comment-list-item">
-            <div class="col-md-1 col-sm-2 post-comment-list-item-wrap  justify-content-center">
-                <img src="http://localhost/wp-content/uploads/2019/03/11191354_1098524393497935_847263551_n.jpg" alt=""
-                     class="rounded post-comment-list-item-avatar d-block post-comment-list-item-head">
-                    <span class="d-block post-comment-list-item-nickname post-comment-list-item-head">申延刚水电费</span>
-                    <a href="" class="d-block post-comment-list-item-head post-comment-list-item-reply">回复</a>
-            </div>
-            <div class="col-md-11 col-sm-10 post-comment-list-item-wrap">
-                <span class="d-block post-comment-list-item-time">2018-12-12 20:52:55</span>
-                <span class="d-block text-left post-comment-list-item-content">你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理  你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理</span>
-            </div>
-            <div class="post-comment-reply-item row post-comment-list-item">
-                <div class="col-md-1 col-sm-2 post-comment-list-item-wrap  justify-content-center">
-                    <img src="http://localhost/wp-content/uploads/2019/03/11191354_1098524393497935_847263551_n.jpg" alt=""
-                         class="rounded post-comment-list-item-avatar d-block post-comment-list-item-head">
-                    <span class="d-block post-comment-list-item-nickname post-comment-list-item-head">申延刚水电费</span>
-                    <a href="" class="d-block post-comment-list-item-head post-comment-list-item-reply">回复</a>
-                </div>
-                <div class="col-md-11 col-sm-10 post-comment-list-item-wrap">
-                    <span class="d-block post-comment-list-item-time">2018-12-12 20:52:55</span>
-                    <span class="d-block text-left post-comment-list-item-content">你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理  你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理</span>
-                </div>
-                <div class="post-comment-reply-item row post-comment-list-item">
-                    <div class="col-md-1 col-sm-2 post-comment-list-item-wrap  justify-content-center">
-                        <img src="http://localhost/wp-content/uploads/2019/03/11191354_1098524393497935_847263551_n.jpg" alt=""
-                             class="rounded post-comment-list-item-avatar d-block post-comment-list-item-head">
-                        <span class="d-block post-comment-list-item-nickname post-comment-list-item-head">申延刚水电费</span>
-                        <a href="" class="d-block post-comment-list-item-head post-comment-list-item-reply">回复</a>
-                    </div>
-                    <div class="col-md-11 col-sm-10 post-comment-list-item-wrap">
-                        <span class="d-block post-comment-list-item-time">2018-12-12 20:52:55</span>
-                        <span class="d-block text-left post-comment-list-item-content">你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理  你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理</span>
-                    </div>
-                </div>
-            </div>
-        </li>
-    </ol>
-</div>
+<?php
+if(have_comments())
+{
+    require_once ('template-parts/class-walker-comment.php');
+
+    $args = [
+        'walker' => new Punkcoder_Walker_Comment(),
+//        'max_depth' => 3,
+        'style' => 'ol',
+//        'per_page' =>3,
+        'avatar_size' => '',
+        'reverse_top_level' => true,
+        'reverse_children'=> true,
+        'format' => 'html5'
+    ];
+
+?>
+<!--    <div class="row justify-content-center punkcoder-post-comments">-->
+<!--        <ol id="post-comments" class="post-comments-list col-12">-->
+<!--            <li class="row post-comment-list-item">-->
+<!--                <div class="col-md-1 col-sm-2 post-comment-list-item-head">-->
+<!--                    <img src="http://localhost/wp-content/uploads/2019/03/11191354_1098524393497935_847263551_n.jpg" alt=""-->
+<!--                         class="rounded post-comment-list-item-avatar d-block mw-100">-->
+<!--                    <a href="" class="d-block post-comment-list-item-reply">回复</a>-->
+<!--                </div>-->
+<!--                <div class="col-md-11 col-sm-10 post-comment-list-item-body">-->
+<!--                    <span class="d-block post-comment-list-item-nickname">申延刚</span>-->
+<!--                    <span class="d-block post-comment-list-item-time">2018-12-12 20:52:55</span>-->
+<!--                    <span class="d-block post-comment-list-item-content">你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理  你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理</span>-->
+<!--                </div>-->
+<!--                <div class="post-comment-reply-item row post-comment-list-item">-->
+<!--                    <div class="col-md-1 col-sm-2 post-comment-list-item-head">-->
+<!--                        <img src="http://localhost/wp-content/uploads/2019/03/11191354_1098524393497935_847263551_n.jpg" alt=""-->
+<!--                             class="rounded post-comment-list-item-avatar d-block mw-100">-->
+<!--                        <a href="" class="d-block post-comment-list-item-reply">回复</a>-->
+<!--                    </div>-->
+<!--                    <div class="col-md-11 col-sm-10 post-comment-list-item-body">-->
+<!--                        <span class="d-block post-comment-list-item-nickname">申延刚</span>-->
+<!--                        <span class="d-block post-comment-list-item-time">2018-12-12 20:52:55</span>-->
+<!--                        <span class="d-block post-comment-list-item-content">你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理  你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理</span>-->
+<!--                    </div>-->
+<!--                    <div class="post-comment-reply-item row post-comment-list-item">-->
+<!--                        <div class="col-md-1 col-sm-2 post-comment-list-item-head">-->
+<!--                            <img src="http://localhost/wp-content/uploads/2019/03/11191354_1098524393497935_847263551_n.jpg" alt=""-->
+<!--                                 class="rounded post-comment-list-item-avatar d-block mw-100">-->
+<!--                            <a href="" class="d-block post-comment-list-item-reply">回复</a>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-11 col-sm-10 post-comment-list-item-body">-->
+<!--                            <span class="d-block post-comment-list-item-nickname">申延刚</span>-->
+<!--                            <span class="d-block post-comment-list-item-time">2018-12-12 20:52:55</span>-->
+<!--                            <span class="d-block post-comment-list-item-content">你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理  你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理</span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li class="row post-comment-list-item">-->
+<!--                <div class="col-md-1 col-sm-2 post-comment-list-item-head">-->
+<!--                    <img src="http://localhost/wp-content/uploads/2019/03/11191354_1098524393497935_847263551_n.jpg" alt=""-->
+<!--                         class="rounded post-comment-list-item-avatar d-block mw-100">-->
+<!--                    <a href="" class="d-block post-comment-list-item-reply">回复</a>-->
+<!--                </div>-->
+<!--                <div class="col-md-11 col-sm-10 post-comment-list-item-body">-->
+<!--                    <span class="d-block post-comment-list-item-nickname">申延刚</span>-->
+<!--                    <span class="d-block post-comment-list-item-time">2018-12-12 20:52:55</span>-->
+<!--                    <span class="d-block post-comment-list-item-content">你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理  你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理</span>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--        </ol>-->
+<!--    </div>-->
+
+    <?php
+    wp_list_comments([]);
+    ?>
+
+<?php
+}?>
+
+
 
 <?php
 $req = get_option( 'require_name_email' );
@@ -83,13 +121,4 @@ $args = [
 comment_form($args);
 ?>
 
-<div class="row punkcoder-post-comments-pagination">
-    <nav aria-label="Page navigation " class="col-12 ">
-        <ul class="pagination justify-content-center">
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-        </ul>
-    </nav>
-</div>
-
+<?php the_punkcoder_comments_navigation(); ?>

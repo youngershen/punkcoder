@@ -184,6 +184,52 @@ function punkcoder_comment_form_fields($fields)
     return $fields;
 }
 
+function punkcoder_get_comments_page_link($page)
+{
+    $cpage = get_query_var('cpage');
+
+    if ( ! $page ) {
+        $page = 1;
+    }
+
+    if($page == $cpage)
+    {
+        $link  = '<li class="page-item disabled"><a class="page-link" href=" ' . esc_url(get_comments_pagenum_link($page)) . '">'. $page . '</a></li>';
+    }
+    else
+    {
+        $link = '<li class="page-item"><a class="page-link" href="' . esc_url(get_comments_pagenum_link($page)) . '">'. $page . '</a></li>';
+    }
+
+    return $link;
+}
+
+function the_punkcoder_comments_navigation()
+{
+    echo (punkcoder_comments_navigation());
+}
+
+function punkcoder_comments_navigation()
+{
+    $navigation = '';
+    $total = get_comment_pages_count();
+    $links = '';
+
+
+    // Are there comments to navigate through?
+    if ( $total > 1 ) {
+        for($i = 0 ; $i < $total ; $i ++)
+        {
+            $link = punkcoder_get_comments_page_link($i + 1);
+            $links  = $links . $link;
+        }
+
+        $navigation = '<div class="row punkcoder-post-comments-pagination"><nav aria-label="Page navigation " class="col-12 "><ul class="pagination justify-content-center">' . $links . ' </ul></nav></div>';
+    }
+
+    return $navigation;
+}
+
 add_filter('comment_form_fields', 'punkcoder_comment_form_fields');
 add_action('comment_form_after', 'punkcoder_post_comment_form_after');
 add_action('comment_form_before', 'punkcoder_post_comment_form_before');
