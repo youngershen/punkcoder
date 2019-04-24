@@ -12,6 +12,16 @@
  
  class Punkcoder_Walker_Comment extends Walker_Comment
 {
+     public function start_lvl( &$output, $depth = 0, $args = array() ) {
+         $GLOBALS['comment_depth'] = $depth + 1;
+         $output .= '<ol class="post-comment-reply-item row post-comment-list">';
+     }
+
+     public function end_lvl( &$output, $depth = 0, $args = array() ) {
+         $GLOBALS['comment_depth'] = $depth + 1;
+         $output .= '</ol>';
+     }
+
     protected function comment($comment, $depth, $args)
     {
         $this->punkcoder_comment($comment, $depth, $args);
