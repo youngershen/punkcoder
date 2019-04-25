@@ -230,6 +230,12 @@ function punkcoder_comments_navigation()
     return $navigation;
 }
 
+function theme_queue_js(){
+    if ( (!is_admin()) && is_singular() && comments_open() && get_option('thread_comments') )
+        wp_enqueue_script( 'comment-reply' );
+}
+
+add_action('wp_print_scripts', 'theme_queue_js');
 add_filter('comment_form_fields', 'punkcoder_comment_form_fields');
 add_action('comment_form_after', 'punkcoder_post_comment_form_after');
 add_action('comment_form_before', 'punkcoder_post_comment_form_before');

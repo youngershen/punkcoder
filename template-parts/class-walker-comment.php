@@ -104,10 +104,11 @@ class Punkcoder_Walker_Comment extends Walker_Comment
                                 ?>
                             </time>
                         </a>
+                        <?php edit_comment_link( __( 'Edit' ), '&nbsp;&nbsp;', '' );?>
                     </div>
                 </div>
             </div>
-            <div class="col-md-1s1 cols-sm-10 post-comment-list-item-body">
+        <div class="col-md-1s1 cols-sm-10 post-comment-list-item-body">
                 <?php comment_text(); ?>
             </div>
 <?php
