@@ -339,6 +339,11 @@ nav
     margin-top: -10px;
 }
 
+.post-comment-list-item-body > p
+{
+    margin-bottom: 0;
+}
+
 .post-comment-meta-content
 {
     /*padding-top: 1rem;*/

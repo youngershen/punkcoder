@@ -11,7 +11,7 @@
  */
 ?>
 
-    <article class="single-article <?php post_class(); ?>" id="post-<?php the_ID(); ?>">
+    <article <?php post_class('single-article'); ?> id="post-<?php the_ID(); ?>">
         <header class="single-article-header justify-content-center">
             <h2 class="justify-content-center single-article-title"><?php echo($post->post_title) ?></h2>
         </header>
