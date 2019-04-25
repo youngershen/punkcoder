@@ -33,21 +33,104 @@ if(have_comments())
     ];
 
 ?>
-    <ol id="post-comments" class="post-comment-list row justifys-content-center punkcoder-post-comments">
+    <ol id="post-comments" class="post-comment-list row  punkcoder-post-comments">
         <li class="col-12 post-comment-list-item">
-            <div class="col-smd-1 cosl-sm-2 post-comment-list-item-head d-inliane-block">
-                <img src="http://localhost/wp-content/uploads/2019/03/11191354_1098524393497935_847263551_n.jpg" alt="" class="rounded post-comment-list-item-avatar d-inline-block msw-100">
+            <div class="col-smd-1 cosl-sm-2 post-comment-list-item-head">
+                <div class="d-inline-block post-comment-list-item-avatar-wrap">
+                    <img src="http://localhost/wp-content/uploads/2019/03/11191354_1098524393497935_847263551_n.jpg" alt="" class="rounded post-comment-list-item-avatar">
+                </div>
                 <div class="d-inline-block post-comment-meta-content">
-                    <div class="d-block">
+                    <div>
                         <span class="d-inline-bslock post-comment-list-item-nickname">申延刚</span>
                         <a href="" class="d-inline-bslock post-comment-list-item-reply">回复</a>
                     </div>
-
-                    <span class="d-block post-comme nt-list-item-time">2018-12-12 20:52:55</span>
+                    <div>
+                        <span class=" post-comment-list-item-time">2018-12-12 20:52:55</span>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-1s1 cols-sm-10 post-comment-list-item-body d-inline-block">
-                <span class="d-block post-comment-list-item-content">你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理  你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理</span>
+            <div class="col-md-1s1 cols-sm-10 post-comment-list-item-body">
+                <p class=" post-comment-list-item-content">你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理  你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理</p>
+            </div>
+            <ol id="post-comments" class="post-comment-list row  punkcoder-post-comments punkcoder-post-comments-children">
+                <li class="col-12 post-comment-list-item">
+                    <div class="col-smd-1 cosl-sm-2 post-comment-list-item-head">
+                        <div class="d-inline-block post-comment-list-item-avatar-wrap">
+                            <img src="http://localhost/wp-content/uploads/2019/03/11191354_1098524393497935_847263551_n.jpg" alt="" class="rounded post-comment-list-item-avatar">
+                        </div>
+                        <div class="d-inline-block post-comment-meta-content">
+                            <div>
+                                <span class="d-inline-bslock post-comment-list-item-nickname">申延刚</span>
+                                <a href="" class="d-inline-bslock post-comment-list-item-reply">回复</a>
+                            </div>
+                            <div>
+                                <span class=" post-comment-list-item-time">2018-12-12 20:52:55</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1s1 cols-sm-10 post-comment-list-item-body">
+                        <p class=" post-comment-list-item-content">你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理  你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理</p>
+                    </div>
+                    <ol id="post-comments" class="post-comment-list row  punkcoder-post-comments punkcoder-post-comments-children">
+                        <li class="col-12 post-comment-list-item">
+                            <div class="col-smd-1 cosl-sm-2 post-comment-list-item-head">
+                                <div class="d-inline-block post-comment-list-item-avatar-wrap">
+                                    <img src="http://localhost/wp-content/uploads/2019/03/11191354_1098524393497935_847263551_n.jpg" alt="" class="rounded post-comment-list-item-avatar">
+                                </div>
+                                <div class="d-inline-block post-comment-meta-content">
+                                    <div>
+                                        <span class="d-inline-bslock post-comment-list-item-nickname">申延刚</span>
+                                        <a href="" class="d-inline-bslock post-comment-list-item-reply">回复</a>
+                                    </div>
+                                    <div>
+                                        <span class=" post-comment-list-item-time">2018-12-12 20:52:55</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-1s1 cols-sm-10 post-comment-list-item-body">
+                                <p class=" post-comment-list-item-content">你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理  你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理</p>
+                            </div>
+                        </li>
+                    </ol>
+                </li>
+            </ol>
+        </li>
+        <li class="col-12 post-comment-list-item">
+            <div class="col-smd-1 cosl-sm-2 post-comment-list-item-head">
+                <div class="d-inline-block post-comment-list-item-avatar-wrap">
+                    <img src="http://localhost/wp-content/uploads/2019/03/11191354_1098524393497935_847263551_n.jpg" alt="" class="rounded post-comment-list-item-avatar">
+                </div>
+                <div class="d-inline-block post-comment-meta-content">
+                    <div>
+                        <span class="d-inline-bslock post-comment-list-item-nickname">申延刚</span>
+                        <a href="" class="d-inline-bslock post-comment-list-item-reply">回复</a>
+                    </div>
+                    <div>
+                        <span class=" post-comment-list-item-time">2018-12-12 20:52:55</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1s1 cols-sm-10 post-comment-list-item-body">
+                <p class=" post-comment-list-item-content">你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理  你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理</p>
+            </div>
+        </li>
+        <li class="col-12 post-comment-list-item">
+            <div class="col-smd-1 cosl-sm-2 post-comment-list-item-head">
+                <div class="d-inline-block post-comment-list-item-avatar-wrap">
+                    <img src="http://localhost/wp-content/uploads/2019/03/11191354_1098524393497935_847263551_n.jpg" alt="" class="rounded post-comment-list-item-avatar">
+                </div>
+                <div class="d-inline-block post-comment-meta-content">
+                    <div>
+                        <span class="d-inline-bslock post-comment-list-item-nickname">申延刚</span>
+                        <a href="" class="d-inline-bslock post-comment-list-item-reply">回复</a>
+                    </div>
+                    <div>
+                        <span class=" post-comment-list-item-time">2018-12-12 20:52:55</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1s1 cols-sm-10 post-comment-list-item-body">
+                <p class=" post-comment-list-item-content">你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理  你说的好像很有道理 你说的好像很有道理 你说的好像很有道理 你说的好像很有道理</p>
             </div>
         </li>
     </ol>
