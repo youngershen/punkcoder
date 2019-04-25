@@ -25,12 +25,3 @@
     </div>
 </article>
 
-<div class="single-comment">
-    <?php
-
-    if ( comments_open() || get_comments_number() )
-    {
-        comments_template('./template-parts/comments.php');
-    }
-    ?>
-</div>

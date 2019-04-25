@@ -30,14 +30,16 @@
                 the_post();
                 get_template_part("template-parts/post-single");
             ?>
-            <div class="container-fluid d-none d-lg-block post-comments">
-                <?php
-                if ( comments_open() )
-                {
-                    comments_template();
-                }
+            <?php
+            if ( comments_open() )
+            {
                 ?>
-            </div>
+                <div class="container-fluid d-none d-lg-block post-comments">
+                    <?php comments_template(); ?>
+                </div>
+                <?php
+            }
+            ?>
         </div>
     </div>
 
