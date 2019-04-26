@@ -256,6 +256,7 @@ nav
     padding: 1rem 2rem;
     background-color: #f8f9fa;
     border-radius: .5rem;
+    border: 1px solid rgba(0,0,0,0.1)
 }
 
 .post-comment-list
@@ -282,19 +283,17 @@ nav
 
 .post-comment-list-item-nickname
 {
-    /*margin-top: .5rem;*/
     font-weight: bold;
     margin-left: auto;
     margin-right: auto;
-    /*width: 100%*/
-    vertical-align:top;
 }
 
 .post-comment-list-item-time
 {
     font-size: .5rem;
     /*margin-top: 0;*/
-    vertical-align:bottom;
+    /*right: 100px;*/
+    position: relative;
 
 }
 
@@ -313,6 +312,7 @@ nav
 .post-comment-list-item-head
 {
     border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding-bottom: .5rem;
 }
 .post-comment-list-item-reply
 {
@@ -339,21 +339,24 @@ nav
 
 .post-comment-meta-content
 {
-    /*padding-top: 1rem;*/
-    /*margin-left: 1rem;*/
+    padding-top: .5rem;
 }
 
 .post-comment-list-item-reply
 {
+    position: relative;
+    right: 0;
 }
 
 .post-comment-list-item-avatar-wrap
 {
-    position: relative;
-    top: -15px;
 }
 
 .punkcoder-post-comments-children
 {
     margin-left: 2rem;
+}
+
+.post-comment-meta-content-wrap
+{
 }

@@ -83,20 +83,16 @@ class Punkcoder_Walker_Comment extends Walker_Comment
 
 ?>
         <li id="comment-<?php comment_ID(); ?>" class="col-12 post-comment-list-item">
-            <div class="col-smd-1 cosl-sm-2 post-comment-list-item-head">
+            <div class="post-comment-list-item-head">
                 <div class="d-inline-block post-comment-list-item-avatar-wrap">
-                    <?php echo get_avatar( $comment, 98, '', '', ['class' => ['rounded' ,'post-comment-list-item-avatar']]); ?>
+                    <?php
+                        echo get_avatar( $comment, 98, '', get_comment_author($comment), ['class' => ['rounded' ,'post-comment-list-item-avatar']]);
+                    ?>
+                    <span class="post-comment-list-item-nickname">
+                        <?php echo get_comment_author_link( $comment );?>
+                    </span>
                 </div>
-                <div class="d-inline-block post-comment-meta-content">
-                    <div>
-                        <span class="d-inline-bslock post-comment-list-item-nickname">
-                            <?php echo get_comment_author_link( $comment );?>
-                        </span>
-                        <span class="d-inline-bslock post-comment-list-item-reply">
-                            <?php echo $reply_link; ?>
-                        </span>
-                    </div>
-                    <div>
+                <div class="d-inline-block post-comment-meta-content float-md-right">
                         <a href="<?php echo esc_url( get_comment_link( $comment, $args ) ); ?>" class="post-comment-list-item-time">
                             <time datetime="<?php comment_time( 'c' ); ?>">
                                 <?php
@@ -105,10 +101,12 @@ class Punkcoder_Walker_Comment extends Walker_Comment
                             </time>
                         </a>
                         <?php edit_comment_link( __( 'Edit' ), '&nbsp;&nbsp;', '' );?>
-                    </div>
+                        <span class="post-comment-list-item-reply">
+                            <?php echo $reply_link; ?>
+                        </span>
                 </div>
             </div>
-        <div class="col-md-1s1 cols-sm-10 post-comment-list-item-body">
+        <div class="post-comment-list-item-body">
                 <?php comment_text(); ?>
             </div>
 <?php
