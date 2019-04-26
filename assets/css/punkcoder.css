@@ -241,8 +241,9 @@ nav
 {
     background-color: #f8f9fa;
     margin: .5rem 0;
-    padding: .5rem;
+    padding: 1rem;
     border-radius: .5rem;
+    border: 1px solid rgba(0,0,0,0.1)
 }
 
 .post-comment-list-item-wrap
@@ -311,19 +312,11 @@ nav
 
 .post-comment-list-item-head
 {
-    /*margin-left: auto;*/
-    /*margin-right: auto;*/
-    /*text-align: center;*/
-    /*padding: 0;*/
+    border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 .post-comment-list-item-reply
 {
-    /*margin-left: auto;*/
-    /*margin-right: auto;*/
-    /*width:100%;*/
     vertical-align: bottom;
-
-
 }
 
 .comment-respond
@@ -336,7 +329,7 @@ nav
 {
     padding: 0;
     margin-bottom: 0;
-    margin-top: -10px;
+    margin-top: .5rem;
 }
 
 .post-comment-list-item-body > p
