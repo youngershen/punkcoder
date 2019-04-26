@@ -68,7 +68,7 @@ $query = new WP_Query($args);
                     <a href="<?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'weibo', 'https://weibo.com/shenyangang')); ?>" target="_blank">
                         <i class="fab fa-weibo fa-2x"></i>
                     </a>
-                    <a href="">
+                    <a data-toggle="modal" data-target="#wechat-qr-modal">
                         <i class="fab fa-weixin fa-2x"></i>
                     </a>
                     <a href="<?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'twitter', 'https://twitter.com/youngershen')); ?>" target="_blank">
@@ -175,4 +175,18 @@ $query = new WP_Query($args);
         <?php
     }
     ?>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="wechat-qr-modal" tabindex="-1" role="dialog" aria-labelledby="wechat-qr-modal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content ">
+            <div class="modal-body">
+                <img class="punkcoder-sidebar-wechat-qr-image rounded mw-100" src="<?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'wechat_qr_image', '')); ?>">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal"><?php _e('Close', 'punkcoder');?></button>
+            </div>
+        </div>
+    </div>
 </div>
