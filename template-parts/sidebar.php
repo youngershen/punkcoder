@@ -141,7 +141,6 @@ $query = new WP_Query($args);
                         <?php
                     }
                     ?>
-
                 </div>
             </div>
         </div>
