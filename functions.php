@@ -235,11 +235,11 @@ function theme_queue_js(){
         wp_enqueue_script( 'comment-reply' );
 }
 
-function my_theme_load_theme_textdomain() {
+function load_punkcoder_textdomain() {
     load_theme_textdomain( 'punkcoder', get_template_directory() . '/languages' );
 }
 
-add_action( 'after_setup_theme', 'my_theme_load_theme_textdomain' );
+add_action( 'after_setup_theme', 'load_punkcoder_textdomain' );
 add_action('wp_print_scripts', 'theme_queue_js');
 add_filter('comment_form_fields', 'punkcoder_comment_form_fields');
 add_action('comment_form_after', 'punkcoder_post_comment_form_after');
