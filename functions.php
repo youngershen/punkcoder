@@ -247,5 +247,6 @@ add_action('comment_form_before', 'punkcoder_post_comment_form_before');
 add_filter('wp_link_pages_link', 'punkcoder_post_page_link');
 add_filter('the_content', 'punkcoder_update_post_read_counts');
 add_action('wp_ajax_post_like', 'punkcoder_post_like_handler' );
+add_theme_support( 'post-thumbnails' );
 
 require_once("punkcoder.php");

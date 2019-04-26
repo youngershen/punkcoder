@@ -10,7 +10,6 @@
  * WEBSIT  : https://www.punkcoder.cn
  */
 
-
 function punkcoder_menu_items()
 {
     add_menu_page(
@@ -22,7 +21,6 @@ function punkcoder_menu_items()
         "",
         99
     );
-
 }
 
 function punkcoder_options_page_form()
@@ -188,7 +186,6 @@ function punkcoder_options_header_html()
         <span><?php _e('这里是系统设置 按需求填写即可', 'punkcoder'); ?></span>
         <?php
     }
-
 }
 
 function punkcoder_profile_options()
@@ -486,7 +483,6 @@ function punkcoder_admin_enqueue_js() {
     wp_register_style('punkcoder-fontawesome', $url);
 
     wp_enqueue_style('punkcoder-admin');
-
 }
 
 function punkcoder_enqueue_js()
