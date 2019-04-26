@@ -87,7 +87,7 @@ $query = new WP_Query($args);
         <div class="row punkcoder-sidebar-hot">
             <div class="col-12 punkcoder-sidebar-hot-col">
                 <div class="punkcoder-sidebar-hot-head">
-                    <span>热门文章</span>
+                    <span><?php _e('热门文章', 'punkcoder')?></span>
                 </div>
                 <div class="punkcoder-sidebar-hot-body">
                     <?php
@@ -121,7 +121,7 @@ $query = new WP_Query($args);
         <div class="row punkcoder-sidebar-hot">
             <div class="col-12 punkcoder-sidebar-hot-col">
                 <div class="punkcoder-sidebar-hot-head">
-                    <span>分类</span>
+                    <span><?php _e('分类', 'punkcoder')?></span>
                 </div>
                 <div class="punkcoder-sidebar-hot-body">
                     <?php
@@ -156,7 +156,7 @@ $query = new WP_Query($args);
         <div class="row punkcoder-sidebar-tag">
             <div class="col-12">
                 <div class="punkcoder-sidebar-tag-head">
-                    <span>标签</span>
+                    <span><?php _e('标签', 'punkcoder')?></span>
                 </div>
                 <div class="punkcoder-sidebar-tag-body">
                     <?php

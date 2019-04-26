@@ -1,0 +1,184 @@
+# Copyright (C) 2019 Younger Shen
+# This file is distributed under the MIK License.
+msgid ""
+msgstr ""
+"Project-Id-Version: PunkCoder 0.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/punkcoder\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2019-04-26T09:12:07+02:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.2.0\n"
+"X-Domain: punkcoder\n"
+
+#. Theme Name of the theme
+msgid "PunkCoder"
+msgstr ""
+
+#. Theme URI of the theme
+msgid "https://github.com/youngershen/punkcoder"
+msgstr ""
+
+#. Description of the theme
+msgid "Just a very simple wordpress theme for my blog, the reason i built this ware is that i implement all the feature i need in my theme, so i do not need to load more plugin to my wordpress, at last i got a very high speed and simple but powerful awesome theme."
+msgstr ""
+
+#. Author of the theme
+msgid "Younger Shen"
+msgstr ""
+
+#. Author URI of the theme
+msgid "https://github.com/youngershen/"
+msgstr ""
+
+#: comments.php:51
+msgid "张三"
+msgstr "Jack"
+
+#: comments.php:53
+msgid "zhangsan@gmail.com"
+msgstr "jack@gmail.com"
+
+#: comments.php:56
+msgid "留言"
+msgstr ""
+
+#: comments.php:56
+msgid "内容不错！"
+msgstr ""
+
+#: comments.php:59
+msgid "发表评论"
+msgstr ""
+
+#: comments.php:60
+msgid "向 %s 回复评论"
+msgstr ""
+
+#: comments.php:61
+msgid "电子邮件地址不会被公开 必填项已用 * 标注"
+msgstr ""
+
+#: punkcoder.php:18
+msgid "主题"
+msgstr ""
+
+#: punkcoder.php:55
+#: punkcoder.php:196
+msgid "个人资料"
+msgstr ""
+
+#: punkcoder.php:56
+#: punkcoder.php:266
+msgid "系统设置"
+msgstr ""
+
+#: punkcoder.php:83
+msgid "申延刚"
+msgstr ""
+
+#: punkcoder.php:116
+msgid "年龄输入非法"
+msgstr ""
+
+#: punkcoder.php:182
+msgid "这里填写的内容将会显示在首页侧边栏中 随便填就行 默认显示作者的信息"
+msgstr ""
+
+#: punkcoder.php:188
+msgid "这里是系统设置 按需求填写即可"
+msgstr ""
+
+#: punkcoder.php:200
+msgid "头像"
+msgstr ""
+
+#: punkcoder.php:207
+#: template-parts/sidebar.php:47
+msgid "昵称"
+msgstr ""
+
+#: punkcoder.php:214
+#: template-parts/sidebar.php:51
+msgid "年龄"
+msgstr ""
+
+#: punkcoder.php:221
+#: template-parts/sidebar.php:55
+msgid "手机"
+msgstr ""
+
+#: punkcoder.php:228
+#: template-parts/sidebar.php:59
+msgid "电邮"
+msgstr ""
+
+#: punkcoder.php:235
+msgid "Github"
+msgstr ""
+
+#: punkcoder.php:242
+msgid "微博"
+msgstr ""
+
+#: punkcoder.php:250
+msgid "微信二维码"
+msgstr ""
+
+#: punkcoder.php:258
+msgid "Twitter"
+msgstr ""
+
+#: punkcoder.php:270
+msgid "LOGO"
+msgstr ""
+
+#: punkcoder.php:277
+msgid "背景图片"
+msgstr ""
+
+#: punkcoder.php:284
+msgid "自定义代码"
+msgstr ""
+
+#: punkcoder.php:291
+msgid "备案编号"
+msgstr ""
+
+#: punkcoder.php:298
+msgid "版权信息"
+msgstr ""
+
+#: punkcoder.php:340
+#: punkcoder.php:395
+#: punkcoder.php:416
+#: punkcoder.php:429
+msgid "上传"
+msgstr ""
+
+#: search.php:45
+msgid "%s 的搜索结果:"
+msgstr ""
+
+#: searchform.php:15
+msgid "手气不错"
+msgstr ""
+
+#: searchform.php:18
+msgid "搜索"
+msgstr ""
+
+#: template-parts/post-meta.php:28
+msgid "条评论"
+msgstr ""
+
+#: template-parts/post-meta.php:35
+msgid "人阅读"
+msgstr ""
+
+#: template-parts/post-meta.php:43
+msgid "赞"
+msgstr ""
