@@ -52,27 +52,53 @@ $query = new WP_Query($args);
                     <span><?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'age', '30')); ?></span>
                 </div>
                 <div>
+                    <span><?php echo(__("性别", "punkcoder"));?>:</span>
+                    <span><?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'gender', '男')); ?></span>
+                </div>
+                <div>
+                    <span><?php echo(__("职业", "punkcoder"));?>:</span>
+                    <span><?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'occupation', 'PHP程序员')); ?></span>
+                </div>
+                <div>
                     <span><?php echo(__("手机", "punkcoder"));?>:</span>
                     <span><a href="tel:<?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'cellphone', '13811754531')); ?>"><?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'cellphone', '13811754531')); ?></a></span>
                 </div>
                 <div>
-                    <span><?php echo(__("电邮", "punkcoder"));?>:</span>
-                    <span class="punkcoder-sidebar-profile-email">
-                        <a href="mailto:<?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'email', 'shenyangang@163.com')); ?>"><?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'email', 'shenyangang@163.com')); ?></a>
-                    </span>
+                    <span><?php echo(__("微信", "punkcoder"));?>:</span>
+                    <span><?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'wechat', '13811754531')); ?></span>
+                </div>
+                <div>
+                    <span><?php echo(__("QQ", "punkcoder"));?>:</span>
+                    <span><?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'qq', '89198011')); ?></span>
+                </div>
+                <div>
+                    <span><?php echo(__("地址", "punkcoder"));?>:</span>
+                    <span><?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'address', '北京')); ?></span>
                 </div>
                 <div class="punkcoder-sidebar-profile-item-social justify-content-center">
                     <a href="<?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'github', 'https://github.com/youngershen')); ?>" target="_blank">
-                        <i class="fab fa-github fa-2x"></i>
+                        <i class="fab fa-github fa-1x"></i>
                     </a>
                     <a href="<?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'weibo', 'https://weibo.com/shenyangang')); ?>" target="_blank">
-                        <i class="fab fa-weibo fa-2x"></i>
+                        <i class="fab fa-weibo fa-1x"></i>
                     </a>
                     <a data-toggle="modal" data-target="#wechat-qr-modal">
-                        <i class="fab fa-weixin fa-2x"></i>
+                        <i class="fab fa-weixin fa-1x"></i>
                     </a>
                     <a href="<?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'twitter', 'https://twitter.com/youngershen')); ?>" target="_blank">
-                        <i class="fab fa-twitter fa-2x"></i>
+                        <i class="fab fa-twitter fa-1x"></i>
+                    </a>
+                    <a href="<?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'email', 'shenyangang@163.com')); ?>">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="">
+                        <i class="fab fa-pinterest"></i>
+                    </a>
+                    <a href="">
+                        <i class="fab fa-linkedin-in"></i>
                     </a>
                 </div>
             </div>

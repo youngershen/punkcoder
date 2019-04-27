@@ -28,7 +28,7 @@
                     ?>
                         <span class="punkcoder-footer-item">
                             <?php _e("备案编号"); ?>
-                            <a href="http://www.miitbeian.gov.cn/" target="_blank"><?php echo $beian;?></a>
+                            <a href="http://www.beian.miit.gov.cn" target="_blank"><?php echo $beian;?></a>
                         </span>
                     <?php
                 }
