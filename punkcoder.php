@@ -88,8 +88,8 @@ function punkcoder_options_validate($args)
             'twitter' => 'https://twitter.com/youngershen',
             'logo' => $default_logo,
             'custom_code' => '',
-            'beian' => '',
-            'copyright' => get_the_author_link(),
+            'beian' => '冀ICP备19005058号',
+            'copyright' => '<a href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank"> 署名 4.0 国际 (CC BY 4.0) </a>',
             'bg_image' => $default_bg_image
     ];
 
