@@ -104,12 +104,12 @@ $query = new WP_Query($args);
             </div>
         </div>
     </div>
-    <hr>
 
     <?php
 
     if ($query->have_posts()) {
         ?>
+        <hr>
         <div class="row punkcoder-sidebar-hot">
             <div class="col-12 punkcoder-sidebar-hot-col">
                 <div class="punkcoder-sidebar-hot-head">
@@ -141,7 +141,7 @@ $query = new WP_Query($args);
 
     ?>
     <?php
-    if ($categories) {
+    if ($categories && count($categories) > 0) {
         ?>
         <hr>
         <div class="row punkcoder-sidebar-hot">
@@ -170,14 +170,14 @@ $query = new WP_Query($args);
                 </div>
             </div>
         </div>
-        <hr>
         <?php
     }
     ?>
     <?php
-    if ($tags) {
+    if ($tags && count($tags) > 0) {
 
         ?>
+        <hr>
         <div class="row punkcoder-sidebar-tag">
             <div class="col-12">
                 <div class="punkcoder-sidebar-tag-head">
@@ -202,7 +202,7 @@ $query = new WP_Query($args);
     ?>
 </div>
 
-<!-- Modal -->
+<!-- Wechat Qr Image Modal -->
 <div class="modal fade" id="wechat-qr-modal" tabindex="-1" role="dialog" aria-labelledby="wechat-qr-modal" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content ">

@@ -48,9 +48,7 @@ $total = $pagination['last'];
                     get_template_part("template-parts/post-list");
                 }
             } else {
-
                 get_template_part("template-parts/post-none");
-
             }
             ?>
             <div class="home-post-pagination">
@@ -82,27 +80,21 @@ $total = $pagination['last'];
                             ?>
 
                             <li class="page-item <?php
-
                             if($current == $page)
                             {
                                 echo ("disabled");
                             }
-
-
                             ?>"><a class="page-link" href="<?php echo(get_pagenum_link($page)) ?>"><?php echo($page); ?></a>
                             </li>
                             <?php
                         }
                         ?>
 
-
                         <li class="page-item <?php
-
                         if($current == $total)
                         {
                             echo("disabled");
                         }
-
                         ?>">
                             <a class="page-link" href="<?php echo($next_link); ?>" tabindex="-1" aria-disabled="true"><?php _e(">"); ?></a>
                         </li>

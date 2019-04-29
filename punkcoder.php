@@ -200,6 +200,13 @@ function punkcoder_profile_options()
         'punkcoder_option_section');
 
     add_settings_field(
+        'punkcoder_avatar_check',
+        __('显示头像', 'punkcoder'),
+        'punkcoder_avatar_check_form',
+        'punkcoder',
+        'punkcoder_option_section');
+
+    add_settings_field(
         "punkcoder_nickname",
         __('昵称', 'punkcoder'),
         "punkcoder_nickname_form",
@@ -336,6 +343,13 @@ function punkcoder_avatar_form()
     <div>
         <button class="button-primary" id="punkcoder-avatar-upload-button"><?php _e('上传', 'punkcoder')?></button>
     </div>
+    <?php
+}
+
+function punkcoder_avatar_check_form()
+{
+    ?>
+    <input type="checkbox" class="punkcoder-option-form-input" name="punkcoder_options[nickname]" id="punkcoder-options-nickname" value="<?php echo esc_html(punkcoder_get_options('punkcoder_options', 'nickname')); ?>" />
     <?php
 }
 
