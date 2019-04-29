@@ -387,30 +387,41 @@ function punkcoder_setting_options()
 
 function punkcoder_options_page()
 {
-    register_setting(
-        "punkcoder",
-        "punkcoder_options",
-        [
-            'sanitize_callback' => 'punkcoder_options_validate'
-        ]);
-
     //here we display the sections and options in the settings page based on the active tab
     if(isset($_GET["tab"]))
     {
         if($_GET["tab"] == "profile")
         {
+            register_setting(
+                "punkcoder",
+                "punkcoder_profiles",
+                [
+                    'sanitize_callback' => 'punkcoder_options_validate'
+                ]);
+
             punkcoder_profile_options();
         }
         else
         {
+            register_setting(
+                "punkcoder",
+                "punkcoder_settings",
+                [
+                    'sanitize_callback' => 'punkcoder_options_validate'
+                ]);
             punkcoder_setting_options();
         }
     }
     else
     {
+        register_setting(
+            "punkcoder",
+            "punkcoder_profiles",
+            [
+                'sanitize_callback' => 'punkcoder_options_validate'
+            ]);
         punkcoder_profile_options();
     }
-
 }
 
 function punkcoder_avatar_form()
