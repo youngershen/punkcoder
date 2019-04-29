@@ -78,29 +78,62 @@ function punkcoder_options_validate($args)
 
     $filtered = [
             'avatar' => $default_avatar,
+            'avatar_show' => 'no',
             'nickname' => __('申延刚', 'punkcoder'),
+            'nickname_show' => 'yes',
             'age' => '30',
+            'age_show' => 'no',
             'cellphone' => '13811754531',
+            'cellphone_show' => 'no',
             'email' => 'shenyangang@163.com',
+            'email_show' => 'no',
             'github' => 'https://github.com/youngershen',
+            'github_show' => 'no',
             'weibo' => 'https://weibo.com/shenyangang',
+            'weibo_show' => 'no',
             'wechat_qr_image' => $default_wechat_qr_image,
+            'wechat_qr_image_show' => 'no',
             'twitter' => 'https://twitter.com/youngershen',
+            'twitter_show' => 'no',
             'logo' => $default_logo,
+            'logo_show' => 'no',
             'custom_code' => '',
+            'custom_code_show' => 'no',
             'beian' => '冀ICP备19005058号',
+            'beian_show' => 'no',
             'copyright' => '<a href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank"> 署名 4.0 国际 (CC BY 4.0) </a>',
-            'bg_image' => $default_bg_image
+            'copyright_show' => 'no',
+            'bg_image' => $default_bg_image,
+            'wordpress_copyright_show' => 'no',
+            'punkcoder_copyright_show' => 'no'
     ];
 
-    if($args['avatar'])
+    if(array_key_exists('avatar', $args))
     {
         $filtered['avatar'] = trim($args['avatar']);
+    }
+    else
+    {
+//        unset($filtered['avatar']);
+    }
+
+    if( array_key_exists('avatar_show',$args)&& $args['avatar_show'])
+    {
+        $filtered['avatar_show'] = trim($args['avatar_show']);
+    }
+    else
+    {
+        unset($filtered['avatar_show']);
     }
 
     if($args['nickname'])
     {
         $filtered['nickname'] = trim($args['nickname']);
+    }
+
+    if($args['nickname_show'])
+    {
+        $filtered['nickname_show'] = trim($args['nickname_show']);
     }
 
     if($args['age'])
@@ -115,9 +148,19 @@ function punkcoder_options_validate($args)
         }
     }
 
+    if($args['age_show'])
+    {
+        $filtered['age_show'] = trim($args['age_show']);
+    }
+
     if($args['cellphone'])
     {
         $filtered['cellphone'] = trim($args['cellphone']);
+    }
+
+    if($args['cellphone_show'])
+    {
+        $filtered['cellphone_show'] = trim($args['cellphone_show']);
     }
 
     if($args['email'])
@@ -125,9 +168,19 @@ function punkcoder_options_validate($args)
         $filtered['email'] = trim($args['email']);
     }
 
+    if($args['email_show'])
+    {
+        $filtered['email_show'] = trim($args['email_show']);
+    }
+
     if($args['github'])
     {
         $filtered['github'] = trim($args['github']);
+    }
+
+    if($args['github_show'])
+    {
+        $filtered['github_show'] = trim($args['github_show']);
     }
 
     if($args['weibo'])
@@ -135,9 +188,19 @@ function punkcoder_options_validate($args)
         $filtered['weibo'] = trim($args['weibo']);
     }
 
+    if($args['weibo_show'])
+    {
+        $filtered['weibo_show'] = trim($args['weibo_show']);
+    }
+
     if($args['wechat_qr_image'])
     {
         $filtered['wechat_qr_image'] = trim($args['wechat_qr_image']);
+    }
+
+    if($args['wechat_qr_image_show'])
+    {
+        $filtered['wechat_qr_image_show'] = trim($args['wechat_qr_image_show']);
     }
 
     if($args['twitter'])
@@ -145,9 +208,19 @@ function punkcoder_options_validate($args)
         $filtered['twitter'] = trim($args['twitter']);
     }
 
+    if($args['twitter_show'])
+    {
+        $filtered['twitter_show'] = trim($args['twitter_show']);
+    }
+
     if($args['logo'])
     {
         $filtered['logo'] = trim($args['logo']);
+    }
+
+    if($args['logo_show'])
+    {
+        $filtered['logo_show'] = trim($args['logo_show']);
     }
 
     if($args['custom_code'])
@@ -200,9 +273,9 @@ function punkcoder_profile_options()
         'punkcoder_option_section');
 
     add_settings_field(
-        'punkcoder_avatar_check',
+        'punkcoder_avatar_show',
         __('显示头像', 'punkcoder'),
-        'punkcoder_avatar_check_form',
+        'punkcoder_avatar_show_form',
         'punkcoder',
         'punkcoder_option_section');
 
@@ -212,6 +285,13 @@ function punkcoder_profile_options()
         "punkcoder_nickname_form",
         "punkcoder",
         "punkcoder_option_section");
+
+    add_settings_field(
+        'punkcoder_nickname_check',
+        __('显示昵称', 'punkcoder'),
+        'punkcoder_nickname_show_form',
+        'punkcoder',
+        'punkcoder_option_section');
 
     add_settings_field(
         "punkcoder_age",
@@ -346,10 +426,24 @@ function punkcoder_avatar_form()
     <?php
 }
 
-function punkcoder_avatar_check_form()
+function punkcoder_avatar_show_form()
 {
     ?>
-    <input type="checkbox" class="punkcoder-option-form-input" name="punkcoder_options[nickname]" id="punkcoder-options-nickname" value="<?php echo esc_html(punkcoder_get_options('punkcoder_options', 'nickname')); ?>" />
+    <input type="checkbox"
+           class="punkcoder-option-form-input"
+           name="punkcoder_options[avatar_show]"
+           id="punkcoder-options-avatar-show"
+           value="yes"
+           <?php
+
+           if(punkcoder_get_options('punkcoder_options', 'avatar_show') == 'yes')
+           {
+            ?>
+                checked="checked"
+            <?php
+           }
+           ?>
+           />
     <?php
 }
 
@@ -357,6 +451,27 @@ function punkcoder_nickname_form()
 {
     ?>
     <input type="text" class="punkcoder-option-form-input" name="punkcoder_options[nickname]" id="punkcoder-options-nickname" value="<?php echo esc_html(punkcoder_get_options('punkcoder_options', 'nickname')); ?>" />
+    <?php
+}
+
+function punkcoder_nickname_show_form()
+{
+    ?>
+    <input type="checkbox"
+    class="punkcoder-option-form-input"
+    name="punkcoder_options[nickname_show]"
+    id="punkcoder-options-nickname-show"
+    value="yes"
+           <?php
+
+           if(punkcoder_get_options('punkcoder_options', 'nickname_show') == 'yes')
+           {
+            ?>
+                checked="checked"
+            <?php
+           }
+           ?>
+           />
     <?php
 }
 
