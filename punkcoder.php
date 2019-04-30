@@ -16,7 +16,7 @@ function punkcoder_menu_items()
         null,
         __('主题', 'punkcoder'),
         "manage_options",
-        "punkcoder",
+        "punkcoder_profiles",
         "punkcoder_options_page_form",
         "",
         99
@@ -56,10 +56,9 @@ function punkcoder_options_page_form()
 
         <form method="post" action="options.php" id="punkcoder-option-form">
             <?php
-
             settings_fields('punkcoder');
 
-            do_settings_sections('punkcoder');
+            do_settings_sections('punkcoder_profiles');
 
             submit_button();
 
@@ -263,126 +262,126 @@ function punkcoder_options_header_html()
 
 function punkcoder_profile_options()
 {
-    add_settings_section('punkcoder_option_section', __('个人资料', 'punkcoder'), 'punkcoder_options_header_html', 'punkcoder');
+    add_settings_section('punkcoder_profiles_section', __('个人资料', 'punkcoder'), 'punkcoder_options_header_html', 'punkcoder_profiles');
 
     add_settings_field(
         'punkcoder_avatar',
         __('头像', 'punkcoder'),
         'punkcoder_avatar_form',
-        'punkcoder',
-        'punkcoder_option_section');
+        'punkcoder_profiles',
+        'punkcoder_profiles_section');
 
     add_settings_field(
         'punkcoder_avatar_show',
         __('显示头像', 'punkcoder'),
         'punkcoder_avatar_show_form',
-        'punkcoder',
-        'punkcoder_option_section');
+        'punkcoder_profiles',
+        'punkcoder_profiles_section');
 
     add_settings_field(
         "punkcoder_nickname",
         __('昵称', 'punkcoder'),
         "punkcoder_nickname_form",
-        "punkcoder",
-        "punkcoder_option_section");
+        "punkcoder_profiles",
+        "punkcoder_profiles_section");
 
     add_settings_field(
         'punkcoder_nickname_check',
         __('显示昵称', 'punkcoder'),
         'punkcoder_nickname_show_form',
-        'punkcoder',
-        'punkcoder_option_section');
+        'punkcoder_profiles',
+        'punkcoder_profiles_section');
 
     add_settings_field(
         "punkcoder_age",
         __('年龄', 'punkcoder'),
         "punkcoder_age_form",
-        "punkcoder",
-        "punkcoder_option_section");
+        "punkcoder_profiles",
+        "punkcoder_profiles_section");
 
     add_settings_field(
         "punkcoder_cellphone",
         __('手机', 'punkcoder'),
         "punkcoder_cellphone_form",
-        "punkcoder",
-        "punkcoder_option_section");
+        "punkcoder_profiles",
+        "punkcoder_profiles_section");
 
     add_settings_field(
         "punkcoder_email",
         __('电邮', 'punkcoder'),
         "punkcoder_email_form",
-        "punkcoder",
-        "punkcoder_option_section");
+        "punkcoder_profiles",
+        "punkcoder_profiles_section");
 
     add_settings_field(
         "punkcoder_github",
         __('Github', 'punkcoder'),
         "punkcoder_github_form",
-        "punkcoder",
-        "punkcoder_option_section");
+        "punkcoder_profiles",
+        "punkcoder_profiles_section");
 
     add_settings_field(
         "punkcoder_weibo",
         __('微博', 'punkcoder'),
         "punkcoder_weibo_form",
-        "punkcoder",
-        "punkcoder_option_section");
+        "punkcoder_profiles",
+        "punkcoder_profiles_section");
 
 
     add_settings_field(
         "punkcoder_wechat_qr_image",
         __('微信二维码', 'punkcoder'),
         "punkcoder_wechat_qr_image_form",
-        "punkcoder",
-        "punkcoder_option_section");
+        "punkcoder_profiles",
+        "punkcoder_profiles_section");
 
 
     add_settings_field(
         "punkcoder_twitter",
         __('Twitter', 'punkcoder'),
         "punkcoder_twitter_form",
-        "punkcoder",
-        "punkcoder_option_section");
+        "punkcoder_profiles",
+        "punkcoder_profiles_section");
 }
 
 function punkcoder_setting_options()
 {
-    add_settings_section("punkcoder_option_section", __('系统设置', 'punkcoder'), "punkcoder_options_header_html", "punkcoder");
+    add_settings_section("punkcoder_settings_section", __('系统设置', 'punkcoder'), "punkcoder_options_header_html", "punkcoder_settings");
 
     add_settings_field(
         "punkcoder_logo_image",
         __('LOGO', 'punkcoder'),
         "punkcoder_logo_form",
-        "punkcoder",
-        "punkcoder_option_section");
+        "punkcoder_settings",
+        "punkcoder_settings_section");
 
     add_settings_field(
         "punkcoder_bg_image",
         __('背景图片', 'punkcoder'),
         "punkcoder_bg_image_form",
-        "punkcoder",
-        "punkcoder_option_section");
+        "punkcoder_settings",
+        "punkcoder_settings_section");
 
     add_settings_field(
         "punkcoder_custom_code",
         __('自定义代码', 'punkcoder'),
         "punkcoder_custom_code_form",
-        "punkcoder",
+        "punkcoder_settings",
         "punkcoder_option_section");
 
     add_settings_field(
         "punkcoder_beian",
         __('备案编号', 'punkcoder'),
         "punkcoder_beian_form",
-        "punkcoder",
-        "punkcoder_option_section");
+        "punkcoder_settings",
+        "punkcoder_settings_section");
 
     add_settings_field(
         "punkcoder_copyright",
         __('版权信息', 'punkcoder'),
         "punkcoder_copyright_form",
-        "punkcoder",
-        "punkcoder_option_section");
+        "punkcoder_settings",
+        "punkcoder_settings_section");
 }
 
 function punkcoder_options_page()
@@ -474,7 +473,6 @@ function punkcoder_nickname_show_form()
     id="punkcoder-options-nickname-show"
     value="yes"
            <?php
-
            if(punkcoder_get_options('punkcoder_options', 'nickname_show') == 'yes')
            {
             ?>
