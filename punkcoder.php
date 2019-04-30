@@ -16,7 +16,7 @@ function punkcoder_menu_items()
         null,
         __('主题', 'punkcoder'),
         "manage_options",
-        "punkcoder_profiles",
+        "punkcoder",
         "punkcoder_options_page_form",
         "",
         99
@@ -33,32 +33,35 @@ function punkcoder_options_page_form()
         <h1><?php echo esc_html(get_admin_page_title())?></h1>
         <?php
 
-        $active_tab = 'profile';
+        $active_tab = 'profiles';
+
         if(isset($_GET['tab']))
         {
-            if($_GET['tab'] == 'profile')
+            if($_GET['tab'] == 'profiles')
             {
-                $active_tab = 'profile';
+                $active_tab = 'profiles';
             }
             else
             {
-                $active_tab = 'setting';
+                $active_tab = 'settings';
             }
         }
+        $section = 'punkcoder_' . $active_tab;
         ?>
 
         <!-- wordpress provides the styling for tabs. -->
         <h2 class="nav-tab-wrapper">
             <!-- when tab buttons are clicked we jump back to the same page but with a new parameter that represents the clicked tab. accordingly we make it active -->
-            <a href="?page=punkcoder&tab=profile" class="nav-tab <?php if($active_tab == 'profile'){echo 'nav-tab-active';} ?> "><?php _e('个人资料', 'punkcoder'); ?></a>
-            <a href="?page=punkcoder&tab=setting" class="nav-tab  <?php if($active_tab == 'setting'){echo 'nav-tab-active';} ?>"><?php _e('系统设置', 'punkcoder'); ?></a>
+            <a href="?page=punkcoder&tab=profiles" class="nav-tab <?php if($active_tab == 'profiles'){echo 'nav-tab-active';} ?> "><?php _e('个人资料', 'punkcoder'); ?></a>
+            <a href="?page=punkcoder&tab=settings" class="nav-tab  <?php if($active_tab == 'settings'){echo 'nav-tab-active';} ?>"><?php _e('系统设置', 'punkcoder'); ?></a>
         </h2>
 
         <form method="post" action="options.php" id="punkcoder-option-form">
             <?php
+
             settings_fields('punkcoder');
 
-            do_settings_sections('punkcoder_profiles');
+            do_settings_sections($section);
 
             submit_button();
 
@@ -66,6 +69,15 @@ function punkcoder_options_page_form()
         </form>
     </div>
     <?php
+}
+
+function punkcoder_profiles_validate($args)
+{
+    if(!array_key_exists('avatar_show', $args))
+    {
+        $args['avatar_show'] = 'no';
+    }
+    return $args;
 }
 
 function punkcoder_options_validate($args)
@@ -247,12 +259,12 @@ function punkcoder_options_validate($args)
 
 function punkcoder_options_header_html()
 {
-    if( !key_exists('tab', $_GET) || $_GET['tab'] == 'profile') {
+    if( !key_exists('tab', $_GET) || $_GET['tab'] == 'profiles') {
         ?>
         <span><?php _e('这里填写的内容将会显示在首页侧边栏中 随便填就行 默认显示作者的信息', 'punkcoder'); ?></span>
         <?php
     }
-    elseif ($_GET['tab'] == 'setting')
+    elseif ($_GET['tab'] == 'settings')
     {
         ?>
         <span><?php _e('这里是系统设置 按需求填写即可', 'punkcoder'); ?></span>
@@ -260,7 +272,7 @@ function punkcoder_options_header_html()
     }
 }
 
-function punkcoder_profile_options()
+function punkcoder_profiles()
 {
     add_settings_section('punkcoder_profiles_section', __('个人资料', 'punkcoder'), 'punkcoder_options_header_html', 'punkcoder_profiles');
 
@@ -344,7 +356,7 @@ function punkcoder_profile_options()
         "punkcoder_profiles_section");
 }
 
-function punkcoder_setting_options()
+function punkcoder_settings()
 {
     add_settings_section("punkcoder_settings_section", __('系统设置', 'punkcoder'), "punkcoder_options_header_html", "punkcoder_settings");
 
@@ -367,7 +379,7 @@ function punkcoder_setting_options()
         __('自定义代码', 'punkcoder'),
         "punkcoder_custom_code_form",
         "punkcoder_settings",
-        "punkcoder_option_section");
+        "punkcoder_settings_section");
 
     add_settings_field(
         "punkcoder_beian",
@@ -386,49 +398,51 @@ function punkcoder_setting_options()
 
 function punkcoder_options_page()
 {
-    //here we display the sections and options in the settings page based on the active tab
     if(isset($_GET["tab"]))
     {
-        if($_GET["tab"] == "profile")
+        if($_GET["tab"] == "profiles")
         {
             register_setting(
                 "punkcoder",
                 "punkcoder_profiles",
                 [
-                    'sanitize_callback' => 'punkcoder_options_validate'
+                    'sanitize_callback' => 'punkcoder_profiles_validate'
                 ]);
 
-            punkcoder_profile_options();
+            punkcoder_profiles();
+            return ;
         }
-        else
+        else if($_GET['tab'] == 'settings')
         {
             register_setting(
                 "punkcoder",
                 "punkcoder_settings",
                 [
-                    'sanitize_callback' => 'punkcoder_options_validate'
+                    'sanitize_callback' => 'punkcoder_settings_validate'
                 ]);
-            punkcoder_setting_options();
+            punkcoder_settings();
+            return ;
         }
     }
-    else
-    {
-        register_setting(
+
+    register_setting(
             "punkcoder",
             "punkcoder_profiles",
             [
-                'sanitize_callback' => 'punkcoder_options_validate'
+                'sanitize_callback' => 'punkcoder_profiles_validate'
             ]);
-        punkcoder_profile_options();
-    }
+    punkcoder_profiles();
 }
 
 function punkcoder_avatar_form()
 {
+    $default = punkcoder_get_url('images', 'default-avatar-image.jpg');
+    $image = esc_html(punkcoder_get_options('punkcoder_profiles', 'avatar', $default));
+
     ?>
     <div class="punkcoder-options-avatar">
-        <img src="<?php echo esc_html(punkcoder_get_options('punkcoder_options', 'avatar')); ?>" alt="" class="rounded mw-100 punkcoder-options-avatar" id="punkcoder-options-avatar-image">
-        <input type="hidden" name="punkcoder_options[avatar]" id="punkcoder-options-avatar-input" value="<?php echo esc_html(punkcoder_get_options('punkcoder_options', 'avatar')); ?>">
+        <img src="<?php echo $image; ?>" alt="" class="rounded mw-100 punkcoder-options-avatar" id="punkcoder-options-avatar-image">
+        <input type="hidden" name="punkcoder_profiles[avatar]" id="punkcoder-options-avatar-input" value="<?php echo $image; ?>">
     </div>
     <div>
         <button class="button-primary" id="punkcoder-avatar-upload-button"><?php _e('上传', 'punkcoder')?></button>
@@ -441,12 +455,12 @@ function punkcoder_avatar_show_form()
     ?>
     <input type="checkbox"
            class="punkcoder-option-form-input"
-           name="punkcoder_options[avatar_show]"
+           name="punkcoder_profiles[avatar_show]"
            id="punkcoder-options-avatar-show"
            value="yes"
            <?php
 
-           if(punkcoder_get_options('punkcoder_options', 'avatar_show') == 'yes')
+           if(punkcoder_get_options('punkcoder_profiles', 'avatar_show', 'yes') == 'yes')
            {
             ?>
                 checked="checked"
@@ -460,7 +474,7 @@ function punkcoder_avatar_show_form()
 function punkcoder_nickname_form()
 {
     ?>
-    <input type="text" class="punkcoder-option-form-input" name="punkcoder_options[nickname]" id="punkcoder-options-nickname" value="<?php echo esc_html(punkcoder_get_options('punkcoder_options', 'nickname')); ?>" />
+    <input type="text" class="punkcoder-option-form-input" name="punkcoder_profiles[nickname]" id="punkcoder-options-nickname" value="<?php echo esc_html(punkcoder_get_options('punkcoder_profiles', 'nickname')); ?>" />
     <?php
 }
 
@@ -469,11 +483,11 @@ function punkcoder_nickname_show_form()
     ?>
     <input type="checkbox"
     class="punkcoder-option-form-input"
-    name="punkcoder_options[nickname_show]"
+    name="punkcoder_profiles[nickname_show]"
     id="punkcoder-options-nickname-show"
     value="yes"
            <?php
-           if(punkcoder_get_options('punkcoder_options', 'nickname_show') == 'yes')
+           if(punkcoder_get_options('punkcoder_oprofiles', 'nickname_show', 'no') == 'yes')
            {
             ?>
                 checked="checked"
@@ -487,56 +501,57 @@ function punkcoder_nickname_show_form()
 function punkcoder_age_form()
 {
     ?>
-    <input class="punkcoder-option-form-input" type="text" name="punkcoder_options[age]" id="punkcoder-options-age" value="<?php echo esc_html(punkcoder_get_options('punkcoder_options', 'age')); ?>" />
+    <input class="punkcoder-option-form-input" type="text" name="punkcoder_profiles[age]" id="punkcoder-options-age" value="<?php echo esc_html(punkcoder_get_options('punkcoder_profiles', 'age')); ?>" />
     <?php
 }
 
 function punkcoder_cellphone_form()
 {
     ?>
-    <input class="punkcoder-option-form-input" type="text" name="punkcoder_options[cellphone]" id="punkcoder-options-cellphone" value="<?php echo esc_html(punkcoder_get_options('punkcoder_options', 'cellphone')); ?>" />
+    <input class="punkcoder-option-form-input" type="text" name="punkcoder_profiles[cellphone]" id="punkcoder-options-cellphone" value="<?php echo esc_html(punkcoder_get_options('punkcoder_profiles', 'cellphone')); ?>" />
     <?php
 }
 
 function punkcoder_email_form()
 {
     ?>
-    <input class="punkcoder-option-form-input" type="text" name="punkcoder_options[email]" id="punkcoder-options-wechat" value="<?php echo esc_html(punkcoder_get_options('punkcoder_options', 'email'));?>" />
+    <input class="punkcoder-option-form-input" type="text" name="punkcoder_profiles[email]" id="punkcoder-options-wechat" value="<?php echo esc_html(punkcoder_get_options('punkcoder_profiles', 'email'));?>" />
     <?php
 }
 
 function punkcoder_github_form()
 {
     ?>
-    <input class="punkcoder-option-form-input" type="text" name="punkcoder_options[github]" id="punkcoder-options-github" value="<?php echo esc_html(punkcoder_get_options('punkcoder_options', 'github'));?>" />
+    <input class="punkcoder-option-form-input" type="text" name="punkcoder_profiles[github]" id="punkcoder-options-github" value="<?php echo esc_html(punkcoder_get_options('punkcoder_profiles', 'github'));?>" />
     <?php
 }
 
 function punkcoder_weibo_form()
 {
     ?>
-    <input class="punkcoder-option-form-input" type="text" name="punkcoder_options[weibo]" id="punkcoder-options-weibo" value="<?php echo esc_html(punkcoder_get_options('punkcoder_options', 'weibo'));?>" />
+    <input class="punkcoder-option-form-input" type="text" name="punkcoder_profiles[weibo]" id="punkcoder-options-weibo" value="<?php echo esc_html(punkcoder_get_options('punkcoder_profiles', 'weibo'));?>" />
     <?php
 }
 
 function punkcoder_wechat_qr_image_form()
 {
-    ?>
+    $default = punkcoder_get_url('images', 'wechat-qr-image.jpg');
+    $image = esc_html(punkcoder_get_options('punkcoder_profiles', 'wechat_qr_image', $default));
+?>
     <div class="punkcoder-options-wechat-qr-image">
-        <img src="<?php echo esc_html(punkcoder_get_options('punkcoder_options', 'wechat_qr_image')); ?>" alt="" class="rounded mw-100 punkcoder-options-wechat-qr-image" id="punkcoder-options-wechat-qr-image">
-        <input type="hidden" name="punkcoder_options[wechat_qr_image]" id="punkcoder-options-wechat-qr-image-input" value="<?php echo esc_html(punkcoder_get_options('punkcoder_options', 'wechat_qr_image')); ?>">
+        <img src="<?php echo $image; ?>" alt="" class="rounded mw-100 punkcoder-options-wechat-qr-image" id="punkcoder-options-wechat-qr-image">
+        <input type="hidden" name="punkcoder_profiles[wechat_qr_image]" id="punkcoder-options-wechat-qr-image-input" value="<?php echo $image; ?>">
     </div>
     <div>
         <button class="button-primary" id="punkcoder-wechat-upload-button"><?php _e('上传', 'punkcoder')?></button>
     </div>
-
     <?php
 }
 
 function punkcoder_twitter_form()
 {
     ?>
-    <input class="punkcoder-option-form-input" type="text" name="punkcoder_options[twitter]" id="punkcoder_options_twitter" value="<?php echo esc_html(punkcoder_get_options('punkcoder_options', 'twitter'));?>" />
+    <input class="punkcoder-option-form-input" type="text" name="punkcoder_profiles[twitter]" id="punkcoder_options_twitter" value="<?php echo esc_html(punkcoder_get_options('punkcoder_profiles', 'twitter'));?>" />
     <?php
 }
 

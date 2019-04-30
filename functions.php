@@ -78,13 +78,19 @@ function punkcoder_get_options($option, $name, $default = null)
 {
     $options = get_option($option);
 
-    if ($options && array_key_exists($name, $options)) {
+    if($options && array_key_exists($name, $options) && $options[$name] != '' && $options[$name] != null)
+    {
         return $options[$name];
-    } else {
-        if (isset($default)) {
+    }
+    else
+    {
+        if(isset($default))
+        {
             return $default;
-        } else {
-            return "";
+        }
+        else
+        {
+            return '';
         }
     }
 }
