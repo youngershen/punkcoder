@@ -46,7 +46,8 @@ function punkcoder_options_page_form()
                 $active_tab = 'settings';
             }
         }
-        $section = 'punkcoder_' . $active_tab;
+
+        $option = 'punkcoder_' . $active_tab;
         ?>
 
         <!-- wordpress provides the styling for tabs. -->
@@ -61,7 +62,7 @@ function punkcoder_options_page_form()
 
             settings_fields('punkcoder');
 
-            do_settings_sections($section);
+            do_settings_sections($option);
 
             submit_button();
 
@@ -69,6 +70,46 @@ function punkcoder_options_page_form()
         </form>
     </div>
     <?php
+}
+
+function punkcoder_settings_validate($args)
+{
+    if(!array_key_exists('logo_show', $args))
+    {
+        $args['logo_show'] = 'no';
+    }
+
+    if(!array_key_exists('bg_image_show', $args))
+    {
+        $args['bg_image_show'] = 'no';
+    }
+
+    if(!array_key_exists('custom_code_show', $args))
+    {
+        $args['custom_code_show'] = 'no';
+    }
+
+    if(!array_key_exists('beian_show', $args))
+    {
+        $args['beian_show'] = 'no';
+    }
+
+    if(!array_key_exists('copyright_show', $args))
+    {
+        $args['copyright_show'] = 'no';
+    }
+
+    if(!array_key_exists('theme_copyright_show', $args))
+    {
+        $args['theme_copyright_show'] = 'no';
+    }
+
+    if(!array_key_exists('wp_copyright_show', $args))
+    {
+        $args['wp_copyright_show'] = 'no';
+    }
+
+    return $args;
 }
 
 function punkcoder_profiles_validate($args)
@@ -456,9 +497,23 @@ function punkcoder_settings()
         "punkcoder_settings_section");
 
     add_settings_field(
+        "punkcoder_logo_image_show",
+        __('显示LOGO', 'punkcoder'),
+        "punkcoder_logo_show_form",
+        "punkcoder_settings",
+        "punkcoder_settings_section");
+
+    add_settings_field(
         "punkcoder_bg_image",
         __('背景图片', 'punkcoder'),
         "punkcoder_bg_image_form",
+        "punkcoder_settings",
+        "punkcoder_settings_section");
+
+    add_settings_field(
+        "punkcoder_bg_image_show",
+        __('显示背景图片', 'punkcoder'),
+        "punkcoder_bg_image_show_form",
         "punkcoder_settings",
         "punkcoder_settings_section");
 
@@ -470,9 +525,23 @@ function punkcoder_settings()
         "punkcoder_settings_section");
 
     add_settings_field(
+        "punkcoder_custom_code_show",
+        __('显示自定义代码', 'punkcoder'),
+        "punkcoder_custom_code_show_form",
+        "punkcoder_settings",
+        "punkcoder_settings_section");
+
+    add_settings_field(
         "punkcoder_beian",
         __('备案编号', 'punkcoder'),
         "punkcoder_beian_form",
+        "punkcoder_settings",
+        "punkcoder_settings_section");
+
+    add_settings_field(
+        "punkcoder_beian_show",
+        __('显示备案编号', 'punkcoder'),
+        "punkcoder_beian_show_form",
         "punkcoder_settings",
         "punkcoder_settings_section");
 
@@ -482,14 +551,32 @@ function punkcoder_settings()
         "punkcoder_copyright_form",
         "punkcoder_settings",
         "punkcoder_settings_section");
+
+    add_settings_field(
+        "punkcoder_copyright_show",
+        __('显示版权信息', 'punkcoder'),
+        "punkcoder_copyright_show_form",
+        "punkcoder_settings",
+        "punkcoder_settings_section");
+
+    add_settings_field(
+        "punkcoder_theme_copyright_show",
+        __('显示主题版权', 'punkcoder'),
+        "punkcoder_theme_copyright_show_form",
+        "punkcoder_settings",
+        "punkcoder_settings_section");
+
+    add_settings_field(
+        "punkcoder_wp_copyright_show",
+        __('显示WORDPRESS版权', 'punkcoder'),
+        "punkcoder_wp_copyright_show_form",
+        "punkcoder_settings",
+        "punkcoder_settings_section");
 }
 
 function punkcoder_options_page()
 {
-    if(isset($_GET["tab"]))
-    {
-        if($_GET["tab"] == "profiles")
-        {
+
             register_setting(
                 "punkcoder",
                 "punkcoder_profiles",
@@ -498,10 +585,7 @@ function punkcoder_options_page()
                 ]);
 
             punkcoder_profiles();
-            return ;
-        }
-        else if($_GET['tab'] == 'settings')
-        {
+
             register_setting(
                 "punkcoder",
                 "punkcoder_settings",
@@ -509,17 +593,7 @@ function punkcoder_options_page()
                     'sanitize_callback' => 'punkcoder_settings_validate'
                 ]);
             punkcoder_settings();
-            return ;
-        }
-    }
 
-    register_setting(
-            "punkcoder",
-            "punkcoder_profiles",
-            [
-                'sanitize_callback' => 'punkcoder_profiles_validate'
-            ]);
-    punkcoder_profiles();
 }
 
 function punkcoder_avatar_form()
@@ -802,10 +876,12 @@ function punkcoder_twitter_show_form()
 
 function punkcoder_logo_form()
 {
+    $default = punkcoder_get_url('images', 'default-logo.png');
+    $logo = esc_html(punkcoder_get_options('punkcoder_settings', 'logo', $default));
     ?>
     <div class="punkcoder-options-logo">
-        <img src="<?php echo esc_html(punkcoder_get_options('punkcoder_options', 'logo')); ?>" alt="" class="rounded mw-100 punkcoder-options-logo" id="punkcoder-options-logo-image">
-        <input type="hidden" name="punkcoder_options[logo]" id="punkcoder-options-logo-input" value="<?php echo esc_html(punkcoder_get_options('punkcoder_options', 'logo')); ?>">
+        <img src="<?php echo $logo; ?>" alt="" class="rounded mw-100 punkcoder-options-logo" id="punkcoder-options-logo-image">
+        <input type="hidden" name="punkcoder_settings[logo]" id="punkcoder-options-logo-input" value="<?php echo $logo; ?>">
     </div>
     <div>
         <button class="button-primary" id="punkcoder-logo-upload-button"><?php _e('上传', 'punkcoder')?></button>
@@ -813,12 +889,34 @@ function punkcoder_logo_form()
     <?php
 }
 
-function punkcoder_bg_image_form()
+function punkcoder_logo_show_form()
 {
     ?>
+    <input type="checkbox"
+           class="punkcoder-option-form-input"
+           name="punkcoder_settings[logo_show]"
+           id="punkcoder-options-logo-show"
+           value="yes"
+        <?php
+        if(punkcoder_get_options('punkcoder_settings', 'logo_show', 'yes') == 'yes')
+        {
+            ?>
+            checked="checked"
+            <?php
+        }
+        ?>
+    />
+    <?php
+}
+
+function punkcoder_bg_image_form()
+{
+    $default = punkcoder_get_url('images', 'default-bg-image.png');
+    $bg = esc_html(punkcoder_get_options('punkcoder_settings', 'bg_image', $default));;
+    ?>
     <div class="punkcoder-options-logo">
-        <img src="<?php echo esc_html(punkcoder_get_options('punkcoder_options', 'bg_image')); ?>" alt="" class="rounded mw-100 punkcoder-options-bg-image" id="punkcoder-options-bg-image">
-        <input type="hidden" name="punkcoder_options[bg_image]" id="punkcoder-options-bg-image-input" value="<?php echo esc_html(punkcoder_get_options('punkcoder_options', 'bg_image')); ?>">
+        <img src="<?php echo $bg; ?>" alt="" class="rounded mw-100 punkcoder-options-bg-image" id="punkcoder-options-bg-ima ge">
+        <input type="hidden" name="punkcoder_settings[bg_image]" id="punkcoder-options-bg-image-input" value="<?php echo $bg; ?>">
     </div>
     <div>
         <button class="button-primary" id="punkcoder-bg-image-upload-button"><?php _e('上传', 'punkcoder')?></button>
@@ -826,26 +924,149 @@ function punkcoder_bg_image_form()
     <?php
 }
 
+
+function punkcoder_bg_image_show_form()
+{
+    ?>
+    <input type="checkbox"
+           class="punkcoder-option-form-input"
+           name="punkcoder_settings[bg_image_show]"
+           id="punkcoder-options-bg-image-show"
+           value="yes"
+        <?php
+        if(punkcoder_get_options('punkcoder_settings', 'bg_image_show', 'yes') == 'yes')
+        {
+            ?>
+            checked="checked"
+            <?php
+        }
+        ?>
+    />
+    <?php
+}
+
 function punkcoder_custom_code_form()
 {
     ?>
-    <textarea name="punkcoder_options[custom_code]" id=""  cols="35" rows="10" class="punskcoder-option-form-input">
-        <?php echo trim(esc_html(punkcoder_get_options('punkcoder_options', 'custom_code')))?>
+    <textarea name="punkcoder_settings[custom_code]" id=""  cols="35" rows="10" class="punskcoder-option-form-input">
+        <?php echo trim(esc_html(punkcoder_get_options('punkcoder_settings', 'custom_code')))?>
     </textarea>
+    <?php
+}
+
+
+function punkcoder_custom_code_show_form()
+{
+    ?>
+    <input type="checkbox"
+           class="punkcoder-option-form-input"
+           name="punkcoder_settings[custom_code_show]"
+           id="punkcoder-options-custom-code-show"
+           value="yes"
+        <?php
+        if(punkcoder_get_options('punkcoder_settings', 'custom_code_show', 'yes') == 'yes')
+        {
+            ?>
+            checked="checked"
+            <?php
+        }
+        ?>
+    />
     <?php
 }
 
 function punkcoder_beian_form()
 {
     ?>
-    <input class="punkcoder-option-form-input" type="text" name="punkcoder_options[beian]" id="punkcoder_options_beian" value="<?php echo esc_html(punkcoder_get_options('punkcoder_options', 'beian'));?>" />
+    <input class="punkcoder-option-form-input" type="text" name="punkcoder_settings[beian]" id="punkcoder_options_beian" value="<?php echo esc_html(punkcoder_get_options('punkcoder_settings', 'beian'));?>" />
+    <?php
+}
+
+
+function punkcoder_beian_show_form()
+{
+    ?>
+    <input type="checkbox"
+           class="punkcoder-option-form-input"
+           name="punkcoder_settings[beian_show]"
+           id="punkcoder-options-beian-show"
+           value="yes"
+        <?php
+        if(punkcoder_get_options('punkcoder_settings', 'beian_show', 'yes') == 'yes')
+        {
+            ?>
+            checked="checked"
+            <?php
+        }
+        ?>
+    />
     <?php
 }
 
 function punkcoder_copyright_form()
 {
     ?>
-    <input class="punkcoder-option-form-input" type="text" name="punkcoder_options[copyright]" id="punkcoder_options_copyright" value="<?php echo esc_html(punkcoder_get_options('punkcoder_options', 'copyright'));?>" />
+    <input class="punkcoder-option-form-input" type="text" name="punkcoder_settings[copyright]" id="punkcoder_options_copyright" value="<?php echo esc_html(punkcoder_get_options('punkcoder_settings', 'copyright'));?>" />
+    <?php
+}
+
+function punkcoder_copyright_show_form()
+{
+    ?>
+    <input type="checkbox"
+           class="punkcoder-option-form-input"
+           name="punkcoder_settings[copyright_show]"
+           id="punkcoder-options-copyright-show"
+           value="yes"
+        <?php
+        if(punkcoder_get_options('punkcoder_settings', 'copyright_show', 'yes') == 'yes')
+        {
+            ?>
+            checked="checked"
+            <?php
+        }
+        ?>
+    />
+    <?php
+}
+
+function punkcoder_theme_copyright_show_form()
+{
+    ?>
+    <input type="checkbox"
+           class="punkcoder-option-form-input"
+           name="punkcoder_settings[theme_copyright_show]"
+           id="punkcoder-options-theme_copyright-show"
+           value="yes"
+        <?php
+        if(punkcoder_get_options('punkcoder_settings', 'theme_copyright_show', 'yes') == 'yes')
+        {
+            ?>
+            checked="checked"
+            <?php
+        }
+        ?>
+    />
+    <?php
+}
+
+function punkcoder_wp_copyright_show_form()
+{
+    ?>
+    <input type="checkbox"
+           class="punkcoder-option-form-input"
+           name="punkcoder_settings[wp_copyright_show]"
+           id="punkcoder-options-wp-copyright-show"
+           value="yes"
+        <?php
+        if(punkcoder_get_options('punkcoder_settings', 'wp_copyright_show', 'yes') == 'yes')
+        {
+            ?>
+            checked="checked"
+            <?php
+        }
+        ?>
+    />
     <?php
 }
 
