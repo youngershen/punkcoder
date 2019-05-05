@@ -159,6 +159,21 @@ function punkcoder_profiles_validate($args)
         $args['twitter_show'] = 'no';
     }
 
+    if(!array_key_exists('instagram_show', $args))
+    {
+        $args['instagram_show'] = 'no';
+    }
+
+    if(!array_key_exists('pinterest_show', $args))
+    {
+        $args['pinterest_show'] = 'no';
+    }
+
+    if(!array_key_exists('linkedin_show', $args))
+    {
+        $args['linkedin_show'] = 'no';
+    }
+
     return $args;
 }
 
@@ -308,6 +323,20 @@ function punkcoder_profiles()
         "punkcoder_twitter_show",
         __('显示Twitter', 'punkcoder'),
         "punkcoder_twitter_show_form",
+        "punkcoder_profiles",
+        "punkcoder_profiles_section");
+
+    add_settings_field(
+        "punkcoder_instagram",
+        __('Instagram', 'punkcoder'),
+        "punkcoder_instagram_form",
+        "punkcoder_profiles",
+        "punkcoder_profiles_section");
+
+    add_settings_field(
+        "punkcoder_instagram_show",
+        __('显示Instagram', 'punkcoder'),
+        "punkcoder_instagram_show_form",
         "punkcoder_profiles",
         "punkcoder_profiles_section");
 }

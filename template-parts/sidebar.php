@@ -71,6 +71,27 @@ $query = new WP_Query($args);
                     <span><?php echo(__("QQ", "punkcoder"));?>:</span>
                     <span><?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'qq', '89198011')); ?></span>
                 </div>
+
+                <div>
+                    <span><?php echo(__("WhatsApp", "punkcoder"));?>:</span>
+                    <span><?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'qq', '89198011')); ?></span>
+                </div>
+
+                <div>
+                    <span><?php echo(__("Telegram", "punkcoder"));?>:</span>
+                    <span><?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'qq', '89198011')); ?></span>
+                </div>
+
+                <div>
+                    <span><?php echo(__("Skype", "punkcoder"));?>:</span>
+                    <span><?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'qq', '89198011')); ?></span>
+                </div>
+
+                <div>
+                    <span><?php echo(__("Line", "punkcoder"));?>:</span>
+                    <span><?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'qq', '89198011')); ?></span>
+                </div>
+
                 <div>
                     <span><?php echo(__("地址", "punkcoder"));?>:</span>
                     <span><?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'address', '北京')); ?></span>
@@ -99,6 +120,15 @@ $query = new WP_Query($args);
                     </a>
                     <a href="">
                         <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="">
+                        <i class="fab fa-quora"></i>
+                    </a>
+                    <a href="">
+                        <i class="fab fa-zhihu"></i>
                     </a>
                 </div>
             </div>
