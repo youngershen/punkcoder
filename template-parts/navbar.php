@@ -21,7 +21,7 @@ $query = new WP_Query($args);
 
 $logo = punkcoder_get_options('punkcoder_settings', 'logo', punkcoder_get_url('images', 'default-logo.png'));
 $show_logo = punkcoder_get_options('punkcoder_settings', 'logo_show', 'yes');
-
+$bg_image = punkcoder_get_options('punkcoder_settings', 'bg_image', punkcoder_get_url('images', 'default-bg-image.png'));
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top punkcoder-navbar">
@@ -66,7 +66,7 @@ $show_logo = punkcoder_get_options('punkcoder_settings', 'logo_show', 'yes');
     </div>
 </nav>
 <div id="pk-slogan" class="container-fluid d-none d-lg-block">
-    <div class="row justify-content-center bg-secondary slogan-bg" style="background-image: url('<?php echo punkcoder_get_options('punkcoder_options', 'bg_image', punkcoder_get_url('images', 'default-bg-image.png'))?>') !important;">
+    <div class="row justify-content-center bg-secondary slogan-bg" style="background-image: url('<?php echo(esc_html($bg_image)); ?>') !important;">
         <div class="col-6 align-content-center my-5 text-light">
             <h1 class="text-center "><?php bloginfo('name'); ?></h1>
             <h2 class="text-center mt-5"><?php bloginfo('description'); ?></h2>

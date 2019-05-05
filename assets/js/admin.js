@@ -13,10 +13,6 @@ jQuery(document).ready(function($){
     var mediaUploader;
     $('#punkcoder-avatar-upload-button').click(function(e) {
         e.preventDefault();
-        if (mediaUploader) {
-            mediaUploader.open();
-            return;
-        }
         mediaUploader = wp.media.frames.file_frame = wp.media({
             title: '选择图片',
             button: {
@@ -32,10 +28,6 @@ jQuery(document).ready(function($){
 
     $('#punkcoder-wechat-upload-button').click(function(e) {
         e.preventDefault();
-        if (mediaUploader) {
-            mediaUploader.open();
-            return;
-        }
         mediaUploader = wp.media.frames.file_frame = wp.media({
             title: '选择图片',
             button: {
@@ -51,10 +43,6 @@ jQuery(document).ready(function($){
 
     $('#punkcoder-logo-upload-button').click(function(e) {
         e.preventDefault();
-        if (mediaUploader) {
-            mediaUploader.open();
-            return;
-        }
         mediaUploader = wp.media.frames.file_frame = wp.media({
             title: '选择图片',
             button: {
@@ -70,10 +58,6 @@ jQuery(document).ready(function($){
 
     $('#punkcoder-bg-image-upload-button').click(function(e) {
         e.preventDefault();
-        if (mediaUploader) {
-            mediaUploader.open();
-            return;
-        }
         mediaUploader = wp.media.frames.file_frame = wp.media({
             title: '选择图片',
             button: {

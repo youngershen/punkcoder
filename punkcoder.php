@@ -762,7 +762,7 @@ function punkcoder_bg_image_form()
     $bg = esc_html(punkcoder_get_options('punkcoder_settings', 'bg_image', $default));;
     ?>
     <div class="punkcoder-options-logo">
-        <img src="<?php echo $bg; ?>" alt="" class="rounded mw-100 punkcoder-options-bg-image" id="punkcoder-options-bg-ima ge">
+        <img src="<?php echo $bg; ?>" alt="" class="rounded mw-100 punkcoder-options-bg-image" id="punkcoder-options-bg-image">
         <input type="hidden" name="punkcoder_settings[bg_image]" id="punkcoder-options-bg-image-input" value="<?php echo $bg; ?>">
     </div>
     <div>
