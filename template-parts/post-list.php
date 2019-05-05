@@ -18,21 +18,20 @@
                 global $post;
                 if(has_post_thumbnail($post->ID))
                 {
-                    $url = get_the_post_thumbnail_url($post);
+                    $url = get_the_post_thumbnail_url($post, 'list-post-thumbnail');
                     ?>
                     <a href="<?php echo(esc_url(get_permalink())); ?>">
-                        <img src="<?php echo($url); ?>" alt="<?php echo(get_the_title()); ?>" class="mw-100">
+                        <img src="<?php echo($url); ?>" alt="<?php echo(get_the_title()); ?>" class="mw-100 rounded">
                     </a>
                     <?php
                 }else
                 {
                     ?>
                     <a href="<?php echo(esc_url(get_permalink())); ?>">
-                        <img src="<?php echo(punkcoder_get_url('images', 'default-feature-image.jpg')) ?>" alt="<?php echo(get_the_title()); ?>" class="mw-100">
+                        <img src="<?php echo(punkcoder_get_url('images', 'default-feature-image.jpg')) ?>" alt="<?php echo(get_the_title()); ?>" class="mw-100 rounded">
                     </a>
                     <?php
                 }
-
             ?>
         </div>
         <div class="col-lg-8 m-0 col-sm-12 <?php post_class();?>" id="post-<?php the_ID(); ?>">

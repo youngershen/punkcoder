@@ -829,7 +829,6 @@ function punkcoder_beian_form()
     <?php
 }
 
-
 function punkcoder_beian_show_form()
 {
     ?>

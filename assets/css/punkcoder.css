@@ -365,3 +365,18 @@ nav
 .post-comment-meta-content-wrap
 {
 }
+
+.punkcoder-post-single-thumbnail
+{
+    padding: .5rem;
+}
+
+.punkcoder-post-single-thumbnail-image
+{
+    width: 100%;
+}
+
+figure > img
+{
+    border-radius: .5rem;
+}

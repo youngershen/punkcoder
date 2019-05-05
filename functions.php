@@ -255,4 +255,14 @@ add_filter('the_content', 'punkcoder_update_post_read_counts');
 add_action('wp_ajax_post_like', 'punkcoder_post_like_handler' );
 add_theme_support( 'post-thumbnails' );
 
+add_image_size( 'list-post-thumbnail', 300, 200);
+
+add_image_size( 'single-post-thumbnail', 600, 300);
+
+add_image_size( 'avatar-image', 150, 150);
+
+add_image_size( 'bg-image', 590, 180);
+
+add_image_size( 'logo-image', 100, 100);
+
 require_once("punkcoder.php");

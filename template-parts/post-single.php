@@ -11,7 +11,7 @@
  */
 ?>
 
-    <article <?php post_class('single-article'); ?> id="post-<?php the_ID(); ?>">
+    <article <?php post_class('single-article justify-content-center'); ?> id="post-<?php the_ID(); ?>">
         <header class="single-article-header justify-content-center">
             <h2 class="justify-content-center single-article-title"><?php echo($post->post_title) ?></h2>
         </header>
@@ -19,6 +19,24 @@
             <?php get_template_part('template-parts/post-meta') ?>
         </div>
         <hr>
+        <div class="punkcoder-post-single-thumbnail d-none d-lg-block">
+            <?php
+            $id = get_post_thumbnail_id();
+            $image = wp_get_attachment_image_src($id, 'single-post-thumbnail');
+
+            if($image)
+            {
+                $image = $image[0];
+            }
+            else
+            {
+                $image = punkcoder_get_url('images', 'default-feature-image.jpg');
+            }
+
+            ?>
+            <img src="<?php echo(esc_html($image)); ?>" alt="" class="punkcoder-post-single-thumbnail-image rounded">
+        </div>
+
         <div class="single-article-content">
             <?php
             the_content();
