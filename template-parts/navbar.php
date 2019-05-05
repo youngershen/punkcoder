@@ -18,11 +18,24 @@ $args = array(
 
 );
 $query = new WP_Query($args);
+
+$logo = punkcoder_get_options('punkcoder_settings', 'logo', punkcoder_get_url('images', 'default-logo.png'));
+$show_logo = punkcoder_get_options('punkcoder_settings', 'logo_show', 'yes');
+
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top punkcoder-navbar">
     <a class="navbar-brand" href="<?php echo(home_url()); ?>">
-        <img src="<?php echo punkcoder_get_options('punkcoder_options', 'logo', punkcoder_get_url('images', 'default-logo.pnf'))?>" width="40" height="40" alt="">
+        <?php
+
+        if('yes' == $show_logo)
+        {
+        ?>
+            <img src="<?php echo(esc_html($logo));?>" width="40" height="40" alt="">
+        <?php
+        }
+
+        ?>
         <?php echo(get_bloginfo()); ?>
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content"
