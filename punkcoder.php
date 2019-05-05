@@ -405,27 +405,42 @@ function punkcoder_settings()
         "punkcoder_settings_section");
 }
 
+function punkcoder_init_profile_options()
+{
+    register_setting("punkcoder_profiles", "punkcoder_profiles",
+        [
+            'sanitize_callback' => 'punkcoder_profiles_validate'
+        ]);
+
+    punkcoder_profiles();
+}
+
+function punkcoder_init_setting_options()
+{
+    register_setting("punkcoder_settings", "punkcoder_settings",
+        [
+            'sanitize_callback' => 'punkcoder_settings_validate'
+        ]);
+
+    punkcoder_settings();
+}
+
 function punkcoder_options_page()
 {
 
     if(isset($_GET['tab']) && $_GET['tab'] == 'profiles' || isset($_POST['option_page']) && $_POST['option_page'] == 'punkcoder_profiles')
     {
-        register_setting("punkcoder_profiles", "punkcoder_profiles",
-            [
-                'sanitize_callback' => 'punkcoder_profiles_validate'
-            ]);
-
-        punkcoder_profiles();
+       punkcoder_init_profile_options();
     }
 
-    if(isset($_GET['tab']) && $_GET['tab'] == 'settings' || isset($_POST['option_page']) && $_POST['option_page'] == 'punkcoder_settings')
+    else if(isset($_GET['tab']) && $_GET['tab'] == 'settings' || isset($_POST['option_page']) && $_POST['option_page'] == 'punkcoder_settings')
     {
-        register_setting("punkcoder_settings", "punkcoder_settings",
-            [
-                'sanitize_callback' => 'punkcoder_settings_validate'
-            ]);
+        punkcoder_init_setting_options();
+    }
 
-        punkcoder_settings();
+    else
+    {
+        punkcoder_init_profile_options();
     }
 }
 
