@@ -60,7 +60,7 @@ function punkcoder_options_page_form()
         <form method="post" action="options.php" id="punkcoder-option-form">
             <?php
 
-            settings_fields('punkcoder');
+            settings_fields($option);
 
             do_settings_sections($option);
 
@@ -356,7 +356,11 @@ function punkcoder_options_header_html()
 
 function punkcoder_profiles()
 {
-    add_settings_section('punkcoder_profiles_section', __('个人资料', 'punkcoder'), 'punkcoder_options_header_html', 'punkcoder_profiles');
+    add_settings_section(
+            'punkcoder_profiles_section',
+            __('个人资料', 'punkcoder'),
+            'punkcoder_options_header_html',
+            'punkcoder_profiles');
 
     add_settings_field(
         'punkcoder_avatar',
@@ -487,7 +491,11 @@ function punkcoder_profiles()
 
 function punkcoder_settings()
 {
-    add_settings_section("punkcoder_settings_section", __('系统设置', 'punkcoder'), "punkcoder_options_header_html", "punkcoder_settings");
+    add_settings_section(
+            "punkcoder_settings_section",
+            __('系统设置', 'punkcoder'),
+            "punkcoder_options_header_html",
+            "punkcoder_settings");
 
     add_settings_field(
         "punkcoder_logo_image",
@@ -577,23 +585,25 @@ function punkcoder_settings()
 function punkcoder_options_page()
 {
 
-            register_setting(
-                "punkcoder",
-                "punkcoder_profiles",
-                [
-                    'sanitize_callback' => 'punkcoder_profiles_validate'
-                ]);
+    if(isset($_GET['tab']) && $_GET['tab'] == 'profiles' || isset($_POST['option_page']) && $_POST['option_page'] == 'punkcoder_profiles')
+    {
+        register_setting("punkcoder_profiles", "punkcoder_profiles",
+            [
+                'sanitize_callback' => 'punkcoder_profiles_validate'
+            ]);
 
-            punkcoder_profiles();
+        punkcoder_profiles();
+    }
 
-            register_setting(
-                "punkcoder",
-                "punkcoder_settings",
-                [
-                    'sanitize_callback' => 'punkcoder_settings_validate'
-                ]);
-            punkcoder_settings();
+    if(isset($_GET['tab']) && $_GET['tab'] == 'settings' || isset($_POST['option_page']) && $_POST['option_page'] == 'punkcoder_settings')
+    {
+        register_setting("punkcoder_settings", "punkcoder_settings",
+            [
+                'sanitize_callback' => 'punkcoder_settings_validate'
+            ]);
 
+        punkcoder_settings();
+    }
 }
 
 function punkcoder_avatar_form()
@@ -964,7 +974,7 @@ function punkcoder_custom_code_show_form()
            id="punkcoder-options-custom-code-show"
            value="yes"
         <?php
-        if(punkcoder_get_options('punkcoder_settings', 'custom_code_show', 'yes') == 'yes')
+        if(punkcoder_get_options('punkcoder_settings', 'custom_code_show', 'no') == 'yes')
         {
             ?>
             checked="checked"
@@ -992,7 +1002,7 @@ function punkcoder_beian_show_form()
            id="punkcoder-options-beian-show"
            value="yes"
         <?php
-        if(punkcoder_get_options('punkcoder_settings', 'beian_show', 'yes') == 'yes')
+        if(punkcoder_get_options('punkcoder_settings', 'beian_show', 'no') == 'yes')
         {
             ?>
             checked="checked"
@@ -1006,7 +1016,7 @@ function punkcoder_beian_show_form()
 function punkcoder_copyright_form()
 {
     ?>
-    <input class="punkcoder-option-form-input" type="text" name="punkcoder_settings[copyright]" id="punkcoder_options_copyright" value="<?php echo esc_html(punkcoder_get_options('punkcoder_settings', 'copyright'));?>" />
+    <input class="punkcoder-option-form-input" type="text" name="punkcoder_settings[copyright]" id="punkcoder_options_copyright" value="<?php echo esc_html(punkcoder_get_options('punkcoder_settings', 'copyright', '版权 <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank"> 署名 4.0 国际 (CC BY 4.0) </a>'));?>" />
     <?php
 }
 
