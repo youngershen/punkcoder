@@ -36,6 +36,16 @@
     <script src="<?php echo(get_template_directory_uri())?>/assets/vendor/dist/js/punkcoder.min.js"></script>
 
     <!-- custom code is here -->
-    <?php echo punkcoder_get_options('punkcoder_options', 'custom_code');?>
+    <?php
+        $show_custom_code = punkcoder_get_options('punkcoder_settings', 'custom_code', 'no');
+
+        if('yes' == $show_custom_code)
+        {
+            $code = punkcoder_get_options('punkcoder_settings', 'custom_code');
+            echo(esc_html($code));
+        }
+    ?>
+
+    <?php echo punkcoder_get_options('punkcoder_settings', 'custom_code');?>
     <?php wp_head(); ?>
 </head>

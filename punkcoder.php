@@ -761,7 +761,6 @@ function punkcoder_email_show_form()
     <?php
 }
 
-
 function punkcoder_github_form()
 {
     $default = 'https://github.com/youngershen';
