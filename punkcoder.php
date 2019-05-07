@@ -227,12 +227,12 @@ function punkcoder_profiles()
         'punkcoder_profiles',
         'punkcoder_profiles_section');
 
-    add_settings_field(
-        'punkcoder_avatar_show',
-        __('显示头像', 'punkcoder'),
-        'punkcoder_avatar_show_form',
-        'punkcoder_profiles',
-        'punkcoder_profiles_section');
+//    add_settings_field(
+//        'punkcoder_avatar_show',
+//        __('显示头像', 'punkcoder'),
+//        'punkcoder_avatar_show_form',
+//        'punkcoder_profiles',
+//        'punkcoder_profiles_section');
 
     add_settings_field(
         "punkcoder_nickname",
@@ -241,12 +241,12 @@ function punkcoder_profiles()
         "punkcoder_profiles",
         "punkcoder_profiles_section");
 
-    add_settings_field(
-        'punkcoder_nickname_show',
-        __('显示昵称', 'punkcoder'),
-        'punkcoder_nickname_show_form',
-        'punkcoder_profiles',
-        'punkcoder_profiles_section');
+//    add_settings_field(
+//        'punkcoder_nickname_show',
+//        __('显示昵称', 'punkcoder'),
+//        'punkcoder_nickname_show_form',
+//        'punkcoder_profiles',
+//        'punkcoder_profiles_section');
 
     add_settings_field(
         "punkcoder_age",

@@ -13,7 +13,7 @@
 $copyright = punkcoder_get_options('punkcoder_settings', 'copyright', '版权<a href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank"> 署名 4.0 国际 (CC BY 4.0) </a>');
 $copyright_show = punkcoder_get_options('punkcoder_settings', 'copyright_show', 'yes');
 
-$beian = punkcoder_get_options('punkcoder_settings', 'beian', '备案号 冀ICP备19005058号');
+$beian = punkcoder_get_options('punkcoder_settings', 'beian');
 $beian_show = punkcoder_get_options('punkcoder_settings', 'beian_show', 'no');
 
 $wordpress_copyright = punkcoder_get_options('punkcoder_settings', '', 'Powered By <a href="https://wordpress.org/" target="_blank">WordPress.org</a>');

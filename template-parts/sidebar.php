@@ -39,22 +39,43 @@ $query = new WP_Query($args);
     <div class="row punkcoder-sidebar-profile justify-content-center">
         <div class="col-12">
             <div class="text-center punkcoder-sidebar-profile-avatar">
-                <img src="<?php echo esc_html(punkcoder_get_options('punkcoder_profile_options', 'avatar', punkcoder_get_url('images', 'default-avatar-image.jpg'))); ?>"
-                     class="rounded mw-100" alt="<?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'nickname', '申延刚')); ?>">
+                <img src="<?php echo esc_html(punkcoder_get_options('punkcoder_profiles', 'avatar', punkcoder_get_url('images', 'default-avatar-image.jpg'))); ?>"
+                     class="rounded mw-100" alt="<?php echo esc_attr(punkcoder_get_options('punkcoder_profiles', 'nickname', '申延刚')); ?>">
             </div>
             <div class="punkcoder-sidebar-profile-item">
                 <div>
                     <span><?php echo(__("昵称", "punkcoder"));?>:</span>
-                    <span><?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'nickname', '申延刚')); ?></span>
+                    <span><?php echo esc_attr(punkcoder_get_options('punkcoder_profiles', 'nickname', '申延刚')); ?></span>
                 </div>
-                <div>
-                    <span><?php echo(__("年龄", "punkcoder"));?>:</span>
-                    <span><?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'age', '30')); ?></span>
-                </div>
-                <div>
-                    <span><?php echo(__("性别", "punkcoder"));?>:</span>
-                    <span><?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'gender', '男')); ?></span>
-                </div>
+                <?php
+                $show = punkcoder_get_options('punkcoder_profiles', 'age_show', 'no');
+                $age = punkcoder_get_options('punkcoder_profiles', 'age', '');
+
+                if('yes' == $show && $age)
+                {
+                ?>
+                    <div>
+                        <span><?php echo(__("年龄", "punkcoder"));?>:</span>
+                        <span><?php echo esc_attr($age); ?></span>
+                    </div>
+                <?php
+                }
+                ?>
+
+                <?php
+                $show = punkcoder_get_options('punkcoder_profiles', 'gender_show', 'no');
+                $gender = punkcoder_get_options('punkcoder_profiles', 'gender', '');
+
+                if('yes' == $show && $gender)
+                {
+                    ?>
+                    <div>
+                        <span><?php echo(__("性别", "punkcoder"));?>:</span>
+                        <span><?php echo esc_attr($gender); ?></span>
+                    </div>
+                    <?php
+                }
+                ?>
                 <div>
                     <span><?php echo(__("职业", "punkcoder"));?>:</span>
                     <span><?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'occupation', 'PHP程序员')); ?></span>
