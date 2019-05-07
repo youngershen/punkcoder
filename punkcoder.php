@@ -368,6 +368,20 @@ function punkcoder_profiles()
         "punkcoder_pinterest_show_form",
         "punkcoder_profiles",
         "punkcoder_profiles_section");
+
+    add_settings_field(
+        "punkcoder_linkedin",
+        __('Linkedin', 'punkcoder'),
+        "punkcoder_linkedin_form",
+        "punkcoder_profiles",
+        "punkcoder_profiles_section");
+
+    add_settings_field(
+        "punkcoder_linkedin_show",
+        __('显示 Linkedin', 'punkcoder'),
+        "punkcoder_linkedin_show_form",
+        "punkcoder_profiles",
+        "punkcoder_profiles_section");
 }
 
 function punkcoder_settings()
@@ -827,6 +841,35 @@ function punkcoder_pinterest_show_form()
            value="yes"
         <?php
         if(punkcoder_get_options('punkcoder_profiles', 'pinterest_show', 'yes') == 'yes')
+        {
+            ?>
+            checked="checked"
+            <?php
+        }
+        ?>
+    />
+    <?php
+}
+
+function punkcoder_linkedin_form()
+{
+    $default = '';
+    $linkedin = esc_html(punkcoder_get_options('punkcoder_profiles', 'linkedin', $default));
+    ?>
+    <input class="punkcoder-option-form-input punkcoder-profiles-linkedin-input" type="text" name="punkcoder_profiles[linkedin]" id="punkcoder-profiles-linkedin-input" value="<?php echo $linkedin;?>" />
+    <?php
+}
+
+function punkcoder_linkedin_show_form()
+{
+    ?>
+    <input type="checkbox"
+           class="punkcoder-option-form-input punkcoder-profiles-linkedin-show-input"
+           name="punkcoder_profiles[linkedin_show]"
+           id="punkcoder-profiles-linkedin-show"
+           value="yes"
+        <?php
+        if(punkcoder_get_options('punkcoder_profiles', 'linkedin_show', 'yes') == 'yes')
         {
             ?>
             checked="checked"
