@@ -800,7 +800,6 @@ function punkcoder_bg_image_form()
     <?php
 }
 
-
 function punkcoder_bg_image_show_form()
 {
     ?>
@@ -829,7 +828,6 @@ function punkcoder_custom_code_form()
     </textarea>
     <?php
 }
-
 
 function punkcoder_custom_code_show_form()
 {
