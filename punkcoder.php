@@ -174,6 +174,21 @@ function punkcoder_profiles_validate($args)
         $args['linkedin_show'] = 'no';
     }
 
+    if(!array_key_exists('youtube_show', $args))
+    {
+        $args['youtube_show'] = 'no';
+    }
+
+    if(!array_key_exists('quora_show', $args))
+    {
+        $args['quora_show'] = 'no';
+    }
+
+    if(!array_key_exists('zhihu_show', $args))
+    {
+        $args['zhihu_show'] = 'no';
+    }
+
     return $args;
 }
 
@@ -321,7 +336,7 @@ function punkcoder_profiles()
 
     add_settings_field(
         "punkcoder_twitter_show",
-        __('显示Twitter', 'punkcoder'),
+        __('显示 Twitter', 'punkcoder'),
         "punkcoder_twitter_show_form",
         "punkcoder_profiles",
         "punkcoder_profiles_section");
@@ -335,8 +350,22 @@ function punkcoder_profiles()
 
     add_settings_field(
         "punkcoder_instagram_show",
-        __('显示Instagram', 'punkcoder'),
+        __('显示 Instagram', 'punkcoder'),
         "punkcoder_instagram_show_form",
+        "punkcoder_profiles",
+        "punkcoder_profiles_section");
+
+    add_settings_field(
+        "punkcoder_pinterest",
+        __('Pinterest', 'punkcoder'),
+        "punkcoder_pinterest_form",
+        "punkcoder_profiles",
+        "punkcoder_profiles_section");
+
+    add_settings_field(
+        "punkcoder_pinterest_show",
+        __('显示 Pinterest', 'punkcoder'),
+        "punkcoder_pinterest_show_form",
         "punkcoder_profiles",
         "punkcoder_profiles_section");
 }
@@ -740,6 +769,64 @@ function punkcoder_twitter_show_form()
            value="yes"
         <?php
         if(punkcoder_get_options('punkcoder_profiles', 'twitter_show', 'yes') == 'yes')
+        {
+            ?>
+            checked="checked"
+            <?php
+        }
+        ?>
+    />
+    <?php
+}
+
+function punkcoder_instagram_form()
+{
+    $default = '';
+    $instagram = esc_html(punkcoder_get_options('punkcoder_profiles', 'instagram', $default));
+    ?>
+    <input class="punkcoder-option-form-input punkcoder-profiles-instagram-input" type="text" name="punkcoder_profiles[instagram]" id="punkcoder-profiles-instagram-input" value="<?php echo $instagram;?>" />
+    <?php
+}
+
+function punkcoder_instagram_show_form()
+{
+    ?>
+    <input type="checkbox"
+           class="punkcoder-option-form-input punkcoder-profiles-instagram-show-input"
+           name="punkcoder_profiles[instagram_show]"
+           id="punkcoder-profiles-instagram-show"
+           value="yes"
+        <?php
+        if(punkcoder_get_options('punkcoder_profiles', 'instagram_show', 'yes') == 'yes')
+        {
+            ?>
+            checked="checked"
+            <?php
+        }
+        ?>
+    />
+    <?php
+}
+
+function punkcoder_pinterest_form()
+{
+    $default = '';
+    $pinterest = esc_html(punkcoder_get_options('punkcoder_profiles', 'pinterest', $default));
+    ?>
+    <input class="punkcoder-option-form-input punkcoder-profiles-pinterest-input" type="text" name="punkcoder_profiles[pinterest]" id="punkcoder-profiles-pinterest-input" value="<?php echo $pinterest;?>" />
+    <?php
+}
+
+function punkcoder_pinterest_show_form()
+{
+    ?>
+    <input type="checkbox"
+           class="punkcoder-option-form-input punkcoder-profiles-pinterest-show-input"
+           name="punkcoder_profiles[pinterest_show]"
+           id="punkcoder-profiles-pinterest-show"
+           value="yes"
+        <?php
+        if(punkcoder_get_options('punkcoder_profiles', 'pinterest_show', 'yes') == 'yes')
         {
             ?>
             checked="checked"
