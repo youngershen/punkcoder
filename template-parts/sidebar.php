@@ -128,6 +128,9 @@ $query = new WP_Query($args);
                         <i class="fab fa-quora"></i>
                     </a>
                     <a href="">
+                        <i class="fab fa-stack-overflow"></i>
+                    </a>
+                    <a href="">
                         <i class="fab fa-zhihu"></i>
                     </a>
                 </div>

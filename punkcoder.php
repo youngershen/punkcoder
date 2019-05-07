@@ -184,6 +184,11 @@ function punkcoder_profiles_validate($args)
         $args['quora_show'] = 'no';
     }
 
+    if(!array_key_exists('stackoverflow_show', $args))
+    {
+        $args['stackoverflow_show'] = 'no';
+    }
+
     if(!array_key_exists('zhihu_show', $args))
     {
         $args['zhihu_show'] = 'no';
@@ -408,6 +413,20 @@ function punkcoder_profiles()
         "punkcoder_quora_show",
         __('显示 Quora', 'punkcoder'),
         "punkcoder_quora_show_form",
+        "punkcoder_profiles",
+        "punkcoder_profiles_section");
+
+    add_settings_field(
+        "punkcoder_stackoverflow",
+        __('Stackoverflow', 'punkcoder'),
+        "punkcoder_stackoverflow_form",
+        "punkcoder_profiles",
+        "punkcoder_profiles_section");
+
+    add_settings_field(
+        "punkcoder_stackoverflow_show",
+        __('显示 Stackoverflow', 'punkcoder'),
+        "punkcoder_stackoverflow_show_form",
         "punkcoder_profiles",
         "punkcoder_profiles_section");
 
@@ -970,6 +989,64 @@ function punkcoder_quora_show_form()
            value="yes"
         <?php
         if(punkcoder_get_options('punkcoder_profiles', 'quora_show', 'yes') == 'yes')
+        {
+            ?>
+            checked="checked"
+            <?php
+        }
+        ?>
+    />
+    <?php
+}
+
+function punkcoder_stackoverflow_form()
+{
+    $default = '';
+    $stackoverflow = esc_html(punkcoder_get_options('punkcoder_profiles', 'stackoverflow', $default));
+    ?>
+    <input class="punkcoder-option-form-input punkcoder-profiles-stackoverflow-input" type="text" name="punkcoder_profiles[stackoverflow]" id="punkcoder-profiles-stackoverflow-input" value="<?php echo $stackoverflow;?>" />
+    <?php
+}
+
+function punkcoder_stackoverflow_show_form()
+{
+    ?>
+    <input type="checkbox"
+           class="punkcoder-option-form-input punkcoder-profiles-stackoverflow-show-input"
+           name="punkcoder_profiles[stackoverflow_show]"
+           id="punkcoder-profiles-stackoverflow-show"
+           value="yes"
+        <?php
+        if(punkcoder_get_options('punkcoder_profiles', 'stackoverflow_show', 'yes') == 'yes')
+        {
+            ?>
+            checked="checked"
+            <?php
+        }
+        ?>
+    />
+    <?php
+}
+
+function punkcoder_zhihu_form()
+{
+    $default = '';
+    $zhihu = esc_html(punkcoder_get_options('punkcoder_profiles', 'zhihu', $default));
+    ?>
+    <input class="punkcoder-option-form-input punkcoder-profiles-zhihu-input" type="text" name="punkcoder_profiles[zhihu]" id="punkcoder-profiles-zhihu-input" value="<?php echo $zhihu;?>" />
+    <?php
+}
+
+function punkcoder_zhihu_show_form()
+{
+    ?>
+    <input type="checkbox"
+           class="punkcoder-option-form-input punkcoder-profiles-zhihu-show-input"
+           name="punkcoder_profiles[zhihu_show]"
+           id="punkcoder-profiles-zhihu-show"
+           value="yes"
+        <?php
+        if(punkcoder_get_options('punkcoder_profiles', 'zhihu_show', 'yes') == 'yes')
         {
             ?>
             checked="checked"
