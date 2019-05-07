@@ -382,6 +382,48 @@ function punkcoder_profiles()
         "punkcoder_linkedin_show_form",
         "punkcoder_profiles",
         "punkcoder_profiles_section");
+
+    add_settings_field(
+        "punkcoder_youtube",
+        __('Youtube', 'punkcoder'),
+        "punkcoder_youtube_form",
+        "punkcoder_profiles",
+        "punkcoder_profiles_section");
+
+    add_settings_field(
+        "punkcoder_youtube_show",
+        __('显示 Youtube', 'punkcoder'),
+        "punkcoder_youtube_show_form",
+        "punkcoder_profiles",
+        "punkcoder_profiles_section");
+
+    add_settings_field(
+        "punkcoder_quora",
+        __('Quora', 'punkcoder'),
+        "punkcoder_quora_form",
+        "punkcoder_profiles",
+        "punkcoder_profiles_section");
+
+    add_settings_field(
+        "punkcoder_quora_show",
+        __('显示 Quora', 'punkcoder'),
+        "punkcoder_quora_show_form",
+        "punkcoder_profiles",
+        "punkcoder_profiles_section");
+
+    add_settings_field(
+        "punkcoder_zhihu",
+        __('Zhihu', 'punkcoder'),
+        "punkcoder_zhihu_form",
+        "punkcoder_profiles",
+        "punkcoder_profiles_section");
+
+    add_settings_field(
+        "punkcoder_zhihu_show",
+        __('显示 Zhihu', 'punkcoder'),
+        "punkcoder_zhihu_show_form",
+        "punkcoder_profiles",
+        "punkcoder_profiles_section");
 }
 
 function punkcoder_settings()
@@ -870,6 +912,35 @@ function punkcoder_linkedin_show_form()
            value="yes"
         <?php
         if(punkcoder_get_options('punkcoder_profiles', 'linkedin_show', 'yes') == 'yes')
+        {
+            ?>
+            checked="checked"
+            <?php
+        }
+        ?>
+    />
+    <?php
+}
+
+function punkcoder_youtube_form()
+{
+    $default = '';
+    $youtube = esc_html(punkcoder_get_options('punkcoder_profiles', 'youtube', $default));
+    ?>
+    <input class="punkcoder-option-form-input punkcoder-profiles-youtube-input" type="text" name="punkcoder_profiles[youtube]" id="punkcoder-profiles-youtube-input" value="<?php echo $youtube;?>" />
+    <?php
+}
+
+function punkcoder_youtube_show_form()
+{
+    ?>
+    <input type="checkbox"
+           class="punkcoder-option-form-input punkcoder-profiles-youtube-show-input"
+           name="punkcoder_profiles[youtube_show]"
+           id="punkcoder-profiles-youtube-show"
+           value="yes"
+        <?php
+        if(punkcoder_get_options('punkcoder_profiles', 'youtube_show', 'yes') == 'yes')
         {
             ?>
             checked="checked"
