@@ -951,6 +951,35 @@ function punkcoder_youtube_show_form()
     <?php
 }
 
+function punkcoder_quora_form()
+{
+    $default = '';
+    $quora = esc_html(punkcoder_get_options('punkcoder_profiles', 'quora', $default));
+    ?>
+    <input class="punkcoder-option-form-input punkcoder-profiles-quora-input" type="text" name="punkcoder_profiles[quora]" id="punkcoder-profiles-quora-input" value="<?php echo $quora;?>" />
+    <?php
+}
+
+function punkcoder_quora_show_form()
+{
+    ?>
+    <input type="checkbox"
+           class="punkcoder-option-form-input punkcoder-profiles-quora-show-input"
+           name="punkcoder_profiles[quora_show]"
+           id="punkcoder-profiles-quora-show"
+           value="yes"
+        <?php
+        if(punkcoder_get_options('punkcoder_profiles', 'quora_show', 'yes') == 'yes')
+        {
+            ?>
+            checked="checked"
+            <?php
+        }
+        ?>
+    />
+    <?php
+}
+
 function punkcoder_logo_form()
 {
     $default = punkcoder_get_url('images', 'default-logo.png');
