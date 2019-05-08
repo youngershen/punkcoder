@@ -130,10 +130,6 @@ function punkcoder_profiles_validate($args)
         $args['occupation_show'] = 'no';
     }
 
-    if(!array_key_exists('cellphone_show', $args))
-    {
-        $args['cellphone_show'] = 'no';
-    }
 
     if(!array_key_exists('qq_show', $args))
     {
@@ -143,6 +139,16 @@ function punkcoder_profiles_validate($args)
     if(!array_key_exists('whatsapp_show', $args))
     {
         $args['whatsapp_show'] = 'no';
+    }
+
+    if(!array_key_exists('telegram_show', $args))
+    {
+        $args['telegram_show'] = 'no';
+    }
+
+    if(!array_key_exists('skype_show', $args))
+    {
+        $args['skype_show'] = 'no';
     }
 
     if(!array_key_exists('github_show', $args))
@@ -340,6 +346,20 @@ function punkcoder_profiles()
         "punkcoder_telegram_show",
         __('显示 Telegram', 'punkcoder'),
         "punkcoder_telegram_show_form",
+        "punkcoder_profiles",
+        "punkcoder_profiles_section");
+
+    add_settings_field(
+        "punkcoder_skype",
+        __('Skype', 'punkcoder'),
+        "punkcoder_skype_form",
+        "punkcoder_profiles",
+        "punkcoder_profiles_section");
+
+    add_settings_field(
+        "punkcoder_skype_show",
+        __('显示 Skype', 'punkcoder'),
+        "punkcoder_skype_show_form",
         "punkcoder_profiles",
         "punkcoder_profiles_section");
 
@@ -866,6 +886,36 @@ function punkcoder_telegram_show_form()
            value="yes"
         <?php
         if(punkcoder_get_options('punkcoder_profiles', 'telegram_show', 'yes') == 'yes')
+        {
+            ?>
+            checked="checked"
+            <?php
+        }
+        ?>
+    />
+    <?php
+}
+
+function punkcoder_skype_form()
+{
+    $defalt = '';
+    $skype = esc_html(punkcoder_get_options('punkcoder_profiles', 'skype', $defalt));
+
+    ?>
+    <input class="punkcoder-option-form-input" type="text" name="punkcoder_profiles[skype]" id="punkcoder-options-skype" value="<?php echo $skype; ?>" />
+    <?php
+}
+
+function punkcoder_skype_show_form()
+{
+    ?>
+    <input type="checkbox"
+           class="punkcoder-option-form-input"
+           name="punkcoder_profiles[skype_show]"
+           id="punkcoder-options-skype-show"
+           value="yes"
+        <?php
+        if(punkcoder_get_options('punkcoder_profiles', 'skype_show', 'yes') == 'yes')
         {
             ?>
             checked="checked"

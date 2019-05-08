@@ -160,10 +160,22 @@ $query = new WP_Query($args);
                 }
                 ?>
 
-                <div>
-                    <span><?php echo(__("Skype", "punkcoder"));?>:</span>
-                    <span><?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'qq', '89198011')); ?></span>
-                </div>
+                <?php
+                $show = punkcoder_get_options('punkcoder_profiles', 'skype_show', 'no');
+                $skype = punkcoder_get_options('punkcoder_profiles', 'skype', '');
+
+                if('yes' == $show && $skype)
+                {
+                    ?>
+                    <div>
+                        <span><?php echo(__("Skype", "punkcoder"));?>:</span>
+                        <span>
+                            <?php echo esc_attr($skype); ?>
+                        </span>
+                    </div>
+                    <?php
+                }
+                ?>
 
                 <div>
                     <span><?php echo(__("Line", "punkcoder"));?>:</span>
