@@ -135,9 +135,9 @@ function punkcoder_profiles_validate($args)
         $args['cellphone_show'] = 'no';
     }
 
-    if(!array_key_exists('email_show', $args))
+    if(!array_key_exists('qq_show', $args))
     {
-        $args['email_show'] = 'no';
+        $args['qq_show'] = 'no';
     }
 
     if(!array_key_exists('github_show', $args))
@@ -158,6 +158,11 @@ function punkcoder_profiles_validate($args)
     if(!array_key_exists('twitter_show', $args))
     {
         $args['twitter_show'] = 'no';
+    }
+
+    if(!array_key_exists('email_show', $args))
+    {
+        $args['email_show'] = 'no';
     }
 
     if(!array_key_exists('instagram_show', $args))
@@ -292,16 +297,16 @@ function punkcoder_profiles()
         "punkcoder_profiles_section");
 
     add_settings_field(
-        "punkcoder_email",
-        __('电邮', 'punkcoder'),
-        "punkcoder_email_form",
+        "punkcoder_qq",
+        __('QQ', 'punkcoder'),
+        "punkcoder_qq_form",
         "punkcoder_profiles",
         "punkcoder_profiles_section");
 
     add_settings_field(
-        "punkcoder_email_show",
-        __('显示电邮', 'punkcoder'),
-        "punkcoder_email_show_form",
+        "punkcoder_qq_show",
+        __('显示 QQ', 'punkcoder'),
+        "punkcoder_qq_show_form",
         "punkcoder_profiles",
         "punkcoder_profiles_section");
 
@@ -358,6 +363,20 @@ function punkcoder_profiles()
         "punkcoder_twitter_show",
         __('显示 Twitter', 'punkcoder'),
         "punkcoder_twitter_show_form",
+        "punkcoder_profiles",
+        "punkcoder_profiles_section");
+
+    add_settings_field(
+        "punkcoder_email",
+        __('电邮', 'punkcoder'),
+        "punkcoder_email_form",
+        "punkcoder_profiles",
+        "punkcoder_profiles_section");
+
+    add_settings_field(
+        "punkcoder_email_show",
+        __('显示电邮', 'punkcoder'),
+        "punkcoder_email_show_form",
         "punkcoder_profiles",
         "punkcoder_profiles_section");
 
@@ -619,7 +638,7 @@ function punkcoder_nickname_form()
 
 function punkcoder_age_form()
 {
-    $default = '28';
+    $default = '';
     $age = esc_html(punkcoder_get_options('punkcoder_profiles', 'age', $default));
     ?>
     <input class="punkcoder-option-form-input" type="text" name="punkcoder_profiles[age]" id="punkcoder-options-age" value="<?php echo $age ; ?>" />
@@ -677,7 +696,7 @@ function punkcoder_gender_show_form()
 
 function punkcoder_occupation_form()
 {
-    $default = __('PHP程序员', 'punkcoder');
+    $default = __('', 'punkcoder');
     $occupation = esc_html(punkcoder_get_options('punkcoder_profiles', 'occupation', $default));
     ?>
     <input class="punkcoder-option-form-input" type="text" name="punkcoder_profiles[occupation]" id="punkcoder-options-occupation" value="<?php echo $occupation ; ?>" />
@@ -706,7 +725,7 @@ function punkcoder_occupation_show_form()
 
 function punkcoder_cellphone_form()
 {
-    $defalt = '13811754531';
+    $defalt = '';
     $cellphone = esc_html(punkcoder_get_options('punkcoder_profiles', 'cellphone', $defalt));
 
     ?>
@@ -734,9 +753,68 @@ function punkcoder_cellphone_show_form()
     <?php
 }
 
+function punkcoder_qq_form()
+{
+    $defalt = '';
+    $qq = esc_html(punkcoder_get_options('punkcoder_profiles', 'qq', $defalt));
+
+    ?>
+    <input class="punkcoder-option-form-input" type="text" name="punkcoder_profiles[qq]" id="punkcoder-options-qq" value="<?php echo $qq; ?>" />
+    <?php
+}
+
+function punkcoder_qq_show_form()
+{
+    ?>
+    <input type="checkbox"
+           class="punkcoder-option-form-input"
+           name="punkcoder_profiles[qq_show]"
+           id="punkcoder-options-qq-show"
+           value="yes"
+        <?php
+        if(punkcoder_get_options('punkcoder_profiles', 'qq_show', 'yes') == 'yes')
+        {
+            ?>
+            checked="checked"
+            <?php
+        }
+        ?>
+    />
+    <?php
+}
+
+function punkcoder_github_form()
+{
+    $default = '';
+    $github = esc_html(punkcoder_get_options('punkcoder_profiles', 'github', $default));
+    ?>
+    <input class="punkcoder-option-form-input" type="text" name="punkcoder_profiles[github]" id="punkcoder-options-github" value="<?php echo $github;?>" />
+    <?php
+}
+
+function punkcoder_github_show_form()
+{
+    ?>
+    <input type="checkbox"
+           class="punkcoder-option-form-input"
+           name="punkcoder_profiles[github_show]"
+           id="punkcoder-options-github-show"
+           value="yes"
+        <?php
+        if(punkcoder_get_options('punkcoder_profiles', 'github_show', 'yes') == 'yes')
+        {
+            ?>
+            checked="checked"
+            <?php
+        }
+        ?>
+    />
+    <?php
+}
+
 function punkcoder_email_form()
 {
-    $default = 'shenyangang@163.com';
+    $default = '';
     $email = esc_html(punkcoder_get_options('punkcoder_profiles', 'email', $default));
     ?>
 
@@ -764,38 +842,9 @@ function punkcoder_email_show_form()
     <?php
 }
 
-function punkcoder_github_form()
-{
-    $default = 'https://github.com/youngershen';
-    $github = esc_html(punkcoder_get_options('punkcoder_profiles', 'github', $default));
-    ?>
-    <input class="punkcoder-option-form-input" type="text" name="punkcoder_profiles[github]" id="punkcoder-options-github" value="<?php echo $github;?>" />
-    <?php
-}
-
-function punkcoder_github_show_form()
-{
-    ?>
-    <input type="checkbox"
-           class="punkcoder-option-form-input"
-           name="punkcoder_profiles[github_show]"
-           id="punkcoder-options-github-show"
-           value="yes"
-        <?php
-        if(punkcoder_get_options('punkcoder_profiles', 'github_show', 'yes') == 'yes')
-        {
-            ?>
-            checked="checked"
-            <?php
-        }
-        ?>
-    />
-    <?php
-}
-
 function punkcoder_weibo_form()
 {
-    $default = 'https://weibo.com/shenyangang';
+    $default = '';
     $weibo = esc_html(punkcoder_get_options('punkcoder_profiles', 'weibo', $default));
     ?>
     <input class="punkcoder-option-form-input" type="text" name="punkcoder_profiles[weibo]" id="punkcoder-options-weibo" value="<?php echo $weibo;?>" />
@@ -859,7 +908,7 @@ function punkcoder_wechat_qr_image_show_form()
 
 function punkcoder_twitter_form()
 {
-    $default = 'https://twitter.com/youngershen';
+    $default = '';
     $twitter = esc_html(punkcoder_get_options('punkcoder_profiles', 'twitter', $default));
     ?>
     <input class="punkcoder-option-form-input" type="text" name="punkcoder_profiles[twitter]" id="punkcoder_options_twitter" value="<?php echo $twitter;?>" />

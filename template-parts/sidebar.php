@@ -108,10 +108,23 @@ $query = new WP_Query($args);
                     <?php
                 }
                 ?>
-                <div>
-                    <span><?php echo(__("QQ", "punkcoder"));?>:</span>
-                    <span><?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'qq', '89198011')); ?></span>
-                </div>
+
+                <?php
+                $show = punkcoder_get_options('punkcoder_profiles', 'qq_show', 'no');
+                $qq = punkcoder_get_options('punkcoder_profiles', 'qq', '');
+
+                if('yes' == $show && $qq)
+                {
+                    ?>
+                    <div>
+                        <span><?php echo(__("QQ", "punkcoder"));?>:</span>
+                        <span>
+                            <a href="tencent://message/?uin=<?php echo esc_attr($qq); ?>"><?php echo esc_attr($qq); ?></a>
+                        </span>
+                    </div>
+                    <?php
+                }
+                ?>
 
                 <div>
                     <span><?php echo(__("WhatsApp", "punkcoder"));?>:</span>
