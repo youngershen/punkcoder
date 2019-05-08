@@ -144,6 +144,8 @@ function punkcoder_the_like_count()
 
 function punkcoder_post_like_handler()
 {
+    check_ajax_referer( 'punkcoder-ajax-nonce', 'nonce' );
+
     $post_id = $_POST['post_id'];
     $meta_key = 'like_count';
 

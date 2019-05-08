@@ -1663,7 +1663,8 @@ function punkcoder_enqueue_js()
     wp_enqueue_script( 'punkcoder-ajax');
 
     wp_localize_script( 'punkcoder-ajax', 'ajax_object',
-        array( 'url' => admin_url( 'admin-ajax.php' )) );
+        array( 'url' => admin_url( 'admin-ajax.php' )
+        , 'nonce' => wp_create_nonce( 'punkcoder-ajax-nonce' ),) );
 }
 
 add_action("admin_menu", "punkcoder_menu_items");

@@ -23,6 +23,7 @@
     {
         var data = {
             'post_id': post_id,
+            'nonce': ajax_object.nonce,
             'action': 'post_like'
         };
 
