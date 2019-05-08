@@ -269,9 +269,20 @@ $query = new WP_Query($args);
                     }
                     ?>
 
-                    <a href="<?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'twitter', 'https://twitter.com/youngershen')); ?>" target="_blank">
-                        <i class="fab fa-twitter fa-1x"></i>
-                    </a>
+                    <?php
+                    $show = punkcoder_get_options('punkcoder_profiles', 'twitter_show', 'no');;
+                    $twitter = punkcoder_get_options('punkcoder_profiles', 'twitter');
+
+                    if('yes' == $show && $twitter)
+                    {
+                        ?>
+                        <a href="<?php echo esc_attr($twitter); ?>" target="_blank">
+                            <i class="fab fa-twitter fa-1x"></i>
+                        </a>
+                        <?php
+                    }
+                    ?>
+
                     <?php
                         $show = punkcoder_get_options('punkcoder_profiles', 'email_show', 'no');;
                         $email = punkcoder_get_options('punkcoder_profiles', 'email');
@@ -279,34 +290,111 @@ $query = new WP_Query($args);
                         if('yes' == $show && $email)
                         {
                         ?>
-                            <a href="mailto:<?php echo esc_attr($email); ?>">
+                            <a href="mailto:<?php echo esc_attr($email); ?>" target="_blank">
                                 <i class="fas fa-envelope"></i>
                             </a>
                         <?php
                         }
                     ?>
 
-                    <a href="">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="">
-                        <i class="fab fa-pinterest"></i>
-                    </a>
-                    <a href="">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    <a href="">
-                        <i class="fab fa-quora"></i>
-                    </a>
-                    <a href="">
-                        <i class="fab fa-stack-overflow"></i>
-                    </a>
-                    <a href="">
-                        <i class="fab fa-zhihu"></i>
-                    </a>
+                    <?php
+                    $show = punkcoder_get_options('punkcoder_profiles', 'instagram_show', 'no');;
+                    $instagram = punkcoder_get_options('punkcoder_profiles', 'instagram');
+
+                    if('yes' == $show && $instagram)
+                    {
+                        ?>
+                        <a href="<?php echo esc_attr($instagram); ?>" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <?php
+                    }
+                    ?>
+
+                    <?php
+                    $show = punkcoder_get_options('punkcoder_profiles', 'pinterest_show', 'no');;
+                    $pinterest = punkcoder_get_options('punkcoder_profiles', 'pinterest');
+
+                    if('yes' == $show && $pinterest)
+                    {
+                        ?>
+                        <a href="<?php echo esc_attr($pinterest); ?>" target="_blank">
+                            <i class="fab fa-pinterest"></i>
+                        </a>
+                        <?php
+                    }
+                    ?>
+
+                    <?php
+                    $show = punkcoder_get_options('punkcoder_profiles', 'linkedin_show', 'no');;
+                    $linkedin = punkcoder_get_options('punkcoder_profiles', 'linkedin');
+
+                    if('yes' == $show && $linkedin)
+                    {
+                        ?>
+                        <a href="<?php echo esc_attr($linkedin); ?>" target="_blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <?php
+                    }
+                    ?>
+
+                    <?php
+                    $show = punkcoder_get_options('punkcoder_profiles', 'youtube_show', 'no');;
+                    $youtube = punkcoder_get_options('punkcoder_profiles', 'youtube');
+
+                    if('yes' == $show && $youtube)
+                    {
+                        ?>
+                        <a href="<?php echo esc_attr($youtube); ?>" target="_blank">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <?php
+                    }
+                    ?>
+
+                    <?php
+                    $show = punkcoder_get_options('punkcoder_profiles', 'quora_show', 'no');;
+                    $quora = punkcoder_get_options('punkcoder_profiles', 'quora');
+
+                    if('yes' == $show && $quora)
+                    {
+                        ?>
+                        <a href="<?php echo esc_attr($quora); ?>" target="_blank">
+                            <i class="fab fa-quora"></i>
+                        </a>
+                        <?php
+                    }
+                    ?>
+
+                    <?php
+                    $show = punkcoder_get_options('punkcoder_profiles', 'stackoverflow_show', 'no');;
+                    $stackoverflow = punkcoder_get_options('punkcoder_profiles', 'stackoverflow');
+
+                    if('yes' == $show && $stackoverflow)
+                    {
+                        ?>
+                        <a href="<?php echo esc_attr($stackoverflow); ?>" target="_blank">
+                            <i class="fab fa-stack-overflow"></i>
+                        </a>
+                        <?php
+                    }
+                    ?>
+
+                    <?php
+                    $show = punkcoder_get_options('punkcoder_profiles', 'zhihu_show', 'no');;
+                    $zhihu = punkcoder_get_options('punkcoder_profiles', 'zhihu');
+
+                    if('yes' == $show && $zhihu)
+                    {
+                        ?>
+                        <a href="<?php echo esc_attr($zhihu); ?>" target="_blank">
+                            <i class="fab fa-zhihu"></i>
+                        </a>
+                        <?php
+                    }
+                    ?>
+
                 </div>
             </div>
         </div>
