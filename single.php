@@ -27,7 +27,7 @@
         </div>
         <div class="col-lg-8 col-md-12 col-sm-12">
             <?php
-                the_post();
+//                the_post();
                 get_template_part("template-parts/post-single");
             ?>
             <?php

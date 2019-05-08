@@ -36,10 +36,6 @@ $total = $pagination['last'];
             <?php get_template_part("template-parts/sidebar");?>
         </div>
         <div class="col-lg-8 col-md-12 col-sm-12">
-            <header class="page-header">
-                <h1 class="page-title"><?php the_archive_title();?></h1>
-            </header><!-- .page-header -->
-
             <?php
             if ( have_posts() ) {
                 // Load posts loop.

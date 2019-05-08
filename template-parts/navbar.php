@@ -69,7 +69,36 @@ $bg_image = punkcoder_get_options('punkcoder_settings', 'bg_image', punkcoder_ge
     <div class="row justify-content-center bg-secondary slogan-bg" style="background-image: url('<?php echo(esc_html($bg_image)); ?>') !important;">
         <div class="col-6 align-content-center my-5 text-light">
             <h1 class="text-center "><?php bloginfo('name'); ?></h1>
-            <h2 class="text-center mt-5"><?php bloginfo('description'); ?></h2>
+            <h2 class="text-center mt-5">
+                <?php
+
+                    if(is_single())
+                    {
+                        the_post();
+                        echo($post->post_title);
+                    }
+
+                    if(is_page())
+                    {
+                        echo($post->post_title);
+                    }
+
+                    if(is_category())
+                    {
+                        the_archive_title();
+                    }
+
+                    if(is_tag())
+                    {
+                        the_archive_title();
+                    }
+
+                    if(is_home())
+                    {
+                        bloginfo('description');
+                    }
+                ?>
+            </h2>
         </div>
     </div>
 </div>

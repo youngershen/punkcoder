@@ -13,9 +13,6 @@
  ?>
 
 <article class="single-article <?php post_class();?>" id="post-<?php the_ID(); ?>">
-    <header class="single-article-header justify-content-center">
-        <h2 class="justify-content-center single-article-title"><?php echo(get_the_title()); ?></h2>
-    </header>
     <div class="single-article-meta">
         <?php get_template_part('template-parts/post-meta')?>
     </div>
