@@ -114,19 +114,20 @@ function punkcoder_settings_validate($args)
 
 function punkcoder_profiles_validate($args)
 {
-    if(!array_key_exists('avatar_show', $args))
-    {
-        $args['avatar_show'] = 'no';
-    }
-
-    if(!array_key_exists('nickname_show', $args))
-    {
-        $args['nickname_show'] = 'no';
-    }
 
     if(!array_key_exists('age_show', $args))
     {
         $args['age_show'] = 'no';
+    }
+
+    if(!array_key_exists('gender_show', $args))
+    {
+        $args['gender_show'] = 'no';
+    }
+
+    if(!array_key_exists('occupation_show', $args))
+    {
+        $args['occupation_show'] = 'no';
     }
 
     if(!array_key_exists('cellphone_show', $args))
@@ -227,26 +228,12 @@ function punkcoder_profiles()
         'punkcoder_profiles',
         'punkcoder_profiles_section');
 
-//    add_settings_field(
-//        'punkcoder_avatar_show',
-//        __('显示头像', 'punkcoder'),
-//        'punkcoder_avatar_show_form',
-//        'punkcoder_profiles',
-//        'punkcoder_profiles_section');
-
     add_settings_field(
         "punkcoder_nickname",
         __('昵称', 'punkcoder'),
         "punkcoder_nickname_form",
         "punkcoder_profiles",
         "punkcoder_profiles_section");
-
-//    add_settings_field(
-//        'punkcoder_nickname_show',
-//        __('显示昵称', 'punkcoder'),
-//        'punkcoder_nickname_show_form',
-//        'punkcoder_profiles',
-//        'punkcoder_profiles_section');
 
     add_settings_field(
         "punkcoder_age",
@@ -259,6 +246,34 @@ function punkcoder_profiles()
         "punkcoder_age_show",
         __('显示年龄', 'punkcoder'),
         "punkcoder_age_show_form",
+        "punkcoder_profiles",
+        "punkcoder_profiles_section");
+
+    add_settings_field(
+        "punkcoder_gender",
+        __('性别', 'punkcoder'),
+        "punkcoder_gender_form",
+        "punkcoder_profiles",
+        "punkcoder_profiles_section");
+
+    add_settings_field(
+        "punkcoder_gender_show",
+        __('显示性别', 'punkcoder'),
+        "punkcoder_gender_show_form",
+        "punkcoder_profiles",
+        "punkcoder_profiles_section");
+
+    add_settings_field(
+        "punkcoder_occupation",
+        __('职业', 'punkcoder'),
+        "punkcoder_occupation_form",
+        "punkcoder_profiles",
+        "punkcoder_profiles_section");
+
+    add_settings_field(
+        "punkcoder_occupation_show",
+        __('显示职业', 'punkcoder'),
+        "punkcoder_occupation_show_form",
         "punkcoder_profiles",
         "punkcoder_profiles_section");
 
@@ -299,7 +314,7 @@ function punkcoder_profiles()
 
     add_settings_field(
         "punkcoder_github_show",
-        __('显示Github', 'punkcoder'),
+        __('显示 Github', 'punkcoder'),
         "punkcoder_github_show_form",
         "punkcoder_profiles",
         "punkcoder_profiles_section");
@@ -593,53 +608,12 @@ function punkcoder_avatar_form()
     <?php
 }
 
-function punkcoder_avatar_show_form()
-{
-    ?>
-    <input type="checkbox"
-           class="punkcoder-option-form-input"
-           name="punkcoder_profiles[avatar_show]"
-           id="punkcoder-options-avatar-show"
-           value="yes"
-           <?php
-
-           if(punkcoder_get_options('punkcoder_profiles', 'avatar_show', 'yes') == 'yes')
-           {
-            ?>
-                checked="checked"
-            <?php
-           }
-           ?>
-           />
-    <?php
-}
-
 function punkcoder_nickname_form()
 {
     $default = __('申延刚', 'punkcoder');
     $name = esc_html(punkcoder_get_options('punkcoder_profiles', 'nickname', $default));
     ?>
     <input type="text" class="punkcoder-option-form-input" name="punkcoder_profiles[nickname]" id="punkcoder-options-nickname" value="<?php echo $name; ?>" />
-    <?php
-}
-
-function punkcoder_nickname_show_form()
-{
-    ?>
-    <input type="checkbox"
-    class="punkcoder-option-form-input"
-    name="punkcoder_profiles[nickname_show]"
-    id="punkcoder-options-nickname-show"
-    value="yes"
-           <?php
-           if(punkcoder_get_options('punkcoder_profiles', 'nickname_show', 'yes') == 'yes')
-           {
-            ?>
-                checked="checked"
-            <?php
-           }
-           ?>
-           />
     <?php
 }
 
@@ -662,6 +636,64 @@ function punkcoder_age_show_form()
            value="yes"
         <?php
         if(punkcoder_get_options('punkcoder_profiles', 'age_show', 'yes') == 'yes')
+        {
+            ?>
+            checked="checked"
+            <?php
+        }
+        ?>
+    />
+    <?php
+}
+
+function punkcoder_gender_form()
+{
+    $default = __('男', 'punkcoder');
+    $gender = esc_html(punkcoder_get_options('punkcoder_profiles', 'gender', $default));
+    ?>
+    <input class="punkcoder-option-form-input" type="text" name="punkcoder_profiles[gender]" id="punkcoder-options-gender" value="<?php echo $gender ; ?>" />
+    <?php
+}
+
+function punkcoder_gender_show_form()
+{
+    ?>
+    <input type="checkbox"
+           class="punkcoder-option-form-input"
+           name="punkcoder_profiles[gender_show]"
+           id="punkcoder-options-gender-show"
+           value="yes"
+        <?php
+        if(punkcoder_get_options('punkcoder_profiles', 'gender_show', 'yes') == 'yes')
+        {
+            ?>
+            checked="checked"
+            <?php
+        }
+        ?>
+    />
+    <?php
+}
+
+function punkcoder_occupation_form()
+{
+    $default = __('PHP程序员', 'punkcoder');
+    $occupation = esc_html(punkcoder_get_options('punkcoder_profiles', 'occupation', $default));
+    ?>
+    <input class="punkcoder-option-form-input" type="text" name="punkcoder_profiles[occupation]" id="punkcoder-options-occupation" value="<?php echo $occupation ; ?>" />
+    <?php
+}
+
+function punkcoder_occupation_show_form()
+{
+    ?>
+    <input type="checkbox"
+           class="punkcoder-option-form-input"
+           name="punkcoder_profiles[occupation_show]"
+           id="punkcoder-options-occupation-show"
+           value="yes"
+        <?php
+        if(punkcoder_get_options('punkcoder_profiles', 'occupation_show', 'yes') == 'yes')
         {
             ?>
             checked="checked"

@@ -76,18 +76,38 @@ $query = new WP_Query($args);
                     <?php
                 }
                 ?>
-                <div>
-                    <span><?php echo(__("职业", "punkcoder"));?>:</span>
-                    <span><?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'occupation', 'PHP程序员')); ?></span>
-                </div>
-                <div>
-                    <span><?php echo(__("手机", "punkcoder"));?>:</span>
-                    <span><a href="tel:<?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'cellphone', '13811754531')); ?>"><?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'cellphone', '13811754531')); ?></a></span>
-                </div>
-                <div>
-                    <span><?php echo(__("微信", "punkcoder"));?>:</span>
-                    <span><?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'wechat', '13811754531')); ?></span>
-                </div>
+
+                <?php
+                $show = punkcoder_get_options('punkcoder_profiles', 'occupation_show', 'no');
+                $occupation = punkcoder_get_options('punkcoder_profiles', 'occupation', '');
+
+                if('yes' == $show && $occupation)
+                {
+                    ?>
+                    <div>
+                        <span><?php echo(__("职业", "punkcoder"));?>:</span>
+                        <span><?php echo esc_attr($occupation); ?></span>
+                    </div>
+                    <?php
+                }
+                ?>
+
+                <?php
+                $show = punkcoder_get_options('punkcoder_profiles', 'cellphone_show', 'no');
+                $cellphone = punkcoder_get_options('punkcoder_profiles', 'cellphone', '');
+
+                if('yes' == $show && $cellphone)
+                {
+                    ?>
+                    <div>
+                        <span><?php echo(__("手机", "punkcoder"));?>:</span>
+                        <span>
+                            <a href="tel:<?php echo esc_attr($cellphone); ?>"><?php echo esc_attr($cellphone); ?></a>
+                        </span>
+                    </div>
+                    <?php
+                }
+                ?>
                 <div>
                     <span><?php echo(__("QQ", "punkcoder"));?>:</span>
                     <span><?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'qq', '89198011')); ?></span>
@@ -130,9 +150,20 @@ $query = new WP_Query($args);
                     <a href="<?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'twitter', 'https://twitter.com/youngershen')); ?>" target="_blank">
                         <i class="fab fa-twitter fa-1x"></i>
                     </a>
-                    <a href="<?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'email', 'shenyangang@163.com')); ?>">
-                        <i class="fas fa-envelope"></i>
-                    </a>
+                    <?php
+                        $show = punkcoder_get_options('punkcoder_profiles', 'email_show', 'no');;
+                        $email = punkcoder_get_options('punkcoder_profiles', 'email');
+
+                        if('yes' == $show && $email)
+                        {
+                        ?>
+                            <a href="mailto:<?php echo esc_attr($email); ?>">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        <?php
+                        }
+                    ?>
+
                     <a href="">
                         <i class="fab fa-instagram"></i>
                     </a>
