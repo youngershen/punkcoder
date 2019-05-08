@@ -38,7 +38,6 @@ $theme_copyright_show = punkcoder_get_options('punkcoder_settings','theme_copyri
             <?php
             }
             ?>
-
             <?php
             if('yes' == $beian_show && $beian)
             {
@@ -49,7 +48,6 @@ $theme_copyright_show = punkcoder_get_options('punkcoder_settings','theme_copyri
                 <?php
             }
             ?>
-
             <?php
             if('yes' == $wordpress_copyright_show && $wordpress_copyright)
             {
