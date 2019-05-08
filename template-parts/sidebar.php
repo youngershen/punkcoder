@@ -211,6 +211,23 @@ $query = new WP_Query($args);
                 }
                 ?>
 
+                <?php
+                $show = punkcoder_get_options('punkcoder_profiles', 'bio_show', 'no');
+                $bio = punkcoder_get_options('punkcoder_profiles', 'bio', '');
+
+                if('yes' == $show && $bio)
+                {
+                    ?>
+                    <div>
+                        <span><?php echo(__("简介", "punkcoder"));?>:</span>
+                        <span>
+                            <?php echo esc_attr($bio); ?>
+                        </span>
+                    </div>
+                    <?php
+                }
+                ?>
+
 
                 <div class="punkcoder-sidebar-profile-item-social justify-content-center">
                     <a href="<?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'github', 'https://github.com/youngershen')); ?>" target="_blank">
