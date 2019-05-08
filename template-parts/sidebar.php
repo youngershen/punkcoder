@@ -126,10 +126,22 @@ $query = new WP_Query($args);
                 }
                 ?>
 
-                <div>
-                    <span><?php echo(__("WhatsApp", "punkcoder"));?>:</span>
-                    <span><?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'qq', '89198011')); ?></span>
-                </div>
+                <?php
+                $show = punkcoder_get_options('punkcoder_profiles', 'whatsapp_show', 'no');
+                $whatsapp = punkcoder_get_options('punkcoder_profiles', 'whatsapp', '');
+
+                if('yes' == $show && $whatsapp)
+                {
+                    ?>
+                    <div>
+                        <span><?php echo(__("WhatsAPP", "punkcoder"));?>:</span>
+                        <span>
+                            <?php echo esc_attr($whatsapp); ?>
+                        </span>
+                    </div>
+                    <?php
+                }
+                ?>
 
                 <div>
                     <span><?php echo(__("Telegram", "punkcoder"));?>:</span>
