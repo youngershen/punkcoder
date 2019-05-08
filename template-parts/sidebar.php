@@ -143,10 +143,22 @@ $query = new WP_Query($args);
                 }
                 ?>
 
-                <div>
-                    <span><?php echo(__("Telegram", "punkcoder"));?>:</span>
-                    <span><?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'qq', '89198011')); ?></span>
-                </div>
+                <?php
+                $show = punkcoder_get_options('punkcoder_profiles', 'telegram_show', 'no');
+                $telegram = punkcoder_get_options('punkcoder_profiles', 'telegram', '');
+
+                if('yes' == $show && $telegram)
+                {
+                    ?>
+                    <div>
+                        <span><?php echo(__("Telegram", "punkcoder"));?>:</span>
+                        <span>
+                            <?php echo esc_attr($telegram); ?>
+                        </span>
+                    </div>
+                    <?php
+                }
+                ?>
 
                 <div>
                     <span><?php echo(__("Skype", "punkcoder"));?>:</span>

@@ -330,6 +330,20 @@ function punkcoder_profiles()
         "punkcoder_profiles_section");
 
     add_settings_field(
+        "punkcoder_telegram",
+        __('Telegram', 'punkcoder'),
+        "punkcoder_telegram_form",
+        "punkcoder_profiles",
+        "punkcoder_profiles_section");
+
+    add_settings_field(
+        "punkcoder_telegram_show",
+        __('显示 Telegram', 'punkcoder'),
+        "punkcoder_telegram_show_form",
+        "punkcoder_profiles",
+        "punkcoder_profiles_section");
+
+    add_settings_field(
         "punkcoder_github",
         __('Github', 'punkcoder'),
         "punkcoder_github_form",
@@ -822,6 +836,36 @@ function punkcoder_whatsapp_show_form()
            value="yes"
         <?php
         if(punkcoder_get_options('punkcoder_profiles', 'whatsapp_show', 'yes') == 'yes')
+        {
+            ?>
+            checked="checked"
+            <?php
+        }
+        ?>
+    />
+    <?php
+}
+
+function punkcoder_telegram_form()
+{
+    $defalt = '';
+    $telegram = esc_html(punkcoder_get_options('punkcoder_profiles', 'telegram', $defalt));
+
+    ?>
+    <input class="punkcoder-option-form-input" type="text" name="punkcoder_profiles[telegram]" id="punkcoder-options-telegram" value="<?php echo $telegram; ?>" />
+    <?php
+}
+
+function punkcoder_telegram_show_form()
+{
+    ?>
+    <input type="checkbox"
+           class="punkcoder-option-form-input"
+           name="punkcoder_profiles[telegram_show]"
+           id="punkcoder-options-telegram-show"
+           value="yes"
+        <?php
+        if(punkcoder_get_options('punkcoder_profiles', 'telegram_show', 'yes') == 'yes')
         {
             ?>
             checked="checked"
