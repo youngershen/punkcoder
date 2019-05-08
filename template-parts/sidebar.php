@@ -230,15 +230,45 @@ $query = new WP_Query($args);
 
 
                 <div class="punkcoder-sidebar-profile-item-social justify-content-center">
-                    <a href="<?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'github', 'https://github.com/youngershen')); ?>" target="_blank">
-                        <i class="fab fa-github fa-1x"></i>
-                    </a>
-                    <a href="<?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'weibo', 'https://weibo.com/shenyangang')); ?>" target="_blank">
-                        <i class="fab fa-weibo fa-1x"></i>
-                    </a>
-                    <a data-toggle="modal" data-target="#wechat-qr-modal">
-                        <i class="fab fa-weixin fa-1x"></i>
-                    </a>
+                    <?php
+                        $show = punkcoder_get_options('punkcoder_profiles', 'github_show', 'no');;
+                        $github = punkcoder_get_options('punkcoder_profiles', 'github');
+                        if('yes' == $show && $github)
+                        {
+                            ?>
+                            <a href="<?php echo esc_attr($github); ?>" target="_blank">
+                                <i class="fab fa-github fa-1x"></i>
+                            </a>
+                            <?php
+                        }
+                    ?>
+
+                    <?php
+                    $show = punkcoder_get_options('punkcoder_profiles', 'weibo_show', 'no');;
+                    $weibo = punkcoder_get_options('punkcoder_profiles', 'weibo');
+                    if('yes' == $show && $weibo)
+                    {
+                        ?>
+                        <a href="<?php echo esc_attr($weibo); ?>" target="_blank">
+                            <i class="fab fa-weibo fa-1x"></i>
+                        </a>
+                        <?php
+                    }
+                    ?>
+
+                    <?php
+                    $show = punkcoder_get_options('punkcoder_profiles', 'wechat_qr_image_show', 'no');;
+                    $wechat = punkcoder_get_options('punkcoder_profiles', 'wechat_qr_image');
+                    if('yes' == $show && $wechat)
+                    {
+                        ?>
+                        <a data-toggle="modal" data-target="#wechat-qr-modal">
+                            <i class="fab fa-weixin fa-1x"></i>
+                        </a>
+                        <?php
+                    }
+                    ?>
+
                     <a href="<?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'twitter', 'https://twitter.com/youngershen')); ?>" target="_blank">
                         <i class="fab fa-twitter fa-1x"></i>
                     </a>
@@ -380,15 +410,26 @@ $query = new WP_Query($args);
 </div>
 
 <!-- Wechat Qr Image Modal -->
-<div class="modal fade" id="wechat-qr-modal" tabindex="-1" role="dialog" aria-labelledby="wechat-qr-modal" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content ">
-            <div class="modal-body">
-                <img class="punkcoder-sidebar-wechat-qr-image rounded mw-100" src="<?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'wechat_qr_image', '')); ?>">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal"><?php _e('Close', 'punkcoder');?></button>
+
+<?php
+$show = punkcoder_get_options('punkcoder_profiles', 'wechat_qr_image_show', 'no');;
+$wechat = punkcoder_get_options('punkcoder_profiles', 'wechat_qr_image');
+
+if('yes' == $show && $wechat)
+{
+?>
+    <div class="modal fade" id="wechat-qr-modal" tabindex="-1" role="dialog" aria-labelledby="wechat-qr-modal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content ">
+                <div class="modal-body">
+                    <img class="punkcoder-sidebar-wechat-qr-image rounded mw-100" src="<?php echo esc_attr($wechat); ?>">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"><?php _e('Close', 'punkcoder');?></button>
+                </div>
             </div>
         </div>
     </div>
-</div>
+<?php
+}
+
