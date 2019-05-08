@@ -156,6 +156,11 @@ function punkcoder_profiles_validate($args)
         $args['line_show'] = 'no';
     }
 
+    if(!array_key_exists('location_show', $args))
+    {
+        $args['location_show'] = 'no';
+    }
+
     if(!array_key_exists('github_show', $args))
     {
         $args['github_show'] = 'no';
@@ -379,6 +384,20 @@ function punkcoder_profiles()
         "punkcoder_line_show",
         __('显示 Line', 'punkcoder'),
         "punkcoder_line_show_form",
+        "punkcoder_profiles",
+        "punkcoder_profiles_section");
+
+    add_settings_field(
+        "punkcoder_location",
+        __('地址', 'punkcoder'),
+        "punkcoder_location_form",
+        "punkcoder_profiles",
+        "punkcoder_profiles_section");
+
+    add_settings_field(
+        "punkcoder_location_show",
+        __('显示地址', 'punkcoder'),
+        "punkcoder_location_show_form",
         "punkcoder_profiles",
         "punkcoder_profiles_section");
 
@@ -965,6 +984,36 @@ function punkcoder_line_show_form()
            value="yes"
         <?php
         if(punkcoder_get_options('punkcoder_profiles', 'line_show', 'yes') == 'yes')
+        {
+            ?>
+            checked="checked"
+            <?php
+        }
+        ?>
+    />
+    <?php
+}
+
+function punkcoder_location_form()
+{
+    $defalt = '';
+    $location = esc_html(punkcoder_get_options('punkcoder_profiles', 'location', $defalt));
+
+    ?>
+    <input class="punkcoder-option-form-input" type="text" name="punkcoder_profiles[location]" id="punkcoder-options-location" value="<?php echo $location; ?>" />
+    <?php
+}
+
+function punkcoder_location_show_form()
+{
+    ?>
+    <input type="checkbox"
+           class="punkcoder-option-form-input"
+           name="punkcoder_profiles[location_show]"
+           id="punkcoder-options-location-show"
+           value="yes"
+        <?php
+        if(punkcoder_get_options('punkcoder_profiles', 'location_show', 'yes') == 'yes')
         {
             ?>
             checked="checked"

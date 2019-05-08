@@ -194,10 +194,24 @@ $query = new WP_Query($args);
                 }
                 ?>
 
-                <div>
-                    <span><?php echo(__("地址", "punkcoder"));?>:</span>
-                    <span><?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'address', '北京')); ?></span>
-                </div>
+                <?php
+                $show = punkcoder_get_options('punkcoder_profiles', 'location_show', 'no');
+                $location = punkcoder_get_options('punkcoder_profiles', 'location', '');
+
+                if('yes' == $show && $location)
+                {
+                    ?>
+                    <div>
+                        <span><?php echo(__("地址", "punkcoder"));?>:</span>
+                        <span>
+                            <?php echo esc_attr($location); ?>
+                        </span>
+                    </div>
+                    <?php
+                }
+                ?>
+
+
                 <div class="punkcoder-sidebar-profile-item-social justify-content-center">
                     <a href="<?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'github', 'https://github.com/youngershen')); ?>" target="_blank">
                         <i class="fab fa-github fa-1x"></i>
