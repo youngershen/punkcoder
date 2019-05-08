@@ -151,6 +151,11 @@ function punkcoder_profiles_validate($args)
         $args['skype_show'] = 'no';
     }
 
+    if(!array_key_exists('line_show', $args))
+    {
+        $args['line_show'] = 'no';
+    }
+
     if(!array_key_exists('github_show', $args))
     {
         $args['github_show'] = 'no';
@@ -360,6 +365,20 @@ function punkcoder_profiles()
         "punkcoder_skype_show",
         __('显示 Skype', 'punkcoder'),
         "punkcoder_skype_show_form",
+        "punkcoder_profiles",
+        "punkcoder_profiles_section");
+
+    add_settings_field(
+        "punkcoder_line",
+        __('Line', 'punkcoder'),
+        "punkcoder_line_form",
+        "punkcoder_profiles",
+        "punkcoder_profiles_section");
+
+    add_settings_field(
+        "punkcoder_line_show",
+        __('显示 Line', 'punkcoder'),
+        "punkcoder_line_show_form",
         "punkcoder_profiles",
         "punkcoder_profiles_section");
 
@@ -916,6 +935,36 @@ function punkcoder_skype_show_form()
            value="yes"
         <?php
         if(punkcoder_get_options('punkcoder_profiles', 'skype_show', 'yes') == 'yes')
+        {
+            ?>
+            checked="checked"
+            <?php
+        }
+        ?>
+    />
+    <?php
+}
+
+function punkcoder_line_form()
+{
+    $defalt = '';
+    $line = esc_html(punkcoder_get_options('punkcoder_profiles', 'line', $defalt));
+
+    ?>
+    <input class="punkcoder-option-form-input" type="text" name="punkcoder_profiles[line]" id="punkcoder-options-line" value="<?php echo $line; ?>" />
+    <?php
+}
+
+function punkcoder_line_show_form()
+{
+    ?>
+    <input type="checkbox"
+           class="punkcoder-option-form-input"
+           name="punkcoder_profiles[line_show]"
+           id="punkcoder-options-line-show"
+           value="yes"
+        <?php
+        if(punkcoder_get_options('punkcoder_profiles', 'line_show', 'yes') == 'yes')
         {
             ?>
             checked="checked"

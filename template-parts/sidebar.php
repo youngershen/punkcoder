@@ -177,10 +177,22 @@ $query = new WP_Query($args);
                 }
                 ?>
 
-                <div>
-                    <span><?php echo(__("Line", "punkcoder"));?>:</span>
-                    <span><?php echo esc_attr(punkcoder_get_options('punkcoder_profile_options', 'qq', '89198011')); ?></span>
-                </div>
+                <?php
+                $show = punkcoder_get_options('punkcoder_profiles', 'line_show', 'no');
+                $line = punkcoder_get_options('punkcoder_profiles', 'line', '');
+
+                if('yes' == $show && $line)
+                {
+                    ?>
+                    <div>
+                        <span><?php echo(__("Line", "punkcoder"));?>:</span>
+                        <span>
+                            <?php echo esc_attr($line); ?>
+                        </span>
+                    </div>
+                    <?php
+                }
+                ?>
 
                 <div>
                     <span><?php echo(__("地址", "punkcoder"));?>:</span>
