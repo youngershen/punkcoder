@@ -36,6 +36,25 @@ $query = new WP_Query($args);
 ?>
 
 <div class="d-none d-lg-block punkcoder-sidebar container-fluid">
+
+    <div class="row punkcoder-sidebar-profile justify-content-center">
+        <div class="col-12">
+            s
+            <?php
+
+                $time = time();
+                echo(md5($time));
+
+            ?>
+        </div>
+    </div>
+
+    <div class="row punkcoder-sidebar-profile justify-content-center">
+        <div class="col-12">
+s
+        </div>
+    </div>
+
     <div class="row punkcoder-sidebar-profile justify-content-center">
         <div class="col-12">
             <div class="text-center punkcoder-sidebar-profile-avatar">

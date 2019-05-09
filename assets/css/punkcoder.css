@@ -100,8 +100,8 @@ nav
 .punkcoder-sidebar
 {
     background-color: #f8f9fa;
-    border-radius: .5em;
-    padding: 1rem .5rem;
+    margin:0;
+    padding:0;
 }
 
 .punkcoder-sidebar-profile
