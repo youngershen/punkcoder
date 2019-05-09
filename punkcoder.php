@@ -13,14 +13,72 @@
 function punkcoder_menu_items()
 {
     add_menu_page(
-        null,
-        __('主题', 'punkcoder'),
-        "manage_options",
-        "punkcoder",
-        "punkcoder_options_page_form",
-        "",
-        99
+        '',
+        __('PUNKCODER', 'punkcoder'),
+        '',
+        'punkcoder'
     );
+
+    add_submenu_page(
+            'punkcoder',
+            __('设置', 'punkcoder'),
+            __('设置', 'punkcoder'),
+            'manage_options',
+            'punkcoder-options',
+            'punkcoder_options_page_form');
+
+
+    add_submenu_page(
+            'punkcoder',
+            __('相册', 'punkcoder'),
+            __('相册', 'punkcoder'),
+            'manage_options',
+            'punkcoder-album',
+            'punkcoder_album_page');
+
+    add_submenu_page(
+        'punkcoder',
+        __('友链', 'punkcoder'),
+        __('友链', 'punkcoder'),
+        'manage_options',
+        'punkcoder-links',
+        'punkcoder_links_page');
+
+    add_submenu_page(
+        'punkcoder',
+        __('广告', 'punkcoder'),
+        __('广告', 'punkcoder'),
+        'manage_options',
+        'punkcoder-ad',
+        'punkcoder_ad_page');
+
+    add_submenu_page(
+        'punkcoder',
+        __('SEO', 'punkcoder'),
+        __('SEO', 'punkcoder'),
+        'manage_options',
+        'punkcoder-seo',
+        'punkcoder_seo_page');
+}
+
+function punkcoder_seo_page()
+{
+    echo "seo";
+}
+
+function punkcoder_ad_page()
+{
+    echo "ad";
+}
+
+function punkcoder_links_page()
+{
+    echo "link";
+}
+
+function punkcoder_album_page()
+{
+    echo "fuck";
 }
 
 function punkcoder_options_page_form()
@@ -46,15 +104,14 @@ function punkcoder_options_page_form()
                 $active_tab = 'settings';
             }
         }
-
         $option = 'punkcoder_' . $active_tab;
         ?>
-
+        <br>
         <!-- wordpress provides the styling for tabs. -->
         <h2 class="nav-tab-wrapper">
             <!-- when tab buttons are clicked we jump back to the same page but with a new parameter that represents the clicked tab. accordingly we make it active -->
-            <a href="?page=punkcoder&tab=profiles" class="nav-tab <?php if($active_tab == 'profiles'){echo 'nav-tab-active';} ?> "><?php _e('个人资料', 'punkcoder'); ?></a>
-            <a href="?page=punkcoder&tab=settings" class="nav-tab  <?php if($active_tab == 'settings'){echo 'nav-tab-active';} ?>"><?php _e('系统设置', 'punkcoder'); ?></a>
+            <a href="?page=punkcoder-options&tab=profiles" class="nav-tab <?php if($active_tab == 'profiles'){echo 'nav-tab-active';} ?> "><?php _e('个人资料', 'punkcoder'); ?></a>
+            <a href="?page=punkcoder-options&tab=settings" class="nav-tab  <?php if($active_tab == 'settings'){echo 'nav-tab-active';} ?>"><?php _e('系统设置', 'punkcoder'); ?></a>
         </h2>
 
         <form method="post" action="options.php" id="punkcoder-option-form">
