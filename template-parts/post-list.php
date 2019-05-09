@@ -34,7 +34,7 @@
                 }
             ?>
         </div>
-        <div class="col-lg-8 m-0 col-sm-12 <?php post_class();?>" id="post-<?php the_ID(); ?>">
+        <div <?php post_class('col-lg-8 m-0 col-sm-12');?> id="post-<?php the_ID(); ?>">
             <header>
                 <a href="<?php echo(esc_url(get_permalink())); ?>" class="text-secondary" target="_self">
                     <h2 class="home-post-title">

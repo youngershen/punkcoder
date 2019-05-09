@@ -27,7 +27,7 @@ $total = $pagination['last'];
 
 <?php get_header(); ?>
 
-<body class="<?php body_class(); ?>">
+<body <?php body_class(); ?>>
 <?php get_template_part('template-parts/navbar'); ?>
 
 <main class="container-fluid home-post-list">
@@ -119,7 +119,9 @@ $total = $pagination['last'];
     </div>
 </main>
 </body>
-<span class="d-block mt-5"></span>
+
+<span class="d-block mt-5">
+</span>
 <?php get_footer(); ?>
 </html>
 
