@@ -42,28 +42,47 @@ $bg_image = punkcoder_get_options('punkcoder_settings', 'bg_image', punkcoder_ge
             aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbar-content">
         <ul class="navbar-nav ml-auto">
-            <?php
-                if($query->have_posts())
-                {
-                    global $post;
-
-                    while($query->have_posts())
-                    {
-                        $query->the_post();
-                        ?>
-                        <li class="nav-item">
-                            <a href="<?php echo(get_page_link())?>" class="nav-link"><?php echo($post->post_title); ?></a>
-                        </li>
-                        <?php
-                    }
-                }
-            ?>
+            <li class="nav-item punkcoder-nav-item">测试菜单</li>
+            <li class="nav-item punkcoder-nav-item">测试菜单</li>
+            <li class="nav-item punkcoder-nav-item">测试菜单</li>
+            <li class="nav-item punkcoder-nav-item punkcoder-nav-item-menu">
+                <a href="" class="punkcoder-nav-item-menu-head">其他页面</a>
+                <ul class="punkcoder-nav-item-menu-sub justify-content-center">
+                    <li class="punkcoder-nav-item-menu-sub-item ml-auto">
+                        <a href="" class="punkcoder-nav-item-menu-sub-item-link">1</a>
+                    </li>
+                    <li class="punkcoder-nav-item-menu-sub-item">
+                        <a href="" class="punkcoder-nav-item-menu-sub-item-link">2</a>
+                    </li>
+                </ul>
+            </li>
         </ul>
         <?php get_search_form(); ?>
     </div>
+
+<!--    <div class="collapse navbar-collapse" id="navbar-content">-->
+<!--        <ul class="navbar-nav ml-auto">-->
+<!--            --><?php
+//                if($query->have_posts())
+//                {
+//                    global $post;
+//
+//                    while($query->have_posts())
+//                    {
+//                        $query->the_post();
+//                        ?>
+<!--                        <li class="nav-item">-->
+<!--                            <a href="--><?php //echo(get_page_link())?><!--" class="nav-link">--><?php //echo($post->post_title); ?><!--</a>-->
+<!--                        </li>-->
+<!--                        --><?php
+//                    }
+//                }
+//            ?>
+<!--        </ul>-->
+<!--        --><?php //get_search_form(); ?>
+<!--    </div>-->
 </nav>
 <div id="pk-slogan" class="container-fluid d-none d-lg-block">
     <div class="row justify-content-center bg-secondary slogan-bg" style="background-image: url('<?php echo(esc_html($bg_image)); ?>') !important;">

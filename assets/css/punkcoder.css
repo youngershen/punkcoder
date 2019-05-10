@@ -38,6 +38,37 @@ nav
 
 }
 
+.punkcoder-nav-item
+{
+    padding: .5rem;
+}
+
+.punkcoder-nav-item-menu
+{
+
+}
+
+.punkcoder-nav-item-menu-head
+{
+
+}
+
+.punkcoder-nav-item-menu-sub
+{
+    list-style-type: none;
+    border: 1px solid #ccc;
+    align-content: center;
+    padding: 0;
+}
+
+.punkcoder-nav-item-menu-sub-item
+{
+}
+
+.punkcoder-nav-item-menu-sub-item-link
+{
+}
+
 .punkcoder-footer
 {
     background-color: #000000;

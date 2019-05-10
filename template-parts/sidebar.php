@@ -105,7 +105,6 @@ $query = new WP_Query($args);
 
     <div class="row punkcoder-sidebar-profiles justify-content-center">
         <div class="col-12">
-s
         </div>
     </div>
 
