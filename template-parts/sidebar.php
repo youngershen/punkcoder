@@ -38,24 +38,78 @@ $query = new WP_Query($args);
 <div class="d-none d-lg-block punkcoder-sidebar container-fluid">
 
     <div class="row punkcoder-sidebar-profile justify-content-center">
-        <div class="col-12">
-            s
+        <div class="col-12 punkcoder-sidebar-profile">
             <?php
-
-                $time = time();
-                echo(md5($time));
-
+            $avatar = punkcoder_get_options('punkcoder_profiles', 'avatar', punkcoder_get_url('images', 'default-avatar-image.jpg'));
+            $alt = punkcoder_get_options('punkcoder_profiles', 'nickname', __('申延刚', 'punkcoder'));
+            $name = punkcoder_get_options('punkcoder_profiles', 'nickname', __('申延刚','punkcoder'));
+            $bio = punkcoder_get_options('punkcoder_profiles', 'bio', __('你好世界', 'punkcoder'));
             ?>
+            <img src="<?php esc_html_e($avatar);?>" alt="<?php esc_html_e($alt)?>" class="rounded mw-100 punkcoder-sidebar-profile-avatar">
+            <div class="punkcoder-sidebar-profile-info">
+                <span class="punkcoder-sidebar-profile-info-nickname d-block">
+                    <?php esc_html_e($name)?>
+                </span>
+                <span class="punkcoder-sidebar-profile-info-bio d-block">
+                    <?php esc_html_e($bio)?>
+                </span>
+            </div>
+
+            <div class="punkcoder-sidebar-profile-social">
+                <a href="" target="_blank" class="punkcoder-sidebar-profile-social-link">
+                    <i class="fab fa-weixin fa-1x punkcoder-sidebar-profile-social-link-item"></i>
+                </a>
+                <a href="" target="_blank" class="punkcoder-sidebar-profile-social-link">
+                    <i class="fab fa-weibo fa-1x punkcoder-sidebar-profile-social-link-item"></i>
+                </a>
+                <a href="" target="_blank" class="punkcoder-sidebar-profile-social-link">
+                    <i class="fab fa-qq fa-1x punkcoder-sidebar-profile-social-link-item"></i>
+                </a>
+                <a href="" target="_blank" class="punkcoder-sidebar-profile-social-link">
+                    <i class="fab fa-zhihu fa-1x punkcoder-sidebar-profile-social-link-item"></i>
+                </a>
+                <a href="" target="_blank" class="punkcoder-sidebar-profile-social-link">
+                    <i class="fab fa-github fa-1x punkcoder-sidebar-profile-social-link-item"></i>
+                </a>
+                <a href="" target="_blank" class="punkcoder-sidebar-profile-social-link">
+                    <i class="fab fa-stack-overflow fa-1x punkcoder-sidebar-profile-social-link-item"></i>
+                </a>
+                <a href="" target="_blank" class="punkcoder-sidebar-profile-social-link">
+                    <i class="fab fa-twitter fa-1x punkcoder-sidebar-profile-social-link-item"></i>
+                </a>
+                <a href="" target="_blank" class="punkcoder-sidebar-profile-social-link">
+                    <i class="fas fa-envelope fa-1x punkcoder-sidebar-profile-social-link-item"></i>
+                </a>
+                <a href="" target="_blank" class="punkcoder-sidebar-profile-social-link">
+                    <i class="fab fa-instagram fa-1x punkcoder-sidebar-profile-social-link-item"></i>
+                </a>
+                <a href="" target="_blank" class="punkcoder-sidebar-profile-social-link">
+                    <i class="fab fa-pinterest fa-1x punkcoder-sidebar-profile-social-link-item"></i>
+                </a>
+                <a href="" target="_blank" class="punkcoder-sidebar-profile-social-link">
+                    <i class="fab fa-linkedin fa-1x punkcoder-sidebar-profile-social-link-item"></i>
+                </a>
+                <a href="" target="_blank" class="punkcoder-sidebar-profile-social-link">
+                    <i class="fab fa-youtube fa-1x punkcoder-sidebar-profile-social-link-item"></i>
+                </a>
+                <a href="" target="_blank" class="punkcoder-sidebar-profile-social-link">
+                    <i class="fab fa-quora fa-1x punkcoder-sidebar-profile-social-link-item"></i>
+                </a>
+            </div>
+
         </div>
     </div>
 
-    <div class="row punkcoder-sidebar-profile justify-content-center">
+    <br>
+    <br>
+
+    <div class="row punkcoder-sidebar-profiles justify-content-center">
         <div class="col-12">
 s
         </div>
     </div>
 
-    <div class="row punkcoder-sidebar-profile justify-content-center">
+    <div class="row punkcoder-sidebar-profilse justify-content-center">
         <div class="col-12">
             <div class="text-center punkcoder-sidebar-profile-avatar">
                 <img src="<?php echo esc_html(punkcoder_get_options('punkcoder_profiles', 'avatar', punkcoder_get_url('images', 'default-avatar-image.jpg'))); ?>"

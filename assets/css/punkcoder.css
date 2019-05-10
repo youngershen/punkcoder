@@ -99,13 +99,13 @@ nav
 
 .punkcoder-sidebar
 {
-    background-color: #f8f9fa;
     margin:0;
     padding:0;
 }
 
 .punkcoder-sidebar-profile
 {
+    background-color: #f8f9fa;
     margin: 0;
     padding: 0;
 }
@@ -114,6 +114,38 @@ nav
 {
     margin: 0;
     padding: 0;
+}
+
+.punkcoder-sidebar-profile-info
+{
+    margin: 0;
+    padding: 1rem 1rem 0;
+}
+
+.punkcoder-sidebar-profile-info-nickname
+{
+    text-align: center;
+}
+
+.punkcoder-sidebar-profile-info-bio
+{
+    text-align: center;
+    margin-top: 1rem;
+}
+.punkcoder-sidebar-profile-social
+{
+    margin: 1rem;
+    text-align: center;
+}
+
+.punkcoder-sidebar-profile-social-link
+{
+
+}
+
+.punkcoder-sidebar-profile-social-link-item
+{
+
 }
 
 .punkcoder-sidebar-profile-item
