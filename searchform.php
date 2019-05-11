@@ -11,7 +11,7 @@
  */
  
  ?>
-<form role="search" class="form-inline my-2 my-lg-0 searchform" method="get" id="searchform" action="http://localhost/">
+<form role="search" class="form-inline my-2 my-lg-0 searchform d-none d-lg-block " method="get" id="searchform">
     <input class="form-control mr-sm-2" type="search" placeholder="<?php _e("手气不错", "punkcoder"); ?>"
            aria-label="Search"  value="" name="s" id="s">
     <button class="btn btn-outline-dark myd-2 my-sm-0"

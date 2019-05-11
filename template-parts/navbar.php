@@ -24,7 +24,7 @@ $show_logo = punkcoder_get_options('punkcoder_settings', 'logo_show', 'yes');
 $bg_image = punkcoder_get_options('punkcoder_settings', 'bg_image', punkcoder_get_url('images', 'default-bg-image.png'));
 ?>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top punkcoder-navbar">
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top punkcoder-navbar punkcoder-navbar">
     <a class="navbar-brand" href="<?php echo(home_url()); ?>">
         <?php
 
@@ -45,17 +45,20 @@ $bg_image = punkcoder_get_options('punkcoder_settings', 'bg_image', punkcoder_ge
     <div class="collapse navbar-collapse" id="navbar-content">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item punkcoder-nav-item">
-                <a href="" class="">测试菜单</a>
+                <a href="" class="punkcoder-nav-item-about">关于</a>
             </li>
             <li class="nav-item punkcoder-nav-item">
-                <a href="" class="">测试菜单</a>
+                <a href="" class="punkcoder-nav-item-link">友联</a>
             </li>
             <li class="nav-item punkcoder-nav-item">
-                <a href="" class="">测试菜单</a>
+                <a href="" class="punkcoder-nav-item-album">相册</a>
+            </li>
+            <li class="nav-item punkcoder-nav-item">
+                <a href="" class="punkcoder-nav-item-portfolio">项目</a>
             </li>
 
-            <li class="nav-item punkcoder-nav-item punkcoder-nav-item-menu">
-                <a href="" class="punkcoder-nav-item-menu-head icon">其他页面</a>
+            <li class="nav-item punkcoder-nav-item punkcoder-nav-item-menu d-none d-lg-block">
+                <a href="" class="punkcoder-nav-item-menu-head icon">其他</a>
                 <ul class="punkcoder-nav-item-menu-sub">
                     <li class="punkcoder-nav-item-menu-sub-item ml-auto">a
                         <a href="" class="punkcoder-nav-item-menu-sub-item-link">1</a>
