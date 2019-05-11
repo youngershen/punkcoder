@@ -45,20 +45,20 @@ $bg_image = punkcoder_get_options('punkcoder_settings', 'bg_image', punkcoder_ge
     <div class="collapse navbar-collapse" id="navbar-content">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item punkcoder-nav-item">
-                <a href="" class="punkcoder-nav-item-about">关于</a>
+                <a href="" class="punkcoder-nav-item-about"><?php _e('关于', 'punkcoder');?></a>
             </li>
             <li class="nav-item punkcoder-nav-item">
-                <a href="" class="punkcoder-nav-item-link">友联</a>
+                <a href="" class="punkcoder-nav-item-link"><?php _e('友链', 'punkcoder');?></a>
             </li>
             <li class="nav-item punkcoder-nav-item">
-                <a href="" class="punkcoder-nav-item-album">相册</a>
+                <a href="" class="punkcoder-nav-item-album"><?php _e('相册', 'punkcoder');?></a>
             </li>
             <li class="nav-item punkcoder-nav-item">
-                <a href="" class="punkcoder-nav-item-portfolio">项目</a>
+                <a href="" class="punkcoder-nav-item-portfolio"><?php _e('项目', 'punkcoder');?></a>
             </li>
 
             <li class="nav-item punkcoder-nav-item punkcoder-nav-item-menu d-none d-lg-block">
-                <a href="" class="punkcoder-nav-item-menu-head icon">其他</a>
+                <a href="" class="punkcoder-nav-item-menu-head icon"><?php _e('其他', 'punkcoder');?></a>
                 <ul class="punkcoder-nav-item-menu-sub">
                     <li class="punkcoder-nav-item-menu-sub-item ml-auto">a
                         <a href="" class="punkcoder-nav-item-menu-sub-item-link">1</a>
