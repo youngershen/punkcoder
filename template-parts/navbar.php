@@ -44,12 +44,19 @@ $bg_image = punkcoder_get_options('punkcoder_settings', 'bg_image', punkcoder_ge
     </button>
     <div class="collapse navbar-collapse" id="navbar-content">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item punkcoder-nav-item">测试菜单</li>
-            <li class="nav-item punkcoder-nav-item">测试菜单</li>
-            <li class="nav-item punkcoder-nav-item">测试菜单</li>
+            <li class="nav-item punkcoder-nav-item">
+                <a href="" class="">测试菜单</a>
+            </li>
+            <li class="nav-item punkcoder-nav-item">
+                <a href="" class="">测试菜单</a>
+            </li>
+            <li class="nav-item punkcoder-nav-item">
+                <a href="" class="">测试菜单</a>
+            </li>
+
             <li class="nav-item punkcoder-nav-item punkcoder-nav-item-menu">
                 <a href="" class="punkcoder-nav-item-menu-head icon">其他页面</a>
-                <ul class="punkcoder-nav-item-menu-sub justify-content-center">
+                <ul class="punkcoder-nav-item-menu-sub">
                     <li class="punkcoder-nav-item-menu-sub-item ml-auto">a
                         <a href="" class="punkcoder-nav-item-menu-sub-item-link">1</a>
                     </li>
