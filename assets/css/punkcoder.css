@@ -1,3 +1,4 @@
+
 body
 {
     font-family: "Microsoft YaHei", SimSun, Courier, monospace;
@@ -26,6 +27,22 @@ nav
     padding: 1rem;
 }
 
+.icon::before {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+
+.icon::after {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+
 .navbar-sticky
 {
     /*transition: padding 300ms ease;*/
@@ -40,25 +57,72 @@ nav
 
 .punkcoder-nav-item
 {
-    padding: .5rem;
+    /*padding: .5rem;*/
 }
 
 .punkcoder-nav-item-menu
 {
-
+    font-size: 1.2rem;
+    margin: 0 1rem;
 }
 
 .punkcoder-nav-item-menu-head
 {
-
+    /*padding: 7px 13px;*/
 }
+
+.punkcoder-nav-item-menu-head:before
+{
+    font-family: 'Font Awesome\ 5 Free';
+    content: "\f1c2";
+    font-weight: 900;
+    margin-right: .5rem;
+}
+
+.punkcoder-nav-item-menu-head:after
+{
+    font-family: 'Font Awesome\ 5 Free';
+    content: "\f106";
+    font-weight: 900;
+    margin-left: .5rem;
+}
+
+
 
 .punkcoder-nav-item-menu-sub
 {
+    display: none;
     list-style-type: none;
     border: 1px solid #ccc;
     align-content: center;
     padding: 0;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 120px;
+    margin-top: 8px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+@keyframes myfirst
+{
+    from {background: red;}
+    to {background: yellow;}
+}
+
+.punkcoder-nav-item-menu:hover a:after
+{
+    transform: rotate(180deg);
+}
+
+.punkcoder-nav-item-menu:hover .punkcoder-nav-item-menu-sub
+{
+    display: block;
+    animation: myfirst 5s;
+}
+
+.punkcoder-nav-item-menu-sub:before
+{
 }
 
 .punkcoder-nav-item-menu-sub-item
@@ -67,6 +131,7 @@ nav
 
 .punkcoder-nav-item-menu-sub-item-link
 {
+    display: block;
 }
 
 .punkcoder-footer

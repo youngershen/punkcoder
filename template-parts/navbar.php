@@ -48,12 +48,12 @@ $bg_image = punkcoder_get_options('punkcoder_settings', 'bg_image', punkcoder_ge
             <li class="nav-item punkcoder-nav-item">测试菜单</li>
             <li class="nav-item punkcoder-nav-item">测试菜单</li>
             <li class="nav-item punkcoder-nav-item punkcoder-nav-item-menu">
-                <a href="" class="punkcoder-nav-item-menu-head">其他页面</a>
+                <a href="" class="punkcoder-nav-item-menu-head icon">其他页面</a>
                 <ul class="punkcoder-nav-item-menu-sub justify-content-center">
-                    <li class="punkcoder-nav-item-menu-sub-item ml-auto">
+                    <li class="punkcoder-nav-item-menu-sub-item ml-auto">a
                         <a href="" class="punkcoder-nav-item-menu-sub-item-link">1</a>
                     </li>
-                    <li class="punkcoder-nav-item-menu-sub-item">
+                    <li class="punkcoder-nav-item-menu-sub-item">a
                         <a href="" class="punkcoder-nav-item-menu-sub-item-link">2</a>
                     </li>
                 </ul>
