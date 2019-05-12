@@ -38,7 +38,7 @@ $query = new WP_Query($args);
 <div class="d-none d-lg-block punkcoder-sidebar container-fluid">
 
     <div class="row punkcoder-sidebar-profile">
-        <div class="col-12 punkcoder-sidebar-profile">
+        <div class="col-12 punkcoder-sidebar-profile-col">
             <?php
             $avatar = punkcoder_get_options('punkcoder_profiles', 'avatar', punkcoder_get_url('images', 'default-avatar-image.jpg'));
             $alt = punkcoder_get_options('punkcoder_profiles', 'nickname', __('申延刚', 'punkcoder'));
@@ -54,8 +54,6 @@ $query = new WP_Query($args);
                     <?php esc_html_e($bio)?>
                 </span>
             </div>
-
-
         </div>
         <div class="col-12 punkcoder-sidebar-profile-social">
             <a href="" target="_blank" class="punkcoder-sidebar-profile-social-link">
@@ -100,8 +98,26 @@ $query = new WP_Query($args);
         </div>
     </div>
 
-    <div class="row punkcoder-sidebar-profiles justify-content-center">
-        <div class="col-12">
+    <div class="row punkcoder-sidebar-hot">
+        <div class="col-12 punkcoder-sidebar-hot-col">
+            <div class="card bg-light mb-3">
+                <div class="card-header punkcoder-sidebar-hot-header"><?php _e('热门文章', 'punkcoder')?></div>
+                <div class="card-body">
+                    <div class="punkcoder-sidebar-hot-body-item">
+                        <a href="<?php echo(get_permalink($post)); ?>">水电费水电费所发电费所发生的电费所发生的生的防法</a>
+                    </div>
+                    <div class="punkcoder-sidebar-hot-body-item">
+                        <a href="<?php echo(get_permalink($post)); ?>">水电费水电费所发生的防法</a>
+                    </div>
+                    <div class="punkcoder-sidebar-hot-body-item">
+                        <a href="<?php echo(get_permalink($post)); ?>">水电费水电费所发生的防法</a>
+                    </div>
+                    <div class="punkcoder-sidebar-hot-body-item">
+                        <a href="<?php echo(get_permalink($post)); ?>">水电费水电费所发生的防法</a>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
 
