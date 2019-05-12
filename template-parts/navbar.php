@@ -72,27 +72,6 @@ $bg_image = punkcoder_get_options('punkcoder_settings', 'bg_image', punkcoder_ge
         <?php get_search_form(); ?>
     </div>
 
-<!--    <div class="collapse navbar-collapse" id="navbar-content">-->
-<!--        <ul class="navbar-nav ml-auto">-->
-<!--            --><?php
-//                if($query->have_posts())
-//                {
-//                    global $post;
-//
-//                    while($query->have_posts())
-//                    {
-//                        $query->the_post();
-//                        ?>
-<!--                        <li class="nav-item">-->
-<!--                            <a href="--><?php //echo(get_page_link())?><!--" class="nav-link">--><?php //echo($post->post_title); ?><!--</a>-->
-<!--                        </li>-->
-<!--                        --><?php
-//                    }
-//                }
-//            ?>
-<!--        </ul>-->
-<!--        --><?php //get_search_form(); ?>
-<!--    </div>-->
 </nav>
 <div id="pk-slogan" class="container-fluid d-none d-lg-block">
     <div class="row justify-content-center bg-secondary slogan-bg" style="background-image: url('<?php echo(esc_html($bg_image)); ?>') !important;">
