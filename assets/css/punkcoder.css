@@ -98,6 +98,11 @@ nav
     content: "\f747";
 }
 
+.punkcoder-nav-item-menu-head
+{
+    color: #616161 !important;
+}
+
 .punkcoder-nav-item-menu-head:before
 {
     content: "\f1c2";
@@ -110,6 +115,11 @@ nav
     content: "\f107";
     margin-left: .25rem !important;
     margin-right: .25rem !important;
+}
+
+.punkcoder-nav-item-menu-head:hover
+{
+    color: #9e9e9e !important;
 }
 
 .punkcoder-nav-item-menu-sub
@@ -159,13 +169,24 @@ nav
 
 .punkcoder-nav-item-menu-sub-item
 {
+    padding: .2rem 0;
+    text-align: center;
 }
 
+.punkcoder-nav-item-menu-sub-item:hover
+{
+    background-color: #BDBDBD;
+}
+
+.punkcoder-nav-item-menu-sub-item:hover > a
+{
+    color: #212121 !important;
+}
 .punkcoder-nav-item-menu-sub-item-link
 {
     display: block;
+    margin:0;
 }
-
 .punkcoder-footer
 {
     background-color: #000000;
