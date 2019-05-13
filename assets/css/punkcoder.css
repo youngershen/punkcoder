@@ -331,26 +331,21 @@ nav
 .punkcoder-sidebar-panel-body
 {
     font-size: 1rem;
-    margin: 1.5rem 1.5rem;
+    padding: .5rem;
 }
-.punkcoder-sidebar-panel-body > a
-{
-    margin-bottom: 0;
-    line-height: 5rem;
-}
+
 
 .punkcoder-sidebar-tag-item
 {
     background-color: #BDBDBD;
-    font-size: 1rem;
+    font-size: .8rem;
     width: 30%;
     float: left;
-    margin: 1%;
-    padding: 0 8px;
+    margin: 1px;
+    padding: 0 4px;
     line-height: 29px;
     overflow: hidden;
     border-radius: .1rem;
-
 }
 
 .punkcoder-sidebar-wechat-qr-image

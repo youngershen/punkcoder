@@ -106,7 +106,7 @@ $query = new WP_Query($args);
             <div class="col-12 punkcoder-sidebar-panel-col">
                 <div class="card bg-light mb-3">
                     <div class="card-header punkcoder-sidebar-panel-header"><?php _e('热门文章', 'punkcoder')?></div>
-                    <div class="card-body">
+                    <div class="card-body punkcoder-sidebar-panel-body">
                         <?php
                         global $post;
                         while ($query->have_posts())
@@ -132,13 +132,13 @@ if ($categories && count($categories) > 0) {
         <div class="col-12 punkcoder-sidebar-panel-col">
             <div class="card bg-light mb-3">
                 <div class="card-header punkcoder-sidebar-panel-header"><?php _e('热门分类', 'punkcoder')?></div>
-                <div class="card-body">
+                <div class="card-body punkcoder-sidebar-panel-body">
                     <?php
                     foreach ($categories as $key => $val) {
                         $category_link = get_category_link($val->term_id);
                         ?>
                         <div class="punkcoder-sidebar-panel-body-item">
-                            <a href="<?php echo($category_link); ?>"><?php echo($val->name); ?></a>
+                            <a href="<?php echo($category_link); ?>"><?php echo($val->name); ?>(10)</a>
                         </div>
                         <?php
                     }
@@ -160,7 +160,7 @@ if ($categories && count($categories) > 0) {
                     <div class="card-header punkcoder-sidebar-panel-header">
                         <?php _e('热门标签', 'punkcoder')?>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body punkcoder-sidebar-panel-body">
                         <?php
                         foreach ($tags as $key => $val) {
                             $tag_link = get_tag_link($val->term_id);
@@ -171,12 +171,6 @@ if ($categories && count($categories) > 0) {
                             <?php
                         }
                         ?>
-                        <a href="<?php echo($tag_link); ?>" target="_blank" class="punkcoder-sidebar-tag-item">
-                            <?php echo($val->name) ?> (1)
-                        </a>
-                        <a href="<?php echo($tag_link); ?>" target="_blank" class="punkcoder-sidebar-tag-item">
-                            <?php echo($val->name) ?> (1)
-                        </a>
                     </div>
                 </div>
 
