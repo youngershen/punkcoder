@@ -224,7 +224,6 @@ nav
     color: #4ab866 !important;
 }
 
-
 .punkcoder-sidebar
 {
     margin:0;
@@ -256,7 +255,6 @@ nav
 {
     margin: 0;
     padding: 1rem 1rem 0 1rem;
-
 }
 
 .punkcoder-sidebar-profile-info-nickname
@@ -306,36 +304,36 @@ nav
     color: #212121;
 }
 
-.punkcoder-sidebar-hot
+.punkcoder-sidebar-panel
 {
     padding: 0;
     margin: 0;
 }
 
-.punkcoder-sidebar-hot-col
+.punkcoder-sidebar-panel-col
 {
     padding: 0;
     margin:0;
 }
 
-.punkcoder-sidebar-hot-body-item
+.punkcoder-sidebar-panel-body-item
 {
     margin: 0 0 .4rem 0;
     text-align: center;
 }
 
-.punkcoder-sidebar-hot-header
+.punkcoder-sidebar-panel-header
 {
     font-size: 1.2rem;
-    /*margin: .5rem 1.5rem;*/
+    padding: .5rem;
 }
 
-.punkcoder-sidebar-hot-body
+.punkcoder-sidebar-panel-body
 {
     font-size: 1rem;
     margin: 1.5rem 1.5rem;
 }
-.punkcoder-sidebar-hot-body > a
+.punkcoder-sidebar-panel-body > a
 {
     margin-bottom: 0;
     line-height: 5rem;

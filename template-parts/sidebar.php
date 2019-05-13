@@ -102,10 +102,10 @@ $query = new WP_Query($args);
     if ($query->have_posts())
     {
     ?>
-        <div class="row punkcoder-sidebar-hot">
-            <div class="col-12 punkcoder-sidebar-hot-col">
+        <div class="row punkcoder-sidebar-panel">
+            <div class="col-12 punkcoder-sidebar-panel-col">
                 <div class="card bg-light mb-3">
-                    <div class="card-header punkcoder-sidebar-hot-header"><?php _e('热门文章', 'punkcoder')?></div>
+                    <div class="card-header punkcoder-sidebar-panel-header"><?php _e('热门文章', 'punkcoder')?></div>
                     <div class="card-body">
                         <?php
                         global $post;
@@ -113,7 +113,7 @@ $query = new WP_Query($args);
                         {
                             $query->the_post();
                         ?>
-                            <div class="punkcoder-sidebar-hot-body-item">
+                            <div class="punkcoder-sidebar-panel-body-item">
                                 <a href="<?php echo(get_permalink($post)); ?>"><?php echo(get_the_title()); ?></a>
                             </div>
                         <?php
@@ -125,39 +125,32 @@ $query = new WP_Query($args);
         </div>
 <?php } ?>
 
-    <?php
-    if ($categories && count($categories) > 0) {
-        ?>
-        <hr>
-        <div class="row punkcoder-sidebar-hot">
-            <div class="col-12 punkcoder-sidebar-hot-col">
-                <div class="punkcoder-sidebar-hot-head">
-                    <span><?php _e('分类', 'punkcoder')?></span>
-                </div>
-                <div class="punkcoder-sidebar-hot-body">
+<?php
+if ($categories && count($categories) > 0) {
+    ?>
+    <div class="row punkcoder-sidebar-panel">
+        <div class="col-12 punkcoder-sidebar-panel-col">
+            <div class="card bg-light mb-3">
+                <div class="card-header punkcoder-sidebar-panel-header"><?php _e('热门分类', 'punkcoder')?></div>
+                <div class="card-body">
                     <?php
                     foreach ($categories as $key => $val) {
                         $category_link = get_category_link($val->term_id);
                         ?>
-                        <div>
+                        <div class="punkcoder-sidebar-panel-body-item">
                             <a href="<?php echo($category_link); ?>"><?php echo($val->name); ?></a>
                         </div>
                         <?php
-                        if ($key != (sizeof($categories) - 1)) {
-                            ?>
-                            <hr>
-                            <?php
-                        }
-                        ?>
-                        <?php
                     }
                     ?>
+
                 </div>
             </div>
         </div>
-        <?php
-    }
-    ?>
+    </div>
+
+<?php }?>
+
     <?php
     if ($tags && count($tags) > 0) {
 
