@@ -98,63 +98,33 @@ $query = new WP_Query($args);
         </div>
     </div>
 
-    <div class="row punkcoder-sidebar-hot">
-        <div class="col-12 punkcoder-sidebar-hot-col">
-            <div class="card bg-light mb-3">
-                <div class="card-header punkcoder-sidebar-hot-header"><?php _e('热门文章', 'punkcoder')?></div>
-                <div class="card-body">
-                    <div class="punkcoder-sidebar-hot-body-item">
-                        <a href="<?php echo(get_permalink($post)); ?>">水电费水电费所发电费所发生的电费所发生的生的防法</a>
-                    </div>
-                    <div class="punkcoder-sidebar-hot-body-item">
-                        <a href="<?php echo(get_permalink($post)); ?>">水电费水电费所发生的防法</a>
-                    </div>
-                    <div class="punkcoder-sidebar-hot-body-item">
-                        <a href="<?php echo(get_permalink($post)); ?>">水电费水电费所发生的防法</a>
-                    </div>
-                    <div class="punkcoder-sidebar-hot-body-item">
-                        <a href="<?php echo(get_permalink($post)); ?>">水电费水电费所发生的防法</a>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
     <?php
-    if ($query->have_posts()) {
-        ?>
-        <hr>
+    if ($query->have_posts())
+    {
+    ?>
         <div class="row punkcoder-sidebar-hot">
             <div class="col-12 punkcoder-sidebar-hot-col">
-                <div class="punkcoder-sidebar-hot-head">
-                    <span><?php _e('热门文章', 'punkcoder')?></span>
-                </div>
-                <div class="punkcoder-sidebar-hot-body">
-                    <?php
-                    global $post;
-                    while ($query->have_posts()) {
-                        $query->the_post();
-                        ?>
-                        <div>
-                            <a href="<?php echo(get_permalink($post)); ?>"><?php echo(get_the_title()); ?></a>
-                        </div>
+                <div class="card bg-light mb-3">
+                    <div class="card-header punkcoder-sidebar-hot-header"><?php _e('热门文章', 'punkcoder')?></div>
+                    <div class="card-body">
                         <?php
-                        if ($query->post_count != $query->current_post + 1) {
-                            ?>
-                            <hr>
-                            <?php
+                        global $post;
+                        while ($query->have_posts())
+                        {
+                            $query->the_post();
+                        ?>
+                            <div class="punkcoder-sidebar-hot-body-item">
+                                <a href="<?php echo(get_permalink($post)); ?>"><?php echo(get_the_title()); ?></a>
+                            </div>
+                        <?php
                         }
-                    }
-                    ?>
+                        ?>
+                    </div>
                 </div>
             </div>
         </div>
+<?php } ?>
 
-        <?php
-    }
-
-    ?>
     <?php
     if ($categories && count($categories) > 0) {
         ?>
