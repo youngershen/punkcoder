@@ -339,27 +339,18 @@ nav
     line-height: 5rem;
 }
 
-.punkcoder-sidebar-tag
-{
-    padding: 0;
-}
-
-.punkcoder-sidebar-tag-head
-{
-    font-size: 1.5rem;
-    margin: .5rem;
-}
-
-.punkcoder-sidebar-tag-body
-{
-    font-size: 1rem;
-    margin: 1.5rem .5rem;
-}
-
 .punkcoder-sidebar-tag-item
 {
+    background-color: #BDBDBD;
     font-size: 1rem;
-    margin-top: .5rem;
+    width: 30%;
+    float: left;
+    margin: 1%;
+    padding: 0 8px;
+    line-height: 29px;
+    overflow: hidden;
+    border-radius: .1rem;
+
 }
 
 .punkcoder-sidebar-wechat-qr-image

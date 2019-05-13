@@ -153,26 +153,33 @@ if ($categories && count($categories) > 0) {
 
     <?php
     if ($tags && count($tags) > 0) {
-
         ?>
-        <hr>
-        <div class="row punkcoder-sidebar-tag">
-            <div class="col-12">
-                <div class="punkcoder-sidebar-tag-head">
-                    <span><?php _e('标签', 'punkcoder')?></span>
-                </div>
-                <div class="punkcoder-sidebar-tag-body">
-                    <?php
-                    foreach ($tags as $key => $val) {
-                        $tag_link = get_tag_link($val->term_id);
-                        ?>
-                        <a href="<?php echo($tag_link); ?>">
-                            <span class="badge badge-primary punkcoder-sidebar-tag-item">#<?php echo($val->name) ?></span>
-                        </a>
+        <div class="row punkcoder-sidebar-panel">
+            <div class="col-12 punkcoder-sidebar-panel-col">
+                <div class="card bg-light mb-3">
+                    <div class="card-header punkcoder-sidebar-panel-header">
+                        <?php _e('热门标签', 'punkcoder')?>
+                    </div>
+                    <div class="card-body">
                         <?php
-                    }
-                    ?>
+                        foreach ($tags as $key => $val) {
+                            $tag_link = get_tag_link($val->term_id);
+                            ?>
+                            <a href="<?php echo($tag_link); ?>" target="_blank" class="punkcoder-sidebar-tag-item">
+                                <?php echo($val->name) ?> (1)
+                            </a>
+                            <?php
+                        }
+                        ?>
+                        <a href="<?php echo($tag_link); ?>" target="_blank" class="punkcoder-sidebar-tag-item">
+                            <?php echo($val->name) ?> (1)
+                        </a>
+                        <a href="<?php echo($tag_link); ?>" target="_blank" class="punkcoder-sidebar-tag-item">
+                            <?php echo($val->name) ?> (1)
+                        </a>
+                    </div>
                 </div>
+
             </div>
         </div>
         <?php
