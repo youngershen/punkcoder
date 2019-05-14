@@ -63,7 +63,7 @@ nav
 {
     margin: 0 1rem;
 
-    display: block !important;
+    /*display: block !important;*/
 }
 
 .punkcoder-nav-item > a

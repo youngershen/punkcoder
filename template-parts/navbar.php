@@ -57,7 +57,7 @@ $bg_image = punkcoder_get_options('punkcoder_settings', 'bg_image', punkcoder_ge
                 <a href="" class="punkcoder-nav-item-portfolio"><?php _e('项目', 'punkcoder');?></a>
             </li>
 
-            <li class="nav-item punkcoder-nav-item punkcoder-nav-item-menu d-none d-lg-block">
+            <li class="d-none d-lg-block nav-item punkcoder-nav-item punkcoder-nav-item-menu ">
                 <a class="punkcoder-nav-item-menu-head icon"><?php _e('其他', 'punkcoder');?></a>
                 <ul class="punkcoder-nav-item-menu-sub">
                     <?php
@@ -67,7 +67,7 @@ $bg_image = punkcoder_get_options('punkcoder_settings', 'bg_image', punkcoder_ge
                         $query->the_post();
                         ?>
                         <li class="punkcoder-nav-item-menu-sub-item ml-auto">
-                            <a href="<?php get_page_link()?>" class="unkcoder-nav-item-menu-sub-item-link"><?php echo($post->post_title); ?></a>
+                            <a href="<?php echo(get_page_link());?>" class="unkcoder-nav-item-menu-sub-item-link"><?php echo($post->post_title); ?></a>
                         </li>
                     <?php
                     }
