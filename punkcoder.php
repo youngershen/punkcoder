@@ -109,11 +109,6 @@ function punkcoder_seo_page()
     echo "seo";
 }
 
-
-
-
-
-
 function punkcoder_options_page_form()
 {
     settings_errors( 'punkcoder_messages' );

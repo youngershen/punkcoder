@@ -56,9 +56,19 @@ $query = new WP_Query($args);
             </div>
         </div>
         <div class="col-12 punkcoder-sidebar-profile-social">
-            <a href="" target="_blank" class="punkcoder-sidebar-profile-social-link">
-                <i class="fab fa-weixin fa-1x punkcoder-sidebar-profile-social-link-item"></i>
-            </a>
+            <?php
+                $show_wechat = punkcoder_get_options('punkcoder_profiles', 'wechat_qr_image_show', 'no');
+                $wechat_qr_image = esc_html(punkcoder_get_options('punkcoder_profiles', 'wechat_qr_image'));
+
+                if('yes' == $show_wechat && $wechat_qr_image)
+                {?>
+                    <a href="" class="punkcoder-sidebar-profile-social-link"  data-toggle="modal" data-target="#wechat-qr-modal">
+                        <i class="fab fa-weixin fa-1x punkcoder-sidebar-profile-social-link-item"></i>
+                    </a>
+                    <?php
+                }
+            ?>
+
             <a href="" target="_blank" class="punkcoder-sidebar-profile-social-link">
                 <i class="fab fa-weibo fa-1x punkcoder-sidebar-profile-social-link-item"></i>
             </a>
@@ -184,17 +194,14 @@ if ($categories && count($categories) > 0) {
 <!-- Wechat Qr Image Modal -->
 
 <?php
-$show = punkcoder_get_options('punkcoder_profiles', 'wechat_qr_image_show', 'no');;
-$wechat = punkcoder_get_options('punkcoder_profiles', 'wechat_qr_image');
-
-if('yes' == $show && $wechat)
+if('yes' == $show_wechat && $wechat_qr_image)
 {
 ?>
     <div class="modal fade" id="wechat-qr-modal" tabindex="-1" role="dialog" aria-labelledby="wechat-qr-modal" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content ">
                 <div class="modal-body">
-                    <img class="punkcoder-sidebar-wechat-qr-image rounded mw-100" src="<?php echo esc_attr($wechat); ?>">
+                    <img class="punkcoder-sidebar-wechat-qr-image rounded mw-100" src="<?php echo esc_attr($wechat_qr_image); ?>">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal"><?php _e('Close', 'punkcoder');?></button>
