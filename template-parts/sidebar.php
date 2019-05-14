@@ -283,9 +283,17 @@ $query = new WP_Query($args);
             }
             ?>
 
-            <a href="" target="_blank" class="punkcoder-sidebar-profile-social-link">
-                <i class="fas fa-rss fa-1x punkcoder-sidebar-profile-social-link-item"></i>
-            </a>
+            <?php
+                $show_rss = punkcoder_get_options('punkcoder_profiles', 'rss_show', 'no');
+                if('yes' == $show_rss)
+                {
+                    ?>
+                    <a href="<?php bloginfo('rss2_url'); ?>" target="_blank" class="punkcoder-sidebar-profile-social-link">
+                        <i class="fas fa-rss fa-1x punkcoder-sidebar-profile-social-link-item"></i>
+                    </a>
+                    <?php
+                }
+                ?>
         </div>
     </div>
 

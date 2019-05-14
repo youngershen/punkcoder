@@ -200,7 +200,6 @@ function punkcoder_settings_validate($args)
 function punkcoder_profiles_validate($args)
 {
 
-
     if(!array_key_exists('qq_show', $args))
     {
         $args['qq_show'] = 'no';
@@ -281,6 +280,11 @@ function punkcoder_profiles_validate($args)
     if(!array_key_exists('zhihu_show', $args))
     {
         $args['zhihu_show'] = 'no';
+    }
+
+    if(!array_key_exists('rss_show', $args))
+    {
+        $args['rss_show'] = 'no';
     }
 
     return $args;
@@ -559,6 +563,14 @@ function punkcoder_profiles()
         "punkcoder_zhihu_show",
         __('显示 Zhihu', 'punkcoder'),
         "punkcoder_zhihu_show_form",
+        "punkcoder_profiles",
+        "punkcoder_profiles_section");
+
+
+    add_settings_field(
+        "punkcoder_rss_show",
+        __('显示 RSS', 'punkcoder'),
+        "punkcoder_rss_show_form",
         "punkcoder_profiles",
         "punkcoder_profiles_section");
 }
@@ -1216,6 +1228,26 @@ function punkcoder_zhihu_show_form()
            value="yes"
         <?php
         if(punkcoder_get_options('punkcoder_profiles', 'zhihu_show', 'yes') == 'yes')
+        {
+            ?>
+            checked="checked"
+            <?php
+        }
+        ?>
+    />
+    <?php
+}
+
+function punkcoder_rss_show_form()
+{
+    ?>
+    <input type="checkbox"
+           class="punkcoder-option-form-input punkcoder-profiles-rss-show-input"
+           name="punkcoder_profiles[rss_show]"
+           id="punkcoder-profiles-rss-show"
+           value="yes"
+        <?php
+        if(punkcoder_get_options('punkcoder_profiles', 'rss_show', 'yes') == 'yes')
         {
             ?>
             checked="checked"
