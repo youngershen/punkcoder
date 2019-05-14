@@ -57,6 +57,20 @@ $query = new WP_Query($args);
         </div>
         <div class="col-12 punkcoder-sidebar-profile-social">
             <?php
+            $show_phone = punkcoder_get_options('punkcoder_profiles', 'cellphone_show', 'no');
+            $phone = punkcoder_get_options('punkcoder_profiles', 'cellphone');
+
+            if('yes' == $show_phone && $phone)
+            {
+                ?>
+                <a href="tel://<?php echo($phone); ?>" target="_blank" class="punkcoder-sidebar-profile-social-link">
+                    <i class="fas fa-phone fa-1x punkcoder-sidebar-profile-social-link-item"></i>
+                </a>
+                <?php
+            }
+            ?>
+
+            <?php
                 $show_wechat = punkcoder_get_options('punkcoder_profiles', 'wechat_qr_image_show', 'no');
                 $wechat_qr_image = esc_html(punkcoder_get_options('punkcoder_profiles', 'wechat_qr_image'));
 
@@ -183,21 +197,67 @@ $query = new WP_Query($args);
 
             ?>
 
+            <?php
+                $show_pinterest = punkcoder_get_options('punkcoder_profiles', 'pinterest_show', 'no');
+                $pinterest = punkcoder_get_options('punkcoder_profiles', 'pinterest');
+
+                if('yes' == $show_pinterest && $pinterest)
+                {
+                    ?>
+                    <a href="<?php echo($pinterest); ?>" target="_blank" class="punkcoder-sidebar-profile-social-link">
+                        <i class="fab fa-pinterest fa-1x punkcoder-sidebar-profile-social-link-item"></i>
+                    </a>
+                    <?php
+                }
+
+            ?>
+
+            <?php
+                $show_linkedin = punkcoder_get_options('punkcoder_profiles', 'linkedin_show', 'no');
+                $linked_in = punkcoder_get_options('punkcoder_profiles', 'linkedin');
+
+                if('yes' == $show_linkedin && $linked_in)
+                {
+                    ?>
+                    <a href="<?php echo($linked_in);?>" target="_blank" class="punkcoder-sidebar-profile-social-link">
+                        <i class="fab fa-linkedin fa-1x punkcoder-sidebar-profile-social-link-item"></i>
+                    </a>
+                    <?php
+                }
+
+            ?>
+
+            <?php
+                $show_youtube = punkcoder_get_options('punkcoder_profiles', 'youtube_show', 'no');
+                $youtube = punkcoder_get_options('punkcoder_profiles', 'youtube');
+
+                if('yes' == $show_youtube && $youtube)
+                {
+                    ?>
+                    <a href="<?php echo($youtube); ?>" target="_blank" class="punkcoder-sidebar-profile-social-link">
+                        <i class="fab fa-youtube fa-1x punkcoder-sidebar-profile-social-link-item"></i>
+                    </a>
+                    <?php
+                }
+            ?>
+
+            <?php
+                $show_quora = punkcoder_get_options('punkcoder_profiles', 'quora_show', 'no');
+                $quora = punkcoder_get_options('punkcoder_profiles', 'quora');
+
+                if('yes' == $show_quora && $quora)
+                {
+                    ?>
+                    <a href="<?php echo($quora); ?>" target="_blank" class="punkcoder-sidebar-profile-social-link">
+                        <i class="fab fa-quora fa-1x punkcoder-sidebar-profile-social-link-item"></i>
+                    </a>
+                    <?php
+                }
+            ?>
+
 
             <a href="" target="_blank" class="punkcoder-sidebar-profile-social-link">
-                <i class="fab fa-pinterest fa-1x punkcoder-sidebar-profile-social-link-item"></i>
-            </a>
-            <a href="" target="_blank" class="punkcoder-sidebar-profile-social-link">
-                <i class="fab fa-linkedin fa-1x punkcoder-sidebar-profile-social-link-item"></i>
-            </a>
-            <a href="" target="_blank" class="punkcoder-sidebar-profile-social-link">
-                <i class="fab fa-youtube fa-1x punkcoder-sidebar-profile-social-link-item"></i>
-            </a>
-            <a href="" target="_blank" class="punkcoder-sidebar-profile-social-link">
-                <i class="fab fa-quora fa-1x punkcoder-sidebar-profile-social-link-item"></i>
-            </a>
-            <a href="" target="_blank" class="punkcoder-sidebar-profile-social-link">
-                <i class="fas fa-phone fa-1x punkcoder-sidebar-profile-social-link-item"></i>
+                <i class="fas fa-rss fa-1x punkcoder-sidebar-profile-social-link-item"></i>
             </a>
         </div>
     </div>
