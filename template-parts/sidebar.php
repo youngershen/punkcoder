@@ -255,6 +255,13 @@ $query = new WP_Query($args);
                 }
             ?>
 
+            <a href="skype:<?php echo('test'); ?>?chat" target="_blank" class="punkcoder-sidebar-profile-social-link">
+                <i class="fab fa-skype fa-1x punkcoder-sidebar-profile-social-link-item"></i>
+            </a>
+
+            <a href="https://api.whatsapp.com/send?phone=<?php echo('test');?>" target="_blank" class="punkcoder-sidebar-profile-social-link">
+                <i class="fab fa-whatsapp fa-1x punkcoder-sidebar-profile-social-link-item"></i>
+            </a>
 
             <a href="" target="_blank" class="punkcoder-sidebar-profile-social-link">
                 <i class="fas fa-rss fa-1x punkcoder-sidebar-profile-social-link-item"></i>

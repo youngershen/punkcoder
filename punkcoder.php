@@ -200,50 +200,22 @@ function punkcoder_settings_validate($args)
 function punkcoder_profiles_validate($args)
 {
 
-    if(!array_key_exists('age_show', $args))
-    {
-        $args['age_show'] = 'no';
-    }
-
-    if(!array_key_exists('gender_show', $args))
-    {
-        $args['gender_show'] = 'no';
-    }
-
-    if(!array_key_exists('occupation_show', $args))
-    {
-        $args['occupation_show'] = 'no';
-    }
-
 
     if(!array_key_exists('qq_show', $args))
     {
         $args['qq_show'] = 'no';
     }
 
-    if(!array_key_exists('whatsapp_show', $args))
-    {
-        $args['whatsapp_show'] = 'no';
-    }
-
-    if(!array_key_exists('telegram_show', $args))
-    {
-        $args['telegram_show'] = 'no';
-    }
 
     if(!array_key_exists('skype_show', $args))
     {
         $args['skype_show'] = 'no';
     }
 
-    if(!array_key_exists('line_show', $args))
-    {
-        $args['line_show'] = 'no';
-    }
 
-    if(!array_key_exists('location_show', $args))
+    if(!array_key_exists('whatsapp_show', $args))
     {
-        $args['location_show'] = 'no';
+        $args['whatsapp_show'] = 'no';
     }
 
     if(!array_key_exists('bio_show', $args))
@@ -318,7 +290,7 @@ function punkcoder_options_header_html()
 {
     if( !key_exists('tab', $_GET) || $_GET['tab'] == 'profiles') {
         ?>
-        <span><?php _e('这里填写的内容将会显示在首页侧边栏中 随便填就行 默认显示作者的信息', 'punkcoder'); ?></span>
+        <span><?php _e('这里填写的内容将会显示在首页侧边栏中', 'punkcoder'); ?></span>
         <?php
     }
     elseif ($_GET['tab'] == 'settings')
@@ -348,48 +320,6 @@ function punkcoder_profiles()
         "punkcoder_nickname",
         __('昵称', 'punkcoder'),
         "punkcoder_nickname_form",
-        "punkcoder_profiles",
-        "punkcoder_profiles_section");
-
-    add_settings_field(
-        "punkcoder_age",
-        __('年龄', 'punkcoder'),
-        "punkcoder_age_form",
-        "punkcoder_profiles",
-        "punkcoder_profiles_section");
-
-    add_settings_field(
-        "punkcoder_age_show",
-        __('显示年龄', 'punkcoder'),
-        "punkcoder_age_show_form",
-        "punkcoder_profiles",
-        "punkcoder_profiles_section");
-
-    add_settings_field(
-        "punkcoder_gender",
-        __('性别', 'punkcoder'),
-        "punkcoder_gender_form",
-        "punkcoder_profiles",
-        "punkcoder_profiles_section");
-
-    add_settings_field(
-        "punkcoder_gender_show",
-        __('显示性别', 'punkcoder'),
-        "punkcoder_gender_show_form",
-        "punkcoder_profiles",
-        "punkcoder_profiles_section");
-
-    add_settings_field(
-        "punkcoder_occupation",
-        __('职业', 'punkcoder'),
-        "punkcoder_occupation_form",
-        "punkcoder_profiles",
-        "punkcoder_profiles_section");
-
-    add_settings_field(
-        "punkcoder_occupation_show",
-        __('显示职业', 'punkcoder'),
-        "punkcoder_occupation_show_form",
         "punkcoder_profiles",
         "punkcoder_profiles_section");
 
@@ -436,20 +366,6 @@ function punkcoder_profiles()
         "punkcoder_profiles_section");
 
     add_settings_field(
-        "punkcoder_telegram",
-        __('Telegram', 'punkcoder'),
-        "punkcoder_telegram_form",
-        "punkcoder_profiles",
-        "punkcoder_profiles_section");
-
-    add_settings_field(
-        "punkcoder_telegram_show",
-        __('显示 Telegram', 'punkcoder'),
-        "punkcoder_telegram_show_form",
-        "punkcoder_profiles",
-        "punkcoder_profiles_section");
-
-    add_settings_field(
         "punkcoder_skype",
         __('Skype', 'punkcoder'),
         "punkcoder_skype_form",
@@ -463,33 +379,6 @@ function punkcoder_profiles()
         "punkcoder_profiles",
         "punkcoder_profiles_section");
 
-    add_settings_field(
-        "punkcoder_line",
-        __('Line', 'punkcoder'),
-        "punkcoder_line_form",
-        "punkcoder_profiles",
-        "punkcoder_profiles_section");
-
-    add_settings_field(
-        "punkcoder_line_show",
-        __('显示 Line', 'punkcoder'),
-        "punkcoder_line_show_form",
-        "punkcoder_profiles",
-        "punkcoder_profiles_section");
-
-    add_settings_field(
-        "punkcoder_location",
-        __('地址', 'punkcoder'),
-        "punkcoder_location_form",
-        "punkcoder_profiles",
-        "punkcoder_profiles_section");
-
-    add_settings_field(
-        "punkcoder_location_show",
-        __('显示地址', 'punkcoder'),
-        "punkcoder_location_show_form",
-        "punkcoder_profiles",
-        "punkcoder_profiles_section");
 
     add_settings_field(
         "punkcoder_bio",
@@ -831,93 +720,6 @@ function punkcoder_nickname_form()
     <?php
 }
 
-function punkcoder_age_form()
-{
-    $default = '';
-    $age = esc_html(punkcoder_get_options('punkcoder_profiles', 'age', $default));
-    ?>
-    <input class="punkcoder-option-form-input" type="text" name="punkcoder_profiles[age]" id="punkcoder-options-age" value="<?php echo $age ; ?>" />
-    <?php
-}
-
-function punkcoder_age_show_form()
-{
-    ?>
-    <input type="checkbox"
-           class="punkcoder-option-form-input"
-           name="punkcoder_profiles[age_show]"
-           id="punkcoder-options-age-show"
-           value="yes"
-        <?php
-        if(punkcoder_get_options('punkcoder_profiles', 'age_show', 'yes') == 'yes')
-        {
-            ?>
-            checked="checked"
-            <?php
-        }
-        ?>
-    />
-    <?php
-}
-
-function punkcoder_gender_form()
-{
-    $default = __('男', 'punkcoder');
-    $gender = esc_html(punkcoder_get_options('punkcoder_profiles', 'gender', $default));
-    ?>
-    <input class="punkcoder-option-form-input" type="text" name="punkcoder_profiles[gender]" id="punkcoder-options-gender" value="<?php echo $gender ; ?>" />
-    <?php
-}
-
-function punkcoder_gender_show_form()
-{
-    ?>
-    <input type="checkbox"
-           class="punkcoder-option-form-input"
-           name="punkcoder_profiles[gender_show]"
-           id="punkcoder-options-gender-show"
-           value="yes"
-        <?php
-        if(punkcoder_get_options('punkcoder_profiles', 'gender_show', 'yes') == 'yes')
-        {
-            ?>
-            checked="checked"
-            <?php
-        }
-        ?>
-    />
-    <?php
-}
-
-function punkcoder_occupation_form()
-{
-    $default = __('', 'punkcoder');
-    $occupation = esc_html(punkcoder_get_options('punkcoder_profiles', 'occupation', $default));
-    ?>
-    <input class="punkcoder-option-form-input" type="text" name="punkcoder_profiles[occupation]" id="punkcoder-options-occupation" value="<?php echo $occupation ; ?>" />
-    <?php
-}
-
-function punkcoder_occupation_show_form()
-{
-    ?>
-    <input type="checkbox"
-           class="punkcoder-option-form-input"
-           name="punkcoder_profiles[occupation_show]"
-           id="punkcoder-options-occupation-show"
-           value="yes"
-        <?php
-        if(punkcoder_get_options('punkcoder_profiles', 'occupation_show', 'yes') == 'yes')
-        {
-            ?>
-            checked="checked"
-            <?php
-        }
-        ?>
-    />
-    <?php
-}
-
 function punkcoder_cellphone_form()
 {
     $defalt = '';
@@ -1008,36 +810,6 @@ function punkcoder_whatsapp_show_form()
     <?php
 }
 
-function punkcoder_telegram_form()
-{
-    $defalt = '';
-    $telegram = esc_html(punkcoder_get_options('punkcoder_profiles', 'telegram', $defalt));
-
-    ?>
-    <input class="punkcoder-option-form-input" type="text" name="punkcoder_profiles[telegram]" id="punkcoder-options-telegram" value="<?php echo $telegram; ?>" />
-    <?php
-}
-
-function punkcoder_telegram_show_form()
-{
-    ?>
-    <input type="checkbox"
-           class="punkcoder-option-form-input"
-           name="punkcoder_profiles[telegram_show]"
-           id="punkcoder-options-telegram-show"
-           value="yes"
-        <?php
-        if(punkcoder_get_options('punkcoder_profiles', 'telegram_show', 'yes') == 'yes')
-        {
-            ?>
-            checked="checked"
-            <?php
-        }
-        ?>
-    />
-    <?php
-}
-
 function punkcoder_skype_form()
 {
     $defalt = '';
@@ -1068,65 +840,6 @@ function punkcoder_skype_show_form()
     <?php
 }
 
-function punkcoder_line_form()
-{
-    $defalt = '';
-    $line = esc_html(punkcoder_get_options('punkcoder_profiles', 'line', $defalt));
-
-    ?>
-    <input class="punkcoder-option-form-input" type="text" name="punkcoder_profiles[line]" id="punkcoder-options-line" value="<?php echo $line; ?>" />
-    <?php
-}
-
-function punkcoder_line_show_form()
-{
-    ?>
-    <input type="checkbox"
-           class="punkcoder-option-form-input"
-           name="punkcoder_profiles[line_show]"
-           id="punkcoder-options-line-show"
-           value="yes"
-        <?php
-        if(punkcoder_get_options('punkcoder_profiles', 'line_show', 'yes') == 'yes')
-        {
-            ?>
-            checked="checked"
-            <?php
-        }
-        ?>
-    />
-    <?php
-}
-
-function punkcoder_location_form()
-{
-    $defalt = '';
-    $location = esc_html(punkcoder_get_options('punkcoder_profiles', 'location', $defalt));
-
-    ?>
-    <input class="punkcoder-option-form-input" type="text" name="punkcoder_profiles[location]" id="punkcoder-options-location" value="<?php echo $location; ?>" />
-    <?php
-}
-
-function punkcoder_location_show_form()
-{
-    ?>
-    <input type="checkbox"
-           class="punkcoder-option-form-input"
-           name="punkcoder_profiles[location_show]"
-           id="punkcoder-options-location-show"
-           value="yes"
-        <?php
-        if(punkcoder_get_options('punkcoder_profiles', 'location_show', 'yes') == 'yes')
-        {
-            ?>
-            checked="checked"
-            <?php
-        }
-        ?>
-    />
-    <?php
-}
 
 function punkcoder_bio_form()
 {
