@@ -111,19 +111,65 @@ $query = new WP_Query($args);
                     <?php
                 }
             ?>
+            <?php
+                $show_github = punkcoder_get_options('punkcoder_profiles', 'github_show', 'no');
+                $github = punkcoder_get_options('punkcoder_profiles', 'github');
 
-            <a href="" target="_blank" class="punkcoder-sidebar-profile-social-link">
-                <i class="fab fa-github fa-1x punkcoder-sidebar-profile-social-link-item"></i>
-            </a>
-            <a href="" target="_blank" class="punkcoder-sidebar-profile-social-link">
-                <i class="fab fa-stack-overflow fa-1x punkcoder-sidebar-profile-social-link-item"></i>
-            </a>
-            <a href="" target="_blank" class="punkcoder-sidebar-profile-social-link">
-                <i class="fab fa-twitter fa-1x punkcoder-sidebar-profile-social-link-item"></i>
-            </a>
-            <a href="" target="_blank" class="punkcoder-sidebar-profile-social-link">
-                <i class="fas fa-envelope fa-1x punkcoder-sidebar-profile-social-link-item"></i>
-            </a>
+                if('yes' == $show_github && $github)
+                {
+                    ?>
+                    <a href="<?php echo($github); ?>" target="_blank" class="punkcoder-sidebar-profile-social-link">
+                        <i class="fab fa-github fa-1x punkcoder-sidebar-profile-social-link-item"></i>
+                    </a>
+                    <?php
+                }
+            ?>
+
+            <?php
+                $show_stackoverflow = punkcoder_get_options('punkcoder_profiles', 'stackoverflow_show', 'no');
+                $stackoverflow = punkcoder_get_options('punkcoder_profiles', 'stackoverflow');
+
+                if('yes' == $show_stackoverflow && $stackoverflow)
+                {
+                    ?>
+                    <a href="<?php echo($stackoverflow); ?>" target="_blank" class="punkcoder-sidebar-profile-social-link">
+                        <i class="fab fa-stack-overflow fa-1x punkcoder-sidebar-profile-social-link-item"></i>
+                    </a>
+                    <?php
+                }
+                ?>
+
+            <?php
+                $show_twitter = punkcoder_get_options('punkcoder_profiles', 'twitter_show', 'no');
+                $twitter = punkcoder_get_options('punkcoder_profiles', 'twitter');
+
+                if('yes' == $show_twitter && $twitter)
+                {
+                    ?>
+                    <a href="<?php echo($twitter); ?>" target="_blank" class="punkcoder-sidebar-profile-social-link">
+                        <i class="fab fa-twitter fa-1x punkcoder-sidebar-profile-social-link-item"></i>
+                    </a>
+                    <?php
+                }
+            ?>
+
+            <?php
+                $show_email = punkcoder_get_options('punkcoder_profiles', 'email_show', 'no');
+                $email = punkcoder_get_options('punkcoder_profiles', 'email');
+
+                if('yes' == $show_email && $email)
+                {
+                    ?>
+                    <a href="mailto://<?php echo($email);?>" target="_blank" class="punkcoder-sidebar-profile-social-link">
+                        <i class="fas fa-envelope fa-1x punkcoder-sidebar-profile-social-link-item"></i>
+                    </a>
+                    <?php
+                }
+            ?>
+
+
+
+
             <a href="" target="_blank" class="punkcoder-sidebar-profile-social-link">
                 <i class="fab fa-instagram fa-1x punkcoder-sidebar-profile-social-link-item"></i>
             </a>
