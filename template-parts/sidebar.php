@@ -69,15 +69,49 @@ $query = new WP_Query($args);
                 }
             ?>
 
-            <a href="" target="_blank" class="punkcoder-sidebar-profile-social-link">
-                <i class="fab fa-weibo fa-1x punkcoder-sidebar-profile-social-link-item"></i>
-            </a>
-            <a href="" target="_blank" class="punkcoder-sidebar-profile-social-link">
-                <i class="fab fa-qq fa-1x punkcoder-sidebar-profile-social-link-item"></i>
-            </a>
-            <a href="" target="_blank" class="punkcoder-sidebar-profile-social-link">
-                <i class="fab fa-zhihu fa-1x punkcoder-sidebar-profile-social-link-item"></i>
-            </a>
+            <?php
+                $show_weibo = punkcoder_get_options('punkcoder_profiles', 'weibo_show', 'no');
+                $weibo = punkcoder_get_options('punkcoder_profiles', 'weibo');
+
+                if('yes' == $show_weibo && $weibo)
+                {
+                    ?>
+                    <a href="<?php echo($weibo)?>" target="_blank" class="punkcoder-sidebar-profile-social-link">
+                        <i class="fab fa-weibo fa-1x punkcoder-sidebar-profile-social-link-item"></i>
+                    </a>
+                    <?php
+                }
+            ?>
+
+            <?php
+                $show_qq = punkcoder_get_options('punkcoder_profiles', 'qq_show', 'no');
+                $qq = punkcoder_get_options('punkcoder_profiles', 'qq');
+
+                if('yes' == $show_qq && $qq)
+                {
+                    ?>
+                    <a href="tencent://message/?uin=<?php echo($qq);?>" target="_blank" class="punkcoder-sidebar-profile-social-link">
+                        <i class="fab fa-qq fa-1x punkcoder-sidebar-profile-social-link-item"></i>
+                    </a>
+                    <?php
+                }
+            ?>
+
+            <?php
+
+                $show_zhihu = punkcoder_get_options('punkcoder_profiles', 'zhihu_show', 'no');
+                $zhihu = punkcoder_get_options('punkcoder_profiles', 'zhihu');
+
+                if('yes' == $show_zhihu && $zhihu)
+                {
+                    ?>
+                    <a href="<?php echo($zhihu)?>" target="_blank" class="punkcoder-sidebar-profile-social-link">
+                        <i class="fab fa-zhihu fa-1x punkcoder-sidebar-profile-social-link-item"></i>
+                    </a>
+                    <?php
+                }
+            ?>
+
             <a href="" target="_blank" class="punkcoder-sidebar-profile-social-link">
                 <i class="fab fa-github fa-1x punkcoder-sidebar-profile-social-link-item"></i>
             </a>
@@ -104,6 +138,9 @@ $query = new WP_Query($args);
             </a>
             <a href="" target="_blank" class="punkcoder-sidebar-profile-social-link">
                 <i class="fab fa-quora fa-1x punkcoder-sidebar-profile-social-link-item"></i>
+            </a>
+            <a href="" target="_blank" class="punkcoder-sidebar-profile-social-link">
+                <i class="fas fa-phone fa-1x punkcoder-sidebar-profile-social-link-item"></i>
             </a>
         </div>
     </div>
