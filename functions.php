@@ -9,6 +9,7 @@
  * WECHAT  : 13811754531
  * WEBSIT  : https://www.punkcoder.cn
  */
+
 function punkcoder_pagination()
 {
     $range_step = 3;
@@ -246,6 +247,12 @@ function load_punkcoder_textdomain() {
     load_theme_textdomain( 'punkcoder', get_template_directory() . '/languages' );
 }
 
+function punkcoder_setup()
+{
+
+}
+
+
 add_action('after_setup_theme', 'load_punkcoder_textdomain');
 add_action('wp_print_scripts', 'theme_queue_js');
 add_filter('comment_form_fields', 'punkcoder_comment_form_fields');
@@ -261,5 +268,7 @@ add_image_size( 'single-post-thumbnail', 600, 300);
 add_image_size( 'avatar-image', 150, 150);
 add_image_size( 'bg-image', 590, 180);
 add_image_size( 'logo-image', 100, 100);
+
+add_action('after_setup_theme', 'punkcoder_setup');
 
 require_once("punkcoder.php");

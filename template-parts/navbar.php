@@ -60,12 +60,18 @@ $bg_image = punkcoder_get_options('punkcoder_settings', 'bg_image', punkcoder_ge
             <li class="nav-item punkcoder-nav-item punkcoder-nav-item-menu d-none d-lg-block">
                 <a class="punkcoder-nav-item-menu-head icon"><?php _e('其他', 'punkcoder');?></a>
                 <ul class="punkcoder-nav-item-menu-sub">
-                    <li class="punkcoder-nav-item-menu-sub-item ml-auto">
-                        <a href="" class="punkcoder-nav-item-menu-sub-item-link">1</a>
-                    </li>
-                    <li class="punkcoder-nav-item-menu-sub-item">
-                        <a href="" class="punkcoder-nav-item-menu-sub-item-link">2</a>
-                    </li>
+                    <?php
+                    global $post;
+                    while($query->have_posts())
+                    {
+                        $query->the_post();
+                        ?>
+                        <li class="punkcoder-nav-item-menu-sub-item ml-auto">
+                            <a href="<?php get_page_link()?>" class="unkcoder-nav-item-menu-sub-item-link"><?php echo($post->post_title); ?></a>
+                        </li>
+                    <?php
+                    }
+                    ?>
                 </ul>
             </li>
         </ul>
