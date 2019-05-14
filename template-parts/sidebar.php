@@ -255,13 +255,33 @@ $query = new WP_Query($args);
                 }
             ?>
 
-            <a href="skype:<?php echo('test'); ?>?chat" target="_blank" class="punkcoder-sidebar-profile-social-link">
-                <i class="fab fa-skype fa-1x punkcoder-sidebar-profile-social-link-item"></i>
-            </a>
+            <?php
+                $show_skype = punkcoder_get_options('punkcoder_profiles', 'skype_show', 'no');
+                $skype = punkcoder_get_options('punkcoder_profiles', 'skype');
 
-            <a href="https://api.whatsapp.com/send?phone=<?php echo('test');?>" target="_blank" class="punkcoder-sidebar-profile-social-link">
-                <i class="fab fa-whatsapp fa-1x punkcoder-sidebar-profile-social-link-item"></i>
-            </a>
+                if('yes' == $show_skype && $skype)
+                {
+                    ?>
+                    <a href="skype:<?php echo($skype); ?>?chat" target="_blank" class="punkcoder-sidebar-profile-social-link">
+                        <i class="fab fa-skype fa-1x punkcoder-sidebar-profile-social-link-item"></i>
+                    </a>
+                    <?php
+                }
+            ?>
+
+            <?php
+            $show_whatsapp = punkcoder_get_options('punkcoder_profiles', 'whatsapp_show', 'no');
+            $whatsapp = punkcoder_get_options('punkcoder_profiles', 'whatsapp');
+
+            if('yes' == $show_whatsapp && $whatsapp)
+            {
+                ?>
+                <a href="https://api.whatsapp.com/send?phone=<?php echo($whatsapp);?>" target="_blank" class="punkcoder-sidebar-profile-social-link">
+                    <i class="fab fa-whatsapp fa-1x punkcoder-sidebar-profile-social-link-item"></i>
+                </a>
+                <?php
+            }
+            ?>
 
             <a href="" target="_blank" class="punkcoder-sidebar-profile-social-link">
                 <i class="fas fa-rss fa-1x punkcoder-sidebar-profile-social-link-item"></i>
