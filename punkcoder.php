@@ -29,6 +29,22 @@ function punkcoder_menu_items()
 
 
     add_submenu_page(
+        'punkcoder',
+        __('关于', 'punkcoder'),
+        __('关于', 'punkcoder'),
+        'manage_options',
+        'punkcoder-about',
+        'punkcoder_about_page');
+
+    add_submenu_page(
+        'punkcoder',
+        __('友链', 'punkcoder'),
+        __('友链', 'punkcoder'),
+        'manage_options',
+        'punkcoder-links',
+        'punkcoder_links_page');
+
+    add_submenu_page(
             'punkcoder',
             __('相册', 'punkcoder'),
             __('相册', 'punkcoder'),
@@ -38,11 +54,11 @@ function punkcoder_menu_items()
 
     add_submenu_page(
         'punkcoder',
-        __('友链', 'punkcoder'),
-        __('友链', 'punkcoder'),
+        __('项目', 'punkcoder'),
+        __('项目', 'punkcoder'),
         'manage_options',
-        'punkcoder-links',
-        'punkcoder_links_page');
+        'punkcoder-project',
+        'punkcoder_project_page');
 
     add_submenu_page(
         'punkcoder',
@@ -61,14 +77,9 @@ function punkcoder_menu_items()
         'punkcoder_seo_page');
 }
 
-function punkcoder_seo_page()
+function punkcoder_about_page()
 {
-    echo "seo";
-}
-
-function punkcoder_ad_page()
-{
-    echo "ad";
+    echo 'about';
 }
 
 function punkcoder_links_page()
@@ -78,8 +89,30 @@ function punkcoder_links_page()
 
 function punkcoder_album_page()
 {
-    echo "fuck";
+    echo "album";
 }
+
+function punkcoder_project_page()
+{
+    echo 'project';
+}
+
+
+function punkcoder_ad_page()
+{
+    echo "ad";
+}
+
+
+function punkcoder_seo_page()
+{
+    echo "seo";
+}
+
+
+
+
+
 
 function punkcoder_options_page_form()
 {
