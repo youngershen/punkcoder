@@ -167,12 +167,23 @@ $query = new WP_Query($args);
                 }
             ?>
 
+            <?php
+                $show_instagram = punkcoder_get_options('punkcoder_profiles', 'instagram_show', 'no');
+                $instagram = punkcoder_get_options('punkcoder_profiles', 'instagram');
+
+                if('yes' == $show_instagram && $instagram)
+                {
+                    ?>
+
+                    <a href="<?php echo($instagram); ?>" target="_blank" class="punkcoder-sidebar-profile-social-link">
+                        <i class="fab fa-instagram fa-1x punkcoder-sidebar-profile-social-link-item"></i>
+                    </a>
+                    <?php
+                }
+
+            ?>
 
 
-
-            <a href="" target="_blank" class="punkcoder-sidebar-profile-social-link">
-                <i class="fab fa-instagram fa-1x punkcoder-sidebar-profile-social-link-item"></i>
-            </a>
             <a href="" target="_blank" class="punkcoder-sidebar-profile-social-link">
                 <i class="fab fa-pinterest fa-1x punkcoder-sidebar-profile-social-link-item"></i>
             </a>
