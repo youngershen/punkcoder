@@ -27,19 +27,22 @@
         </div>
         <div class="col-lg-8 col-md-12 col-sm-12">
             <?php
-//                the_post();
-                get_template_part("template-parts/post-single");
+                while(have_posts())
+                {
+                    the_post();
+                    get_template_part("template-parts/post-single");
+                    if ( comments_open() )
+                    {
+                        ?>
+                        <div class="container-fluid d-none d-lg-block post-comments">
+                            <?php comments_template(); ?>
+                        </div>
+                        <?php
+                    }
+                }
+
             ?>
-            <?php
-            if ( comments_open() )
-            {
-                ?>
-                <div class="container-fluid d-none d-lg-block post-comments">
-                    <?php comments_template(); ?>
-                </div>
-                <?php
-            }
-            ?>
+            sdf
         </div>
     </div>
 

@@ -17,18 +17,10 @@ $categories = get_categories(array(
 $tags = get_tags();
 
 $args = array(
-    'posts_per_page' => 10,
-    'category' => 7,
     'orderby' => 'post_date',
     'order' => 'DESC',
+    'posts_per_page' => 10,
     'post_type' => 'post'
-);
-
-$args = array(
-    'orderby' => 'post_date',
-    'order' => 'DESC',
-    'posts_per_page' => 10,
-
 );
 
 $query = new WP_Query($args);

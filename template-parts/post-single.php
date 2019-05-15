@@ -32,7 +32,6 @@
             {
                 $image = punkcoder_get_url('images', 'default-feature-image.jpg');
             }
-
             ?>
             <img src="<?php echo(esc_html($image)); ?>" alt="" class="punkcoder-post-single-thumbnail-image rounded">
         </div>

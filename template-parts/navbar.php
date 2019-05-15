@@ -147,7 +147,7 @@ $project_page_query = new WP_Query(['name' => 'project', 'post_type' => 'page', 
 
                     if(is_single())
                     {
-                        the_post();
+//                        the_post();
                         echo($post->post_title);
                     }
 
