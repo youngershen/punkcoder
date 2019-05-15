@@ -14,7 +14,7 @@ $args = array(
     'post_type' => 'page',
     'orderby' => 'name',
     'order' => 'DESC',
-    'posts_per_page' => 5,
+    'posts_per_page' => -1,
 
 );
 $query = new WP_Query($args);
@@ -22,6 +22,11 @@ $query = new WP_Query($args);
 $logo = punkcoder_get_options('punkcoder_settings', 'logo', punkcoder_get_url('images', 'default-logo.png'));
 $show_logo = punkcoder_get_options('punkcoder_settings', 'logo_show', 'yes');
 $bg_image = punkcoder_get_options('punkcoder_settings', 'bg_image', punkcoder_get_url('images', 'default-bg-image.png'));
+
+$about_page_query = new WP_Query(['name' => 'about', 'post_type' => 'page', 'order' => 'DESC']);
+$link_page_query = new WP_Query(['name' => 'link' , 'post_type' => 'page', 'order' => 'DESC']);
+$album_page_query = new WP_Query(['name' => 'album', 'post_type' => 'page', 'order' => 'DESC']);
+$project_page_query = new WP_Query(['name' => 'project', 'post_type' => 'page', 'order' => 'DESC']);
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top punkcoder-navbar punkcoder-navbar">
@@ -44,18 +49,67 @@ $bg_image = punkcoder_get_options('punkcoder_settings', 'bg_image', punkcoder_ge
     </button>
     <div class="collapse navbar-collapse" id="navbar-content">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item punkcoder-nav-item">
-                <a href="" class="punkcoder-nav-item-about"><?php _e('关于', 'punkcoder');?></a>
-            </li>
-            <li class="nav-item punkcoder-nav-item">
-                <a href="" class="punkcoder-nav-item-link"><?php _e('友链', 'punkcoder');?></a>
-            </li>
-            <li class="nav-item punkcoder-nav-item">
-                <a href="" class="punkcoder-nav-item-album"><?php _e('相册', 'punkcoder');?></a>
-            </li>
-            <li class="nav-item punkcoder-nav-item">
-                <a href="" class="punkcoder-nav-item-portfolio"><?php _e('项目', 'punkcoder');?></a>
-            </li>
+            <?php
+
+            $show_about_page = punkcoder_get_options('punkcoder_about', 'show_page', 'no');
+
+            if( 'no' == $show_about_page && $about_page_query->have_posts())
+            {
+                global $post;
+                $about_page_query->the_post();
+                ?>
+                <li class="nav-item punkcoder-nav-item">
+                    <a href="<?php echo(get_page_link());?>" class="punkcoder-nav-item-about"><?php _e('关于', 'punkcoder');?></a>
+                </li>
+            <?php
+            }
+            ?>
+
+            <?php
+
+            $show_link_page = punkcoder_get_options('punkcoder_link', 'show_page', 'no');
+
+            if( 'no' == $show_link_page && $link_page_query->have_posts())
+            {
+                global $post;
+                $link_page_query->the_post();
+                ?>
+                <li class="nav-item punkcoder-nav-item">
+                    <a href="<?php echo(get_page_link());?>" class="punkcoder-nav-item-about"><?php _e('友链', 'punkcoder');?></a>
+                </li>
+                <?php
+            }
+            ?>
+
+            <?php
+            $show_album_page = punkcoder_get_options('punkcoder_album', 'show_page', 'no');
+
+            if( 'no' == $show_album_page && $album_page_query->have_posts())
+            {
+                global $post;
+                $album_page_query->the_post();
+                ?>
+                <li class="nav-item punkcoder-nav-item">
+                    <a href="<?php echo(get_page_link());?>" class="punkcoder-nav-item-about"><?php _e('相册', 'punkcoder');?></a>
+                </li>
+                <?php
+            }
+            ?>
+
+            <?php
+            $show_project_page = punkcoder_get_options('punkcoder_project', 'show_page', 'no');
+
+            if( 'no' == $show_project_page && $project_page_query->have_posts())
+            {
+                global $post;
+                $project_page_query->the_post();
+                ?>
+                <li class="nav-item punkcoder-nav-item">
+                    <a href="<?php echo(get_page_link());?>" class="punkcoder-nav-item-about"><?php _e('项目', 'punkcoder');?></a>
+                </li>
+                <?php
+            }
+            ?>
 
             <li class="d-none d-lg-block nav-item punkcoder-nav-item punkcoder-nav-item-menu ">
                 <a class="punkcoder-nav-item-menu-head icon"><?php _e('其他', 'punkcoder');?></a>
@@ -65,6 +119,11 @@ $bg_image = punkcoder_get_options('punkcoder_settings', 'bg_image', punkcoder_ge
                     while($query->have_posts())
                     {
                         $query->the_post();
+
+                        if('about' == $post->post_name || 'link' == $post->post_name ||'album' == $post->post_name || 'project' == $post->post_name )
+                        {
+                            continue;
+                        }
                         ?>
                         <li class="punkcoder-nav-item-menu-sub-item ml-auto">
                             <a href="<?php echo(get_page_link());?>" class="unkcoder-nav-item-menu-sub-item-link"><?php echo($post->post_title); ?></a>
