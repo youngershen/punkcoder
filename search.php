@@ -38,14 +38,6 @@ $total = $pagination['last'];
             <?php
             $keyword = get_search_query();
 
-            if($keyword)
-            {
-                ?>
-                <header class="page-header">
-                    <h1 class="page-title"><?php printf( __( '%s 的搜索结果:', 'punkcoder' ), '<span>' . esc_html( $keyword ) . '</span>' ); ?></h1>
-                </header><!-- .page-header -->
-            <?php
-            }
             if ( have_posts() ) {
                 // Load posts loop.
                 while ( have_posts() ) {

@@ -170,6 +170,13 @@ $project_page_query = new WP_Query(['name' => 'project', 'post_type' => 'page', 
                     {
                         bloginfo('description');
                     }
+
+                    if(is_search())
+                    {
+                        $keyword = get_search_query();
+                        $f = __('[ %s ] 的搜索结果', 'punkcoder');
+                        $s = printf($f, $keyword);
+                    }
                 ?>
             </h2>
         </div>
