@@ -57,8 +57,8 @@ function punkcoder_menu_items()
         __('项目', 'punkcoder'),
         __('项目', 'punkcoder'),
         'manage_options',
-        'punkcoder-project',
-        'punkcoder_project_page');
+        'punkcoder-portfolio',
+        'punkcoder_portfolio_page');
 
     add_submenu_page(
         'punkcoder',
@@ -92,9 +92,9 @@ function punkcoder_album_page()
     echo "album";
 }
 
-function punkcoder_project_page()
+function punkcoder_portfolio_page()
 {
-    echo 'project';
+    echo 'portfolio';
 }
 
 
