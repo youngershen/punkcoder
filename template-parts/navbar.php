@@ -23,10 +23,10 @@ $logo = punkcoder_get_options('punkcoder_settings', 'logo', punkcoder_get_url('i
 $show_logo = punkcoder_get_options('punkcoder_settings', 'logo_show', 'yes');
 $bg_image = punkcoder_get_options('punkcoder_settings', 'bg_image', punkcoder_get_url('images', 'default-bg-image.png'));
 
-$about_page_query = new WP_Query(['name' => 'about', 'post_type' => 'page', 'order' => 'DESC']);
-$link_page_query = new WP_Query(['name' => 'link' , 'post_type' => 'page', 'order' => 'DESC']);
-$album_page_query = new WP_Query(['name' => 'album', 'post_type' => 'page', 'order' => 'DESC']);
-$portfolio_page_query = new WP_Query(['name' => 'project', 'post_type' => 'page', 'order' => 'DESC']);
+$about_page = get_page_by_path('about', 'OBJECT', 'page'); //new WP_Query(['name' => 'about', 'post_type' => 'page', 'order' => 'DESC']);
+$link_page = get_page_by_path('link', 'OBJECT', 'page');//new WP_Query(['name' => 'link' , 'post_type' => 'page', 'order' => 'DESC']);
+$album_page = get_page_by_path('album', 'OBJECT', 'page'); //new WP_Query(['name' => 'album', 'post_type' => 'page', 'order' => 'DESC']);
+$portfolio_page = get_page_by_path('portfolio', 'OBJECT', 'page');//new WP_Query(['name' => 'project', 'post_type' => 'page', 'order' => 'DESC']);
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top punkcoder-navbar punkcoder-navbar">
@@ -53,13 +53,11 @@ $portfolio_page_query = new WP_Query(['name' => 'project', 'post_type' => 'page'
 
             $show_about_page = punkcoder_get_options('punkcoder_about', 'show_page', 'no');
 
-            if( 'no' == $show_about_page && $about_page_query->have_posts())
+            if( 'no' == $show_about_page && $about_page)
             {
-                global $post;
-                $about_page_query->the_post();
                 ?>
                 <li class="nav-item punkcoder-nav-item">
-                    <a href="<?php echo(get_page_link());?>" class="punkcoder-nav-item-about"><?php _e('关于', 'punkcoder');?></a>
+                    <a href="<?php echo(get_page_link($about_page));?>" class="punkcoder-nav-item-about"><?php _e('关于', 'punkcoder');?></a>
                 </li>
             <?php
             }
@@ -69,13 +67,11 @@ $portfolio_page_query = new WP_Query(['name' => 'project', 'post_type' => 'page'
 
             $show_link_page = punkcoder_get_options('punkcoder_link', 'show_page', 'no');
 
-            if( 'no' == $show_link_page && $link_page_query->have_posts())
+            if( 'no' == $show_link_page && $link_page)
             {
-                global $post;
-                $link_page_query->the_post();
                 ?>
                 <li class="nav-item punkcoder-nav-item">
-                    <a href="<?php echo(get_page_link());?>" class="punkcoder-nav-item-link"><?php _e('友链', 'punkcoder');?></a>
+                    <a href="<?php echo(get_page_link($link_page));?>" class="punkcoder-nav-item-link"><?php _e('友链', 'punkcoder');?></a>
                 </li>
                 <?php
             }
@@ -84,13 +80,11 @@ $portfolio_page_query = new WP_Query(['name' => 'project', 'post_type' => 'page'
             <?php
             $show_album_page = punkcoder_get_options('punkcoder_album', 'show_page', 'no');
 
-            if( 'no' == $show_album_page && $album_page_query->have_posts())
+            if( 'no' == $show_album_page && $album_page)
             {
-                global $post;
-                $album_page_query->the_post();
                 ?>
                 <li class="nav-item punkcoder-nav-item">
-                    <a href="<?php echo(get_page_link());?>" class="punkcoder-nav-item-album"><?php _e('相册', 'punkcoder');?></a>
+                    <a href="<?php echo(get_page_link($album_page));?>" class="punkcoder-nav-item-album"><?php _e('相册', 'punkcoder');?></a>
                 </li>
                 <?php
             }
@@ -99,13 +93,11 @@ $portfolio_page_query = new WP_Query(['name' => 'project', 'post_type' => 'page'
             <?php
             $show_portfolio_page = punkcoder_get_options('punkcoder_portfolio', 'show_page', 'no');
 
-            if( 'no' == $show_portfolio_page && $portfolio_page_query->have_posts())
+            if( 'no' == $show_portfolio_page && $portfolio_page)
             {
-                global $post;
-                $portfolio_page_query->the_post();
                 ?>
                 <li class="nav-item punkcoder-nav-item">
-                    <a href="<?php echo(get_page_link());?>" class="punkcoder-nav-item-portfolio"><?php _e('项目', 'punkcoder');?></a>
+                    <a href="<?php echo(get_page_link($portfolio_page));?>" class="punkcoder-nav-item-portfolio"><?php _e('项目', 'punkcoder');?></a>
                 </li>
                 <?php
             }
@@ -120,7 +112,7 @@ $portfolio_page_query = new WP_Query(['name' => 'project', 'post_type' => 'page'
                     {
                         $query->the_post();
 
-                        if('about' == $post->post_name || 'link' == $post->post_name ||'album' == $post->post_name || 'project' == $post->post_name )
+                        if('about' == $post->post_name || 'link' == $post->post_name ||'album' == $post->post_name || 'portfolio' == $post->post_name )
                         {
                             continue;
                         }
@@ -144,10 +136,8 @@ $portfolio_page_query = new WP_Query(['name' => 'project', 'post_type' => 'page'
             <h1 class="text-center "><?php bloginfo('name'); ?></h1>
             <h2 class="text-center mt-5">
                 <?php
-
                     if(is_single())
                     {
-//                        the_post();
                         echo($post->post_title);
                     }
 
