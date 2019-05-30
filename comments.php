@@ -58,7 +58,7 @@ $comment_field = '<div class="form-group"><label for="comment">' .__('留言', '
 $args = [
     'title_reply' => __('发表评论', 'punkcoder'),
     'title_reply_to' => __( '向 %s 回复评论', 'punkcoder'),
-    'comment_notes_before' => '<h5>'. __('电子邮件地址不会被公开 必填项已用 * 标注', 'punkcoder') . '</h5>',
+    'comment_notes_before' => '<h5>'. __('电子邮件地址不会被公开必填项已用 * 标注', 'punkcoder') . '</h5>',
     'comment_notes_after' => '',
     'comment_field' => $comment_field,
     'fields' => $fields,
