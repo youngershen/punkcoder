@@ -1,1 +1,1 @@
-# Punkcoder - a  very simple but clean wordpress them.
+# Punkcoder - a  very simple but clean wordpress theme.
